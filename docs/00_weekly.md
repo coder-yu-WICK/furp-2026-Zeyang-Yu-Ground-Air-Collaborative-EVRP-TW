@@ -30,7 +30,7 @@
 
 <!-- =================  YOUR ENTRIES BELOW  ================= -->
 
-### Week 1 — YYYY-MM-DD
+### Week 1 — 2026-6-11
 
 **Attended this week's meeting:** Yes 
 
