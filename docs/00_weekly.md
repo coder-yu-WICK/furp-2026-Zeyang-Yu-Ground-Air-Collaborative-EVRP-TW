@@ -63,6 +63,7 @@
 - Began reading OR-Tools Routing documentation and VRP-related materials.
 
 - Gained a conceptual understanding of how routing optimization models map from real-world logistics problems to OR-Tools implementations.
+- 
 **Challenges & blockers**
 - Initially struggled to understand the relationship between Python code and routing optimization concepts.
 
@@ -92,7 +93,9 @@
   - EVRP-TW
 
 - Prepare for future implementation of truck-drone collaborative routing optimization.
+  
 **Hours spent (optional):**
+
 4h
 **Links (optional):**
 - OR-Tools Routing Guide
