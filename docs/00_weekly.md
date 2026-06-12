@@ -35,70 +35,65 @@
 **Attended this week's meeting:** Yes 
 
 **Progress this week**
-- Set up repository from the FURP template.
-- Set up local development environment on MacOS.
 
-- Created Python virtual environment and installed OR-Tools.
+- Successfully configured a Python virtual environment and installed Google OR-Tools.
 
-- Resolved package import issues and verified OR-Tools installation.
+- Ran and analyzed the official TSP (Travelling Salesperson Problem) example.
 
-- Successfully ran the official TSP (Travelling Salesperson Problem) example.
+- Studied the VRP (Vehicle Routing Problem) example and understood the overall workflow of OR-Tools routing optimization.
 
-- Studied the structure of OR-Tools Routing Solver.
+- Learned the roles of RoutingIndexManager and RoutingModel.
 
-- Learned the role of:
+- Studied callback functions and understood how the solver retrieves distance and demand information.
 
-  - distance_matrix
+- Learned the concept of Dimensions in OR-Tools, including Distance Dimension and Capacity Dimension.
 
-  - RoutingIndexManager
+- Compared VRP and CVRP and understood how vehicle capacity constraints are implemented using AddDimensionWithVehicleCapacity().
 
-  - RoutingModel
+- Analyzed CVRP code and understood how customer demands and vehicle capacities are represented in optimization models.
 
-  - callback functions
+- Built a conceptual hierarchy of routing optimization problems:
 
-  - dimensions
+  TSP → VRP → CVRP → VRPTW → EVRP
 
-- Ran and analyzed the official VRP (Vehicle Routing Problem) example with multiple vehicles.
+- Developed a modular understanding of OR-Tools programs:
 
-- Began reading OR-Tools Routing documentation and VRP-related materials.
+  Data → Manager → RoutingModel → Callback → Dimension → Constraint → Search → Solve → Print
 
-- Gained a conceptual understanding of how routing optimization models map from real-world logistics problems to OR-Tools implementations.
-- 
+- Connected OR-Tools examples with the SEP project topic on VRP, EVRP-TW, and truck-drone collaborative routing optimization.
+
 **Challenges & blockers**
-- Initially struggled to understand the relationship between Python code and routing optimization concepts.
 
-- Difficulty understanding callback functions and the purpose of dimensions in OR-Tools.
+- Python fundamentals remain a bottleneck when reading OR-Tools source code.
 
-- Limited background knowledge in vehicle routing and combinatorial optimization.
+- Although the overall optimization workflow is becoming clearer, independently writing routing models remains difficult.
 
-- Need to strengthen understanding of how constraints are represented in OR-Tools.
+- More practice is needed to understand OR-Tools APIs and solver internals.
+
+- Need deeper understanding of how Dimensions and Constraints interact during optimization.
 
 **Next steps**
-- Continue studying CVRP (Capacitated Vehicle Routing Problem).
 
-- Learn how demand and vehicle capacity constraints are modeled using dimensions.
+- Continue studying CVRP examples and modify model parameters independently.
 
-- Read official OR-Tools examples for CVRP and VRPTW.
+- Learn VRPTW (Vehicle Routing Problem with Time Windows).
 
-- Build a clear understanding of the connection between:
+- Explore Google Distance Matrix API and understand how real-world distance data can replace manually defined distance matrices.
 
-  - TSP
+- Strengthen understanding of OR-Tools architecture without relying solely on line-by-line code explanations.
 
-  - VRP
+- Begin studying EVRP-TW concepts and energy-related constraints.
 
-  - CVRP
-
-  - VRPTW
-
-  - EVRP-TW
-
-- Prepare for future implementation of truck-drone collaborative routing optimization.
-  
 **Hours spent (optional):**
 
-4h
+- Approximately 12–15 hours.
+
 **Links (optional):**
-- OR-Tools Routing Guide
-- OR-Tools TSP Example
-- OR-Tools VRP Example
-- Project Repository Commits
+
+- Google OR-Tools Documentation
+
+- TSP Example
+
+- VRP Example
+
+- CVRP Example
