@@ -1,119 +1,218 @@
-Week 2 — 2026-06-20
+# Week 2 – 20 June 2026
 
-Attended this week’s meeting: Yes
+**Attended this week's meeting:** Yes
 
-Progress this week
+---
 
-Literature Reproduction and OR-Tools Implementation
+## Progress This Week
 
-This week I focused on reproducing the optimization component of the paper Electric Truck-Based Robot Delivery Problem with Nonlinear Charging using OR-Tools.
+### 1. Literature Reproduction
 
-The implementation currently includes:
+This week focused on reproducing the optimization framework presented in the paper:
 
-* Random instance generator for large-scale UAV-Truck delivery scenarios.
-* Manhattan-distance transportation network generation.
-* Customer time-window constraints.
-* Heterogeneous fleet consisting of:
-    * 1 electric truck
-    * 3 UAVs
-* Truck-only customer constraints.
-* Multiple charging station generation.
-* Nonlinear charging model based on battery State-of-Charge (SOC).
-* Vehicle-specific routing cost functions.
-* Distance dimensions representing vehicle range limitations.
-* Time dimensions representing routing and charging-related timing constraints.
-* Customer dropping mechanism using disjunction penalties.
-* Guided Local Search (GLS) metaheuristic for optimization.
+> **Electric Truck-Based Robot Delivery Problem with Nonlinear Charging**
 
-Nonlinear Charging Model
+The primary objective was to construct an operational prototype using OR-Tools and verify whether the main routing and charging components described in the paper could be reproduced within a constraint-programming framework.
 
-A nonlinear charging function was implemented to approximate realistic battery charging behavior:
+---
 
-* Fast charging phase at low SOC.
-* Moderate charging phase at medium SOC.
-* Trickle charging phase at high SOC.
-* Charging efficiency and nonlinear exponent included as model parameters.
+### 2. OR-Tools Model Development
 
-The charging model is integrated into the routing framework and cost evaluation structure. Future work will incorporate charging-state transitions directly into the optimization constraints.
+A UAV-Truck cooperative routing model was implemented using the OR-Tools Routing Solver.
 
-Computational Experiments
+#### Implemented Components
 
-Experiments were conducted on three instance sizes.
+**Network Generation**
+- Random customer locations generated in a two-dimensional space.
+- Manhattan-distance matrix construction.
+- Customer time-window generation.
+- Depot initialization.
 
-Scale	Vehicles	Runtime	Objective	Feasible
-50 Customers	1 Truck + 3 UAVs	15 s	576	Yes
-100 Customers	1 Truck + 3 UAVs	30 s	815	Yes
-200 Customers	1 Truck + 3 UAVs	60 s	1205	Yes
+**Fleet Configuration**
+- 1 electric truck.
+- 3 UAVs.
+- Heterogeneous vehicle routing structure.
 
-Key Results
+**Routing Constraints**
+- Vehicle-specific routing costs.
+- Customer service assignment constraints.
+- Truck-only customer restrictions.
+- Customer dropping mechanism using penalty costs.
+- Distance-based vehicle range limitations.
 
-50 Customers
+**Charging Infrastructure**
+- Multiple charging stations generated within the network.
+- Depot acts as the primary charging station.
+- Additional charging stations selected from customer nodes.
 
-* All 50 customers served.
-* Truck served 10 customers.
-* UAV served 40 customers.
-* Charging station stop detected at Node 28.
-* Objective value: 576.
+**Battery Model**
 
-100 Customers
+A nonlinear charging function was implemented to approximate realistic battery behavior:
 
-* All 100 customers served.
-* Truck served 36 customers.
-* UAV served 64 customers.
-* Charging station stops detected at Nodes 76 and 27.
-* Objective value: 815.
+- Fast charging phase at low battery levels.
+- Medium charging phase at moderate battery levels.
+- Trickle charging phase at high battery levels.
+- Charging efficiency parameter.
+- Nonlinear charging exponent parameter.
 
-200 Customers
+**Optimization Framework**
+- `RoutingIndexManager`
+- `RoutingModel`
+- Distance Dimension
+- Time Dimension
+- Guided Local Search (GLS) metaheuristic
+- Multi-scale testing framework
 
-* All 200 customers served.
-* Truck served 47 customers.
-* UAV served 153 customers.
-* Charging station stop detected at Node 49.
-* Objective value: 1205.
+---
 
-Observations
+### 3. Computational Experiments
 
-Several important behaviors emerged during the experiments:
+Three benchmark instance sizes were tested.
 
-1. The optimization consistently allocated a large proportion of customers to UAV routes.
-2. Charging stations were naturally incorporated into UAV routes.
+| Instance Size | Fleet Configuration | Runtime | Objective Value | Feasible |
+|--------------|---------------------|---------|-----------------|----------|
+| 50 Customers | 1 Truck + 3 UAVs | 15 s | 576 | Yes |
+| 100 Customers | 1 Truck + 3 UAVs | 30 s | 815 | Yes |
+| 200 Customers | 1 Truck + 3 UAVs | 60 s | 1205 | Yes |
+
+---
+
+### 4. Experimental Results
+
+#### Case 1: 50 Customers
+
+**Performance**
+- Feasible solution obtained.
+- Runtime: 15 seconds.
+- Objective value: 576.
+- All customers successfully served.
+
+**Vehicle Allocation**
+
+| Vehicle | Distance Traveled | Customers Served |
+|---------|-------------------|------------------|
+| Truck | 202 units | 10 |
+| UAV Fleet | 618 units | 40 |
+
+**Charging Stations Visited:** Node 28
+
+**Observation:** The optimization strongly favored UAV deployment, assigning approximately 80% of customers to UAV operations.
+
+---
+
+#### Case 2: 100 Customers
+
+**Performance**
+- Feasible solution obtained.
+- Runtime: 30 seconds.
+- Objective value: 815.
+- All customers successfully served.
+
+**Vehicle Allocation**
+
+| Vehicle | Distance Traveled | Customers Served |
+|---------|-------------------|------------------|
+| Truck | 416 units | 36 |
+| UAV Fleet | 696 units | 64 |
+
+**Charging Stations Visited:** Nodes 76 and 27
+
+**Observation:** The charging infrastructure began to play a visible role in route construction, with UAV routes naturally incorporating charging stops.
+
+---
+
+#### Case 3: 200 Customers
+
+**Performance**
+- Feasible solution obtained.
+- Runtime: 60 seconds.
+- Objective value: 1205.
+- All customers successfully served.
+
+**Vehicle Allocation**
+
+| Vehicle | Distance Traveled | Customers Served |
+|---------|-------------------|------------------|
+| Truck | 482 units | 47 |
+| UAV Fleet | 1306 units | 153 |
+
+**Charging Stations Visited:** Node 49
+
+**Observation:** The model remained computationally feasible at a larger scale and continued to assign most customers to UAV routes.
+
+---
+
+### 5. Analysis and Discussion
+
+The experiments demonstrate that the implemented framework can successfully solve large-scale UAV-Truck routing instances while incorporating charging infrastructure and battery-related considerations.
+
+Several important findings emerged:
+
+1. The solver consistently allocated a majority of customers to UAV routes.
+2. Charging stations were automatically integrated into UAV routing plans.
 3. All tested instances achieved 100% customer coverage.
-4. The model remained computationally feasible up to 200 customers within a one-minute time limit.
-5. The implementation successfully reproduces several major structural components of the original paper:
-    * UAV-truck cooperation
-    * Battery-aware routing
-    * Charging infrastructure
-    * Time-window constraints
-    * Large-scale routing optimization
+4. The framework remained computationally tractable up to 200 customers within the imposed time limits.
+5. The current implementation successfully reproduces several core concepts described in the reference paper:
+   - UAV-truck collaborative delivery.
+   - Battery-aware routing.
+   - Charging station integration.
+   - Time-window constraints.
+   - Large-scale vehicle routing optimization.
 
-At the same time, the implementation remains an approximation of the original formulation because charging decisions are not yet represented as explicit state transitions inside the solver.
+---
 
-Challenges & Blockers
+### 6. Current Limitations
 
-Several limitations were identified during implementation:
+Although the overall framework is operational, several aspects of the original formulation are not yet fully reproduced.
 
-* OR-Tools Routing Solver is not well suited for representing battery state transitions and nonlinear charging dynamics directly.
-* Launch/recovery synchronization between truck and UAV is currently approximated rather than enforced exactly.
-* Charging behavior is reflected through costs and post-analysis rather than exact optimization variables.
-* The original paper uses a richer mathematical formulation than what can be naturally expressed within the RoutingModel framework.
+| Limitation | Description |
+|------------|-------------|
+| **Battery State Representation** | The nonlinear charging function exists as a computational component but is not currently embedded as an explicit decision variable within the optimization process. |
+| **Launch and Recovery Synchronization** | Truck-UAV synchronization is approximated through routing logic rather than strict mathematical constraints. |
+| **Charging Decisions** | Charging behavior is analyzed after route generation rather than optimized directly within the solver. |
+| **Solver Flexibility** | The Routing Solver abstraction in OR-Tools limits the implementation of complex state-dependent constraints such as State-of-Charge transitions, nonlinear charging dynamics, and detailed truck-UAV synchronization decisions. |
 
-Next Steps
+---
 
-Next week I plan to:
+### 7. Challenges & Blockers
 
-1. Investigate migration from OR-Tools Routing Solver to PyVRP.
-2. Build a more flexible VRP framework with custom state variables.
-3. Implement explicit UAV battery-state tracking.
-4. Add launch/recovery synchronization constraints.
-5. Compare OR-Tools and PyVRP in terms of flexibility and scalability.
-6. Continue moving the implementation closer to the original mathematical formulation proposed in the paper.
+The main challenge encountered this week was the mismatch between the complexity of the original mathematical formulation and the modeling flexibility offered by OR-Tools `RoutingModel`.
 
-Hours Spent
+Many battery-related and synchronization-related constraints can only be approximated rather than represented exactly.
 
-Approximately 15–20 hours.
+This limitation motivates investigation of alternative optimization frameworks.
 
-Links
+---
 
-* OR-Tools implementation source code
-* Experimental logs for 50 / 100 / 200 customer instances
-* Reference paper: Electric Truck-Based Robot Delivery Problem with Nonlinear Charging
+### 8. Next Steps
+
+The objectives for next week are:
+
+1. Evaluate **PyVRP** as an alternative optimization framework.
+2. Compare OR-Tools and PyVRP modeling flexibility.
+3. Implement explicit battery-state tracking.
+4. Develop truck-UAV launch and recovery synchronization mechanisms.
+5. Integrate charging decisions directly into the optimization process.
+6. Continue improving fidelity to the original mathematical model.
+
+---
+
+### 9. Hours Spent
+
+**15–20 hours**
+
+---
+
+### 10. References
+
+- [OR-Tools Vehicle Routing Solver Documentation](https://developers.google.com/optimization/routing)
+- *Electric Truck-Based Robot Delivery Problem with Nonlinear Charging*
+- Experimental source code and solver logs
+
+---
+
+**Repository:** [Link to your GitHub repo]
+
+**Branch:** `week-2-progress`
+
+**Status:** ✅ Completed
