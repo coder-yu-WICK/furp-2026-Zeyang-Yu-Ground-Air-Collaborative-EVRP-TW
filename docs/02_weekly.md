@@ -210,9 +210,3 @@ The objectives for next week are:
 - Experimental source code and solver logs
 
 ---
-
-**Repository:** [Link to your GitHub repo]
-
-**Branch:** `week-2-progress`
-
-**Status:** ✅ Completed
