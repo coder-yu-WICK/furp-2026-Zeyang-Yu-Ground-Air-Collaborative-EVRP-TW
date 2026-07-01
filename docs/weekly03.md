@@ -1,11 +1,5 @@
 # Week 3 Progress Log
 
-**Student:** Tony Wick  
-**Project:** Truck-Drone Vehicle Routing Problem with Time Windows (Truck-Drone VRPTW)  
-**Week:** Week 3 – Experiment Design, Evaluation, and Report Writing
-
----
-
 # Weekly Objectives
 
 The objective of this week was to move from simply understanding algorithms to designing a complete experimental framework for comparing different approaches to the Truck-Drone Vehicle Routing Problem with Time Windows (Truck-Drone VRPTW).
