@@ -1,0 +1,4130 @@
+[
+  {
+    "label": "25c_RC1_medium_2T+2D",
+    "instance_key": "RC101_25c",
+    "source_instance": "RC101",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "n_drones": 2,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 407.3342320028589,
+        "std_cost": 0.0,
+        "mean_tardiness": 829.9609974135101,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 88041581.89834903,
+        "pareto_points": [
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 407.3342320028589,
+        "best_tardiness": 829.9609974135101,
+        "mean_runtime": 0.16697065830230712,
+        "std_runtime": 0.028606977448158634
+      },
+      "No-Drone": {
+        "mean_cost": 590.3112231934947,
+        "std_cost": 55.128715915261004,
+        "mean_tardiness": 22.030687611794324,
+        "std_tardiness": 68.39657613720554,
+        "feasibility_rate": 1.0,
+        "hypervolume": 88096627.06022304,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 69,
+        "best_cost": 483.4160226474322,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.16087698936462402,
+        "std_runtime": 0.004870662152431117
+      }
+    }
+  },
+  {
+    "label": "25c_RC1_high_2T+2D",
+    "instance_key": "RC101_25c",
+    "source_instance": "RC101",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "n_drones": 2,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 407.3342320028589,
+        "std_cost": 0.0,
+        "mean_tardiness": 829.9609974135101,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 88041581.89834903,
+        "pareto_points": [
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ],
+          [
+            407.3342320028589,
+            829.9609974135101
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 407.3342320028589,
+        "best_tardiness": 829.9609974135101,
+        "mean_runtime": 0.16300780773162843,
+        "std_runtime": 0.0038301124609980354
+      },
+      "No-Drone": {
+        "mean_cost": 590.3112231934947,
+        "std_cost": 55.128715915261004,
+        "mean_tardiness": 22.030687611794324,
+        "std_tardiness": 68.39657613720554,
+        "feasibility_rate": 1.0,
+        "hypervolume": 88096627.06022304,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 69,
+        "best_cost": 483.4160226474322,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.16650960445404053,
+        "std_runtime": 0.0026637239005678505
+      }
+    }
+  },
+  {
+    "label": "50c_RC1_medium_4T+4D",
+    "instance_key": "RC101_50c",
+    "source_instance": "RC101",
+    "n_customers": 50,
+    "tw_type": "RC1",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 672.258678159682,
+        "std_cost": 0.0,
+        "mean_tardiness": 2033.5820223918213,
+        "std_tardiness": 2.396728981215028e-13,
+        "feasibility_rate": 1.0,
+        "hypervolume": 77754009.48714969,
+        "pareto_points": [
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 672.258678159682,
+        "best_tardiness": 2033.5820223918215,
+        "mean_runtime": 0.32066476345062256,
+        "std_runtime": 0.004745320289741279
+      },
+      "No-Drone": {
+        "mean_cost": 1239.405936999153,
+        "std_cost": 84.76870201677924,
+        "mean_tardiness": 151.48879938247015,
+        "std_tardiness": 163.86252577152447,
+        "feasibility_rate": 1.0,
+        "hypervolume": 74642193.3804481,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 7,
+        "best_cost": 1105.3012942779803,
+        "best_tardiness": 23.746177006329546,
+        "mean_runtime": 0.30419063568115234,
+        "std_runtime": 0.0033645671105954266
+      }
+    }
+  },
+  {
+    "label": "50c_RC1_high_4T+4D",
+    "instance_key": "RC101_50c",
+    "source_instance": "RC101",
+    "n_customers": 50,
+    "tw_type": "RC1",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 672.258678159682,
+        "std_cost": 0.0,
+        "mean_tardiness": 2033.5820223918213,
+        "std_tardiness": 2.396728981215028e-13,
+        "feasibility_rate": 1.0,
+        "hypervolume": 77754009.48714969,
+        "pareto_points": [
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ],
+          [
+            672.258678159682,
+            2033.5820223918215
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 672.258678159682,
+        "best_tardiness": 2033.5820223918215,
+        "mean_runtime": 0.32770514488220215,
+        "std_runtime": 0.011374607051904389
+      },
+      "No-Drone": {
+        "mean_cost": 1239.405936999153,
+        "std_cost": 84.76870201677924,
+        "mean_tardiness": 151.48879938247015,
+        "std_tardiness": 163.86252577152447,
+        "feasibility_rate": 1.0,
+        "hypervolume": 74642193.3804481,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 7,
+        "best_cost": 1105.3012942779803,
+        "best_tardiness": 23.746177006329546,
+        "mean_runtime": 0.3028778076171875,
+        "std_runtime": 0.005359683995223627
+      }
+    }
+  },
+  {
+    "label": "50c_RC1_medium_6T+6D",
+    "instance_key": "RC101_50c",
+    "source_instance": "RC101",
+    "n_customers": 50,
+    "tw_type": "RC1",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 796.2835481350162,
+        "std_cost": 0.0,
+        "mean_tardiness": 1923.452972470058,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 75988678.13253869,
+        "pareto_points": [
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 796.2835481350162,
+        "best_tardiness": 1923.452972470058,
+        "mean_runtime": 0.3326708793640137,
+        "std_runtime": 0.005635640500443667
+      },
+      "No-Drone": {
+        "mean_cost": 1239.405936999153,
+        "std_cost": 84.76870201677924,
+        "mean_tardiness": 151.48879938247015,
+        "std_tardiness": 163.86252577152447,
+        "feasibility_rate": 1.0,
+        "hypervolume": 74642193.3804481,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 7,
+        "best_cost": 1105.3012942779803,
+        "best_tardiness": 23.746177006329546,
+        "mean_runtime": 0.3010695934295654,
+        "std_runtime": 0.005945010808711285
+      }
+    }
+  },
+  {
+    "label": "50c_RC1_high_6T+6D",
+    "instance_key": "RC101_50c",
+    "source_instance": "RC101",
+    "n_customers": 50,
+    "tw_type": "RC1",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 796.2835481350162,
+        "std_cost": 0.0,
+        "mean_tardiness": 1923.452972470058,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 75988678.13253869,
+        "pareto_points": [
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ],
+          [
+            796.2835481350162,
+            1923.452972470058
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 796.2835481350162,
+        "best_tardiness": 1923.452972470058,
+        "mean_runtime": 0.33274991512298585,
+        "std_runtime": 0.004121313800172183
+      },
+      "No-Drone": {
+        "mean_cost": 1239.405936999153,
+        "std_cost": 84.76870201677924,
+        "mean_tardiness": 151.48879938247015,
+        "std_tardiness": 163.86252577152447,
+        "feasibility_rate": 1.0,
+        "hypervolume": 74642193.3804481,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 7,
+        "best_cost": 1105.3012942779803,
+        "best_tardiness": 23.746177006329546,
+        "mean_runtime": 0.3016356468200684,
+        "std_runtime": 0.005915500232966738
+      }
+    }
+  },
+  {
+    "label": "100c_RC1_medium_4T+4D",
+    "instance_key": "RC101_100c",
+    "source_instance": "RC101",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 6238.308353657397,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 50199622.98721197,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 6238.308353657397,
+        "mean_runtime": 0.6616510868072509,
+        "std_runtime": 0.04392775368643004
+      },
+      "No-Drone": {
+        "mean_cost": 3019.755435555093,
+        "std_cost": 157.89996491579228,
+        "mean_tardiness": 852.9375107792035,
+        "std_tardiness": 497.7344023438306,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37915866.41936646,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 8,
+        "best_cost": 2668.626233562923,
+        "best_tardiness": 285.2526774409208,
+        "mean_runtime": 0.7791248321533203,
+        "std_runtime": 0.012571705052224496
+      }
+    }
+  },
+  {
+    "label": "100c_RC1_high_4T+4D",
+    "instance_key": "RC101_100c",
+    "source_instance": "RC101",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 6238.308353657397,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 50199622.98721197,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 6238.308353657397,
+        "mean_runtime": 0.6381655931472778,
+        "std_runtime": 0.015457993297230322
+      },
+      "No-Drone": {
+        "mean_cost": 3019.755435555093,
+        "std_cost": 157.89996491579228,
+        "mean_tardiness": 852.9375107792035,
+        "std_tardiness": 497.7344023438306,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37915866.41936646,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 8,
+        "best_cost": 2668.626233562923,
+        "best_tardiness": 285.2526774409208,
+        "mean_runtime": 0.757100772857666,
+        "std_runtime": 0.007785924823048441
+      }
+    }
+  },
+  {
+    "label": "100c_RC1_medium_6T+6D",
+    "instance_key": "RC101_100c",
+    "source_instance": "RC101",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 6238.308353657397,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 50199622.98721197,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 6238.308353657397,
+        "mean_runtime": 0.6480715274810791,
+        "std_runtime": 0.007399330812544864
+      },
+      "No-Drone": {
+        "mean_cost": 3019.755435555093,
+        "std_cost": 157.89996491579228,
+        "mean_tardiness": 852.9375107792035,
+        "std_tardiness": 497.7344023438306,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37915866.41936646,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 8,
+        "best_cost": 2668.626233562923,
+        "best_tardiness": 285.2526774409208,
+        "mean_runtime": 0.7744901418685913,
+        "std_runtime": 0.014227545049919752
+      }
+    }
+  },
+  {
+    "label": "100c_RC1_high_6T+6D",
+    "instance_key": "RC101_100c",
+    "source_instance": "RC101",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 6238.308353657397,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 50199622.98721197,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 6238.308353657397,
+        "mean_runtime": 0.6916646957397461,
+        "std_runtime": 0.058859714815292785
+      },
+      "No-Drone": {
+        "mean_cost": 3019.755435555093,
+        "std_cost": 157.89996491579228,
+        "mean_tardiness": 852.9375107792035,
+        "std_tardiness": 497.7344023438306,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37915866.41936646,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 8,
+        "best_cost": 2668.626233562923,
+        "best_tardiness": 285.2526774409208,
+        "mean_runtime": 0.6093144178390503,
+        "std_runtime": 0.006962536089985995
+      }
+    }
+  },
+  {
+    "label": "100c_RC1_medium_8T+8D",
+    "instance_key": "RC101_100c",
+    "source_instance": "RC101",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 8,
+    "n_drones": 8,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 6238.308353657397,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 50199622.98721197,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 6238.308353657397,
+        "mean_runtime": 0.6414201021194458,
+        "std_runtime": 0.006393352552531725
+      },
+      "No-Drone": {
+        "mean_cost": 3019.755435555093,
+        "std_cost": 157.89996491579228,
+        "mean_tardiness": 852.9375107792035,
+        "std_tardiness": 497.7344023438306,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37915866.41936646,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 8,
+        "best_cost": 2668.626233562923,
+        "best_tardiness": 285.2526774409208,
+        "mean_runtime": 0.6067018508911133,
+        "std_runtime": 0.003966895041863067
+      }
+    }
+  },
+  {
+    "label": "100c_RC1_high_8T+8D",
+    "instance_key": "RC101_100c",
+    "source_instance": "RC101",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 8,
+    "n_drones": 8,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 6238.308353657397,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 50199622.98721197,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ],
+          [
+            1352.2200411638087,
+            6238.308353657397
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 6238.308353657397,
+        "mean_runtime": 0.6389053583145141,
+        "std_runtime": 0.006708314749018888
+      },
+      "No-Drone": {
+        "mean_cost": 3019.755435555093,
+        "std_cost": 157.89996491579228,
+        "mean_tardiness": 852.9375107792035,
+        "std_tardiness": 497.7344023438306,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37915866.41936646,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 8,
+        "best_cost": 2668.626233562923,
+        "best_tardiness": 285.2526774409208,
+        "mean_runtime": 0.6077172994613648,
+        "std_runtime": 0.007876009545369397
+      }
+    }
+  },
+  {
+    "label": "25c_RC1_medium_2T+2D",
+    "instance_key": "RC102_25c",
+    "source_instance": "RC102",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "n_drones": 2,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 407.3342320028589,
+        "std_cost": 0.0,
+        "mean_tardiness": 611.8202509493065,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 89043429.43724053,
+        "pareto_points": [
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 407.3342320028589,
+        "best_tardiness": 611.8202509493065,
+        "mean_runtime": 0.16948070526123046,
+        "std_runtime": 0.006189638959343269
+      },
+      "No-Drone": {
+        "mean_cost": 590.3112231934947,
+        "std_cost": 55.128715915261004,
+        "mean_tardiness": 22.030687611794324,
+        "std_tardiness": 68.39657613720554,
+        "feasibility_rate": 1.0,
+        "hypervolume": 88096627.06022304,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 69,
+        "best_cost": 483.4160226474322,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.16087698936462402,
+        "std_runtime": 0.004870662152431117
+      }
+    }
+  },
+  {
+    "label": "25c_RC1_high_2T+2D",
+    "instance_key": "RC102_25c",
+    "source_instance": "RC102",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "n_drones": 2,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 407.3342320028589,
+        "std_cost": 0.0,
+        "mean_tardiness": 611.8202509493065,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 89043429.43724053,
+        "pareto_points": [
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ],
+          [
+            407.3342320028589,
+            611.8202509493065
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 407.3342320028589,
+        "best_tardiness": 611.8202509493065,
+        "mean_runtime": 0.16681332588195802,
+        "std_runtime": 0.0041953781465952945
+      },
+      "No-Drone": {
+        "mean_cost": 590.3112231934947,
+        "std_cost": 55.128715915261004,
+        "mean_tardiness": 22.030687611794324,
+        "std_tardiness": 68.39657613720554,
+        "feasibility_rate": 1.0,
+        "hypervolume": 88096627.06022304,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 69,
+        "best_cost": 483.4160226474322,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.16650960445404053,
+        "std_runtime": 0.0026637239005678505
+      }
+    }
+  },
+  {
+    "label": "50c_RC1_medium_4T+4D",
+    "instance_key": "RC102_50c",
+    "source_instance": "RC102",
+    "n_customers": 50,
+    "tw_type": "RC1",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 672.258678159682,
+        "std_cost": 0.0,
+        "mean_tardiness": 1324.8183816165672,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 80821355.18275073,
+        "pareto_points": [
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 672.258678159682,
+        "best_tardiness": 1324.8183816165672,
+        "mean_runtime": 0.3254692792892456,
+        "std_runtime": 0.005407414626878208
+      },
+      "No-Drone": {
+        "mean_cost": 1239.405936999153,
+        "std_cost": 84.76870201677924,
+        "mean_tardiness": 151.48879938247015,
+        "std_tardiness": 163.86252577152447,
+        "feasibility_rate": 1.0,
+        "hypervolume": 74642193.3804481,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 7,
+        "best_cost": 1105.3012942779803,
+        "best_tardiness": 23.746177006329546,
+        "mean_runtime": 0.30419063568115234,
+        "std_runtime": 0.0033645671105954266
+      }
+    }
+  },
+  {
+    "label": "50c_RC1_high_4T+4D",
+    "instance_key": "RC102_50c",
+    "source_instance": "RC102",
+    "n_customers": 50,
+    "tw_type": "RC1",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 672.258678159682,
+        "std_cost": 0.0,
+        "mean_tardiness": 1324.8183816165672,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 80821355.18275073,
+        "pareto_points": [
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ],
+          [
+            672.258678159682,
+            1324.8183816165672
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 672.258678159682,
+        "best_tardiness": 1324.8183816165672,
+        "mean_runtime": 0.3296910524368286,
+        "std_runtime": 0.0074248063388984206
+      },
+      "No-Drone": {
+        "mean_cost": 1239.405936999153,
+        "std_cost": 84.76870201677924,
+        "mean_tardiness": 151.48879938247015,
+        "std_tardiness": 163.86252577152447,
+        "feasibility_rate": 1.0,
+        "hypervolume": 74642193.3804481,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 7,
+        "best_cost": 1105.3012942779803,
+        "best_tardiness": 23.746177006329546,
+        "mean_runtime": 0.3028778076171875,
+        "std_runtime": 0.005359683995223627
+      }
+    }
+  },
+  {
+    "label": "50c_RC1_medium_6T+6D",
+    "instance_key": "RC102_50c",
+    "source_instance": "RC102",
+    "n_customers": 50,
+    "tw_type": "RC1",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 796.2835481350162,
+        "std_cost": 0.0,
+        "mean_tardiness": 1158.40154389863,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 79204737.4093472,
+        "pareto_points": [
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 796.2835481350162,
+        "best_tardiness": 1158.40154389863,
+        "mean_runtime": 0.33889954090118407,
+        "std_runtime": 0.011654600153262928
+      },
+      "No-Drone": {
+        "mean_cost": 1239.405936999153,
+        "std_cost": 84.76870201677924,
+        "mean_tardiness": 151.48879938247015,
+        "std_tardiness": 163.86252577152447,
+        "feasibility_rate": 1.0,
+        "hypervolume": 74642193.3804481,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 7,
+        "best_cost": 1105.3012942779803,
+        "best_tardiness": 23.746177006329546,
+        "mean_runtime": 0.3010695934295654,
+        "std_runtime": 0.005945010808711285
+      }
+    }
+  },
+  {
+    "label": "50c_RC1_high_6T+6D",
+    "instance_key": "RC102_50c",
+    "source_instance": "RC102",
+    "n_customers": 50,
+    "tw_type": "RC1",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 796.2835481350162,
+        "std_cost": 0.0,
+        "mean_tardiness": 1158.40154389863,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 79204737.4093472,
+        "pareto_points": [
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ],
+          [
+            796.2835481350162,
+            1158.40154389863
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 796.2835481350162,
+        "best_tardiness": 1158.40154389863,
+        "mean_runtime": 0.36175758838653566,
+        "std_runtime": 0.03160255786086814
+      },
+      "No-Drone": {
+        "mean_cost": 1239.405936999153,
+        "std_cost": 84.76870201677924,
+        "mean_tardiness": 151.48879938247015,
+        "std_tardiness": 163.86252577152447,
+        "feasibility_rate": 1.0,
+        "hypervolume": 74642193.3804481,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 7,
+        "best_cost": 1105.3012942779803,
+        "best_tardiness": 23.746177006329546,
+        "mean_runtime": 0.3016356468200684,
+        "std_runtime": 0.005915500232966738
+      }
+    }
+  },
+  {
+    "label": "100c_RC1_medium_4T+4D",
+    "instance_key": "RC102_100c",
+    "source_instance": "RC102",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 4710.585080433367,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 55772421.32592622,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 4710.585080433367,
+        "mean_runtime": 0.6517086029052734,
+        "std_runtime": 0.019217430159877577
+      },
+      "No-Drone": {
+        "mean_cost": 3019.755435555093,
+        "std_cost": 157.89996491579228,
+        "mean_tardiness": 852.9375107792035,
+        "std_tardiness": 497.7344023438306,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37915866.41936646,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 8,
+        "best_cost": 2668.626233562923,
+        "best_tardiness": 285.2526774409208,
+        "mean_runtime": 0.7791248321533203,
+        "std_runtime": 0.012571705052224496
+      }
+    }
+  },
+  {
+    "label": "100c_RC1_high_4T+4D",
+    "instance_key": "RC102_100c",
+    "source_instance": "RC102",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 4710.585080433367,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 55772421.32592622,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 4710.585080433367,
+        "mean_runtime": 0.6426675081253052,
+        "std_runtime": 0.009085619036100232
+      },
+      "No-Drone": {
+        "mean_cost": 3019.755435555093,
+        "std_cost": 157.89996491579228,
+        "mean_tardiness": 852.9375107792035,
+        "std_tardiness": 497.7344023438306,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37915866.41936646,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 8,
+        "best_cost": 2668.626233562923,
+        "best_tardiness": 285.2526774409208,
+        "mean_runtime": 0.757100772857666,
+        "std_runtime": 0.007785924823048441
+      }
+    }
+  },
+  {
+    "label": "100c_RC1_medium_6T+6D",
+    "instance_key": "RC102_100c",
+    "source_instance": "RC102",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 4710.585080433367,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 55772421.32592622,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 4710.585080433367,
+        "mean_runtime": 0.6438205003738403,
+        "std_runtime": 0.010632970697095907
+      },
+      "No-Drone": {
+        "mean_cost": 3019.755435555093,
+        "std_cost": 157.89996491579228,
+        "mean_tardiness": 852.9375107792035,
+        "std_tardiness": 497.7344023438306,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37915866.41936646,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 8,
+        "best_cost": 2668.626233562923,
+        "best_tardiness": 285.2526774409208,
+        "mean_runtime": 0.7744901418685913,
+        "std_runtime": 0.014227545049919752
+      }
+    }
+  },
+  {
+    "label": "100c_RC1_high_6T+6D",
+    "instance_key": "RC102_100c",
+    "source_instance": "RC102",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 4710.585080433367,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 55772421.32592622,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 4710.585080433367,
+        "mean_runtime": 0.643395972251892,
+        "std_runtime": 0.009768642980553821
+      },
+      "No-Drone": {
+        "mean_cost": 3019.755435555093,
+        "std_cost": 157.89996491579228,
+        "mean_tardiness": 852.9375107792035,
+        "std_tardiness": 497.7344023438306,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37915866.41936646,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 8,
+        "best_cost": 2668.626233562923,
+        "best_tardiness": 285.2526774409208,
+        "mean_runtime": 0.6093144178390503,
+        "std_runtime": 0.006962536089985995
+      }
+    }
+  },
+  {
+    "label": "100c_RC1_medium_8T+8D",
+    "instance_key": "RC102_100c",
+    "source_instance": "RC102",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 8,
+    "n_drones": 8,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 4710.585080433367,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 55772421.32592622,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 4710.585080433367,
+        "mean_runtime": 0.6531074047088623,
+        "std_runtime": 0.014196547660981863
+      },
+      "No-Drone": {
+        "mean_cost": 3019.755435555093,
+        "std_cost": 157.89996491579228,
+        "mean_tardiness": 852.9375107792035,
+        "std_tardiness": 497.7344023438306,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37915866.41936646,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 8,
+        "best_cost": 2668.626233562923,
+        "best_tardiness": 285.2526774409208,
+        "mean_runtime": 0.6067018508911133,
+        "std_runtime": 0.003966895041863067
+      }
+    }
+  },
+  {
+    "label": "100c_RC1_high_8T+8D",
+    "instance_key": "RC102_100c",
+    "source_instance": "RC102",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 8,
+    "n_drones": 8,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 4710.585080433367,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 55772421.32592622,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ],
+          [
+            1352.2200411638087,
+            4710.585080433367
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 4710.585080433367,
+        "mean_runtime": 0.6510920763015747,
+        "std_runtime": 0.007840853201856244
+      },
+      "No-Drone": {
+        "mean_cost": 3019.755435555093,
+        "std_cost": 157.89996491579228,
+        "mean_tardiness": 852.9375107792035,
+        "std_tardiness": 497.7344023438306,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37915866.41936646,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 8,
+        "best_cost": 2668.626233562923,
+        "best_tardiness": 285.2526774409208,
+        "mean_runtime": 0.6077172994613648,
+        "std_runtime": 0.007876009545369397
+      }
+    }
+  },
+  {
+    "label": "25c_RC2_medium_2T+2D",
+    "instance_key": "RC201_25c",
+    "source_instance": "RC201",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "n_drones": 2,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 407.3342320028589,
+        "std_cost": 0.0,
+        "mean_tardiness": 3821.4745629907256,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 74302559.95122348,
+        "pareto_points": [
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 407.3342320028589,
+        "best_tardiness": 3821.4745629907256,
+        "mean_runtime": 0.1697852849960327,
+        "std_runtime": 0.004736408248641056
+      },
+      "No-Drone": {
+        "mean_cost": 1700.7739525504485,
+        "std_cost": 20.753463317489146,
+        "mean_tardiness": 40.88741135622191,
+        "std_tardiness": 167.14891160426865,
+        "feasibility_rate": 1.0,
+        "hypervolume": 65849624.13643179,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 141,
+        "best_cost": 1628.2465935077735,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.17969851493835448,
+        "std_runtime": 0.004128573361768443
+      }
+    }
+  },
+  {
+    "label": "25c_RC2_high_2T+2D",
+    "instance_key": "RC201_25c",
+    "source_instance": "RC201",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "n_drones": 2,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 407.3342320028589,
+        "std_cost": 0.0,
+        "mean_tardiness": 3821.4745629907256,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 74302559.95122348,
+        "pareto_points": [
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ],
+          [
+            407.3342320028589,
+            3821.4745629907256
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 407.3342320028589,
+        "best_tardiness": 3821.4745629907256,
+        "mean_runtime": 0.1686476945877075,
+        "std_runtime": 0.003552689795853308
+      },
+      "No-Drone": {
+        "mean_cost": 1700.7739525504485,
+        "std_cost": 20.753463317489146,
+        "mean_tardiness": 40.88741135622191,
+        "std_tardiness": 167.14891160426865,
+        "feasibility_rate": 1.0,
+        "hypervolume": 65849624.13643179,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 141,
+        "best_cost": 1628.2465935077735,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.18179481029510497,
+        "std_runtime": 0.001282227940448187
+      }
+    }
+  },
+  {
+    "label": "50c_RC2_medium_4T+4D",
+    "instance_key": "RC201_50c",
+    "source_instance": "RC201",
+    "n_customers": 50,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 672.258678159682,
+        "std_cost": 0.0,
+        "mean_tardiness": 8300.28274871547,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 50633349.80223209,
+        "pareto_points": [
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 672.258678159682,
+        "best_tardiness": 8300.28274871547,
+        "mean_runtime": 0.3293107032775879,
+        "std_runtime": 0.005873376620970744
+      },
+      "No-Drone": {
+        "mean_cost": 3078.5941866145445,
+        "std_cost": 89.5235810499201,
+        "mean_tardiness": 400.5065513169136,
+        "std_tardiness": 736.9326387796629,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37658580.65170983,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 5,
+        "best_cost": 2933.3619482957297,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.3249476909637451,
+        "std_runtime": 0.004795832609284637
+      }
+    }
+  },
+  {
+    "label": "50c_RC2_high_4T+4D",
+    "instance_key": "RC201_50c",
+    "source_instance": "RC201",
+    "n_customers": 50,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 672.258678159682,
+        "std_cost": 0.0,
+        "mean_tardiness": 8300.28274871547,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 50633349.80223209,
+        "pareto_points": [
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ],
+          [
+            672.258678159682,
+            8300.28274871547
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 672.258678159682,
+        "best_tardiness": 8300.28274871547,
+        "mean_runtime": 0.3333667039871216,
+        "std_runtime": 0.012011402842916392
+      },
+      "No-Drone": {
+        "mean_cost": 3078.5941866145445,
+        "std_cost": 89.5235810499201,
+        "mean_tardiness": 400.5065513169136,
+        "std_tardiness": 736.9326387796629,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37658580.65170983,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 5,
+        "best_cost": 2933.3619482957297,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.4113721132278442,
+        "std_runtime": 0.05016903780870394
+      }
+    }
+  },
+  {
+    "label": "50c_RC2_medium_6T+6D",
+    "instance_key": "RC201_50c",
+    "source_instance": "RC201",
+    "n_customers": 50,
+    "tw_type": "RC2",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 796.2835481350162,
+        "std_cost": 0.0,
+        "mean_tardiness": 7738.277127365136,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 51544806.167904355,
+        "pareto_points": [
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 796.2835481350162,
+        "best_tardiness": 7738.277127365136,
+        "mean_runtime": 0.3406642198562622,
+        "std_runtime": 0.006225173813670489
+      },
+      "No-Drone": {
+        "mean_cost": 3078.5941866145445,
+        "std_cost": 89.5235810499201,
+        "mean_tardiness": 400.5065513169136,
+        "std_tardiness": 736.9326387796629,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37658580.65170983,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 5,
+        "best_cost": 2933.3619482957297,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.3491580247879028,
+        "std_runtime": 0.011495099153398148
+      }
+    }
+  },
+  {
+    "label": "50c_RC2_high_6T+6D",
+    "instance_key": "RC201_50c",
+    "source_instance": "RC201",
+    "n_customers": 50,
+    "tw_type": "RC2",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 796.2835481350162,
+        "std_cost": 0.0,
+        "mean_tardiness": 7738.277127365136,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 51544806.167904355,
+        "pareto_points": [
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ],
+          [
+            796.2835481350162,
+            7738.277127365136
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 796.2835481350162,
+        "best_tardiness": 7738.277127365136,
+        "mean_runtime": 0.33644800186157225,
+        "std_runtime": 0.004097265860316247
+      },
+      "No-Drone": {
+        "mean_cost": 3078.5941866145445,
+        "std_cost": 89.5235810499201,
+        "mean_tardiness": 400.5065513169136,
+        "std_tardiness": 736.9326387796629,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37658580.65170983,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 5,
+        "best_cost": 2933.3619482957297,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.3302745819091797,
+        "std_runtime": 0.005118356196137923
+      }
+    }
+  },
+  {
+    "label": "100c_RC2_medium_4T+4D",
+    "instance_key": "RC201_100c",
+    "source_instance": "RC201",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 20603.63391798342,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 15031504.577043507,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 20603.63391798342,
+        "mean_runtime": 0.648292875289917,
+        "std_runtime": 0.02036475616767306
+      },
+      "No-Drone": {
+        "mean_cost": 6711.367103481579,
+        "std_cost": 88.40825352514554,
+        "mean_tardiness": 1395.6694011951492,
+        "std_tardiness": 1097.5249572939263,
+        "feasibility_rate": 1.0,
+        "hypervolume": 24972098.472622912,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 11,
+        "best_cost": 6377.201862005657,
+        "best_tardiness": 382.2957809300777,
+        "mean_runtime": 1.021298623085022,
+        "std_runtime": 0.19482928877778424
+      }
+    }
+  },
+  {
+    "label": "100c_RC2_high_4T+4D",
+    "instance_key": "RC201_100c",
+    "source_instance": "RC201",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 20603.63391798342,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 15031504.577043507,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 20603.63391798342,
+        "mean_runtime": 0.6426298141479492,
+        "std_runtime": 0.010614205580120498
+      },
+      "No-Drone": {
+        "mean_cost": 6711.367103481579,
+        "std_cost": 88.40825352514554,
+        "mean_tardiness": 1395.6694011951492,
+        "std_tardiness": 1097.5249572939263,
+        "feasibility_rate": 1.0,
+        "hypervolume": 24972098.472622912,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 11,
+        "best_cost": 6377.201862005657,
+        "best_tardiness": 382.2957809300777,
+        "mean_runtime": 0.8865064859390259,
+        "std_runtime": 0.03664631777155357
+      }
+    }
+  },
+  {
+    "label": "100c_RC2_medium_6T+6D",
+    "instance_key": "RC201_100c",
+    "source_instance": "RC201",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 20603.63391798342,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 15031504.577043507,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 20603.63391798342,
+        "mean_runtime": 0.6394349098205566,
+        "std_runtime": 0.00474448161444242
+      },
+      "No-Drone": {
+        "mean_cost": 6711.367103481579,
+        "std_cost": 88.40825352514554,
+        "mean_tardiness": 1395.6694011951492,
+        "std_tardiness": 1097.5249572939263,
+        "feasibility_rate": 1.0,
+        "hypervolume": 24972098.472622912,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 11,
+        "best_cost": 6377.201862005657,
+        "best_tardiness": 382.2957809300777,
+        "mean_runtime": 0.8042174100875854,
+        "std_runtime": 0.007488105294807521
+      }
+    }
+  },
+  {
+    "label": "100c_RC2_high_6T+6D",
+    "instance_key": "RC201_100c",
+    "source_instance": "RC201",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 20603.63391798342,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 15031504.577043507,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 20603.63391798342,
+        "mean_runtime": 0.651411509513855,
+        "std_runtime": 0.013415043724751064
+      },
+      "No-Drone": {
+        "mean_cost": 6711.367103481579,
+        "std_cost": 88.40825352514554,
+        "mean_tardiness": 1395.6694011951492,
+        "std_tardiness": 1097.5249572939263,
+        "feasibility_rate": 1.0,
+        "hypervolume": 24972098.472622912,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 11,
+        "best_cost": 6377.201862005657,
+        "best_tardiness": 382.2957809300777,
+        "mean_runtime": 0.8028656959533691,
+        "std_runtime": 0.007657433719861751
+      }
+    }
+  },
+  {
+    "label": "100c_RC2_medium_8T+8D",
+    "instance_key": "RC201_100c",
+    "source_instance": "RC201",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 8,
+    "n_drones": 8,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 20603.63391798342,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 15031504.577043507,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 20603.63391798342,
+        "mean_runtime": 0.6431520938873291,
+        "std_runtime": 0.012548105430224568
+      },
+      "No-Drone": {
+        "mean_cost": 6711.367103481579,
+        "std_cost": 88.40825352514554,
+        "mean_tardiness": 1395.6694011951492,
+        "std_tardiness": 1097.5249572939263,
+        "feasibility_rate": 1.0,
+        "hypervolume": 24972098.472622912,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 11,
+        "best_cost": 6377.201862005657,
+        "best_tardiness": 382.2957809300777,
+        "mean_runtime": 2.0347820281982423,
+        "std_runtime": 0.11196143024682934
+      }
+    }
+  },
+  {
+    "label": "100c_RC2_high_8T+8D",
+    "instance_key": "RC201_100c",
+    "source_instance": "RC201",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 8,
+    "n_drones": 8,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 20603.63391798342,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 15031504.577043507,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ],
+          [
+            1352.2200411638087,
+            20603.63391798342
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 20603.63391798342,
+        "mean_runtime": 0.6475899934768676,
+        "std_runtime": 0.007099425278925676
+      },
+      "No-Drone": {
+        "mean_cost": 6711.367103481579,
+        "std_cost": 88.40825352514554,
+        "mean_tardiness": 1395.6694011951492,
+        "std_tardiness": 1097.5249572939263,
+        "feasibility_rate": 1.0,
+        "hypervolume": 24972098.472622912,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 11,
+        "best_cost": 6377.201862005657,
+        "best_tardiness": 382.2957809300777,
+        "mean_runtime": 2.109008026123047,
+        "std_runtime": 0.16819997668328057
+      }
+    }
+  },
+  {
+    "label": "25c_RC2_medium_2T+2D",
+    "instance_key": "RC202_25c",
+    "source_instance": "RC202",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "n_drones": 2,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 407.3342320028589,
+        "std_cost": 0.0,
+        "mean_tardiness": 2725.3338165265222,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 79336768.03441647,
+        "pareto_points": [
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 407.3342320028589,
+        "best_tardiness": 2725.3338165265222,
+        "mean_runtime": 0.1696018695831299,
+        "std_runtime": 0.007496742781495115
+      },
+      "No-Drone": {
+        "mean_cost": 1700.7739525504485,
+        "std_cost": 20.753463317489146,
+        "mean_tardiness": 40.88741135622191,
+        "std_tardiness": 167.14891160426865,
+        "feasibility_rate": 1.0,
+        "hypervolume": 65849624.13643179,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 141,
+        "best_cost": 1628.2465935077735,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.17969851493835448,
+        "std_runtime": 0.004128573361768443
+      }
+    }
+  },
+  {
+    "label": "25c_RC2_high_2T+2D",
+    "instance_key": "RC202_25c",
+    "source_instance": "RC202",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "n_drones": 2,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 407.3342320028589,
+        "std_cost": 0.0,
+        "mean_tardiness": 2725.3338165265222,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 79336768.03441647,
+        "pareto_points": [
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ],
+          [
+            407.3342320028589,
+            2725.3338165265222
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 407.3342320028589,
+        "best_tardiness": 2725.3338165265222,
+        "mean_runtime": 0.1695330858230591,
+        "std_runtime": 0.004841889113539709
+      },
+      "No-Drone": {
+        "mean_cost": 1700.7739525504485,
+        "std_cost": 20.753463317489146,
+        "mean_tardiness": 40.88741135622191,
+        "std_tardiness": 167.14891160426865,
+        "feasibility_rate": 1.0,
+        "hypervolume": 65849624.13643179,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 141,
+        "best_cost": 1628.2465935077735,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.18179481029510497,
+        "std_runtime": 0.001282227940448187
+      }
+    }
+  },
+  {
+    "label": "50c_RC2_medium_4T+4D",
+    "instance_key": "RC202_50c",
+    "source_instance": "RC202",
+    "n_customers": 50,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 672.258678159682,
+        "std_cost": 0.0,
+        "mean_tardiness": 5715.7295634175625,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 61818627.42073985,
+        "pareto_points": [
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 672.258678159682,
+        "best_tardiness": 5715.7295634175625,
+        "mean_runtime": 0.32295801639556887,
+        "std_runtime": 0.0049656167004522335
+      },
+      "No-Drone": {
+        "mean_cost": 3078.5941866145445,
+        "std_cost": 89.5235810499201,
+        "mean_tardiness": 400.5065513169136,
+        "std_tardiness": 736.9326387796629,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37658580.65170983,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 5,
+        "best_cost": 2933.3619482957297,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.3249476909637451,
+        "std_runtime": 0.004795832609284637
+      }
+    }
+  },
+  {
+    "label": "50c_RC2_high_4T+4D",
+    "instance_key": "RC202_50c",
+    "source_instance": "RC202",
+    "n_customers": 50,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 672.258678159682,
+        "std_cost": 0.0,
+        "mean_tardiness": 5715.7295634175625,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 61818627.42073985,
+        "pareto_points": [
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ],
+          [
+            672.258678159682,
+            5715.7295634175625
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 672.258678159682,
+        "best_tardiness": 5715.7295634175625,
+        "mean_runtime": 0.32698171138763427,
+        "std_runtime": 0.004962032151296542
+      },
+      "No-Drone": {
+        "mean_cost": 3078.5941866145445,
+        "std_cost": 89.5235810499201,
+        "mean_tardiness": 400.5065513169136,
+        "std_tardiness": 736.9326387796629,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37658580.65170983,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 5,
+        "best_cost": 2933.3619482957297,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.4113721132278442,
+        "std_runtime": 0.05016903780870394
+      }
+    }
+  },
+  {
+    "label": "50c_RC2_medium_6T+6D",
+    "instance_key": "RC202_50c",
+    "source_instance": "RC202",
+    "n_customers": 50,
+    "tw_type": "RC2",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 796.2835481350162,
+        "std_cost": 0.0,
+        "mean_tardiness": 4900.659984507991,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 63473344.03542705,
+        "pareto_points": [
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 796.2835481350162,
+        "best_tardiness": 4900.659984507991,
+        "mean_runtime": 0.3351994276046753,
+        "std_runtime": 0.0042598047181894505
+      },
+      "No-Drone": {
+        "mean_cost": 3078.5941866145445,
+        "std_cost": 89.5235810499201,
+        "mean_tardiness": 400.5065513169136,
+        "std_tardiness": 736.9326387796629,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37658580.65170983,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 5,
+        "best_cost": 2933.3619482957297,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.3491580247879028,
+        "std_runtime": 0.011495099153398148
+      }
+    }
+  },
+  {
+    "label": "50c_RC2_high_6T+6D",
+    "instance_key": "RC202_50c",
+    "source_instance": "RC202",
+    "n_customers": 50,
+    "tw_type": "RC2",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 796.2835481350162,
+        "std_cost": 0.0,
+        "mean_tardiness": 4900.659984507991,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "hypervolume": 63473344.03542705,
+        "pareto_points": [
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ],
+          [
+            796.2835481350162,
+            4900.659984507991
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 796.2835481350162,
+        "best_tardiness": 4900.659984507991,
+        "mean_runtime": 0.3343621253967285,
+        "std_runtime": 0.006405342577620361
+      },
+      "No-Drone": {
+        "mean_cost": 3078.5941866145445,
+        "std_cost": 89.5235810499201,
+        "mean_tardiness": 400.5065513169136,
+        "std_tardiness": 736.9326387796629,
+        "feasibility_rate": 1.0,
+        "hypervolume": 37658580.65170983,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 5,
+        "best_cost": 2933.3619482957297,
+        "best_tardiness": 0.0,
+        "mean_runtime": 0.3302745819091797,
+        "std_runtime": 0.005118356196137923
+      }
+    }
+  },
+  {
+    "label": "100c_RC2_medium_4T+4D",
+    "instance_key": "RC202_100c",
+    "source_instance": "RC202",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 14054.217255150032,
+        "std_tardiness": 1.9173831849720224e-12,
+        "feasibility_rate": 1.0,
+        "hypervolume": 21688907.13625775,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 14054.217255150033,
+        "mean_runtime": 0.6372325897216797,
+        "std_runtime": 0.016094268152210617
+      },
+      "No-Drone": {
+        "mean_cost": 6711.367103481579,
+        "std_cost": 88.40825352514554,
+        "mean_tardiness": 1395.6694011951492,
+        "std_tardiness": 1097.5249572939263,
+        "feasibility_rate": 1.0,
+        "hypervolume": 24972098.472622912,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 11,
+        "best_cost": 6377.201862005657,
+        "best_tardiness": 382.2957809300777,
+        "mean_runtime": 1.021298623085022,
+        "std_runtime": 0.19482928877778424
+      }
+    }
+  },
+  {
+    "label": "100c_RC2_high_4T+4D",
+    "instance_key": "RC202_100c",
+    "source_instance": "RC202",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "n_drones": 4,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 14054.217255150032,
+        "std_tardiness": 1.9173831849720224e-12,
+        "feasibility_rate": 1.0,
+        "hypervolume": 21688907.13625775,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 14054.217255150033,
+        "mean_runtime": 0.6421442031860352,
+        "std_runtime": 0.007927081371841338
+      },
+      "No-Drone": {
+        "mean_cost": 6711.367103481579,
+        "std_cost": 88.40825352514554,
+        "mean_tardiness": 1395.6694011951492,
+        "std_tardiness": 1097.5249572939263,
+        "feasibility_rate": 1.0,
+        "hypervolume": 24972098.472622912,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 11,
+        "best_cost": 6377.201862005657,
+        "best_tardiness": 382.2957809300777,
+        "mean_runtime": 0.8865064859390259,
+        "std_runtime": 0.03664631777155357
+      }
+    }
+  },
+  {
+    "label": "100c_RC2_medium_6T+6D",
+    "instance_key": "RC202_100c",
+    "source_instance": "RC202",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 14054.217255150032,
+        "std_tardiness": 1.9173831849720224e-12,
+        "feasibility_rate": 1.0,
+        "hypervolume": 21688907.13625775,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 14054.217255150033,
+        "mean_runtime": 0.6383637905120849,
+        "std_runtime": 0.012472660482461857
+      },
+      "No-Drone": {
+        "mean_cost": 6711.367103481579,
+        "std_cost": 88.40825352514554,
+        "mean_tardiness": 1395.6694011951492,
+        "std_tardiness": 1097.5249572939263,
+        "feasibility_rate": 1.0,
+        "hypervolume": 24972098.472622912,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 11,
+        "best_cost": 6377.201862005657,
+        "best_tardiness": 382.2957809300777,
+        "mean_runtime": 0.8042174100875854,
+        "std_runtime": 0.007488105294807521
+      }
+    }
+  },
+  {
+    "label": "100c_RC2_high_6T+6D",
+    "instance_key": "RC202_100c",
+    "source_instance": "RC202",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 6,
+    "n_drones": 6,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 14054.217255150032,
+        "std_tardiness": 1.9173831849720224e-12,
+        "feasibility_rate": 1.0,
+        "hypervolume": 21688907.13625775,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 14054.217255150033,
+        "mean_runtime": 0.6393191099166871,
+        "std_runtime": 0.007499492055741542
+      },
+      "No-Drone": {
+        "mean_cost": 6711.367103481579,
+        "std_cost": 88.40825352514554,
+        "mean_tardiness": 1395.6694011951492,
+        "std_tardiness": 1097.5249572939263,
+        "feasibility_rate": 1.0,
+        "hypervolume": 24972098.472622912,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 11,
+        "best_cost": 6377.201862005657,
+        "best_tardiness": 382.2957809300777,
+        "mean_runtime": 0.8028656959533691,
+        "std_runtime": 0.007657433719861751
+      }
+    }
+  },
+  {
+    "label": "100c_RC2_medium_8T+8D",
+    "instance_key": "RC202_100c",
+    "source_instance": "RC202",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 8,
+    "n_drones": 8,
+    "endurance": 4.0,
+    "endurance_name": "medium",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 14054.217255150032,
+        "std_tardiness": 1.9173831849720224e-12,
+        "feasibility_rate": 1.0,
+        "hypervolume": 21688907.13625775,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 14054.217255150033,
+        "mean_runtime": 0.6400861978530884,
+        "std_runtime": 0.006569784283904631
+      },
+      "No-Drone": {
+        "mean_cost": 6711.367103481579,
+        "std_cost": 88.40825352514554,
+        "mean_tardiness": 1395.6694011951492,
+        "std_tardiness": 1097.5249572939263,
+        "feasibility_rate": 1.0,
+        "hypervolume": 24972098.472622912,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 11,
+        "best_cost": 6377.201862005657,
+        "best_tardiness": 382.2957809300777,
+        "mean_runtime": 2.0347820281982423,
+        "std_runtime": 0.11196143024682934
+      }
+    }
+  },
+  {
+    "label": "100c_RC2_high_8T+8D",
+    "instance_key": "RC202_100c",
+    "source_instance": "RC202",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 8,
+    "n_drones": 8,
+    "endurance": 6.0,
+    "endurance_name": "high",
+    "methods": {
+      "POMO-MT": {
+        "mean_cost": 1352.2200411638087,
+        "std_cost": 0.0,
+        "mean_tardiness": 14054.217255150032,
+        "std_tardiness": 1.9173831849720224e-12,
+        "feasibility_rate": 1.0,
+        "hypervolume": 21688907.13625775,
+        "pareto_points": [
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ],
+          [
+            1352.2200411638087,
+            14054.217255150033
+          ]
+        ],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 10,
+        "best_cost": 1352.2200411638087,
+        "best_tardiness": 14054.217255150033,
+        "mean_runtime": 0.65242018699646,
+        "std_runtime": 0.01299363161985695
+      },
+      "No-Drone": {
+        "mean_cost": 6711.367103481579,
+        "std_cost": 88.40825352514554,
+        "mean_tardiness": 1395.6694011951492,
+        "std_tardiness": 1097.5249572939263,
+        "feasibility_rate": 1.0,
+        "hypervolume": 24972098.472622912,
+        "pareto_points": [],
+        "drone_solution_pct": 0.0,
+        "avg_drone_missions": 0.0,
+        "pareto_size": 11,
+        "best_cost": 6377.201862005657,
+        "best_tardiness": 382.2957809300777,
+        "mean_runtime": 2.109008026123047,
+        "std_runtime": 0.16819997668328057
+      }
+    }
+  }
+]

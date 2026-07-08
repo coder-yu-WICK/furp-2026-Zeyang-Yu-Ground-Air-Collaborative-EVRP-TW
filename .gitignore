@@ -1,6 +1,7 @@
 # Python
 __pycache__/
 *.py[cod]
+*.so
 .venv/
 venv/
 env/
@@ -34,3 +35,7 @@ data/
 .env
 *.key
 secrets.*
+
+# POMO training checkpoints (keep only best_model.pt)
+week4/algorithms/pomo/checkpoints/checkpoint_epoch*.pt
+week4/algorithms/pomo/checkpoints/final_model.pt
