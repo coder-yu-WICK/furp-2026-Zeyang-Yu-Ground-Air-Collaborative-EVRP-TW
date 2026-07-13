@@ -31,6 +31,10 @@ This week implements two fundamental improvements to the POMO-MT framework, then
 
 ---
 
+![Summary Dashboard](visualizations/summary_dashboard.png)
+
+---
+
 ## 1. Direction 1: TW-Aware Clustering
 
 ### 1.1 Problem Diagnosis (from Week 4)
@@ -182,7 +186,9 @@ Grid search over `max_gap_ratio ∈ {0.2, 0.3, 0.4, 0.5, 0.6}` on RC2 instances 
 | **0.5** | **1,699** | **1,121** |
 | 0.6 | 1,444 | 1,913 |
 
-**Conclusion:** `max_gap_ratio = 0.5` provides the best cost-tardiness trade-off across instances. The parameter exhibits a clean Pareto frontier — lower values prioritize tardiness reduction (more splits, higher cost), higher values prioritize cost (fewer splits, higher tardiness).
+**Conclusion:** `max_gap_ratio = 0.5` provides the best cost-tardiness trade-off across instances.
+
+![TW-Aware Effect](visualizations/tw_aware_effect.png) The parameter exhibits a clean Pareto frontier — lower values prioritize tardiness reduction (more splits, higher cost), higher values prioritize cost (fewer splits, higher tardiness).
 
 ### 4.2 Drone Fleet Sizing
 
@@ -216,6 +222,8 @@ Marginal benefit analysis for k = 0, 1, 2, 3 drones per truck:
 | 66–78 (3/truck) | 1,651–2,001 | 2,852–6,402 |
 
 **Key finding:** With only 1 drone/truck, cost **increases** because limited missions pick suboptimal customers to drone-serve. With ≥2 drones/truck, the full set of beneficial missions is captured and costs drop dramatically. **Recommendation: 2 drones per truck** captures the vast majority of drone savings.
+
+![Drone Impact](visualizations/drone_impact.png)
 
 ---
 
@@ -346,6 +354,10 @@ Week 5 achieves:
 - Moderate cost increase (+10% on RC1, +10% on RC2)
 - Outperforms Week 3 metaheuristics on tardiness at comparable cost
 
+![Pareto RC201_25c](visualizations/pareto_w5_RC201_25c_RC2_medium_2T+2D.png)
+
+![Pareto RC201_50c](visualizations/pareto_w5_RC201_50c_RC2_medium_4T+4D.png)
+
 ### 5.5 Drone Mission Statistics
 
 | Instance Type | Scale | Avg Drone Missions | Best Variant |
@@ -358,6 +370,10 @@ Week 5 achieves:
 | RC2 | 100c | 40.2 | hybrid_drone |
 
 Drone missions scale super-linearly with instance size: more trucks and more customers create exponentially more cross-route drone opportunities.
+
+![Ablation Bars](visualizations/ablation_bars.png)
+
+![Cost-Tardiness Trade-off](visualizations/cost_tardiness_tradeoff.png)
 
 ---
 
