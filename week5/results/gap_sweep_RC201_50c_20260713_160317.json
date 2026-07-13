@@ -1,0 +1,47 @@
+{
+  "instance": "RC201_50c",
+  "n_trucks": 4,
+  "n_repeats": 5,
+  "results": [
+    {
+      "ratio": 0.2,
+      "mean_cost": 3959.500242323475,
+      "std_cost": 4.547473508864641e-13,
+      "mean_tardiness": 0.0,
+      "std_tardiness": 0.0,
+      "mean_runtime": 0.1812201499938965
+    },
+    {
+      "ratio": 0.3,
+      "mean_cost": 2575.8190380375936,
+      "std_cost": 0.0,
+      "mean_tardiness": 221.14834373867092,
+      "std_tardiness": 0.0,
+      "mean_runtime": 0.2778926372528076
+    },
+    {
+      "ratio": 0.4,
+      "mean_cost": 1947.0846061763082,
+      "std_cost": 1.016845989170083e-13,
+      "mean_tardiness": 601.3377636440914,
+      "std_tardiness": 1.016845989170083e-13,
+      "mean_runtime": 0.3268463611602783
+    },
+    {
+      "ratio": 0.5,
+      "mean_cost": 1698.8247291210332,
+      "std_cost": 2.2737367544323206e-13,
+      "mean_tardiness": 1121.4494080102704,
+      "std_tardiness": 0.0,
+      "mean_runtime": 0.3397854804992676
+    },
+    {
+      "ratio": 0.6,
+      "mean_cost": 1444.190887371769,
+      "std_cost": 0.0,
+      "mean_tardiness": 1913.3141956695931,
+      "std_tardiness": 1.016845989170083e-13,
+      "mean_runtime": 0.35100493431091306
+    }
+  ]
+}
