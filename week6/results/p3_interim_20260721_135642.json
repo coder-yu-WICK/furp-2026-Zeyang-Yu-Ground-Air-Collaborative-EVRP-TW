@@ -1,0 +1,48 @@
+[
+  {
+    "label": "100c_RC2",
+    "instance_key": "RC202_100c",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 1882.339628988451,
+        "std_cost": 0,
+        "mean_tardiness": 2627.847539988972,
+        "std_tardiness": 0,
+        "avg_drone_missions": 34.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.6929640769958496
+      },
+      "full_edd": {
+        "mean_cost": 1796.7899102072856,
+        "std_cost": 0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0,
+        "avg_drone_missions": 46.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.5892419815063477,
+        "avg_tardiness_before": 1776.2550815790971,
+        "avg_tardiness_after": 0.0,
+        "avg_segments_repaired": 0.0,
+        "avg_fallback_count": 0.0,
+        "partial_success_rate": 0.0
+      },
+      "partial_edd": {
+        "mean_cost": 1937.0049361306392,
+        "std_cost": 0,
+        "mean_tardiness": 56.29406760294535,
+        "std_tardiness": 0,
+        "avg_drone_missions": 44.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.6552512645721436,
+        "avg_tardiness_before": 4912.980525079476,
+        "avg_tardiness_after": 56.29406760294535,
+        "avg_segments_repaired": 10.0,
+        "avg_fallback_count": 6.0,
+        "partial_success_rate": 0.0
+      }
+    }
+  }
+]

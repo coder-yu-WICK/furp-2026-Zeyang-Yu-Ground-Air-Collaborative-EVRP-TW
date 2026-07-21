@@ -1,0 +1,168 @@
+{
+  "instance": "RC201_25c",
+  "n_trucks": 2,
+  "results": [
+    {
+      "rep": 0,
+      "n_drones": 0,
+      "cost": 1304.8346327887234,
+      "tardiness": 258.2276287373705,
+      "missions_found": 0
+    },
+    {
+      "rep": 0,
+      "n_drones": 10,
+      "cost": 1541.3440160468951,
+      "tardiness": 258.2276287373705,
+      "missions_found": 10
+    },
+    {
+      "rep": 0,
+      "n_drones": 20,
+      "cost": 543.0056424160367,
+      "tardiness": 258.2276287373705,
+      "missions_found": 11
+    },
+    {
+      "rep": 0,
+      "n_drones": 30,
+      "cost": 543.0056424160367,
+      "tardiness": 258.2276287373705,
+      "missions_found": 11
+    },
+    {
+      "rep": 1,
+      "n_drones": 0,
+      "cost": 1304.8346327887234,
+      "tardiness": 258.2276287373705,
+      "missions_found": 0
+    },
+    {
+      "rep": 1,
+      "n_drones": 10,
+      "cost": 1541.3440160468951,
+      "tardiness": 258.2276287373705,
+      "missions_found": 10
+    },
+    {
+      "rep": 1,
+      "n_drones": 20,
+      "cost": 543.0056424160367,
+      "tardiness": 258.2276287373705,
+      "missions_found": 11
+    },
+    {
+      "rep": 1,
+      "n_drones": 30,
+      "cost": 543.0056424160367,
+      "tardiness": 258.2276287373705,
+      "missions_found": 11
+    },
+    {
+      "rep": 2,
+      "n_drones": 0,
+      "cost": 1304.8346327887234,
+      "tardiness": 258.2276287373705,
+      "missions_found": 0
+    },
+    {
+      "rep": 2,
+      "n_drones": 10,
+      "cost": 1541.3440160468951,
+      "tardiness": 258.2276287373705,
+      "missions_found": 10
+    },
+    {
+      "rep": 2,
+      "n_drones": 20,
+      "cost": 543.0056424160367,
+      "tardiness": 258.2276287373705,
+      "missions_found": 11
+    },
+    {
+      "rep": 2,
+      "n_drones": 30,
+      "cost": 543.0056424160367,
+      "tardiness": 258.2276287373705,
+      "missions_found": 11
+    },
+    {
+      "rep": 3,
+      "n_drones": 0,
+      "cost": 1304.8346327887234,
+      "tardiness": 258.2276287373705,
+      "missions_found": 0
+    },
+    {
+      "rep": 3,
+      "n_drones": 10,
+      "cost": 1541.6611425380474,
+      "tardiness": 258.2276287373705,
+      "missions_found": 10
+    },
+    {
+      "rep": 3,
+      "n_drones": 20,
+      "cost": 543.0056424160367,
+      "tardiness": 258.2276287373705,
+      "missions_found": 11
+    },
+    {
+      "rep": 3,
+      "n_drones": 30,
+      "cost": 543.0056424160367,
+      "tardiness": 258.2276287373705,
+      "missions_found": 11
+    },
+    {
+      "rep": 4,
+      "n_drones": 0,
+      "cost": 1304.8346327887234,
+      "tardiness": 258.2276287373705,
+      "missions_found": 0
+    },
+    {
+      "rep": 4,
+      "n_drones": 10,
+      "cost": 1541.3440160468951,
+      "tardiness": 258.2276287373705,
+      "missions_found": 10
+    },
+    {
+      "rep": 4,
+      "n_drones": 20,
+      "cost": 543.0056424160367,
+      "tardiness": 258.2276287373705,
+      "missions_found": 11
+    },
+    {
+      "rep": 4,
+      "n_drones": 30,
+      "cost": 543.0056424160367,
+      "tardiness": 258.2276287373705,
+      "missions_found": 11
+    }
+  ],
+  "summary": {
+    "0": {
+      "cost": 1304.8346327887234,
+      "tard": 258.2276287373705,
+      "missions": 0.0
+    },
+    "10": {
+      "cost": 1541.4074413451256,
+      "tard": 258.2276287373705,
+      "missions": 10.0
+    },
+    "20": {
+      "cost": 543.0056424160367,
+      "tard": 258.2276287373705,
+      "missions": 11.0
+    },
+    "30": {
+      "cost": 543.0056424160367,
+      "tard": 258.2276287373705,
+      "missions": 11.0
+    }
+  }
+}

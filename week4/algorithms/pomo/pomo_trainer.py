@@ -59,8 +59,9 @@ class POMOTrainer:
         self.env.load_problems(problems)
         state = self.env.reset(device=device)
 
-        # Build node features
-        node_feat = torch.zeros(len(problems), self.problem_size, 6, device=device)
+        # Build node features (use env problem_size — may differ from trainer default
+        # when using variable-size batches for curriculum learning)
+        node_feat = torch.zeros(len(problems), self.env.problem_size, 6, device=device)
         depot_xy = torch.zeros(len(problems), 1, 2, device=device)
         for i, p in enumerate(problems):
             node_feat[i, :, :2] = p['node_xy'].to(device)

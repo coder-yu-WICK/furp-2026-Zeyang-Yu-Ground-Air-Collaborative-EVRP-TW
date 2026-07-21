@@ -1,0 +1,31 @@
+{
+  "instance": "RC201_25c",
+  "n_trucks": 2,
+  "n_repeats": 1,
+  "results": [
+    {
+      "ratio": 0.3,
+      "mean_cost": 535.6191638930841,
+      "std_cost": 0.0,
+      "mean_tardiness": 3512.488602157866,
+      "std_tardiness": 0.0,
+      "mean_runtime": 0.25693202018737793
+    },
+    {
+      "ratio": 0.4,
+      "mean_cost": 535.6191638930841,
+      "std_cost": 0.0,
+      "mean_tardiness": 3512.488602157866,
+      "std_tardiness": 0.0,
+      "mean_runtime": 0.1891341209411621
+    },
+    {
+      "ratio": 0.5,
+      "mean_cost": 535.6191638930841,
+      "std_cost": 0.0,
+      "mean_tardiness": 3512.488602157866,
+      "std_tardiness": 0.0,
+      "mean_runtime": 0.21280527114868164
+    }
+  ]
+}

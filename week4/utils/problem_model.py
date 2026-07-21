@@ -106,6 +106,9 @@ class TruckDroneSolution:
         # Track all served customers (by truck or drone)
         served_customers = set(drone_served_customers)
 
+        # Track per-node arrival times for sync checking
+        node_arrival_times = {}  # node_id -> arrival_time
+
         # ── Evaluate truck routes ──────────────────────────────
         n_trucks = len(self.truck_routes)
         total_truck_dist = 0.0
@@ -137,6 +140,9 @@ class TruckDroneSolution:
                     tardy = current_time - due
                     total_tardiness += tardy * TARDINESS_COST_RATE
                     violations['time_window'] += tardy
+
+                # Record arrival time for sync checking
+                node_arrival_times[cust_idx] = current_time
 
                 # Capacity check
                 load += c_data['demand']
@@ -178,6 +184,33 @@ class TruckDroneSolution:
             c_data = customers[j - 1]
             if c_data['demand'] > DRONE_CAPACITY:
                 violations['drone_capacity'] += (c_data['demand'] - DRONE_CAPACITY)
+                feasible = False
+
+            # ── Sync check (NEW) ──
+            # Drone flight time vs truck travel time between launch (i) and recovery (k)
+            truck_arrival_i = node_arrival_times.get(i, 0.0) if i > 0 else 0.0
+            truck_arrival_k = node_arrival_times.get(k, float('inf')) if k > 0 else float('inf')
+
+            # Truck travel time from i to k (direct, no intermediate if consecutive)
+            service_i = customers[i-1]['service_time'] if i > 0 else 0
+            truck_depart_i = truck_arrival_i + service_i
+
+            # Truck travel from i to k
+            d_ik = dist[i][k] if (i > 0 and k > 0) else (
+                self._depot_dist(k, customers, dist) if i == 0 and k > 0 else
+                self._depot_dist(i, customers, dist) if i > 0 and k == 0 else 0.0)
+            truck_travel_ik = d_ik / TRUCK_SPEED
+            truck_arrival_k_expected = truck_depart_i + truck_travel_ik
+
+            # Drone flight time
+            drone_flight_time = drone_leg / DRONE_SPEED + c_data['service_time']
+
+            # Sync: drone must not arrive before truck
+            # If drone arrives first → sync violation (drone has nowhere to land)
+            sync_violation = max(0.0, truck_arrival_k_expected - (
+                truck_depart_i + drone_flight_time))
+            if sync_violation > 0:
+                violations['sync'] += sync_violation
                 feasible = False
 
         # ── Calculate total cost ────────────────────────────────

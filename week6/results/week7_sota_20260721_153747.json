@@ -1,0 +1,866 @@
+[
+  {
+    "label": "25c_RC1",
+    "instance_key": "RC101_25c",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 542.0607911717445,
+        "std_cost": 0.0,
+        "mean_tardiness": 74.37649397686695,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.18406760692596436,
+        "std_runtime": 0.04497253894805908
+      },
+      "w5_edd": {
+        "mean_cost": 421.1798358457404,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.14242148399353027,
+        "std_runtime": 0.0011763572692871094
+      },
+      "nsga2": {
+        "mean_cost": 370.807623358493,
+        "std_cost": 0.2046689859010371,
+        "mean_tardiness": 571.2430221545548,
+        "std_tardiness": 39.675781918353096,
+        "feasibility_rate": 0.9060330578512397,
+        "mean_runtime": 0.6485987901687622,
+        "std_runtime": 0.012063860893249512
+      },
+      "paco": {
+        "mean_cost": 321.7567370318801,
+        "std_cost": 0.2299590385624981,
+        "mean_tardiness": 747.5826741956839,
+        "std_tardiness": 1.7915758295937394,
+        "feasibility_rate": 0.714,
+        "mean_runtime": 4.139506459236145,
+        "std_runtime": 0.15168750286102295
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 1661.7771324400471,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.04224991798400879,
+        "std_runtime": 0.0003769397735595703
+      }
+    }
+  },
+  {
+    "label": "25c_RC1",
+    "instance_key": "RC102_25c",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 412.8213789235872,
+        "std_cost": 0.0,
+        "mean_tardiness": 42.168803767020265,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.12592601776123047,
+        "std_runtime": 0.00014019012451171875
+      },
+      "w5_edd": {
+        "mean_cost": 424.3706398197277,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.12232184410095215,
+        "std_runtime": 0.0009851455688476562
+      },
+      "nsga2": {
+        "mean_cost": 370.70271465305314,
+        "std_cost": 0.03274840783674904,
+        "mean_tardiness": 321.0521975541974,
+        "std_tardiness": 31.113141755627197,
+        "feasibility_rate": 0.8999999999999999,
+        "mean_runtime": 0.6070749759674072,
+        "std_runtime": 0.03130507469177246
+      },
+      "paco": {
+        "mean_cost": 321.07883588421,
+        "std_cost": 1.442911674554125,
+        "mean_tardiness": 535.7877010505617,
+        "std_tardiness": 25.054189564650244,
+        "feasibility_rate": 0.7283999999999999,
+        "mean_runtime": 4.217512369155884,
+        "std_runtime": 0.10627055168151855
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 1152.8587005084166,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.04215705394744873,
+        "std_runtime": 0.0003408193588256836
+      }
+    }
+  },
+  {
+    "label": "25c_RC1",
+    "instance_key": "RC103_25c",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 411.80329700589493,
+        "std_cost": 0.0,
+        "mean_tardiness": 37.07217503563231,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.09362566471099854,
+        "std_runtime": 0.00205838680267334
+      },
+      "w5_edd": {
+        "mean_cost": 426.33796338849015,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.09360504150390625,
+        "std_runtime": 0.0017418861389160156
+      },
+      "nsga2": {
+        "mean_cost": 366.018663161854,
+        "std_cost": 1.0454018160567102,
+        "mean_tardiness": 201.09353158527864,
+        "std_tardiness": 4.9216004121987424,
+        "feasibility_rate": 0.9201652892561983,
+        "mean_runtime": 0.5387179851531982,
+        "std_runtime": 0.011504173278808594
+      },
+      "paco": {
+        "mean_cost": 322.70296477425006,
+        "std_cost": 0.4845543190179171,
+        "mean_tardiness": 241.73915865368872,
+        "std_tardiness": 59.61075395147715,
+        "feasibility_rate": 0.6818,
+        "mean_runtime": 4.140174627304077,
+        "std_runtime": 0.06349730491638184
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 464.0308157208278,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.04117763042449951,
+        "std_runtime": 8.14199447631836e-05
+      }
+    }
+  },
+  {
+    "label": "25c_RC1",
+    "instance_key": "RC104_25c",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 408.64289536173874,
+        "std_cost": 0.0,
+        "mean_tardiness": 21.091428571428594,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.11120641231536865,
+        "std_runtime": 0.001563429832458496
+      },
+      "w5_edd": {
+        "mean_cost": 413.70762250786635,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.10965335369110107,
+        "std_runtime": 2.5391578674316406e-05
+      },
+      "nsga2": {
+        "mean_cost": 365.92709247759615,
+        "std_cost": 0.9419299955694953,
+        "mean_tardiness": 105.08880050606987,
+        "std_tardiness": 16.343026573684412,
+        "feasibility_rate": 0.9295867768595041,
+        "mean_runtime": 0.5531260967254639,
+        "std_runtime": 0.010560274124145508
+      },
+      "paco": {
+        "mean_cost": 321.5449384550949,
+        "std_cost": 1.080149790628667,
+        "mean_tardiness": 161.5181468631274,
+        "std_tardiness": 34.16161586069164,
+        "feasibility_rate": 0.7003999999999999,
+        "mean_runtime": 4.146619439125061,
+        "std_runtime": 0.1585475206375122
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 428.82943858537845,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.04091906547546387,
+        "std_runtime": 0.00028896331787109375
+      }
+    }
+  },
+  {
+    "label": "25c_RC1",
+    "instance_key": "RC105_25c",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 417.1207461793449,
+        "std_cost": 0.0,
+        "mean_tardiness": 166.31076435349289,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.12855291366577148,
+        "std_runtime": 0.0009229183197021484
+      },
+      "w5_edd": {
+        "mean_cost": 432.66386111544,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.12790846824645996,
+        "std_runtime": 0.002349376678466797
+      },
+      "nsga2": {
+        "mean_cost": 369.25467911264786,
+        "std_cost": 1.4545460476653318,
+        "mean_tardiness": 373.4589421675531,
+        "std_tardiness": 20.492889914435096,
+        "feasibility_rate": 0.8946280991735538,
+        "mean_runtime": 0.6616089344024658,
+        "std_runtime": 0.0598909854888916
+      },
+      "paco": {
+        "mean_cost": 324.0641918305197,
+        "std_cost": 2.203762404035018,
+        "mean_tardiness": 491.88054571067494,
+        "std_tardiness": 20.64987092192871,
+        "feasibility_rate": 0.6855,
+        "mean_runtime": 4.296577334403992,
+        "std_runtime": 0.3418985605239868
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 1280.3001133617051,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.042377471923828125,
+        "std_runtime": 0.00017070770263671875
+      }
+    }
+  },
+  {
+    "label": "25c_RC1",
+    "instance_key": "RC106_25c",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 413.7206567881685,
+        "std_cost": 0.0,
+        "mean_tardiness": 10.0688963099971,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.11285555362701416,
+        "std_runtime": 0.00039446353912353516
+      },
+      "w5_edd": {
+        "mean_cost": 418.3279571847454,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.11513662338256836,
+        "std_runtime": 0.0013415813446044922
+      },
+      "nsga2": {
+        "mean_cost": 368.95801436406236,
+        "std_cost": 0.6540257248618673,
+        "mean_tardiness": 283.99223241776343,
+        "std_tardiness": 22.679675070224164,
+        "feasibility_rate": 0.9068595041322314,
+        "mean_runtime": 0.5369505882263184,
+        "std_runtime": 0.00106048583984375
+      },
+      "paco": {
+        "mean_cost": 322.99680770998134,
+        "std_cost": 2.558275368523624,
+        "mean_tardiness": 608.1362044959353,
+        "std_tardiness": 73.47171296776645,
+        "feasibility_rate": 0.6438999999999999,
+        "mean_runtime": 4.0376739501953125,
+        "std_runtime": 0.04499983787536621
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 1008.5280281891286,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.0428004264831543,
+        "std_runtime": 0.00021338462829589844
+      }
+    }
+  },
+  {
+    "label": "25c_RC1",
+    "instance_key": "RC107_25c",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 408.2335098674403,
+        "std_cost": 0.0,
+        "mean_tardiness": 164.57513441929788,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.1741955280303955,
+        "std_runtime": 0.0073394775390625
+      },
+      "w5_edd": {
+        "mean_cost": 426.71264754961,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.16893351078033447,
+        "std_runtime": 0.0015655755996704102
+      },
+      "nsga2": {
+        "mean_cost": 368.7025593040235,
+        "std_cost": 4.217217924580893,
+        "mean_tardiness": 113.46981693927773,
+        "std_tardiness": 3.4370304997825087,
+        "feasibility_rate": 0.9090909090909091,
+        "mean_runtime": 0.5081254243850708,
+        "std_runtime": 0.008827805519104004
+      },
+      "paco": {
+        "mean_cost": 321.29428844185054,
+        "std_cost": 0.5127520840129876,
+        "mean_tardiness": 334.0841727939501,
+        "std_tardiness": 108.63237822033314,
+        "feasibility_rate": 0.7279,
+        "mean_runtime": 4.423762559890747,
+        "std_runtime": 0.0431666374206543
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 804.2451631848062,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.041706085205078125,
+        "std_runtime": 7.200241088867188e-05
+      }
+    }
+  },
+  {
+    "label": "25c_RC1",
+    "instance_key": "RC108_25c",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 407.3342320028589,
+        "std_cost": 0.0,
+        "mean_tardiness": 84.47825938715155,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.08996701240539551,
+        "std_runtime": 0.0016331672668457031
+      },
+      "w5_edd": {
+        "mean_cost": 422.32776500711384,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.08799803256988525,
+        "std_runtime": 0.0001748800277709961
+      },
+      "nsga2": {
+        "mean_cost": 365.67388300588266,
+        "std_cost": 1.387632737563706,
+        "mean_tardiness": 9.144462775976887,
+        "std_tardiness": 1.4976442467506845,
+        "feasibility_rate": 0.9228925619834711,
+        "mean_runtime": 0.4112858772277832,
+        "std_runtime": 0.015010833740234375
+      },
+      "paco": {
+        "mean_cost": 321.29428844185054,
+        "std_cost": 0.5127520840129876,
+        "mean_tardiness": 45.86290213329232,
+        "std_tardiness": 7.650898225333005,
+        "feasibility_rate": 0.7279,
+        "mean_runtime": 4.423953533172607,
+        "std_runtime": 0.006835460662841797
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 165.79401012754153,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.04143393039703369,
+        "std_runtime": 4.494190216064453e-05
+      }
+    }
+  },
+  {
+    "label": "25c_RC2",
+    "instance_key": "RC201_25c",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 543.0056424160367,
+        "std_cost": 0.0,
+        "mean_tardiness": 258.2276287373705,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.17284011840820312,
+        "std_runtime": 0.0030722618103027344
+      },
+      "w5_edd": {
+        "mean_cost": 545.7326079316717,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.17251193523406982,
+        "std_runtime": 0.002568840980529785
+      },
+      "nsga2": {
+        "mean_cost": 363.86722881092567,
+        "std_cost": 1.9330755161215905,
+        "mean_tardiness": 2275.5704126527503,
+        "std_tardiness": 171.0231479516251,
+        "feasibility_rate": 0.9221487603305785,
+        "mean_runtime": 0.6885384321212769,
+        "std_runtime": 0.09741556644439697
+      },
+      "paco": {
+        "mean_cost": 334.70496328947684,
+        "std_cost": 0.19923814802589845,
+        "mean_tardiness": 468.0971899118812,
+        "std_tardiness": 100.99079684667018,
+        "feasibility_rate": 0.6409,
+        "mean_runtime": 4.216802597045898,
+        "std_runtime": 0.03012847900390625
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 5320.313103187225,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.04238581657409668,
+        "std_runtime": 0.0003230571746826172
+      }
+    }
+  },
+  {
+    "label": "25c_RC2",
+    "instance_key": "RC202_25c",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 413.7662301678793,
+        "std_cost": 0.0,
+        "mean_tardiness": 198.1783929448481,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.1368424892425537,
+        "std_runtime": 0.0011205673217773438
+      },
+      "w5_edd": {
+        "mean_cost": 424.53805139811834,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.1371835470199585,
+        "std_runtime": 0.00019848346710205078
+      },
+      "nsga2": {
+        "mean_cost": 367.24591587409736,
+        "std_cost": 4.067906250934783,
+        "mean_tardiness": 1360.2926465671942,
+        "std_tardiness": 69.99080060824099,
+        "feasibility_rate": 0.9107438016528926,
+        "mean_runtime": 0.5961223840713501,
+        "std_runtime": 0.026006340980529785
+      },
+      "paco": {
+        "mean_cost": 336.397785946945,
+        "std_cost": 0.8241900657164933,
+        "mean_tardiness": 213.53812417302265,
+        "std_tardiness": 17.551716473732043,
+        "feasibility_rate": 0.4524,
+        "mean_runtime": 4.4725600481033325,
+        "std_runtime": 0.07618415355682373
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 3580.1064369772885,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.04205453395843506,
+        "std_runtime": 0.00021445751190185547
+      }
+    }
+  },
+  {
+    "label": "25c_RC2",
+    "instance_key": "RC203_25c",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 413.954761236039,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.09811651706695557,
+        "std_runtime": 0.002182602882385254
+      },
+      "w5_edd": {
+        "mean_cost": 1179.799478542594,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.09931731224060059,
+        "std_runtime": 0.0007064342498779297
+      },
+      "nsga2": {
+        "mean_cost": 367.8167090920332,
+        "std_cost": 5.213045211911776,
+        "mean_tardiness": 700.8383978101876,
+        "std_tardiness": 7.8336241265875515,
+        "feasibility_rate": 0.9022314049586777,
+        "mean_runtime": 0.5251848697662354,
+        "std_runtime": 0.016505956649780273
+      },
+      "paco": {
+        "mean_cost": 350.71822471965237,
+        "std_cost": 0.8705917961261207,
+        "mean_tardiness": 241.11719531713754,
+        "std_tardiness": 2.4841545183813167,
+        "feasibility_rate": 0.1303,
+        "mean_runtime": 3.435420513153076,
+        "std_runtime": 0.03359842300415039
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 1660.4909185927854,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.04094350337982178,
+        "std_runtime": 0.0002275705337524414
+      }
+    }
+  },
+  {
+    "label": "25c_RC2",
+    "instance_key": "RC204_25c",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 413.711893666902,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.0895456075668335,
+        "std_runtime": 0.0010436773300170898
+      },
+      "w5_edd": {
+        "mean_cost": 1053.461438998688,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.08762109279632568,
+        "std_runtime": 0.0006002187728881836
+      },
+      "nsga2": {
+        "mean_cost": 367.6003331729178,
+        "std_cost": 0.7104190718700352,
+        "mean_tardiness": 389.9284901510073,
+        "std_tardiness": 17.77173730466251,
+        "feasibility_rate": 0.905702479338843,
+        "mean_runtime": 0.4433389902114868,
+        "std_runtime": 0.04663503170013428
+      },
+      "paco": {
+        "mean_cost": 343.99263190286695,
+        "std_cost": 0.6029954032574949,
+        "mean_tardiness": 74.54829186947342,
+        "std_tardiness": 8.558656997052331,
+        "feasibility_rate": 0.14379999999999998,
+        "mean_runtime": 3.6298545598983765,
+        "std_runtime": 0.02200138568878174
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 1474.019592893316,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.040603041648864746,
+        "std_runtime": 0.00015413761138916016
+      }
+    }
+  },
+  {
+    "label": "25c_RC2",
+    "instance_key": "RC205_25c",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 414.478460335636,
+        "std_cost": 0.0,
+        "mean_tardiness": 269.10150542055464,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.15607845783233643,
+        "std_runtime": 0.0001665353775024414
+      },
+      "w5_edd": {
+        "mean_cost": 419.2238071030881,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.150903582572937,
+        "std_runtime": 0.00018346309661865234
+      },
+      "nsga2": {
+        "mean_cost": 370.90002297825026,
+        "std_cost": 1.8936186420892227,
+        "mean_tardiness": 1826.506090925557,
+        "std_tardiness": 6.415231129876247,
+        "feasibility_rate": 0.8990082644628099,
+        "mean_runtime": 0.5674660205841064,
+        "std_runtime": 0.0449521541595459
+      },
+      "paco": {
+        "mean_cost": 354.8837619688155,
+        "std_cost": 0.452565557004732,
+        "mean_tardiness": 336.87730384967693,
+        "std_tardiness": 64.97568195173596,
+        "feasibility_rate": 0.07600000000000001,
+        "mean_runtime": 3.877156972885132,
+        "std_runtime": 0.03767085075378418
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 4053.782149701852,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.04160046577453613,
+        "std_runtime": 0.0006914138793945312
+      }
+    }
+  },
+  {
+    "label": "25c_RC2",
+    "instance_key": "RC206_25c",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 542.8185947192119,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.14598703384399414,
+        "std_runtime": 0.00013709068298339844
+      },
+      "w5_edd": {
+        "mean_cost": 1177.0833049530343,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.14327192306518555,
+        "std_runtime": 0.0005691051483154297
+      },
+      "nsga2": {
+        "mean_cost": 368.12893398525773,
+        "std_cost": 1.7551043609040562,
+        "mean_tardiness": 1320.1041517205576,
+        "std_tardiness": 48.521217059823925,
+        "feasibility_rate": 0.9103305785123967,
+        "mean_runtime": 0.6118130683898926,
+        "std_runtime": 0.002986907958984375
+      },
+      "paco": {
+        "mean_cost": 313.47278028257927,
+        "std_cost": 0.21677376317185804,
+        "mean_tardiness": 686.5778131170159,
+        "std_tardiness": 2.154193855790311,
+        "feasibility_rate": 0.19490000000000002,
+        "mean_runtime": 5.835502505302429,
+        "std_runtime": 0.00241243839263916
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 2743.0434089831037,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.041840553283691406,
+        "std_runtime": 4.2438507080078125e-05
+      }
+    }
+  },
+  {
+    "label": "25c_RC2",
+    "instance_key": "RC207_25c",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 542.0607911717445,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.14043700695037842,
+        "std_runtime": 0.0027219057083129883
+      },
+      "w5_edd": {
+        "mean_cost": 928.924329116596,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.1363379955291748,
+        "std_runtime": 0.0031900405883789062
+      },
+      "nsga2": {
+        "mean_cost": 367.535605765732,
+        "std_cost": 0.9013373183324234,
+        "mean_tardiness": 507.4269154543002,
+        "std_tardiness": 25.9141176031564,
+        "feasibility_rate": 0.9019834710743801,
+        "mean_runtime": 0.6473199129104614,
+        "std_runtime": 0.03277003765106201
+      },
+      "paco": {
+        "mean_cost": 333.3588761720649,
+        "std_cost": 0.08666532863307452,
+        "mean_tardiness": 14.931201533391448,
+        "std_tardiness": 1.7437911210607266,
+        "feasibility_rate": 0.2404,
+        "mean_runtime": 3.7305870056152344,
+        "std_runtime": 0.035501956939697266
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 1971.129910031798,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.04169297218322754,
+        "std_runtime": 0.00012087821960449219
+      }
+    }
+  },
+  {
+    "label": "25c_RC2",
+    "instance_key": "RC208_25c",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "methods": {
+      "w5_baseline": {
+        "mean_cost": 412.1586372237902,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.10663044452667236,
+        "std_runtime": 0.00023639202117919922
+      },
+      "w5_edd": {
+        "mean_cost": 671.0602292976282,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 1.0,
+        "mean_runtime": 0.10612547397613525,
+        "std_runtime": 0.001114487648010254
+      },
+      "nsga2": {
+        "mean_cost": 368.6981625182585,
+        "std_cost": 0.30263955236827655,
+        "mean_tardiness": 0.012056542660383023,
+        "std_tardiness": 0.008017128815262252,
+        "feasibility_rate": 0.9172727272727272,
+        "mean_runtime": 0.38153648376464844,
+        "std_runtime": 0.027750492095947266
+      },
+      "paco": {
+        "mean_cost": 349.8812425702406,
+        "std_cost": 0.5323647985818809,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0488,
+        "mean_runtime": 3.37383496761322,
+        "std_runtime": 0.019597887992858887
+      },
+      "ivnd": {
+        "mean_cost": 322.24799556209325,
+        "std_cost": 0.0,
+        "mean_tardiness": 0.0,
+        "std_tardiness": 0.0,
+        "feasibility_rate": 0.0,
+        "mean_runtime": 0.04005253314971924,
+        "std_runtime": 0.0002676248550415039
+      }
+    }
+  }
+]

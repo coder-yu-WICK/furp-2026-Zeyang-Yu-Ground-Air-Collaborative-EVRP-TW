@@ -1,0 +1,1454 @@
+[
+  {
+    "instance_key": "RC101_25c",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "features": [
+      25.0,
+      0.0,
+      120.0,
+      2.339057724811425,
+      4.581032198096843,
+      8.158431221748456,
+      30.0,
+      0.25,
+      149.0,
+      0.43,
+      540.0,
+      21.6,
+      10.071742649611336,
+      10.0,
+      3.0,
+      19.0,
+      4.958333333333333,
+      0.5832781843500661
+    ],
+    "feature_names": [
+      "n_customers",
+      "tw_type_rc2",
+      "tw_horizon",
+      "spatial_spread_x",
+      "spatial_spread_y",
+      "spatial_radius",
+      "avg_tw_width",
+      "tw_density",
+      "tw_spread",
+      "tw_overlap_ratio",
+      "demand_total",
+      "demand_mean",
+      "demand_std",
+      "avg_service_time",
+      "n_trucks_needed",
+      "max_tw_gap",
+      "avg_tw_gap",
+      "customer_density"
+    ],
+    "variant_results": {
+      "baseline": {
+        "mean_cost": 407.3342320028589,
+        "mean_tardiness": 829.9609974135101,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.24316000938415527
+      },
+      "tw_aware": {
+        "mean_cost": 407.3342320028589,
+        "mean_tardiness": 829.9609974135101,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.172698974609375
+      },
+      "drone_only": {
+        "mean_cost": 407.3342320028589,
+        "mean_tardiness": 829.9609974135101,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.1900620460510254
+      },
+      "tw_aware_drone": {
+        "mean_cost": 407.3342320028589,
+        "mean_tardiness": 829.9609974135101,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.18973588943481445
+      },
+      "adaptive_tw": {
+        "mean_cost": 1050.9731758820465,
+        "mean_tardiness": 94.45712616831099,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.1492931842803955
+      },
+      "adaptive_tw_drone": {
+        "mean_cost": 542.0607911717445,
+        "mean_tardiness": 74.37649397686695,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 11.0,
+        "mean_runtime": 0.15320205688476562
+      },
+      "angle": {
+        "mean_cost": 316.6054711101003,
+        "mean_tardiness": 1667.7069705045622,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.1840229034423828
+      },
+      "angle_drone": {
+        "mean_cost": 295.41098695649623,
+        "mean_tardiness": 1070.8996214277058,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 4.0,
+        "mean_runtime": 0.1849830150604248
+      },
+      "hybrid": {
+        "mean_cost": 1050.9731758820465,
+        "mean_tardiness": 94.45712616831099,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.18320107460021973
+      },
+      "hybrid_drone": {
+        "mean_cost": 542.0607911717445,
+        "mean_tardiness": 74.37649397686695,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 11.0,
+        "mean_runtime": 0.15460205078125
+      }
+    },
+    "best_variant_tardiness": "adaptive_tw_drone",
+    "best_variant_cost": "adaptive_tw_drone",
+    "hybrid_rule_pick": "hybrid_drone"
+  },
+  {
+    "instance_key": "RC101_50c",
+    "n_customers": 50,
+    "tw_type": "RC1",
+    "n_trucks": 4,
+    "features": [
+      50.0,
+      0.0,
+      120.0,
+      4.736995571034451,
+      4.560758954384676,
+      8.158431221748456,
+      30.0,
+      0.25,
+      151.0,
+      0.43836734693877555,
+      970.0,
+      19.4,
+      9.8812954616285,
+      10.0,
+      5.0,
+      9.0,
+      2.4693877551020407,
+      0.5785886565064058
+    ],
+    "feature_names": [
+      "n_customers",
+      "tw_type_rc2",
+      "tw_horizon",
+      "spatial_spread_x",
+      "spatial_spread_y",
+      "spatial_radius",
+      "avg_tw_width",
+      "tw_density",
+      "tw_spread",
+      "tw_overlap_ratio",
+      "demand_total",
+      "demand_mean",
+      "demand_std",
+      "avg_service_time",
+      "n_trucks_needed",
+      "max_tw_gap",
+      "avg_tw_gap",
+      "customer_density"
+    ],
+    "variant_results": {
+      "baseline": {
+        "mean_cost": 672.258678159682,
+        "mean_tardiness": 2033.5820223918215,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.35930299758911133
+      },
+      "tw_aware": {
+        "mean_cost": 672.258678159682,
+        "mean_tardiness": 2033.5820223918215,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.3564109802246094
+      },
+      "drone_only": {
+        "mean_cost": 672.258678159682,
+        "mean_tardiness": 2033.5820223918215,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.34859490394592285
+      },
+      "tw_aware_drone": {
+        "mean_cost": 672.258678159682,
+        "mean_tardiness": 2033.5820223918215,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.34678006172180176
+      },
+      "adaptive_tw": {
+        "mean_cost": 1450.3316216056228,
+        "mean_tardiness": 606.3501611213339,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.2805790901184082
+      },
+      "adaptive_tw_drone": {
+        "mean_cost": 800.9871102470423,
+        "mean_tardiness": 438.9736357739873,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 20.0,
+        "mean_runtime": 0.3115730285644531
+      },
+      "angle": {
+        "mean_cost": 603.8638933945322,
+        "mean_tardiness": 3111.6693957752946,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.33884477615356445
+      },
+      "angle_drone": {
+        "mean_cost": 596.9907849072215,
+        "mean_tardiness": 2698.2518552462757,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 4.0,
+        "mean_runtime": 0.3297750949859619
+      },
+      "hybrid": {
+        "mean_cost": 1450.3316216056228,
+        "mean_tardiness": 606.3501611213339,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.29421496391296387
+      },
+      "hybrid_drone": {
+        "mean_cost": 800.9871102470423,
+        "mean_tardiness": 438.9736357739873,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 20.0,
+        "mean_runtime": 0.2923319339752197
+      }
+    },
+    "best_variant_tardiness": "adaptive_tw_drone",
+    "best_variant_cost": "adaptive_tw_drone",
+    "hybrid_rule_pick": "hybrid_drone"
+  },
+  {
+    "instance_key": "RC101_100c",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 4,
+    "features": [
+      100.0,
+      0.0,
+      120.0,
+      4.0245070058331365,
+      3.8974581254966676,
+      10.182337649086284,
+      30.0,
+      0.25,
+      211.0,
+      0.3862626262626263,
+      1724.0,
+      17.24,
+      9.370293485265016,
+      10.0,
+      9.0,
+      16.0,
+      1.8282828282828283,
+      1.5938441880606504
+    ],
+    "feature_names": [
+      "n_customers",
+      "tw_type_rc2",
+      "tw_horizon",
+      "spatial_spread_x",
+      "spatial_spread_y",
+      "spatial_radius",
+      "avg_tw_width",
+      "tw_density",
+      "tw_spread",
+      "tw_overlap_ratio",
+      "demand_total",
+      "demand_mean",
+      "demand_std",
+      "avg_service_time",
+      "n_trucks_needed",
+      "max_tw_gap",
+      "avg_tw_gap",
+      "customer_density"
+    ],
+    "variant_results": {
+      "baseline": {
+        "mean_cost": 1352.2200411638087,
+        "mean_tardiness": 6238.308353657397,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.7042241096496582
+      },
+      "tw_aware": {
+        "mean_cost": 1352.2200411638087,
+        "mean_tardiness": 6238.308353657397,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.7309246063232422
+      },
+      "drone_only": {
+        "mean_cost": 1294.8785076226286,
+        "mean_tardiness": 4832.458820121344,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 13.0,
+        "mean_runtime": 0.6843688488006592
+      },
+      "tw_aware_drone": {
+        "mean_cost": 1294.8785076226286,
+        "mean_tardiness": 4832.458820121344,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 13.0,
+        "mean_runtime": 0.6483440399169922
+      },
+      "adaptive_tw": {
+        "mean_cost": 2489.834181989454,
+        "mean_tardiness": 2353.926153727978,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.6434249877929688
+      },
+      "adaptive_tw_drone": {
+        "mean_cost": 1758.520768936297,
+        "mean_tardiness": 1675.2305693974204,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 31.0,
+        "mean_runtime": 0.6868340969085693
+      },
+      "angle": {
+        "mean_cost": 704.0319403237735,
+        "mean_tardiness": 15139.452345879396,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.715933084487915
+      },
+      "angle_drone": {
+        "mean_cost": 683.6456704955169,
+        "mean_tardiness": 14039.541570579335,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 4.0,
+        "mean_runtime": 0.7204968929290771
+      },
+      "hybrid": {
+        "mean_cost": 2489.834181989454,
+        "mean_tardiness": 2353.926153727978,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.6408419609069824
+      },
+      "hybrid_drone": {
+        "mean_cost": 1758.520768936297,
+        "mean_tardiness": 1675.2305693974204,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 31.0,
+        "mean_runtime": 0.66792893409729
+      }
+    },
+    "best_variant_tardiness": "adaptive_tw_drone",
+    "best_variant_cost": "adaptive_tw_drone",
+    "hybrid_rule_pick": "hybrid_drone"
+  },
+  {
+    "instance_key": "RC102_25c",
+    "n_customers": 25,
+    "tw_type": "RC1",
+    "n_trucks": 2,
+    "features": [
+      25.0,
+      0.0,
+      120.0,
+      2.339057724811425,
+      4.581032198096843,
+      8.158431221748456,
+      75.4,
+      0.6283333333333334,
+      199.0,
+      0.7066666666666666,
+      540.0,
+      21.6,
+      10.071742649611336,
+      10.0,
+      3.0,
+      24.0,
+      4.958333333333333,
+      0.5832781843500661
+    ],
+    "feature_names": [
+      "n_customers",
+      "tw_type_rc2",
+      "tw_horizon",
+      "spatial_spread_x",
+      "spatial_spread_y",
+      "spatial_radius",
+      "avg_tw_width",
+      "tw_density",
+      "tw_spread",
+      "tw_overlap_ratio",
+      "demand_total",
+      "demand_mean",
+      "demand_std",
+      "avg_service_time",
+      "n_trucks_needed",
+      "max_tw_gap",
+      "avg_tw_gap",
+      "customer_density"
+    ],
+    "variant_results": {
+      "baseline": {
+        "mean_cost": 407.3342320028589,
+        "mean_tardiness": 611.8202509493065,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.19318723678588867
+      },
+      "tw_aware": {
+        "mean_cost": 407.3342320028589,
+        "mean_tardiness": 611.8202509493065,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.18517231941223145
+      },
+      "drone_only": {
+        "mean_cost": 407.3342320028589,
+        "mean_tardiness": 611.8202509493065,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.18778586387634277
+      },
+      "tw_aware_drone": {
+        "mean_cost": 407.3342320028589,
+        "mean_tardiness": 611.8202509493065,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.18965888023376465
+      },
+      "adaptive_tw": {
+        "mean_cost": 919.3247181604389,
+        "mean_tardiness": 64.26420016594193,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.13560199737548828
+      },
+      "adaptive_tw_drone": {
+        "mean_cost": 412.8213789235872,
+        "mean_tardiness": 42.168803767020265,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 8.0,
+        "mean_runtime": 0.1316690444946289
+      },
+      "angle": {
+        "mean_cost": 316.6054711101003,
+        "mean_tardiness": 1178.8251100015034,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.1778421401977539
+      },
+      "angle_drone": {
+        "mean_cost": 295.41098695649623,
+        "mean_tardiness": 865.8447642848487,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 4.0,
+        "mean_runtime": 0.17899680137634277
+      },
+      "hybrid": {
+        "mean_cost": 919.3247181604389,
+        "mean_tardiness": 64.26420016594193,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.12987995147705078
+      },
+      "hybrid_drone": {
+        "mean_cost": 412.8213789235872,
+        "mean_tardiness": 42.168803767020265,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 8.0,
+        "mean_runtime": 0.13517498970031738
+      }
+    },
+    "best_variant_tardiness": "adaptive_tw_drone",
+    "best_variant_cost": "adaptive_tw_drone",
+    "hybrid_rule_pick": "hybrid_drone"
+  },
+  {
+    "instance_key": "RC102_50c",
+    "n_customers": 50,
+    "tw_type": "RC1",
+    "n_trucks": 4,
+    "features": [
+      50.0,
+      0.0,
+      120.0,
+      4.736995571034451,
+      4.560758954384676,
+      8.158431221748456,
+      71.08,
+      0.5923333333333333,
+      199.0,
+      0.6971428571428572,
+      970.0,
+      19.4,
+      9.8812954616285,
+      10.0,
+      5.0,
+      9.0,
+      2.4693877551020407,
+      0.5785886565064058
+    ],
+    "feature_names": [
+      "n_customers",
+      "tw_type_rc2",
+      "tw_horizon",
+      "spatial_spread_x",
+      "spatial_spread_y",
+      "spatial_radius",
+      "avg_tw_width",
+      "tw_density",
+      "tw_spread",
+      "tw_overlap_ratio",
+      "demand_total",
+      "demand_mean",
+      "demand_std",
+      "avg_service_time",
+      "n_trucks_needed",
+      "max_tw_gap",
+      "avg_tw_gap",
+      "customer_density"
+    ],
+    "variant_results": {
+      "baseline": {
+        "mean_cost": 672.258678159682,
+        "mean_tardiness": 1324.8183816165672,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.36207056045532227
+      },
+      "tw_aware": {
+        "mean_cost": 798.9993983091101,
+        "mean_tardiness": 1300.8981337861107,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.3668327331542969
+      },
+      "drone_only": {
+        "mean_cost": 672.258678159682,
+        "mean_tardiness": 1324.8183816165672,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.35796284675598145
+      },
+      "tw_aware_drone": {
+        "mean_cost": 673.0413300277494,
+        "mean_tardiness": 1300.8981337861107,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 1.0,
+        "mean_runtime": 0.3379380702972412
+      },
+      "adaptive_tw": {
+        "mean_cost": 1440.0851149771092,
+        "mean_tardiness": 559.9355348787703,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.3296630382537842
+      },
+      "adaptive_tw_drone": {
+        "mean_cost": 676.2649657865326,
+        "mean_tardiness": 559.9355348787703,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 10.0,
+        "mean_runtime": 0.33878231048583984
+      },
+      "angle": {
+        "mean_cost": 603.8638933945322,
+        "mean_tardiness": 2406.523292733246,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.33009910583496094
+      },
+      "angle_drone": {
+        "mean_cost": 596.9907849072215,
+        "mean_tardiness": 2044.4817500533718,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 4.0,
+        "mean_runtime": 0.32619690895080566
+      },
+      "hybrid": {
+        "mean_cost": 1440.0851149771092,
+        "mean_tardiness": 559.9355348787703,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.3221249580383301
+      },
+      "hybrid_drone": {
+        "mean_cost": 676.2649657865326,
+        "mean_tardiness": 559.9355348787703,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 10.0,
+        "mean_runtime": 0.3201899528503418
+      }
+    },
+    "best_variant_tardiness": "adaptive_tw_drone",
+    "best_variant_cost": "adaptive_tw_drone",
+    "hybrid_rule_pick": "hybrid_drone"
+  },
+  {
+    "instance_key": "RC102_100c",
+    "n_customers": 100,
+    "tw_type": "RC1",
+    "n_trucks": 4,
+    "features": [
+      100.0,
+      0.0,
+      120.0,
+      4.0245070058331365,
+      3.8974581254966676,
+      10.182337649086284,
+      71.46,
+      0.5954999999999999,
+      222.0,
+      0.6523232323232322,
+      1724.0,
+      17.24,
+      9.370293485265016,
+      10.0,
+      9.0,
+      23.0,
+      1.8282828282828283,
+      1.5938441880606504
+    ],
+    "feature_names": [
+      "n_customers",
+      "tw_type_rc2",
+      "tw_horizon",
+      "spatial_spread_x",
+      "spatial_spread_y",
+      "spatial_radius",
+      "avg_tw_width",
+      "tw_density",
+      "tw_spread",
+      "tw_overlap_ratio",
+      "demand_total",
+      "demand_mean",
+      "demand_std",
+      "avg_service_time",
+      "n_trucks_needed",
+      "max_tw_gap",
+      "avg_tw_gap",
+      "customer_density"
+    ],
+    "variant_results": {
+      "baseline": {
+        "mean_cost": 1352.2200411638087,
+        "mean_tardiness": 4710.585080433367,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.6825590133666992
+      },
+      "tw_aware": {
+        "mean_cost": 1569.1241407209573,
+        "mean_tardiness": 3256.765725055079,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.7080209255218506
+      },
+      "drone_only": {
+        "mean_cost": 1294.8785076226286,
+        "mean_tardiness": 3369.7396179076445,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 13.0,
+        "mean_runtime": 0.6651110649108887
+      },
+      "tw_aware_drone": {
+        "mean_cost": 1509.506047922824,
+        "mean_tardiness": 2872.924795984165,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 10.0,
+        "mean_runtime": 0.681779146194458
+      },
+      "adaptive_tw": {
+        "mean_cost": 2955.7127163824034,
+        "mean_tardiness": 1298.9407304431597,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.6144218444824219
+      },
+      "adaptive_tw_drone": {
+        "mean_cost": 1761.7729552947703,
+        "mean_tardiness": 1140.901255784442,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 25.0,
+        "mean_runtime": 0.6578891277313232
+      },
+      "angle": {
+        "mean_cost": 704.0319403237735,
+        "mean_tardiness": 12297.3480205973,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.6648199558258057
+      },
+      "angle_drone": {
+        "mean_cost": 683.6456704955169,
+        "mean_tardiness": 11291.501895060093,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 4.0,
+        "mean_runtime": 0.6713008880615234
+      },
+      "hybrid": {
+        "mean_cost": 2955.7127163824034,
+        "mean_tardiness": 1298.9407304431597,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.6252820491790771
+      },
+      "hybrid_drone": {
+        "mean_cost": 1761.7729552947703,
+        "mean_tardiness": 1140.901255784442,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 25.0,
+        "mean_runtime": 0.6281149387359619
+      }
+    },
+    "best_variant_tardiness": "adaptive_tw_drone",
+    "best_variant_cost": "adaptive_tw_drone",
+    "hybrid_rule_pick": "hybrid_drone"
+  },
+  {
+    "instance_key": "RC201_25c",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "features": [
+      25.0,
+      1.0,
+      240.0,
+      2.339057724811425,
+      4.581032198096843,
+      8.158431221748456,
+      120.0,
+      0.5,
+      869.0,
+      0.28,
+      540.0,
+      21.6,
+      10.071742649611336,
+      10.0,
+      3.0,
+      107.0,
+      31.208333333333332,
+      0.5832781843500661
+    ],
+    "feature_names": [
+      "n_customers",
+      "tw_type_rc2",
+      "tw_horizon",
+      "spatial_spread_x",
+      "spatial_spread_y",
+      "spatial_radius",
+      "avg_tw_width",
+      "tw_density",
+      "tw_spread",
+      "tw_overlap_ratio",
+      "demand_total",
+      "demand_mean",
+      "demand_std",
+      "avg_service_time",
+      "n_trucks_needed",
+      "max_tw_gap",
+      "avg_tw_gap",
+      "customer_density"
+    ],
+    "variant_results": {
+      "baseline": {
+        "mean_cost": 407.3342320028589,
+        "mean_tardiness": 3821.4745629907256,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.17454195022583008
+      },
+      "tw_aware": {
+        "mean_cost": 1553.0313527591552,
+        "mean_tardiness": 155.13223233844883,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.1390848159790039
+      },
+      "drone_only": {
+        "mean_cost": 407.3342320028589,
+        "mean_tardiness": 3821.4745629907256,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.1830449104309082
+      },
+      "tw_aware_drone": {
+        "mean_cost": 542.7491577380829,
+        "mean_tardiness": 155.13223233844883,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 12.0,
+        "mean_runtime": 0.13156676292419434
+      },
+      "adaptive_tw": {
+        "mean_cost": 535.6191638930841,
+        "mean_tardiness": 3512.488602157866,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.175095796585083
+      },
+      "adaptive_tw_drone": {
+        "mean_cost": 408.89625156723724,
+        "mean_tardiness": 3512.488602157866,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 2.0,
+        "mean_runtime": 0.18650579452514648
+      },
+      "angle": {
+        "mean_cost": 316.6054711101003,
+        "mean_tardiness": 5394.21077100525,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.1684129238128662
+      },
+      "angle_drone": {
+        "mean_cost": 295.41098695649623,
+        "mean_tardiness": 4204.364764284847,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 4.0,
+        "mean_runtime": 0.16805195808410645
+      },
+      "hybrid": {
+        "mean_cost": 1304.8346327887234,
+        "mean_tardiness": 258.2276287373705,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.17218804359436035
+      },
+      "hybrid_drone": {
+        "mean_cost": 543.0056424160367,
+        "mean_tardiness": 258.2276287373705,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 11.0,
+        "mean_runtime": 0.16720890998840332
+      }
+    },
+    "best_variant_tardiness": "tw_aware_drone",
+    "best_variant_cost": "tw_aware_drone",
+    "hybrid_rule_pick": "hybrid_drone"
+  },
+  {
+    "instance_key": "RC201_50c",
+    "n_customers": 50,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "features": [
+      50.0,
+      1.0,
+      240.0,
+      4.736995571034451,
+      4.560758954384676,
+      8.158431221748456,
+      120.0,
+      0.5,
+      871.0,
+      0.2848979591836735,
+      970.0,
+      19.4,
+      9.8812954616285,
+      10.0,
+      5.0,
+      52.0,
+      15.326530612244898,
+      0.5785886565064058
+    ],
+    "feature_names": [
+      "n_customers",
+      "tw_type_rc2",
+      "tw_horizon",
+      "spatial_spread_x",
+      "spatial_spread_y",
+      "spatial_radius",
+      "avg_tw_width",
+      "tw_density",
+      "tw_spread",
+      "tw_overlap_ratio",
+      "demand_total",
+      "demand_mean",
+      "demand_std",
+      "avg_service_time",
+      "n_trucks_needed",
+      "max_tw_gap",
+      "avg_tw_gap",
+      "customer_density"
+    ],
+    "variant_results": {
+      "baseline": {
+        "mean_cost": 672.258678159682,
+        "mean_tardiness": 8300.28274871547,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.36539530754089355
+      },
+      "tw_aware": {
+        "mean_cost": 1947.0846061763082,
+        "mean_tardiness": 601.3377636440914,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.3328359127044678
+      },
+      "drone_only": {
+        "mean_cost": 672.258678159682,
+        "mean_tardiness": 8300.28274871547,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.3658323287963867
+      },
+      "tw_aware_drone": {
+        "mean_cost": 805.9906033746397,
+        "mean_tardiness": 437.2432938169076,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 24.0,
+        "mean_runtime": 0.3399388790130615
+      },
+      "adaptive_tw": {
+        "mean_cost": 1824.5663229323345,
+        "mean_tardiness": 1065.4227522301796,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.3344910144805908
+      },
+      "adaptive_tw_drone": {
+        "mean_cost": 803.7284623008189,
+        "mean_tardiness": 784.3026570257371,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 23.0,
+        "mean_runtime": 0.35267114639282227
+      },
+      "angle": {
+        "mean_cost": 603.8638933945322,
+        "mean_tardiness": 11900.634655158685,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.35382914543151855
+      },
+      "angle_drone": {
+        "mean_cost": 596.9907849072215,
+        "mean_tardiness": 9688.514228979475,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 4.0,
+        "mean_runtime": 0.3602180480957031
+      },
+      "hybrid": {
+        "mean_cost": 1698.8247291210334,
+        "mean_tardiness": 1121.4494080102704,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.35345888137817383
+      },
+      "hybrid_drone": {
+        "mean_cost": 803.3073802342419,
+        "mean_tardiness": 840.3293128058277,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 22.0,
+        "mean_runtime": 0.36698484420776367
+      }
+    },
+    "best_variant_tardiness": "tw_aware_drone",
+    "best_variant_cost": "tw_aware_drone",
+    "hybrid_rule_pick": "hybrid_drone"
+  },
+  {
+    "instance_key": "RC201_100c",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "features": [
+      100.0,
+      1.0,
+      240.0,
+      4.0245070058331365,
+      3.8974581254966676,
+      10.182337649086284,
+      120.0,
+      0.5,
+      931.0,
+      0.281010101010101,
+      1724.0,
+      17.24,
+      9.370293485265016,
+      10.0,
+      9.0,
+      43.0,
+      8.191919191919192,
+      1.5938441880606504
+    ],
+    "feature_names": [
+      "n_customers",
+      "tw_type_rc2",
+      "tw_horizon",
+      "spatial_spread_x",
+      "spatial_spread_y",
+      "spatial_radius",
+      "avg_tw_width",
+      "tw_density",
+      "tw_spread",
+      "tw_overlap_ratio",
+      "demand_total",
+      "demand_mean",
+      "demand_std",
+      "avg_service_time",
+      "n_trucks_needed",
+      "max_tw_gap",
+      "avg_tw_gap",
+      "customer_density"
+    ],
+    "variant_results": {
+      "baseline": {
+        "mean_cost": 1352.2200411638087,
+        "mean_tardiness": 20603.63391798342,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.697037935256958
+      },
+      "tw_aware": {
+        "mean_cost": 4108.024460908064,
+        "mean_tardiness": 1511.8233839291372,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.5597538948059082
+      },
+      "drone_only": {
+        "mean_cost": 1294.8785076226286,
+        "mean_tardiness": 16578.33326555707,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 13.0,
+        "mean_runtime": 0.6526081562042236
+      },
+      "tw_aware_drone": {
+        "mean_cost": 2398.2364141291255,
+        "mean_tardiness": 1181.1880909314336,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 44.0,
+        "mean_runtime": 0.5173959732055664
+      },
+      "adaptive_tw": {
+        "mean_cost": 4012.5980616088054,
+        "mean_tardiness": 2575.678824197054,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.5050930976867676
+      },
+      "adaptive_tw_drone": {
+        "mean_cost": 1766.7620281413188,
+        "mean_tardiness": 2401.536444939393,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 48.0,
+        "mean_runtime": 0.4902219772338867
+      },
+      "angle": {
+        "mean_cost": 704.0319403237735,
+        "mean_tardiness": 35055.87550027552,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.6478641033172607
+      },
+      "angle_drone": {
+        "mean_cost": 683.6456704955169,
+        "mean_tardiness": 33115.19334116021,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 4.0,
+        "mean_runtime": 0.6464498043060303
+      },
+      "hybrid": {
+        "mean_cost": 3067.508594690446,
+        "mean_tardiness": 8760.811088942277,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.6585028171539307
+      },
+      "hybrid_drone": {
+        "mean_cost": 1901.295704161195,
+        "mean_tardiness": 6401.7118821981685,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 38.0,
+        "mean_runtime": 0.6652560234069824
+      }
+    },
+    "best_variant_tardiness": "tw_aware_drone",
+    "best_variant_cost": "tw_aware_drone",
+    "hybrid_rule_pick": "hybrid_drone"
+  },
+  {
+    "instance_key": "RC202_25c",
+    "n_customers": 25,
+    "tw_type": "RC2",
+    "n_trucks": 2,
+    "features": [
+      25.0,
+      1.0,
+      240.0,
+      2.339057724811425,
+      4.581032198096843,
+      8.158431221748456,
+      341.8,
+      1.4241666666666668,
+      919.0,
+      0.6166666666666666,
+      540.0,
+      21.6,
+      10.071742649611336,
+      10.0,
+      3.0,
+      139.0,
+      31.208333333333332,
+      0.5832781843500661
+    ],
+    "feature_names": [
+      "n_customers",
+      "tw_type_rc2",
+      "tw_horizon",
+      "spatial_spread_x",
+      "spatial_spread_y",
+      "spatial_radius",
+      "avg_tw_width",
+      "tw_density",
+      "tw_spread",
+      "tw_overlap_ratio",
+      "demand_total",
+      "demand_mean",
+      "demand_std",
+      "avg_service_time",
+      "n_trucks_needed",
+      "max_tw_gap",
+      "avg_tw_gap",
+      "customer_density"
+    ],
+    "variant_results": {
+      "baseline": {
+        "mean_cost": 407.3342320028589,
+        "mean_tardiness": 2725.3338165265222,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.17476391792297363
+      },
+      "tw_aware": {
+        "mean_cost": 1423.1915627464896,
+        "mean_tardiness": 95.08299654592645,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.11163210868835449
+      },
+      "drone_only": {
+        "mean_cost": 407.3342320028589,
+        "mean_tardiness": 2725.3338165265222,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.18129611015319824
+      },
+      "tw_aware_drone": {
+        "mean_cost": 415.11150955601875,
+        "mean_tardiness": 95.08299654592645,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 10.0,
+        "mean_runtime": 0.11428403854370117
+      },
+      "adaptive_tw": {
+        "mean_cost": 533.5498741002193,
+        "mean_tardiness": 2725.3338165265222,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.14227581024169922
+      },
+      "adaptive_tw_drone": {
+        "mean_cost": 407.99697370265585,
+        "mean_tardiness": 2725.3338165265222,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 1.0,
+        "mean_runtime": 0.14320635795593262
+      },
+      "angle": {
+        "mean_cost": 316.6054711101003,
+        "mean_tardiness": 3674.040676223885,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.16687798500061035
+      },
+      "angle_drone": {
+        "mean_cost": 295.41098695649623,
+        "mean_tardiness": 3189.0765300065405,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 4.0,
+        "mean_runtime": 0.16759300231933594
+      },
+      "hybrid": {
+        "mean_cost": 1173.186175067116,
+        "mean_tardiness": 198.1783929448481,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.13355779647827148
+      },
+      "hybrid_drone": {
+        "mean_cost": 413.7662301678793,
+        "mean_tardiness": 198.1783929448481,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 8.0,
+        "mean_runtime": 0.1555008888244629
+      }
+    },
+    "best_variant_tardiness": "tw_aware_drone",
+    "best_variant_cost": "tw_aware_drone",
+    "hybrid_rule_pick": "hybrid_drone"
+  },
+  {
+    "instance_key": "RC202_50c",
+    "n_customers": 50,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "features": [
+      50.0,
+      1.0,
+      240.0,
+      4.736995571034451,
+      4.560758954384676,
+      8.158431221748456,
+      324.88,
+      1.3536666666666666,
+      919.0,
+      0.6073469387755103,
+      970.0,
+      19.4,
+      9.8812954616285,
+      10.0,
+      5.0,
+      81.0,
+      15.326530612244898,
+      0.5785886565064058
+    ],
+    "feature_names": [
+      "n_customers",
+      "tw_type_rc2",
+      "tw_horizon",
+      "spatial_spread_x",
+      "spatial_spread_y",
+      "spatial_radius",
+      "avg_tw_width",
+      "tw_density",
+      "tw_spread",
+      "tw_overlap_ratio",
+      "demand_total",
+      "demand_mean",
+      "demand_std",
+      "avg_service_time",
+      "n_trucks_needed",
+      "max_tw_gap",
+      "avg_tw_gap",
+      "customer_density"
+    ],
+    "variant_results": {
+      "baseline": {
+        "mean_cost": 672.258678159682,
+        "mean_tardiness": 5715.7295634175625,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.32929420471191406
+      },
+      "tw_aware": {
+        "mean_cost": 2197.9999930298277,
+        "mean_tardiness": 455.28951992270777,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.3078148365020752
+      },
+      "drone_only": {
+        "mean_cost": 672.258678159682,
+        "mean_tardiness": 5715.7295634175625,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.33390092849731445
+      },
+      "tw_aware_drone": {
+        "mean_cost": 805.3501910229029,
+        "mean_tardiness": 455.28951992270777,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 19.0,
+        "mean_runtime": 0.29579901695251465
+      },
+      "adaptive_tw": {
+        "mean_cost": 1689.955796630035,
+        "mean_tardiness": 2769.599538911627,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.29192304611206055
+      },
+      "adaptive_tw_drone": {
+        "mean_cost": 800.0019227443981,
+        "mean_tardiness": 2769.599538911627,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 14.0,
+        "mean_runtime": 0.28020501136779785
+      },
+      "angle": {
+        "mean_cost": 603.8638933945322,
+        "mean_tardiness": 8603.187964570383,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.32834410667419434
+      },
+      "angle_drone": {
+        "mean_cost": 596.9907849072215,
+        "mean_tardiness": 6534.226020581595,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 4.0,
+        "mean_runtime": 0.32009100914001465
+      },
+      "hybrid": {
+        "mean_cost": 1821.8063477425571,
+        "mean_tardiness": 808.3488831315369,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.29887819290161133
+      },
+      "hybrid_drone": {
+        "mean_cost": 800.7277330115954,
+        "mean_tardiness": 808.3488831315369,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 16.0,
+        "mean_runtime": 0.3152961730957031
+      }
+    },
+    "best_variant_tardiness": "tw_aware_drone",
+    "best_variant_cost": "tw_aware_drone",
+    "hybrid_rule_pick": "hybrid_drone"
+  },
+  {
+    "instance_key": "RC202_100c",
+    "n_customers": 100,
+    "tw_type": "RC2",
+    "n_trucks": 4,
+    "features": [
+      100.0,
+      1.0,
+      240.0,
+      4.0245070058331365,
+      3.8974581254966676,
+      10.182337649086284,
+      318.96,
+      1.329,
+      942.0,
+      0.596969696969697,
+      1724.0,
+      17.24,
+      9.370293485265016,
+      10.0,
+      9.0,
+      51.0,
+      8.191919191919192,
+      1.5938441880606504
+    ],
+    "feature_names": [
+      "n_customers",
+      "tw_type_rc2",
+      "tw_horizon",
+      "spatial_spread_x",
+      "spatial_spread_y",
+      "spatial_radius",
+      "avg_tw_width",
+      "tw_density",
+      "tw_spread",
+      "tw_overlap_ratio",
+      "demand_total",
+      "demand_mean",
+      "demand_std",
+      "avg_service_time",
+      "n_trucks_needed",
+      "max_tw_gap",
+      "avg_tw_gap",
+      "customer_density"
+    ],
+    "variant_results": {
+      "baseline": {
+        "mean_cost": 1352.2200411638087,
+        "mean_tardiness": 14054.217255150033,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.6469650268554688
+      },
+      "tw_aware": {
+        "mean_cost": 4074.686592910796,
+        "mean_tardiness": 1284.540385315727,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.5046670436859131
+      },
+      "drone_only": {
+        "mean_cost": 1294.8785076226286,
+        "mean_tardiness": 10594.31152613894,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 13.0,
+        "mean_runtime": 0.6360230445861816
+      },
+      "tw_aware_drone": {
+        "mean_cost": 1774.360242520293,
+        "mean_tardiness": 1203.1893755428573,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 37.0,
+        "mean_runtime": 0.4893629550933838
+      },
+      "adaptive_tw": {
+        "mean_cost": 4162.851208121754,
+        "mean_tardiness": 1872.356000557362,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.47617006301879883
+      },
+      "adaptive_tw_drone": {
+        "mean_cost": 1890.480169909559,
+        "mean_tardiness": 1862.3080911268848,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 37.0,
+        "mean_runtime": 0.4872901439666748
+      },
+      "angle": {
+        "mean_cost": 704.0319403237735,
+        "mean_tardiness": 23706.876948787463,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.6542549133300781
+      },
+      "angle_drone": {
+        "mean_cost": 683.6456704955169,
+        "mean_tardiness": 21967.06443743392,
+        "feasibility_rate": 0.0,
+        "avg_drone_missions": 4.0,
+        "mean_runtime": 0.6444029808044434
+      },
+      "hybrid": {
+        "mean_cost": 3392.9576787213,
+        "mean_tardiness": 3727.845322649793,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 0.0,
+        "mean_runtime": 0.6207931041717529
+      },
+      "hybrid_drone": {
+        "mean_cost": 1882.339628988451,
+        "mean_tardiness": 2627.847539988972,
+        "feasibility_rate": 1.0,
+        "avg_drone_missions": 34.0,
+        "mean_runtime": 0.6465370655059814
+      }
+    },
+    "best_variant_tardiness": "tw_aware_drone",
+    "best_variant_cost": "tw_aware_drone",
+    "hybrid_rule_pick": "hybrid_drone"
+  }
+]

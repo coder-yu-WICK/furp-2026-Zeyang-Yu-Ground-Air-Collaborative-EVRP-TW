@@ -17,9 +17,22 @@ os.makedirs(RESULTS_DIR, exist_ok=True)
 os.makedirs(DATA_OUT_DIR, exist_ok=True)
 
 # ── Dataset & Instance Configuration ───────────────────────────────
-# Solomon RC instances to use
-RC1_INSTANCES = ['RC101', 'RC102']   # tight time windows
-RC2_INSTANCES = ['RC201', 'RC202']   # wide time windows
+# Solomon instances — all 56 instances across 6 types
+RC1_INSTANCES = ['RC101', 'RC102', 'RC103', 'RC104', 'RC105', 'RC106', 'RC107', 'RC108']
+RC2_INSTANCES = ['RC201', 'RC202', 'RC203', 'RC204', 'RC205', 'RC206', 'RC207', 'RC208']
+R1_INSTANCES  = ['R101', 'R102', 'R103', 'R104', 'R105', 'R106', 'R107', 'R108',
+                 'R109', 'R110', 'R111', 'R112']
+R2_INSTANCES  = ['R201', 'R202', 'R203', 'R204', 'R205', 'R206', 'R207', 'R208',
+                 'R209', 'R210', 'R211']
+C1_INSTANCES  = ['C101', 'C102', 'C103', 'C104', 'C105', 'C106', 'C107', 'C108', 'C109']
+C2_INSTANCES  = ['C201', 'C202', 'C203', 'C204', 'C205', 'C206', 'C207', 'C208']
+
+# All instance lists grouped by type
+ALL_INSTANCE_LISTS = {
+    'RC1': RC1_INSTANCES, 'RC2': RC2_INSTANCES,
+    'R1': R1_INSTANCES,   'R2': R2_INSTANCES,
+    'C1': C1_INSTANCES,   'C2': C2_INSTANCES,
+}
 
 # Coordinate scaling: Solomon [0, 100] → Urban [0, 16] km
 COORD_SCALE = 0.16
@@ -28,12 +41,16 @@ COORD_SCALE = 0.16
 DEPOT = (8.0, 8.0)
 
 # Customer sizes to test
-CUSTOMER_SIZES = [25, 50, 100]
+CUSTOMER_SIZES = [25, 50, 100, 200]
 
-# Time window types
+# Time window types — 6 Solomon categories
 TW_TYPES = {
     'RC1': {'name': 'tight', 'horizon': 120.0},
     'RC2': {'name': 'wide',  'horizon': 240.0},
+    'R1':  {'name': 'tight', 'horizon': 120.0},
+    'R2':  {'name': 'wide',  'horizon': 240.0},
+    'C1':  {'name': 'tight', 'horizon': 120.0},
+    'C2':  {'name': 'wide',  'horizon': 240.0},
 }
 
 # ── Vehicle Configuration ──────────────────────────────────────────
@@ -51,6 +68,7 @@ VEHICLE_CONFIGS = {
     25:  [(2, 2)],
     50:  [(4, 4), (6, 6)],
     100: [(4, 4), (6, 6), (8, 8)],
+    200: [(8, 8), (10, 10)],
 }
 
 # ── Cost Parameters ─────────────────────────────────────────────────

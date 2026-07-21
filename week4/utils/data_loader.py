@@ -14,6 +14,8 @@ from config import (
     DATA_JSON_DIR, DATA_OUT_DIR,
     COORD_SCALE, DEPOT,
     RC1_INSTANCES, RC2_INSTANCES,
+    R1_INSTANCES, R2_INSTANCES,
+    C1_INSTANCES, C2_INSTANCES,
     CUSTOMER_SIZES, TW_TYPES,
 )
 
@@ -77,7 +79,21 @@ def build_instance(instance_name, n_customers, seed=42):
     customers = extract_customers(raw, n_customers, seed)
     dist_matrix = compute_distance_matrix(customers, DEPOT)
 
-    tw_type = 'RC1' if instance_name.startswith('RC1') else 'RC2'
+    # Detect TW type from instance name
+    if instance_name.startswith('RC1'):
+        tw_type = 'RC1'
+    elif instance_name.startswith('RC2'):
+        tw_type = 'RC2'
+    elif instance_name.startswith('R1'):
+        tw_type = 'R1'
+    elif instance_name.startswith('R2'):
+        tw_type = 'R2'
+    elif instance_name.startswith('C1'):
+        tw_type = 'C1'
+    elif instance_name.startswith('C2'):
+        tw_type = 'C2'
+    else:
+        tw_type = 'RC1'  # fallback
 
     return {
         'name': f'{instance_name}_{n_customers}c',
@@ -94,7 +110,9 @@ def build_instance(instance_name, n_customers, seed=42):
 def build_all_instances():
     """Build all experiment instances and save to JSON."""
     instances = {}
-    all_source = RC1_INSTANCES + RC2_INSTANCES
+    all_source = (RC1_INSTANCES + RC2_INSTANCES +
+                  R1_INSTANCES + R2_INSTANCES +
+                  C1_INSTANCES + C2_INSTANCES)
 
     for src in all_source:
         for n in CUSTOMER_SIZES:

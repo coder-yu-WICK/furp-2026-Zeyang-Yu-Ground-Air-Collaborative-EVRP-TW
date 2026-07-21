@@ -80,6 +80,191 @@ def generate_random_problems(batch_size, problem_size, tw_type='mixed',
     return problems
 
 
+# ── Solomon-Realistic Problem Generation ────────────────────────────────
+
+def _generate_clustered_coords(n, coord_range=16.0, depot=(8.0, 8.0), seed=None):
+    """
+    Generate clustered customer coordinates (Solomon C-type pattern).
+
+    Creates 2-4 cluster centers, then distributes customers around them
+    with Gaussian noise.
+
+    Returns: (coords, cluster_ids) — coords shape (n, 2)
+    """
+    import numpy as np
+    rng = np.random.RandomState(seed)
+
+    n_clusters = rng.randint(2, 5)
+    # Cluster centers randomly placed, but biased away from depot center
+    cluster_centers = rng.uniform(1, coord_range - 1, size=(n_clusters, 2))
+    # Push clusters away from depot
+    for ci in range(n_clusters):
+        cx, cy = cluster_centers[ci]
+        dx, dy = cx - depot[0], cy - depot[1]
+        dist = np.sqrt(dx*dx + dy*dy)
+        if dist < 3.0:
+            # Push outward
+            cluster_centers[ci, 0] = depot[0] + dx / max(dist, 0.1) * rng.uniform(3, 8)
+            cluster_centers[ci, 1] = depot[1] + dy / max(dist, 0.1) * rng.uniform(3, 8)
+
+    # Assign customers to clusters (roughly equal)
+    customers_per_cluster = []
+    remaining = n
+    for ci in range(n_clusters - 1):
+        k = rng.randint(remaining // (n_clusters - ci + 1),
+                       remaining // (n_clusters - ci) + 1)
+        k = max(1, min(k, remaining - (n_clusters - ci - 1)))
+        customers_per_cluster.append(k)
+        remaining -= k
+    customers_per_cluster.append(remaining)
+
+    coords = np.zeros((n, 2))
+    cluster_ids = np.zeros(n, dtype=int)
+    idx = 0
+    for ci, count in enumerate(customers_per_cluster):
+        cx, cy = cluster_centers[ci]
+        sigma = rng.uniform(1.0, 3.0)
+        for _ in range(count):
+            x = cx + rng.normal(0, sigma)
+            y = cy + rng.normal(0, sigma)
+            coords[idx] = [np.clip(x, 0, coord_range), np.clip(y, 0, coord_range)]
+            cluster_ids[idx] = ci
+            idx += 1
+
+    return coords, cluster_ids
+
+
+def _generate_tw_depot_correlated(coords, depot, tw_type, horizon,
+                                   truck_speed=35.0, seed=None):
+    """
+    Generate time windows correlated with depot distance (like real Solomon).
+
+    Customers closer to depot get earlier TWs on average.
+    RC1: tight TW (width 20-50), small offset spread
+    RC2: wide TW (width 60-180), larger offset spread
+    """
+    import numpy as np
+    import random as py_random
+    rng_py = py_random.Random(seed)
+    rng_np = np.random.RandomState(seed if seed is not None else 0)
+
+    n = len(coords)
+    dx = coords[:, 0] - depot[0]
+    dy = coords[:, 1] - depot[1]
+    dists = np.sqrt(dx*dx + dy*dy)
+    est_arrival = dists / truck_speed  # hours → scale to horizon units
+
+    if tw_type == 'RC1' or (tw_type == 'mixed' and rng_py.random() < 0.5):
+        tw_widths = rng_np.uniform(20, 50, size=n)
+        # Shift arrival times so they spread within first 60% of horizon
+        offset = rng_np.uniform(0, horizon * 0.3, size=n)
+    else:
+        tw_widths = rng_np.uniform(60, 180, size=n)
+        offset = rng_np.uniform(0, horizon * 0.6, size=n)
+
+    # Center TW around estimated arrival + random offset
+    # est_arrival is in hours (km / km/h), convert to minutes to match horizon
+    est_arrival_minutes = est_arrival * 60.0
+    centers = est_arrival_minutes + offset
+    tw_start = np.clip(centers - tw_widths / 2, 0, horizon - 10)
+    tw_end = np.clip(centers + tw_widths / 2, tw_start + 10, horizon)
+
+    return tw_start, tw_end
+
+
+def generate_solomon_problems(batch_size, problem_size, tw_type='mixed',
+                               pattern='mixed', coord_range=16.0,
+                               depot=(8.0, 8.0), demand_min=5.0, demand_max=40.0,
+                               tw_horizon=240.0, seed=None):
+    """
+    Generate EVRP-TW instances matching Solomon RC/C/R characteristics.
+
+    Three spatial patterns:
+      - clustered: 2-4 clusters with Gaussian spread (C-type)
+      - random: uniform random (R-type)
+      - random-clustered: half-and-half (RC-type)
+
+    TWs are correlated with depot distance — closer customers get earlier TWs.
+    This matches how real Solomon instances are structured.
+
+    Args:
+        batch_size: number of instances
+        problem_size: number of customers per instance
+        tw_type: 'RC1' (tight), 'RC2' (wide), or 'mixed'
+        pattern: 'clustered', 'random', 'random-clustered', or 'mixed'
+        coord_range, depot, demand_min, demand_max, tw_horizon: as original
+        seed: random seed
+
+    Returns:
+        List of problem dicts (same format as generate_random_problems)
+    """
+    import random as py_random
+    import numpy as np
+
+    if seed is not None:
+        torch.manual_seed(seed)
+        py_random.seed(seed)
+        np.random.seed(seed)
+
+    problems = []
+    rng_py = py_random.Random(seed)
+
+    for bi in range(batch_size):
+        # Determine pattern for this instance
+        batch_seed = seed + bi * 1000 if seed is not None else None
+
+        if pattern == 'mixed':
+            pat = rng_py.choices(
+                ['clustered', 'random', 'random-clustered'],
+                weights=[0.3, 0.3, 0.4])[0]
+        else:
+            pat = pattern
+
+        if pat == 'clustered':
+            coords_np, _ = _generate_clustered_coords(
+                problem_size, coord_range, depot, seed=batch_seed)
+        elif pat == 'random-clustered':
+            n_half = problem_size // 2
+            c1, _ = _generate_clustered_coords(
+                n_half, coord_range, depot, seed=batch_seed)
+            c2 = np.random.RandomState(batch_seed).uniform(
+                0, coord_range, size=(problem_size - n_half, 2))
+            coords_np = np.concatenate([c1, c2], axis=0)
+            np.random.RandomState(batch_seed + 1).shuffle(coords_np)
+        else:  # random
+            coords_np = np.random.RandomState(batch_seed).uniform(
+                0, coord_range, size=(problem_size, 2))
+
+        node_xy = torch.from_numpy(coords_np).float()
+        depot_xy = torch.tensor(depot).float()
+
+        # Demand
+        demands = np.random.RandomState(batch_seed + 2 if batch_seed else None).uniform(
+            demand_min, demand_max, size=problem_size)
+        node_demand = torch.from_numpy(demands).float()
+
+        # TW correlated with depot distance
+        tw_start_np, tw_end_np = _generate_tw_depot_correlated(
+            coords_np, depot, tw_type, tw_horizon,
+            seed=batch_seed + 3 if batch_seed else None)
+        node_tw_start = torch.from_numpy(tw_start_np).float()
+        node_tw_end = torch.from_numpy(tw_end_np).float()
+
+        # Service time
+        node_service = torch.ones(problem_size) * 10.0
+
+        problems.append({
+            'depot_xy': depot_xy,
+            'node_xy': node_xy,
+            'node_demand': node_demand,
+            'node_tw_start': node_tw_start,
+            'node_tw_end': node_tw_end,
+            'node_service': node_service,
+        })
+
+    return problems
+
+
 # ── 8-fold Data Augmentation ───────────────────────────────────────────
 
 def augment_xy_by_8_fold(depot_xy, node_xy):
