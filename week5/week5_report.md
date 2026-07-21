@@ -548,3 +548,28 @@ python visualize.py --results results/week5_ablation_<timestamp>.json
 | angle_drone | Angle petal | Yes | Yes | Research comparison |
 | hybrid | Auto-select | No | No | Best no-drone |
 | **hybrid_drone** ★ | **Auto-select** | **Yes** | **Yes** | **Best overall** |
+
+---
+
+## Week 6 补充更新 (2026-07-21)
+
+Week 5 代码本身在 W6 未做修改，但 W6 的新模块直接依赖并扩展了 Week 5 的能力：
+
+### 被 W6 依赖的模块
+
+| W5 模块 | W6 使用方式 |
+|---------|------------|
+| `pomo_mt_improved.py` | SOTA对比中作为 W5 Baseline；充电/同步研究中的pipeline入口 |
+| `adaptive_clustering.py` | 全部实验的统一聚类入口 (`cluster_with_params`) |
+| `drone_post_processing.py` | 同步研究中的原始无人机插入（无同步对照组） |
+
+### W6 新增的扩展模块
+
+| W6 模块 | 扩展了 W5 的什么 |
+|---------|-----------------|
+| `sync_constraints.py` | 扩展 `insert_cross_route_drones` → `insert_cross_route_drones_sync`，新增时间同步约束 |
+| `ev_problem_model.py` | 新增 `EVTruckDroneSolution`，在 W5 的 `TruckDroneSolution` 之上增加电池+充电 |
+
+### W6 SOTA实验使用
+
+W5 的 `hybrid_drone` 变体在 W6 SOTA对比实验中作为基线方法（W5 Baseline），与 NSGA-II、P-ACO、IVND 进行了16实例×5方法对比。结果表明 W5+EDD修复 是唯一实现100%可行性+0延迟的方法。

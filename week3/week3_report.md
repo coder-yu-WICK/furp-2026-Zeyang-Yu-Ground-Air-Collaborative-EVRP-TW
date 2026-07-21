@@ -538,3 +538,36 @@ Full per-configuration data is available in:
 - `week3/results/results_20260702_152443_hv_fixed.json` — All 48 experiment configurations with corrected HV values
 - `week3/results/interim_20260702_150309.json` — Earlier interim results
 - `week3/week3_report.md` — This report
+
+---
+
+## Week 6 补充更新 (2026-07-21)
+
+### 配置文件扩展
+
+本周对 `week3/config.py` 和 `week3/utils/data_loader.py` 做了以下扩展：
+
+| 改动 | 之前 | 之后 |
+|------|------|------|
+| Solomon源实例 | 4个 (RC101/102, RC201/202) | **56个** (RC1×8, RC2×8, R1×12, R2×11, C1×9, C2×8) |
+| TW类型 | 2种 (RC1/RC2) | **6种** (RC1/RC2/R1/R2/C1/C2) |
+| 客户规模 | 25, 50, 100 | 25, 50, 100, **200** |
+| 生成实例总数 | 12个 | **224个** |
+
+### 新增常量
+
+```python
+R1_INSTANCES  = ['R101'..'R112']   # 随机分布 + 紧TW
+R2_INSTANCES  = ['R201'..'R211']   # 随机分布 + 宽TW
+C1_INSTANCES  = ['C101'..'C109']   # 聚集分布 + 紧TW
+C2_INSTANCES  = ['C201'..'C208']   # 聚集分布 + 宽TW
+ALL_INSTANCE_LISTS = {...}         # 按类型分组的实例字典
+```
+
+### data_loader 更新
+
+`build_instance()` 中的 TW 类型检测从简单的二元判断扩展为6种类型自动识别（检测实例名前缀）。`build_all_instances()` 自动遍历全部56个源实例。
+
+### W6 SOTA实验使用
+
+扩展后的实例体系被 Week 6 的 `run_sota_comparison.py` 使用，在全部 RC1+RC2 16个实例上进行了5方法对比。

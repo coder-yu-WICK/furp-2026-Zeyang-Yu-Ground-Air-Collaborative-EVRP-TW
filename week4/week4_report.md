@@ -654,4 +654,29 @@ Regenerate with:
 
 ---
 
-*Report generated 2026-07-07 | Week 4: POMO Multi-Truck for EVRP-TW*
+## Week 6 补充更新 (2026-07-21)
+
+### problem_model.py 同步违规追踪
+
+`week4/utils/problem_model.py` 中的 `TruckDroneSolution._evaluate()` 新增了两个功能：
+
+1. **节点到达时间追踪** — 卡车路线评估过程中记录每个客户节点的到达时间：
+   ```python
+   node_arrival_times = {}  # node_id -> arrival_time
+   # 在路线循环中:
+   node_arrival_times[cust_idx] = current_time
+   ```
+
+2. **无人机同步违规检查** — 在无人机任务评估环节新增同步约束验证：
+   - 检查无人机是否早于卡车到达回收点 k
+   - 若卡车到达早于无人机 → 卡车等待（可接受，有时间惩罚）
+   - 若无人机到达早于卡车 → `violations['sync']` 累加（硬违规）
+   - 该字段早在 Week 3 就已定义但从未被填充
+
+### data_loader.py TW类型扩展
+
+`week4/utils/data_loader.py` 与 week3 同步更新，支持全部6种 Solomon TW 类型（RC1/RC2/R1/R2/C1/C2）。
+
+### W6使用
+
+这些修改为 Week 6 的 Model D（同步消融）和全部56实例扩展提供了底层支持。
