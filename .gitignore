@@ -39,3 +39,9 @@ secrets.*
 # POMO training checkpoints (keep only best_model.pt)
 week4/algorithms/pomo/checkpoints/checkpoint_epoch*.pt
 week4/algorithms/pomo/checkpoints/final_model.pt
+src/algorithms/pomo/checkpoints/
+
+# Generated outputs
+results/
+figures/
+src/data
