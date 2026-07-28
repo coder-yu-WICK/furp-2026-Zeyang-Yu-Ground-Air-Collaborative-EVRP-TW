@@ -1,0 +1,46 @@
+% Table: Literature Comparison — Electric Vehicle Routing with Time Windows
+\begin{table}[t]
+\caption{Literature comparison with published EVRP-TW methods.}
+\label{tab:lit_evrp}
+\small
+\centering
+\begin{tabular}{l c c c p{3.5cm} c c}
+\toprule
+\textbf{Reference} & \textbf{Year} & \textbf{Method} & \textbf{Problem} & \textbf{Key Features} & \textbf{Instances} & \textbf{Scale} \\
+\midrule
+\multicolumn{7}{c}{\textit{Classical VRPTW (truck-only, no EV)}} \\
+\midrule
+Ropke \& Pisinger~\cite{ropke2006alns} & 2006 & ALNS & VRPTW & Adaptive destroy/repair operators; SA acceptance & Solomon 56 & 100 \\
+Pisinger \& Ropke~\cite{pisinger2007alns} & 2007 & ALNS & VRPTW & Unified ALNS for 5 VRP variants & Solomon 56 & 100 \\
+Vidal et al.~\cite{vidal2013hybrid} & 2013 & HGSADC & VRPTW & Hybrid GA + local search; population diversity & Solomon 56 & 100 \\
+Nagata et al.~\cite{nagata2010penalty} & 2010 & MA & VRPTW & Memetic algorithm; penalty-based TW handling & Solomon 56 & 100 \\
+Kwon et al.~\cite{kwon2020pomo} & 2020 & POMO & VRPTW & Neural construction; policy optimization & Solomon 56 & 100 \\
+\midrule
+\multicolumn{7}{c}{\textit{E-VRPTW (electric trucks + time windows)}} \\
+\midrule
+Schneider et al.~\cite{schneider2014evrp} & 2014 & VNS/TS & E-VRPTW & Full recharge; cyclic-exchange neighborhoods & Solomon 56 + CS & 100 \\
+Goeke \& Schneider~\cite{goeke2015evrptwmf} & 2015 & ALNS & E-VRPTWMF & Mixed fleet (ICEV+BEV); energy consumption model & Solomon 56 + CS & 100 \\
+Keskin \& \c{C}atay~\cite{keskin2016partial} & 2016 & ALNS & E-VRPTW-PR & Partial recharge; station removal operators & Solomon 56 + CS & 100 \\
+Hiermann et al.~\cite{hiermann2016efsmftw} & 2016 & ALNS+B\&P & E-FSMFTW & Fleet size \& mix; DP for charging decisions & Solomon 56 + CS & 100 \\
+Montoya et al.~\cite{montoya2017nonlinear} & 2017 & ILS+VND & E-VRP-NL & Non-linear charging; sequencing-then-charging & Random instances & 100 \\
+Keskin \& \c{C}atay~\cite{keskin2019fast} & 2019 & ALNS & E-VRPTW-FC & Fast charging; multiple charging options & Solomon 56 + CS & 100 \\
+\midrule
+\multicolumn{7}{c}{\textit{This Work}} \\
+\midrule
+\textbf{This work} & 2026 & CW+POMO & \textbf{TD-EVRP-TW} & \textbf{Truck-drone + EV + TW}; & Solomon 56 & 50--200 \\
+ & & +EDD+Drone & & 4-model ablation (A/B/C/D); & & \\
+ & & & & sync-aware drone insertion; & & \\
+ & & & & non-linear charging; 100\% TW feasible & & \\
+\bottomrule
+\end{tabular}
+
+\vspace{4pt}
+\footnotesize
+\textit{Notation:} ALNS = Adaptive Large Neighborhood Search; VNS = Variable Neighborhood Search;
+TS = Tabu Search; ILS = Iterated Local Search; VND = Variable Neighborhood Descent;
+B\&P = Branch-and-Price; HGSADC = Hybrid Genetic Search with Adaptive Diversity Control;
+MA = Memetic Algorithm; POMO = Policy Optimization with Multiple Optima;
+E-VRPTW = Electric VRPTW; PR = Partial Recharge; MF = Mixed Fleet;
+FSMFTW = Fleet Size \& Mix with Time Windows; NL = Non-linear charging;
+FC = Fast Charging; TD-EVRP-TW = Truck-Drone Electric VRPTW (this work).
+\end{table}

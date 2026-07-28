@@ -1,0 +1,37 @@
+% Table: Method Component Comparison
+\begin{table}[t]
+\caption{Methodological comparison: our approach vs published alternatives.}
+\label{tab:method_compare}
+\small
+\centering
+\begin{tabular}{l p{2.8cm} p{3.0cm} p{2.8cm} p{2.4cm}}
+\toprule
+\textbf{Component} & \textbf{Classical VRPTW}~\cite{ropke2006alns,vidal2013hybrid} & \textbf{E-VRPTW}~\cite{schneider2014evrp,keskin2016partial} & \textbf{Truck-Drone}~\cite{wang2017vrpd,liu2024cooperated} & \textbf{This Work} \\
+\midrule
+\textbf{Construction} & Savings/Insertion heuristics & Savings/Insertion + CS-aware & Savings/Nearest Neighbor & \textbf{CW-Savings + POMO} (adaptive: C/R1 vs RC/R2) \\
+\midrule
+\textbf{TW Feasibility} & Penalty functions; ejection chains & Penalty + charging-time-aware insertion & Penalty + drone-time-aware & \textbf{EDD Repair} (inter-route + intra-route); guarantees 100\% \\
+\midrule
+\textbf{Drone Assignment} & N/A & N/A & Greedy insertion; MIP-based & \textbf{Cross-route} insertion with sync-aware GO/NO-GO \\
+\midrule
+\textbf{Charging Model} & N/A & Linear (full/partial recharge) & N/A & \textbf{Non-linear} (piecewise SOC-dependent) \\
+\midrule
+\textbf{Synchronization} & N/A & N/A & Hard GO/NO-GO (reject if drone slower) & \textbf{Sync-aware} (allows truck waiting, cascading delays) \\
+\midrule
+\textbf{EV Integration} & N/A & Solver-integrated (battery-aware construction) & N/A & \textbf{Post-hoc} (CS insertion + EV evaluation on constructed routes) \\
+\midrule
+\textbf{Search Paradigm} & Metaheuristic (ALNS, GA) & Metaheuristic (ALNS, VNS) & Metaheuristic (VNS, GA) & \textbf{Neural + Heuristic} hybrid \\
+\midrule
+\textbf{Instance Scale} & Up to 1000 & Up to 100 (+CS) & Up to 100 & \textbf{Up to 200} \\
+\midrule
+\textbf{100\% TW Feasible?} & No (heuristic) & No (heuristic) & No (heuristic) & \textbf{Yes} (all 18 instances, 50c--200c) \\
+\midrule
+\textbf{Drone Savings} & N/A & N/A & $\sim$3--15\% (varies) & \textbf{+10.5\%--48.5\%} (varies by type) \\
+\bottomrule
+\end{tabular}
+
+\vspace{4pt}
+\footnotesize
+\textit{Note:} Comparison is qualitative — methods differ in problem scope, constraints, and instance configuration.
+``--'' indicates the component is not applicable to that problem variant.
+\end{table}

@@ -1,0 +1,39 @@
+% Table: Literature Comparison — Truck-Drone Routing Methods
+\begin{table}[t]
+\caption{Literature comparison with published truck-drone routing methods.}
+\label{tab:lit_drone}
+\small
+\centering
+\begin{tabular}{l c c c p{3.2cm} c c}
+\toprule
+\textbf{Reference} & \textbf{Year} & \textbf{Method} & \textbf{Problem} & \textbf{Key Features} & \textbf{Instances} & \textbf{Scale} \\
+\midrule
+Murray \& Chu~\cite{murray2015flying} & 2015 & MIP+Heuristic & FSTSP & First truck-drone model; single truck+drone & Custom & 10 \\
+Agatz et al.~\cite{agatz2018optimization} & 2018 & DP+Heuristic & TSP-D & Dynamic programming for drone routing & Custom & 10--20 \\
+Poikonen et al.~\cite{poikonen2017drone} & 2017 & MIP & mFSTSP & Multiple trucks+drones; makespan objective & Custom & 10--15 \\
+Wang et al.~\cite{wang2017vrpd} & 2017 & MIP+VNS & VRPD & Multiple trucks+drones; VNS for large instances & Custom & 20--100 \\
+Schermer et al.~\cite{schermer2019matheuristic} & 2019 & Matheuristic & VRPD & Hybrid MIP+VNS; drone endurance constraints & Solomon-derived & 50--100 \\
+Kitjacharoenchai et al.~\cite{kitjacharoenchai2019multiple} & 2019 & GA & MT-DARP & Multiple trucks+multiple drones per truck & Custom & 50--100 \\
+Salama \& Srinivas~\cite{salama2020collaborative} & 2020 & Clustering+ILP & CTDRP & Customer clustering; cross-route drone missions & Solomon-derived & 25--100 \\
+Liu et al.~\cite{liu2024cooperated} & 2024 & VNS+SA & CTDRP-TW & Cooperated truck-drone; energy consumption; TW & Solomon & 25--100 \\
+Yin et al.~\cite{yin2023branch} & 2023 & BPC & TD-DRPTW & Exact branch-price-and-cut; multi-visit drones & Solomon-derived & 25--50 \\
+Gao et al.~\cite{gao2026reinforcement} & 2026 & PPO-RL & HTDRP & Deep RL for hybrid truck-drone; Solomon benchmarks & Solomon & 100--400 \\
+Meng et al.~\cite{meng2025stochastic} & 2025 & ALNS & MVD-SRPTW & Multi-visit drones; stochastic truck times; soft TW & Custom & 50 \\
+\midrule
+\textbf{This work} & 2026 & CW+POMO & \textbf{TD-EVRP-TW} & Truck-drone + EV + TW; & Solomon 56 & 50--200 \\
+ & & +EDD+Drone & & 2 drones/truck; cross-route missions; & & \\
+ & & & & sync-aware evaluation; 100\% TW feasible; & & \\
+ & & & & 4-model ablation; SOTA comparison & & \\
+\bottomrule
+\end{tabular}
+
+\vspace{4pt}
+\footnotesize
+\textit{Notation:} FSTSP = Flying Sidekick TSP; TSP-D = TSP with Drone;
+mFSTSP = Multiple FSTSP; VRPD = VRP with Drones;
+MT-DARP = Multiple Truck Drone-Assisted Routing Problem;
+CTDRP = Collaborative Truck-Drone Routing Problem;
+TD-DRPTW = Truck-based Drone Delivery Routing Problem with TW;
+HTDRP = Hybrid Truck-Drone Routing Problem;
+MVD-SRPTW = Multi-Visit Drone Stochastic Routing Problem with TW.
+\end{table}

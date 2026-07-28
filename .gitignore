@@ -41,7 +41,7 @@ week4/algorithms/pomo/checkpoints/checkpoint_epoch*.pt
 week4/algorithms/pomo/checkpoints/final_model.pt
 src/algorithms/pomo/checkpoints/
 
-# Generated outputs
-results/
-figures/
+# Generated outputs (src/ only — week7 figures are report assets)
+src/results/
+src/figures/
 src/data
