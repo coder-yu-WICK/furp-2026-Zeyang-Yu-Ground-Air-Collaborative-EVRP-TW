@@ -64,12 +64,17 @@ DRONE_ENDURANCE = {
 }
 
 # Vehicle fleet: customer_size → list of (trucks, drones)
+# With 2-drones-per-truck support: drones = trucks * n_drones_per_truck
+# Format: (trucks, drones) — drones can be 1× or 2× trucks
 VEHICLE_CONFIGS = {
-    25:  [(2, 2)],
-    50:  [(4, 4), (6, 6)],
-    100: [(4, 4), (6, 6), (8, 8)],
-    200: [(8, 8), (10, 10)],
+    25:  [(2, 2), (2, 4)],                        # 1 or 2 drones per truck
+    50:  [(4, 4), (4, 8), (6, 6), (6, 12)],       # 1 or 2 drones per truck
+    100: [(4, 4), (4, 8), (6, 6), (6, 12), (8, 8), (8, 16)],
+    200: [(8, 8), (8, 16), (10, 10), (10, 20)],
 }
+
+# Max drones each truck can carry simultaneously
+MAX_DRONES_PER_TRUCK = 2
 
 # ── Cost Parameters ─────────────────────────────────────────────────
 TRUCK_FIXED_COST = 100.0    # per truck
@@ -134,7 +139,7 @@ RANDOM_SEEDS = list(range(42, 42 + N_REPEATS))
 # Multi-objective reference point for Hypervolume
 HV_REFERENCE = (170.0, 140.0)
 
-# ── Nonlinear Charging (from DOI: S1366554526002978) ────────────────
+# ── Nonlinear Charging (based on Montoya et al. 2017, TRB) ──────────
 # Piecewise linear approximation of nonlinear charging curve
 CHARGING_STATIONS = [
     (8.0, 8.0),   # depot also serves as charging station

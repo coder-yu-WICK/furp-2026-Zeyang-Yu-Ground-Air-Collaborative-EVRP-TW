@@ -433,60 +433,112 @@ decomposition of each component's marginal contribution.
 (4) Real-world instance validation with actual delivery data.
 
 % ═══════════════════════════════════════════════════════════════════════════════
+% All references verified against actual published records (DOIs, author lists,
+% journal/volume/page numbers). Corrections made to entries that previously
+% contained wrong authors, journals, or fabricated DOIs.
+% ═══════════════════════════════════════════════════════════════════════════════
 \bibliographystyle{plain}
-\begin{thebibliography}{20}
+\begin{thebibliography}{30}
+
+% ── Foundational VRPTW ──────────────────────────────────────────────
 
 \bibitem{solomon87} Solomon, M.M. (1987). Algorithms for the Vehicle Routing and
 Scheduling Problems with Time Window Constraints. \textit{Operations Research},
 35(2), 254--265.
 
-\bibitem{schneider14} Schneider, M., Stenger, A., \& Goeke, D. (2014). The Electric
-Vehicle-Routing Problem with Time Windows and Recharging Stations.
-\textit{Transportation Science}, 48(4), 500--520.
+\bibitem{clarke64} Clarke, G. \& Wright, J.W. (1964). Scheduling of Vehicles from a
+Central Depot to a Number of Delivery Points. \textit{Operations Research}, 12(4),
+568--581.
 
-\bibitem{keskin16} Keskin, M. \& \c{C}atay, B. (2016). Partial recharge strategies
-for the electric vehicle routing problem with time windows.
-\textit{Transportation Research Part C}, 65, 111--127.
+\bibitem{gillett74} Gillett, B.E. \& Miller, L.R. (1974). A Heuristic Algorithm for
+the Vehicle-Dispatch Problem. \textit{Operations Research}, 22(2), 340--349.
 
-\bibitem{montoya17} Montoya, A., Gu\'eret, C., Mendoza, J.E., \& Villegas, J.G.
-(2017). The electric vehicle routing problem with nonlinear charging function.
-\textit{Transportation Research Part B}, 103, 87--110.
+\bibitem{jackson55} Jackson, J.R. (1955). Scheduling a production line to minimize
+maximum tardiness. \textit{Management Science Research Report 43}, UCLA.
 
-\bibitem{murray15} Murray, C.C. \& Chu, A.G. (2015). The flying sidekick traveling
-salesman problem: Optimization of drone-assisted parcel delivery.
-\textit{Transportation Research Part C}, 54, 86--109.
-
-\bibitem{yin23} Yin, Y., Li, D., Wang, J., \& Cheng, T.C.E. (2023). Truck and
-drone collaborative routing optimization with time windows.
-\textit{Transportation Research Part E}, 174, 103123.
-
-\bibitem{liu24} Liu, M., Luo, Z., \& Lim, A. (2024). A branch-and-cut algorithm for
-the truck-drone routing problem with time windows.
-\textit{Transportation Research Part E}, 184, 103491.
-
-\bibitem{kwon20} Kwon, Y.D., Choo, J., Kim, B., Yoon, I., Gwon, Y., \& Min, S.
-(2020). POMO: Policy Optimization with Multiple Optima for Reinforcement Learning.
-\textit{NeurIPS 2020}.
-
-\bibitem{ropke06} Ropke, S. \& Pisinger, D. (2006). An Adaptive Large Neighborhood
-Search Heuristic for the Pickup and Delivery Problem with Time Windows.
-\textit{Transportation Science}, 40(4), 455--472.
+% ── Classical Metaheuristics ─────────────────────────────────────────
 
 \bibitem{deb02} Deb, K., Pratap, A., Agarwal, S., \& Meyarivan, T. (2002). A Fast
 and Elitist Multiobjective Genetic Algorithm: NSGA-II.
 \textit{IEEE Transactions on Evolutionary Computation}, 6(2), 182--197.
 
-\bibitem{clarke64} Clarke, G. \& Wright, J.W. (1964). Scheduling of Vehicles from a
-Central Depot to a Number of Delivery Points. \textit{Operations Research}, 12(4),
-568--581.
-
-\bibitem{jackson55} Jackson, J.R. (1955). Scheduling a production line to minimize
-maximum tardiness. \textit{Management Science Research Project}, UCLA.
+\bibitem{ropke06} Ropke, S. \& Pisinger, D. (2006). An Adaptive Large Neighborhood
+Search Heuristic for the Pickup and Delivery Problem with Time Windows.
+\textit{Transportation Science}, 40(4), 455--472.
 
 \bibitem{vidal13} Vidal, T., Crainic, T.G., Gendreau, M., \& Prins, C. (2013). A
-hybrid genetic algorithm with adaptive diversity management for a large class of
-vehicle routing problems with time-windows. \textit{Computers \& Operations Research},
+Hybrid Genetic Algorithm with Adaptive Diversity Management for a Large Class of
+Vehicle Routing Problems with Time-Windows. \textit{Computers \& Operations Research},
 40(1), 475--489.
+
+\bibitem{nagata10} Nagata, Y., Br\"{a}ysy, O., \& Dullaert, W. (2010). A
+Penalty-Based Edge Assembly Memetic Algorithm for the Vehicle Routing Problem with
+Time Windows. \textit{Computers \& Operations Research}, 37(4), 724--737.
+
+% ── Neural Combinatorial Optimization ────────────────────────────────
+
+\bibitem{kool19} Kool, W., van Hoof, H., \& Welling, M. (2019). Attention, Learn to
+Solve Routing Problems! \textit{International Conference on Learning
+Representations (ICLR)}.
+
+\bibitem{kwon20} Kwon, Y.D., Choo, J., Kim, B., Yoon, I., Gwon, Y., \& Min, S.
+(2020). POMO: Policy Optimization with Multiple Optima for Reinforcement Learning.
+\textit{Advances in Neural Information Processing Systems (NeurIPS)}, 33,
+21188--21198.
+
+% ── Truck-Drone Routing ─────────────────────────────────────────────
+
+\bibitem{das20} Das, D., Sewani, R., Wang, J., \& Tiwari, M.K. (2020). Synchronized
+Truck and Drone Routing in Package Delivery Logistics. \textit{IEEE Transactions on
+Intelligent Transportation Systems}, 22(9), 5772--5782.
+DOI:~\href{https://doi.org/10.1109/TITS.2020.2992549}{10.1109/TITS.2020.2992549}
+
+\bibitem{wu22} Wu, G., Mao, N., Luo, Q., Xu, B., Shi, J., \& Suganthan, P.N.
+(2022). Collaborative Truck-Drone Routing for Contactless Parcel Delivery During
+the Epidemic. \textit{IEEE Transactions on Intelligent Transportation Systems},
+23(12), 25077--25091.
+DOI:~\href{https://doi.org/10.1109/TITS.2022.3181282}{10.1109/TITS.2022.3181282}
+
+\bibitem{murray15} Murray, C.C. \& Chu, A.G. (2015). The Flying Sidekick Traveling
+Salesman Problem: Optimization of Drone-Assisted Parcel Delivery.
+\textit{Transportation Research Part C}, 54, 86--109.
+
+\bibitem{kitjacharoenchai19} Kitjacharoenchai, P., Ventresca, M.,
+Moshref-Javadi, M., Lee, S., Tanchoco, J.M.A., \& Brunese, P.A. (2019). Multiple
+Traveling Salesman Problem with Drones: Mathematical Model and Heuristic Approach.
+\textit{Computers \& Industrial Engineering}, 129, 14--30.
+
+\bibitem{wang17} Wang, X., Poikonen, S., \& Golden, B. (2017). The Vehicle Routing
+Problem with Drones: Several Worst-Case Results. \textit{Optimization Letters}, 11,
+679--697.
+
+\bibitem{salama22} Salama, M. \& Srinivas, S. (2022). Collaborative Truck
+Multi-Drone Routing and Scheduling Problem: Package Delivery with Flexible Launch
+and Recovery Sites. \textit{Transportation Research Part E}, 164, 102788.
+
+\bibitem{yin23} Yin, Y., Li, D., Wang, D., Ignatius, J., Cheng, T.C.E., \&
+Wang, S. (2023). A Branch-and-Price-and-Cut Algorithm for the Truck-Based Drone
+Delivery Routing Problem with Time Windows. \textit{European Journal of Operational
+Research}, 309(3), 1125--1144.
+
+\bibitem{liu24} Liu, Y., Shi, J., Luo, Z., Hu, X., Pedrycz, W., \& Liu, Z. (2024).
+Cooperated Truck-Drone Routing With Drone Energy Consumption and Time Windows.
+\textit{IEEE Transactions on Intelligent Transportation Systems}, 25(12),
+20390--20404.
+
+% ── Electric Vehicle Routing ────────────────────────────────────────
+
+\bibitem{schneider14} Schneider, M., Stenger, A., \& Goeke, D. (2014). The Electric
+Vehicle-Routing Problem with Time Windows and Recharging Stations.
+\textit{Transportation Science}, 48(4), 500--520.
+
+\bibitem{keskin16} Keskin, M. \& \c{C}atay, B. (2016). Partial Recharge Strategies
+for the Electric Vehicle Routing Problem with Time Windows.
+\textit{Transportation Research Part C}, 65, 111--127.
+
+\bibitem{montoya17} Montoya, A., Gu\'eret, C., Mendoza, J.E., \& Villegas, J.G.
+(2017). The Electric Vehicle Routing Problem with Nonlinear Charging Function.
+\textit{Transportation Research Part B}, 103, 87--110.
 
 \end{thebibliography}
 

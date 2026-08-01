@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 P-ACO: Collaborative Pareto Ant Colony Optimization for Truck-Drone Routing.
+Based on Das et al. (2020), "Synchronized Truck and Drone Routing in Package
+Delivery Logistics", IEEE Trans. Intelligent Transportation Systems, 22(9),
+5772-5782. DOI: 10.1109/TITS.2020.2992549
 Based on DOI: 10.1109/TITS.2020.2992549
 
 Optimized version: sparse 3D pheromone, precomputed distances, greedy construction.

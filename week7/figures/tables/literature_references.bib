@@ -1,4 +1,63 @@
-% Bibliography for Truck-Drone EVRP-TW Literature Comparison
+% Bibliography for Truck-Drone EVRP-TW — FURP 2026
+% ALL entries verified against published records (DOIs, journals, volumes, authors).
+% Corrections applied to entries that previously had fabricated author lists,
+% wrong journals, or incorrect volume/page numbers.
+
+% ── Foundational VRPTW ──────────────────────────────────────────────
+
+@article{solomon1987vrptw,
+  author    = {Solomon, Marius M.},
+  title     = {Algorithms for the Vehicle Routing and Scheduling Problems with Time Window Constraints},
+  journal   = {Operations Research},
+  volume    = {35},
+  number    = {2},
+  pages     = {254--265},
+  year      = {1987},
+  doi       = {10.1287/opre.35.2.254},
+}
+
+@article{clarke1964scheduling,
+  author    = {Clarke, G. and Wright, J. W.},
+  title     = {Scheduling of Vehicles from a Central Depot to a Number of Delivery Points},
+  journal   = {Operations Research},
+  volume    = {12},
+  number    = {4},
+  pages     = {568--581},
+  year      = {1964},
+  doi       = {10.1287/opre.12.4.568},
+}
+
+@article{gillett1974sweep,
+  author    = {Gillett, Billy E. and Miller, Leland R.},
+  title     = {A Heuristic Algorithm for the Vehicle-Dispatch Problem},
+  journal   = {Operations Research},
+  volume    = {22},
+  number    = {2},
+  pages     = {340--349},
+  year      = {1974},
+  doi       = {10.1287/opre.22.2.340},
+}
+
+@techreport{jackson1955scheduling,
+  author    = {Jackson, James R.},
+  title     = {Scheduling a Production Line to Minimize Maximum Tardiness},
+  institution = {University of California, Los Angeles},
+  number    = {Management Science Research Report 43},
+  year      = {1955},
+}
+
+% ── Classical Metaheuristics ─────────────────────────────────────────
+
+@article{deb2002nsga2,
+  author    = {Deb, Kalyanmoy and Pratap, Amrit and Agarwal, Sameer and Meyarivan, T.},
+  title     = {A Fast and Elitist Multiobjective Genetic Algorithm: {NSGA-II}},
+  journal   = {IEEE Transactions on Evolutionary Computation},
+  volume    = {6},
+  number    = {2},
+  pages     = {182--197},
+  year      = {2002},
+  doi       = {10.1109/4235.996017},
+}
 
 @article{ropke2006alns,
   author    = {Ropke, Stefan and Pisinger, David},
@@ -8,19 +67,10 @@
   number    = {4},
   pages     = {455--472},
   year      = {2006},
+  doi       = {10.1287/trsc.1050.0135},
 }
 
-@article{pisinger2007alns,
-  author    = {Pisinger, David and Ropke, Stefan},
-  title     = {A General Heuristic for Vehicle Routing Problems},
-  journal   = {Computers \& Operations Research},
-  volume    = {34},
-  number    = {8},
-  pages     = {2403--2435},
-  year      = {2007},
-}
-
-@article{vidal2013hybrid,
+@article{vidal2013hgsadc,
   author    = {Vidal, Thibaut and Crainic, Teodor Gabriel and Gendreau, Michel and Prins, Christian},
   title     = {A Hybrid Genetic Algorithm with Adaptive Diversity Management for a Large Class of Vehicle Routing Problems with Time-Windows},
   journal   = {Computers \& Operations Research},
@@ -28,6 +78,7 @@
   number    = {1},
   pages     = {475--489},
   year      = {2013},
+  doi       = {10.1016/j.cor.2012.07.018},
 }
 
 @article{nagata2010penalty,
@@ -38,94 +89,88 @@
   number    = {4},
   pages     = {724--737},
   year      = {2010},
+  doi       = {10.1016/j.cor.2009.06.022},
 }
 
-@article{kwon2020pomo,
+% ── Neural Combinatorial Optimization ────────────────────────────────
+
+@inproceedings{kool2019attention,
+  author    = {Kool, Wouter and van Hoof, Herke and Welling, Max},
+  title     = {Attention, Learn to Solve Routing Problems!},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2019},
+  url       = {https://arxiv.org/abs/1803.08475},
+}
+
+@inproceedings{kwon2020pomo,
   author    = {Kwon, Yeong-Dae and Choo, Jinho and Kim, Byoungjip and Yoon, Iljoo and Gwon, Youngjune and Min, Seungjai},
-  title     = {POMO: Policy Optimization with Multiple Optima for Reinforcement Learning},
-  journal   = {Advances in Neural Information Processing Systems},
+  title     = {{POMO}: Policy Optimization with Multiple Optima for Reinforcement Learning},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
   volume    = {33},
   pages     = {21188--21198},
   year      = {2020},
+  url       = {https://arxiv.org/abs/2010.16011},
 }
 
-@article{schneider2014evrp,
-  author    = {Schneider, Michael and Stenger, Andreas and Goeke, Dominik},
-  title     = {The Electric Vehicle-Routing Problem with Time Windows and Recharging Stations},
-  journal   = {Transportation Science},
-  volume    = {48},
-  number    = {4},
-  pages     = {500--520},
-  year      = {2014},
+% ── Truck-Drone Routing — Core Algorithms ───────────────────────────
+
+@article{das2020synchronized,
+  author    = {Das, Dyutimoy and Sewani, Rohan and Wang, Junwei and Tiwari, Manoj Kumar},
+  title     = {Synchronized Truck and Drone Routing in Package Delivery Logistics},
+  journal   = {IEEE Transactions on Intelligent Transportation Systems},
+  volume    = {22},
+  number    = {9},
+  pages     = {5772--5782},
+  year      = {2020},
+  doi       = {10.1109/TITS.2020.2992549},
+  note      = {Referred to as P-ACO (Pareto Ant Colony Optimization) in our framework.},
 }
 
-@article{goeke2015evrptwmf,
-  author    = {Goeke, Dominik and Schneider, Michael},
-  title     = {Routing a Mixed Fleet of Electric and Conventional Vehicles},
-  journal   = {European Journal of Operational Research},
-  volume    = {245},
-  number    = {1},
-  pages     = {81--99},
-  year      = {2015},
+@article{wu2022collaborative,
+  author    = {Wu, Guohua and Mao, Ni and Luo, Qizhang and Xu, Binjie and Shi, Jianmai and Suganthan, Ponnuthurai Nagaratnam},
+  title     = {Collaborative Truck-Drone Routing for Contactless Parcel Delivery During the Epidemic},
+  journal   = {IEEE Transactions on Intelligent Transportation Systems},
+  volume    = {23},
+  number    = {12},
+  pages     = {25077--25091},
+  year      = {2022},
+  doi       = {10.1109/TITS.2022.3181282},
+  note      = {Referred to as IVND (Improved Variable Neighborhood Descent) in our framework.},
 }
 
-@article{keskin2016partial,
-  author    = {Keskin, Merve and {\c{C}}atay, B{\"u}lent},
-  title     = {Partial Recharge Strategies for the Electric Vehicle Routing Problem with Time Windows},
-  journal   = {Transportation Research Part B: Methodological},
-  volume    = {94},
-  pages     = {215--236},
-  year      = {2016},
-}
+% ── Truck-Drone Routing — Literature ─────────────────────────────────
 
-@article{hiermann2016efsmftw,
-  author    = {Hiermann, Gerhard and Puchinger, Jakob and Ropke, Stefan and Hartl, Richard F.},
-  title     = {The Electric Fleet Size and Mix Vehicle Routing Problem with Time Windows and Recharging Stations},
-  journal   = {European Journal of Operational Research},
-  volume    = {252},
-  number    = {3},
-  pages     = {995--1018},
-  year      = {2016},
-}
-
-@article{montoya2017nonlinear,
-  author    = {Montoya, Alejandro and Gu{\'e}ret, Christelle and Mendoza, Jorge E. and Villegas, Juan G.},
-  title     = {The Electric Vehicle Routing Problem with Nonlinear Charging Function},
-  journal   = {Transportation Research Part B: Methodological},
-  volume    = {103},
-  pages     = {87--110},
-  year      = {2017},
-}
-
-@article{keskin2019fast,
-  author    = {Keskin, Merve and {\c{C}}atay, B{\"u}lent},
-  title     = {A Matheuristic for the Electric Vehicle Routing Problem with Time Windows and Fast Charging},
-  journal   = {Computers \& Operations Research},
-  volume    = {109},
-  pages     = {271--287},
-  year      = {2019},
-}
-
-@article{murray2015flying,
+@article{murray2015fstsp,
   author    = {Murray, Chase C. and Chu, Amanda G.},
   title     = {The Flying Sidekick Traveling Salesman Problem: Optimization of Drone-Assisted Parcel Delivery},
   journal   = {Transportation Research Part C: Emerging Technologies},
   volume    = {54},
   pages     = {86--109},
   year      = {2015},
+  doi       = {10.1016/j.trc.2015.03.005},
 }
 
-@article{agatz2018optimization,
-  author    = {Agatz, Niels and Bouman, Paul and Schmidt, Marie},
-  title     = {Optimization Approaches for the Traveling Salesman Problem with Drone},
-  journal   = {Transportation Science},
-  volume    = {52},
-  number    = {4},
-  pages     = {965--981},
-  year      = {2018},
+@article{kitjacharoenchai2019mtspd,
+  author    = {Kitjacharoenchai, Patchara and Ventresca, Mario and Moshref-Javadi, Mohammad and Lee, Seokcheon and Tanchoco, Jose M. A. and Brunese, Patrick A.},
+  title     = {Multiple Traveling Salesman Problem with Drones: Mathematical Model and Heuristic Approach},
+  journal   = {Computers \& Industrial Engineering},
+  volume    = {129},
+  pages     = {14--30},
+  year      = {2019},
+  doi       = {10.1016/j.cie.2019.01.020},
 }
 
-@article{poikonen2017drone,
+@article{wang2017vrpdrones,
+  author    = {Wang, Xingyin and Poikonen, Stefan and Golden, Bruce},
+  title     = {The Vehicle Routing Problem with Drones: Several Worst-Case Results},
+  journal   = {Optimization Letters},
+  volume    = {11},
+  pages     = {679--697},
+  year      = {2017},
+  doi       = {10.1007/s11590-016-1035-3},
+}
+
+@article{poikonen2017vrpdrones,
   author    = {Poikonen, Stefan and Wang, Xingyin and Golden, Bruce},
   title     = {The Vehicle Routing Problem with Drones: Extended Models and Connections},
   journal   = {Networks},
@@ -133,15 +178,18 @@
   number    = {1},
   pages     = {34--43},
   year      = {2017},
+  doi       = {10.1002/net.21746},
 }
 
-@article{wang2017vrpd,
-  author    = {Wang, Xingyin and Poikonen, Stefan and Golden, Bruce},
-  title     = {The Vehicle Routing Problem with Drones: Several Worst-Case Results},
-  journal   = {Optimization Letters},
-  volume    = {11},
-  pages     = {679--697},
-  year      = {2017},
+@article{agatz2018tspd,
+  author    = {Agatz, Niels and Bouman, Paul and Schmidt, Marie},
+  title     = {Optimization Approaches for the Traveling Salesman Problem with Drone},
+  journal   = {Transportation Science},
+  volume    = {52},
+  number    = {4},
+  pages     = {965--981},
+  year      = {2018},
+  doi       = {10.1287/trsc.2017.0791},
 }
 
 @article{schermer2019matheuristic,
@@ -151,62 +199,93 @@
   volume    = {104},
   pages     = {194--221},
   year      = {2019},
+  doi       = {10.1016/j.trc.2019.05.001},
 }
 
-@article{kitjacharoenchai2019multiple,
-  author    = {Kitjacharoenchai, Patchara and Ventresca, Mario and Moshref-Javadi, Mohammad and Lee, Seokcheon and Tanchoco, Jose M. A. and Brunese, Patrick A.},
-  title     = {Multiple Traveling Salesman Problem with Drones: Mathematical Model and Heuristic Approach},
-  journal   = {Computers \& Industrial Engineering},
-  volume    = {129},
-  pages     = {14--30},
-  year      = {2019},
-}
-
-@article{salama2020collaborative,
+@article{salama2022collaborative,
   author    = {Salama, Mohamed and Srinivas, Sharan},
-  title     = {Collaborative Truck-Drone Routing for Contactless Parcel Delivery during the Pandemic},
+  title     = {Collaborative Truck Multi-Drone Routing and Scheduling Problem: Package Delivery with Flexible Launch and Recovery Sites},
   journal   = {Transportation Research Part E: Logistics and Transportation Review},
-  volume    = {144},
-  pages     = {102153},
-  year      = {2020},
+  volume    = {164},
+  pages     = {102788},
+  year      = {2022},
+  doi       = {10.1016/j.tre.2022.102788},
 }
 
-@article{liu2024cooperated,
-  author    = {Liu, Tongchang and Shi, Yanjun and Luo, Qiling and Hu, Xiaolin and Pedrycz, Witold and Liu, Zhiqiang},
-  title     = {Cooperated Truck-Drone Routing With Drone Energy Consumption and Time Windows},
-  journal   = {IEEE Transactions on Intelligent Transportation Systems},
-  year      = {2024},
-}
-
-@article{yin2023branch,
+@article{yin2023bpc,
   author    = {Yin, Yunqiang and Li, Dong and Wang, Dujuan and Ignatius, Joshua and Cheng, T. C. E. and Wang, Shuaian},
   title     = {A Branch-and-Price-and-Cut Algorithm for the Truck-Based Drone Delivery Routing Problem with Time Windows},
   journal   = {European Journal of Operational Research},
   volume    = {309},
   number    = {3},
-  pages     = {1105--1124},
+  pages     = {1125--1144},
   year      = {2023},
+  doi       = {10.1016/j.ejor.2023.02.014},
 }
 
+@article{liu2024cooperated,
+  author    = {Liu, Yao and Shi, Jianmai and Luo, Zhihao and Hu, Xingchen and Pedrycz, Witold and Liu, Zhong},
+  title     = {Cooperated Truck-Drone Routing With Drone Energy Consumption and Time Windows},
+  journal   = {IEEE Transactions on Intelligent Transportation Systems},
+  volume    = {25},
+  number    = {12},
+  pages     = {20390--20404},
+  year      = {2024},
+  doi       = {10.1109/TITS.2024.3478175},
+}
+
+% ── Electric Vehicle Routing ────────────────────────────────────────
+
+@article{schneider2014evrptw,
+  author    = {Schneider, Michael and Stenger, Andreas and Goeke, Dominik},
+  title     = {The Electric Vehicle-Routing Problem with Time Windows and Recharging Stations},
+  journal   = {Transportation Science},
+  volume    = {48},
+  number    = {4},
+  pages     = {500--520},
+  year      = {2014},
+  doi       = {10.1287/trsc.2013.0490},
+}
+
+@article{keskin2016partial,
+  author    = {Keskin, Merve and {\c{C}}atay, B{\"u}lent},
+  title     = {Partial Recharge Strategies for the Electric Vehicle Routing Problem with Time Windows},
+  journal   = {Transportation Research Part C: Emerging Technologies},
+  volume    = {65},
+  pages     = {111--127},
+  year      = {2016},
+  doi       = {10.1016/j.trc.2016.01.013},
+}
+
+@article{montoya2017nonlinear,
+  author    = {Montoya, Alejandro and Gu{\'e}ret, Christelle and Mendoza, Jorge E. and Villegas, Juan G.},
+  title     = {The Electric Vehicle Routing Problem with Nonlinear Charging Function},
+  journal   = {Transportation Research Part B: Methodological},
+  volume    = {103},
+  pages     = {87--110},
+  year      = {2017},
+  doi       = {10.1016/j.trb.2017.02.004},
+}
+
+% ── Recent / Supplementary ──────────────────────────────────────────
+
 @article{gao2026reinforcement,
-  author    = {Gao, Jun and Li, Xiang and Wang, Yiming and others},
+  author    = {Gao, Youyao and Liu, Tongchang and Jin, Huan},
   title     = {Reinforcement-Learning-Based Hybrid Truck-Drone Delivery Optimization},
   journal   = {Drones},
   volume    = {10},
+  number    = {7},
+  pages     = {477},
   year      = {2026},
+  doi       = {10.3390/drones10070477},
 }
 
-@article{meng2025stochastic,
-  author    = {Meng, Q and Li, X and Liu, Z and Chen, Y},
-  title     = {Multi-Visit Drone-Assisted Routing Problem with Soft Time Windows and Stochastic Truck Travel Times},
-  journal   = {Transportation Research Part E},
-  year      = {2025},
-}
-
-@article{dey2024alns,
-  author    = {Dey, Arnab and others},
-  title     = {Parallel Adaptive Large Neighborhood Search Based on Spark to Solve VRPTW},
-  journal   = {Scientific Reports},
-  volume    = {14},
+@article{meng2024multivisit,
+  author    = {Meng, Shanshan and Li, Dong and Liu, Jiyin and Chen, Yanru},
+  title     = {The Multi-Visit Drone-Assisted Routing Problem with Soft Time Windows and Stochastic Truck Travel Times},
+  journal   = {Transportation Research Part B: Methodological},
+  volume    = {190},
+  pages     = {103101},
   year      = {2024},
+  doi       = {10.1016/j.trb.2024.103101},
 }

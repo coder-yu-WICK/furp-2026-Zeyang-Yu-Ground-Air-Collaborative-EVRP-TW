@@ -126,7 +126,7 @@ python main.py --report
 
 ## References
 
-- P-ACO: [DOI: 10.1109/TITS.2020.2992549](https://doi.org/10.1109/TITS.2020.2992549)
+- P-ACO: Das et al., "Synchronized Truck and Drone Routing", IEEE TITS, 2020 [DOI: 10.1109/TITS.2020.2992549](https://doi.org/10.1109/TITS.2020.2992549)
 - NSGA-II: Deb et al., "A Fast and Elitist Multiobjective Genetic Algorithm", IEEE TEC, 2002
-- IVND: [DOI: 10.1109/TITS.2022.3181282](https://doi.org/10.1109/TITS.2022.3181282)
-- Nonlinear Charging: [DOI: S1366554526002978](https://www.sciencedirect.com/science/article/pii/S1366554526002978)
+- IVND: Wu et al., "Collaborative Truck-Drone Routing for Contactless Parcel Delivery", IEEE TITS, 2022 [DOI: 10.1109/TITS.2022.3181282](https://doi.org/10.1109/TITS.2022.3181282)
+- Nonlinear Charging: Montoya et al., "The Electric Vehicle Routing Problem with Nonlinear Charging Function", TRB, 2017

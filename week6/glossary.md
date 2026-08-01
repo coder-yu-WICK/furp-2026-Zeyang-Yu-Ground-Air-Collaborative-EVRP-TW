@@ -150,8 +150,8 @@
 | **POMO** | Kwon et al. (2020) "POMO: Policy Optimization with Multiple Optima" | — |
 | **ALNS** | Ropke & Pisinger (2006) "An Adaptive Large Neighborhood Search Heuristic for the Pickup and Delivery Problem" | — |
 | **NSGA-II** | Deb et al. (2002) "A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II" | — |
-| **P-ACO** | "Pareto Ant Colony Optimization for Truck-Drone Routing" | 10.1109/TITS.2020.2992549 |
-| **IVND** | "Hybrid Variable Neighborhood Search for Truck-Drone Collaborative Routing" | 10.1109/TITS.2022.3181282 |
+| **P-ACO** | Das et al. (2020) "Synchronized Truck and Drone Routing in Package Delivery Logistics" | 10.1109/TITS.2020.2992549 |
+| **IVND** | Wu et al. (2022) "Collaborative Truck-Drone Routing for Contactless Parcel Delivery During the Epidemic" | 10.1109/TITS.2022.3181282 |
 | **EVRP-TW** | Schneider et al. (2014) "The Electric Vehicle-Routing Problem with Time Windows" | 10.1287/trsc.2013.0490 |
 | **FSTSP** | Murray & Chu (2015) "The Flying Sidekick Traveling Salesman Problem" | — |
 | **AM** | Kool et al. (2019) "Attention, Learn to Solve Routing Problems!" | 10.48550/arXiv.1803.08475 |

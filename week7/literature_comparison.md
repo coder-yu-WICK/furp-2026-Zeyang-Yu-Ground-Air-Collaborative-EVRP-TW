@@ -47,8 +47,8 @@ Our paper compares against **5 classical methods**, all run under identical cond
 | Method | Type | Reference | TW Feasibility (50c/100c) | Notes |
 |--------|------|-----------|--------------------------|-------|
 | **NSGA-II** | Evolutionary | Deb et al. (2002) | 0% | Does not scale beyond 50c |
-| **P-ACO** | Swarm Intelligence | DOI: 10.1109/TITS.2020.2992549 | 0% | Ant colony with Pareto archive |
-| **IVND** | Local Search | DOI: 10.1109/TITS.2022.3181282 | 0% | Variable neighborhood descent |
+| **P-ACO** | Swarm Intelligence | Das et al. (2020), IEEE TITS | 0% | Synchronized truck-drone routing with Pareto ACO |
+| **IVND** | Local Search | Wu et al. (2022), IEEE TITS | 0% | Collaborative truck-drone with variable neighborhood descent |
 | **CW-Savings** | Constructive | Clarke & Wright (1964) | 100% (50c), 100% (100c) | Deterministic, drone-unfriendly |
 | **Sweep+NN** | Constructive | Gillett & Miller (1974) | 25% | Sweep clustering + nearest neighbor |
 
