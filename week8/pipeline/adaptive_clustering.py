@@ -194,22 +194,24 @@ def angle_based_cluster(instance, n_trucks, seed=42):
 
 def hybrid_cluster(instance, n_trucks, base_ratio=0.4, seed=42):
     """
-    Automatically select clustering strategy based on TW type.
+    Hybrid clustering: budget-aware spatial + targeted temporal splits.
 
-    RC1 (tight TW, 120min): adaptive TW-aware (finds fine-grained gaps
-                            within the tight window). Fixed-threshold
-                            approaches miss these because 0.4*120=48min
-                            is too coarse for a 120-min horizon.
-    RC2 (wide TW, 240min): original TW-aware with beta=0.5 (proven
-                            aggressive splitting for wide TWs).
-                            Adaptive threshold is too conservative here.
+    Strategy:
+      - Start with PURE spatial K-means (preserves POMO distance structure)
+      - Only split clusters whose EDD route time exceeds 75% of TW horizon
+      - Split at the optimal temporal point (minimizes worst sub-cluster time)
+      - This is MINIMAL intervention — most clusters stay intact
+
+    Why this design:
+      Partial EDD fails when the upstream route is too long — the accumulated
+      travel time means the tardy segment is already late before it starts.
+      By ensuring each cluster's EDD route fits within 75% of the horizon,
+      we leave slack for POMO's sub-optimal ordering AND for Partial EDD's
+      segment-level fix to actually work.
     """
-    tw_type = instance.get('tw_type', 'RC1')
-    if tw_type == 'RC1':
-        return adaptive_tw_aware_cluster(instance, n_trucks, base_ratio=base_ratio, seed=seed)
-    else:
-        from week8.pipeline.clustering import cluster_customers_tw_aware
-        return cluster_customers_tw_aware(instance, n_trucks, beta=0.5, seed=seed)
+    from week8.pipeline.clustering import budget_aware_cluster
+    return budget_aware_cluster(
+        instance, n_trucks, time_budget_ratio=0.75, seed=seed)
 
 
 # ═════════════════════════════════════════════════════════════════════════
@@ -274,5 +276,14 @@ def cluster_with_params(instance, n_trucks, strategy='adaptive_tw',
     elif strategy == 'tw_aware':
         from week8.pipeline.clustering import cluster_customers_tw_aware
         return cluster_customers_tw_aware(instance, n_trucks, beta=base_ratio, seed=seed)
+    elif strategy == 'spatiotemporal':
+        from week8.pipeline.pomo_multitruck import cluster_customers_spatiotemporal
+        return cluster_customers_spatiotemporal(
+            instance, n_trucks, tw_weight=base_ratio if base_ratio else 0.3, seed=seed)
+    elif strategy == 'budget_aware':
+        from week8.pipeline.clustering import budget_aware_cluster
+        return budget_aware_cluster(
+            instance, n_trucks,
+            time_budget_ratio=base_ratio if base_ratio else 0.75, seed=seed)
     else:
         raise ValueError(f"Unknown strategy: {strategy}")

@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EVRP-TW: 分解框架与Forward Insertion修复 — 研究方法总览</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --fg: #c9d1d9;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --warn: #d2991d;
+    --danger: #f85149;
+    --border: #30363d;
+    --code-bg: #161b22;
+    --card-bg: #161b22;
+    --highlight: #1c2128;
+    --step1: #58a6ff;
+    --step2: #3fb950;
+    --step3: #f85149;
+    --step4: #d2991d;
+    --step5: #bc8cff;
+    --step6: #f0883e;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--fg); line-height:1.75; padding: 40px 20px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  h1 { font-size:2.4em; text-align:center; margin-bottom:8px; background: linear-gradient(135deg, var(--step1), var(--step5)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  h2 { font-size:1.6em; margin:48px 0 16px; padding-bottom:8px; border-bottom:2px solid var(--border); color: var(--accent); }
+  h3 { font-size:1.25em; margin:32px 0 12px; color: var(--accent2); }
+  h4 { font-size:1.05em; margin:20px 0 8px; color: var(--warn); }
+  p, li { margin-bottom:10px; }
+  ul, ol { padding-left:24px; margin-bottom:14px; }
+  a { color: var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  strong { color: #f0f6fc; }
+  em { color: var(--warn); font-style: normal; }
+
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px 24px; margin: 16px 0;
+  }
+  .card h3, .card h4 { margin-top:0; }
+
+  .pipeline-flow {
+    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+    align-items: center; margin: 24px 0; font-size:0.88em;
+  }
+  .pf-step {
+    background: var(--code-bg); border: 2px solid var(--border);
+    border-radius: 10px; padding: 12px 14px; text-align: center;
+    min-width: 115px; transition: transform 0.2s;
+  }
+  .pf-step:hover { transform: translateY(-3px); }
+  .pf-step .num { font-size:1.8em; font-weight:800; display:block; }
+  .pf-step .label { font-weight:600; margin-top:4px; font-size:0.92em; }
+  .pf-step.star { border-color: var(--danger); box-shadow: 0 0 12px rgba(248,81,73,0.3); }
+  .pf-step.s1 { border-color: var(--step1); } .pf-step.s1 .num { color: var(--step1); }
+  .pf-step.s2 { border-color: var(--step2); } .pf-step.s2 .num { color: var(--step2); }
+  .pf-step.s3 { border-color: var(--step3); } .pf-step.s3 .num { color: var(--step3); }
+  .pf-step.s4 { border-color: var(--step4); } .pf-step.s4 .num { color: var(--step4); }
+  .pf-step.s5 { border-color: var(--step5); } .pf-step.s5 .num { color: var(--step5); }
+  .pf-step.s6 { border-color: var(--step6); } .pf-step.s6 .num { color: var(--step6); }
+  .pf-arrow { font-size:1.4em; color: var(--border); font-weight:bold; }
+
+  pre {
+    background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 14px 18px; overflow-x: auto; font-size:0.84em; margin: 10px 0;
+    line-height:1.55;
+  }
+  code {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
+    background: var(--code-bg); padding: 1px 5px; border-radius: 3px; font-size:0.9em;
+  }
+  pre code { background: none; padding: 0; font-size:1em; }
+
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size:0.9em; }
+  th, td { border:1px solid var(--border); padding:9px 13px; text-align:left; }
+  th { background: var(--highlight); color: #f0f6fc; font-weight:600; }
+  tr:nth-child(even) { background: var(--highlight); }
+
+  .badge {
+    display:inline-block; padding:2px 9px; border-radius:4px;
+    font-size:0.78em; font-weight:600;
+  }
+  .badge-green { background:#1a3a2a; color:var(--accent2); }
+  .badge-blue { background:#1a2a3a; color:var(--accent); }
+  .badge-yellow { background:#3a2a1a; color:var(--warn); }
+  .badge-red { background:#3a1a1a; color:var(--danger); }
+  .badge-purple { background:#2a1a3a; color:var(--step5); }
+
+  .insight {
+    background: #1a2332; border-left: 4px solid var(--accent);
+    padding:14px 18px; margin:14px 0; border-radius:0 6px 6px 0;
+  }
+  .insight .title { font-weight:700; color: var(--accent); margin-bottom:4px; }
+
+  .theorem {
+    background: #1a2a1a; border-left: 4px solid var(--accent2);
+    padding:14px 18px; margin:14px 0; border-radius:0 6px 6px 0;
+  }
+  .theorem .title { font-weight:700; color: var(--accent2); margin-bottom:4px; }
+
+  .warning {
+    background: #3a2a1a; border-left: 4px solid var(--warn);
+    padding:14px 18px; margin:14px 0; border-radius:0 6px 6px 0;
+  }
+  .warning .title { font-weight:700; color: var(--warn); margin-bottom:4px; }
+
+  .danger {
+    background: #3a1a1a; border-left: 4px solid var(--danger);
+    padding:14px 18px; margin:14px 0; border-radius:0 6px 6px 0;
+  }
+  .danger .title { font-weight:700; color: var(--danger); margin-bottom:4px; }
+
+  .toc { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:20px 28px; margin:24px 0; }
+  .toc h3 { margin-top:0; }
+  .toc ol { columns:2; column-gap:40px; }
+  .toc li { margin-bottom:4px; }
+
+  .comparison-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;
+  }
+  .flow-example {
+    background: #0d1117; border-radius:8px; padding:16px; margin:12px 0;
+    font-family: 'SF Mono', 'Fira Code', monospace; font-size:0.85em; line-height:1.8;
+  }
+  .result-banner {
+    text-align:center; padding:18px 24px; margin:20px 0; border-radius:8px;
+    font-size:1.05em; font-weight:600;
+  }
+  .result-banner.win { background:#1a2a1a; border:1px solid var(--accent2); color:var(--accent2); }
+
+  @media (max-width: 768px) {
+    .pipeline-flow { flex-direction:column; }
+    .pf-arrow { transform:rotate(90deg); }
+    .toc ol { columns:1; }
+    .comparison-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>EVRP-TW：一种基于Forward Insertion修复<br>的分解框架</h1>
+<p style="text-align:center;font-size:1.1em;color:#8b949e;margin-bottom:4px;">
+  研究方法总览 &mdash; 于泽洋（Zeyang Yu） &mdash; FURP 2026
+</p>
+<p style="text-align:center;font-size:0.95em;color:#6e7681;margin-bottom:32px;">
+  实现方法、核心算法、代码架构与形式化流水线接口
+</p>
+
+<!-- ═══════════════════════════ 目录 ═══════════════════════════ -->
+<div class="toc">
+<h3>目录</h3>
+<ol>
+  <li><a href="#s1">问题形式化定义</a></li>
+  <li><a href="#s2">方法学框架</a>
+    <ol style="columns:1; margin-left:16px;">
+      <li><a href="#s2-1">分解范式</a></li>
+      <li><a href="#s2-2">流水线架构</a></li>
+    </ol>
+  </li>
+  <li><a href="#s3">核心算法：Forward Insertion</a>
+    <ol style="columns:1; margin-left:16px;">
+      <li><a href="#s3-1">问题陈述</a></li>
+      <li><a href="#s3-2">算法规约</a></li>
+      <li><a href="#s3-3">理论分析</a></li>
+      <li><a href="#s3-4">算子消融实验证据</a></li>
+    </ol>
+  </li>
+  <li><a href="#s4">代码架构</a>
+    <ol style="columns:1; margin-left:16px;">
+      <li><a href="#s4-1">模块依赖关系图</a></li>
+      <li><a href="#s4-2">核心类继承结构</a></li>
+      <li><a href="#s4-3">流水线入口</a></li>
+    </ol>
+  </li>
+  <li><a href="#s5">实验验证</a></li>
+  <li><a href="#s6">核心接口（API参考）</a></li>
+  <li><a href="#s7">参考文献</a></li>
+</ol>
+</div>
+
+<!-- ═══════════════════════════ §1 问题形式化定义 ═══════════════════════════ -->
+<h2 id="s1">1. 问题形式化定义</h2>
+
+<div class="card">
+<h3>带时间窗的电动车辆路径问题（EVRP-TW）</h3>
+
+<p>令 <strong>G = (V, E)</strong> 为一个完全有向图，其中 <strong>V = {0, 1, ..., N}</strong>，节点 0 为车场（depot），节点 1 至 N 表示客户。每条边 (i, j) 具有相应的行驶距离 <strong>d<sub>ij</sub></strong> 和行驶时间 <strong>t<sub>ij</sub> = d<sub>ij</sub> / v</strong>，其中 v 为恒定车速（35 km/h）。</p>
+
+<h4>客户属性</h4>
+<ul>
+  <li><strong>需求量</strong> q<sub>i</sub> &ge; 0：需要配送的货物数量</li>
+  <li><strong>最早到达时间（Ready time）</strong> e<sub>i</sub>：最早服务开始时间（若提前到达则等待）</li>
+  <li><strong>最晚到达时间（Due time）</strong> l<sub>i</sub>：最晚服务开始时间（硬约束 &mdash; 迟到即为不可行）</li>
+  <li><strong>服务时间（Service time）</strong> s<sub>i</sub>：完成配送所需的时长</li>
+</ul>
+
+<h4>车队配置</h4>
+<ul>
+  <li>K 辆同质电动卡车，每辆载重容量 <strong>Q = 200</strong>，电池容量 <strong>B = 55 kWh</strong></li>
+  <li>能耗速率 <strong>&rho; = 1.5 kWh/km</strong>，有效续航约 37 km</li>
+  <li>M = 3 个充电站（CS），分别位于车场 (8.0, 8.0)、西北象限 (4.0, 12.0) 和东南象限 (12.0, 4.0)</li>
+  <li>充电函数 <strong>C(soc<sub>start</sub>, &Delta;t)</strong>：三段分段非线性（Montoya 等, 2017）</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>数学形式化</h3>
+
+<p><strong>决策变量。</strong> 令 x<sub>ijk</sub> &isin; {0, 1} 表示卡车 k 是否经过边 (i, j)。令 a<sub>ik</sub> &ge; 0 为卡车 k 到达节点 i 的时间。令 u<sub>ik</sub> &ge; 0 为到达时的剩余电量。令 w<sub>ik</sub> &ge; 0 为服务前的等待时间。</p>
+
+<p><strong>目标函数。</strong></p>
+<pre><code>minimize   &Sigma;<sub>k=1</sub><sup>K</sup> [ C<sub>fixed</sub> + C<sub>dist</sub> &times; &Sigma;<sub>(i,j)&isin;E</sub> d<sub>ij</sub> x<sub>ijk</sub> ]</code></pre>
+<p>其中 C<sub>fixed</sub> = 100.0（每辆卡车固定成本）且 C<sub>dist</sub> = 2.0（每单位距离成本）。</p>
+
+<p><strong>约束条件。</strong></p>
+<pre><code>1. 覆盖约束:         &Sigma;<sub>k=1</sub><sup>K</sup> &Sigma;<sub>j&isin;V</sub> x<sub>ijk</sub> = 1             &forall; i &isin; {1, ..., N}
+2. 流量守恒:         &Sigma;<sub>j&isin;V</sub> x<sub>ijk</sub> = &Sigma;<sub>j&isin;V</sub> x<sub>jik</sub>       &forall; i &isin; V, &forall; k
+3. 容量约束:          &Sigma;<sub>i=1</sub><sup>N</sup> q<sub>i</sub> &Sigma;<sub>j&isin;V</sub> x<sub>ijk</sub> &le; Q   &forall; k
+4. 时间窗约束:       e<sub>i</sub> &le; max(e<sub>i</sub>, a<sub>ik</sub>) &le; l<sub>i</sub>   &forall; i, &forall; k
+5. 到达时间递推:     a<sub>jk</sub> &ge; a<sub>ik</sub> + s<sub>i</sub> + t<sub>ij</sub> - M(1 - x<sub>ijk</sub>)
+6. 电量动态:         u<sub>jk</sub> &le; u<sub>ik</sub> - &rho; &times; d<sub>ij</sub> + B(1 - x<sub>ijk</sub>)   （未充电情况下）
+7. 电量边界:         0 &le; u<sub>ik</sub> &le; B                                   &forall; i, &forall; k
+8. 车场出发:         u<sub>0k</sub> = B, a<sub>0k</sub> = 0                          &forall; k</code></pre>
+
+<div class="insight">
+<div class="title">计算复杂度</div>
+<p>EVRP-TW 包含三个 NP-hard 子问题：(i) 车辆路径问题（VRP），用于客户划分；(ii) 带时间窗的旅行商问题（TSP-TW），用于每条路线的顺序编排；(iii) 固定路线车辆充电问题（FRVCP），用于充电决策。对这三个子问题直接进行联合优化，在超过常规实例规模后计算上不可行。</p>
+</div>
+
+<h4>路线仿真模型</h4>
+<p>任意候选路线 R = (v<sub>1</sub>, ..., v<sub>n</sub>) 的评估通过确定性前向仿真完成。给定车速 v = 35 km/h 且车场为节点 0：</p>
+<pre><code>prev := 0  (车场)
+current_time := 0.0
+
+FOR each cust_idx in route:
+    c := customers[cust_idx - 1]
+
+    // 从前一节点出发的行驶距离
+    IF prev == 0:
+        d := Euclidean(depot, c.coords)
+    ELSE:
+        d := Euclidean(customers[prev - 1].coords, c.coords)
+
+    total_distance += d
+    current_time += d / TRUCK_SPEED
+
+    // 若在 ready_time 之前到达则等待
+    IF current_time < c.ready_time:
+        current_time := c.ready_time
+
+    arrival_time[cust_idx] := current_time
+    tardiness[cust_idx] := max(0, current_time - c.due_time)
+
+    current_time += c.service_time
+    prev := cust_idx
+
+// 返回车场
+total_distance += Euclidean(customers[prev - 1].coords, depot)</code></pre>
+<p>该确定性仿真是整个框架的主力引擎：它被解评估器（<code>TruckSolution._evaluate()</code>）、Forward Insertion 成本函数、CLS 约束检查器和路线合并可行性检查调用。其 O(n) 的逐路线复杂度使得重复调用在计算上可行。</p>
+</div>
+
+<!-- ═══════════════════════════ §2 方法学框架 ═══════════════════════════ -->
+<h2 id="s2">2. 方法学框架</h2>
+
+<!-- ── §2.1 分解范式 ── -->
+<h3 id="s2-1">2.1 分解范式</h3>
+
+<div class="card">
+<h3>将路径规划（Routing）与时间调度（Scheduling）分离</h3>
+
+<p>本框架的核心方法学洞见是：<strong>路径规划</strong>（确定将哪些客户分组以及按什么空间顺序访问）与<strong>时间调度</strong>（确保到达时间满足时间窗约束）是<strong>可分离的问题</strong>，可以分别采用独立的技术求解：</p>
+
+<ul>
+  <li><strong>路径规划</strong>由 POMO 神经网络（Kwon 等, 2020）处理 &mdash; 一种基于 Transformer 的构造启发式方法，在 CVRP 上预训练，生成距离最优的客户序列。该神经网络作为一个<em>空间优化器</em>：它在不了解硬时间窗约束的情况下最小化总行驶距离。</li>
+  <li><strong>时间调度</strong>由 Forward Insertion（前向插入）处理 &mdash; 一种确定性修复算子，将迟到的客户精确地移动到路线中更早的位置。这是一个<em>时序修复</em>算子：它在保留 POMO 建立的空间结构的同时，保证零延迟。</li>
+</ul>
+
+<div class="insight">
+<div class="title">分离的正当性论证</div>
+<p>路径规划与时间调度在单一目标函数内的联合优化，正是导致经典元启发式算法（NSGA-II、P-ACO、IVND）在 EVRP-TW 上失败的原因。当延迟和距离在标量化的适应度函数中作为加权项竞争时，<strong>距离总是胜出</strong>：在典型权重配置下，10 单位的距离缩短压倒了任何可行程度的延迟减少。结果是收敛到距离最优但 TW 不可行的解（在 224 个 Solomon 实例上可行率为 0%）。</p>
+<p>通过分解问题，每个组成部分都可以用<strong>专为其目标设计的技术</strong>来优化：距离用神经构造，时间窗用精确重排。该分解还允许对每个阶段的保证进行独立的理论分析（见第 3.3 节）。</p>
+</div>
+</div>
+
+<!-- ── §2.2 流水线架构 ── -->
+<h3 id="s2-2">2.2 流水线架构</h3>
+
+<div class="pipeline-flow">
+  <div class="pf-step s1"><span class="num">1</span><span class="label">Budget-Aware<br>聚类</span></div>
+  <div class="pf-arrow">&rarr;</div>
+  <div class="pf-step s2"><span class="num">2</span><span class="label">POMO 神经<br>路径规划</span></div>
+  <div class="pf-arrow">&rarr;</div>
+  <div class="pf-step s3 star"><span class="num">3 &#9733;</span><span class="label">Forward<br>Insertion</span></div>
+  <div class="pf-arrow">&rarr;</div>
+  <div class="pf-step s4"><span class="num">4</span><span class="label">约束局部搜索<br>（CLS）</span></div>
+  <div class="pf-arrow">&rarr;</div>
+  <div class="pf-step s5"><span class="num">5</span><span class="label">路线<br>合并</span></div>
+  <div class="pf-arrow">&rarr;</div>
+  <div class="pf-step s6"><span class="num">6</span><span class="label">EV<br>评估</span></div>
+</div>
+
+<p style="text-align:center;margin-bottom:24px;color:#8b949e;">
+  每个阶段在下方以形式化接口契约文档方式呈现：目的（Purpose）、输入契约（Input Contract）、输出契约（Output Contract）、算法（Algorithm）与复杂度（Complexity）。
+</p>
+
+<!-- ── 阶段 1 ── -->
+<div class="card">
+<h3>阶段 1：Budget-Aware 聚类</h3>
+<table>
+  <tr><th style="width:140px">维度</th><th>规约</th></tr>
+  <tr><td><strong>目的</strong></td><td>将 N 个客户划分为 K 个空间紧凑、时序可行的聚类，每个聚类分配一辆卡车。实现了<em>先聚类、后路径（Cluster-First, Route-Second）</em>范式（Fisher &amp; Jaikumar 1981）。</td></tr>
+  <tr><td><strong>输入契约</strong></td><td><code>instance: dict</code>，包含键：<code>customers</code>（字典列表，包含 id、x、y、demand、ready_time、due_time、service_time）、<code>depot</code>（x, y）、<code>n_customers</code>（int）、<code>tw_type</code>（str）</td></tr>
+  <tr><td><strong>输出契约</strong></td><td><code>clusters: list[list[dict]]</code> &mdash; 原始客户列表的 K 个不相交子列表，每个子列表形成一个空间紧凑的组，且相对于 TW 时间跨度具有 &ge; 25% 的时序松弛余量</td></tr>
+  <tr><td><strong>算法</strong></td><td><strong>阶段 1：</strong>K-means++ 初始化（Arthur &amp; Vassilvitskii 2007）用于空间质心放置，随后在 (x, y) 坐标上进行 Lloyd 迭代直至收敛（最多 50 次迭代）。<strong>阶段 2：</strong>对每个聚类，模拟 EDD 排序以估计所需路线时间；若 route_time &gt; 0.75 &times; TW_budget（其中 TW_budget = max(due_time) - min(ready_time)），则在最优间隙点按 due_time 分割聚类。<strong>阶段 3：</strong>容量均衡：将超载聚类中的多余客户重新分配到最近的低载聚类质心。75% 阈值根据定理 1（见第 3.3 节）为 Forward Insertion 保留 25% 的松弛余量。</td></tr>
+  <tr><td><strong>复杂度</strong></td><td>O(N &times; K &times; I + C &times; log C)，其中 I = 50（Lloyd 迭代次数），C = 最大聚类大小（用于 EDD 仿真）。由 K-means 分配步骤主导。</td></tr>
+  <tr><td><strong>文件引用</strong></td><td><code>pipeline/adaptive_clustering.py::cluster_with_params()</code>，可行性检查位于 <code>pipeline/cluster_feasibility.py::ensure_temporal_feasibility()</code></td></tr>
+</table>
+
+<div class="insight">
+<div class="title">设计原则：最小干预</div>
+<p>聚类策略优先考虑<strong>空间紧凑性而非时序可行性</strong>。首先应用纯空间 K-means；仅当超过 75% 阈值时才触发时序分割。其依据是：空间紧凑的聚类产生短路线，进而产生更多时序松弛余量 &mdash; 空间与时序目标是一致的，而非相互竞争的。在 RC 和 R 类实例上，约 10-20% 的聚类会触发分割；在 C 类（聚类空间分布）上，几乎不需要分割。</p>
+</div>
+
+<h4>聚类算法详解</h4>
+<pre><code>算法：Budget-Aware 聚类（cluster_with_params）
+────────────────────────────────────────────────────
+输入：  instance dict、卡车数量 K、策略='budget_aware'
+输出：  K 个聚类字典的列表（每个包含客户子列表）
+
+参数：
+  TW_BUDGET_RATIO = 0.75    // 若 route_time > TW 时间跨度的 75% 则分割
+  KMEANS_ITERS = 50         // Lloyd 迭代次数
+  TRUCK_CAPACITY = 200.0    // 用于容量均衡
+
+阶段 1：空间 K-means++
+  1. 通过 kmeans++ 播种初始化 K 个质心：
+     - 第一个质心：从客户中均匀随机选择
+     - 后续质心：概率正比于 D(x)^2
+       其中 D(x) = 到最近已选质心的距离
+  2. 对于 iter in 1..KMEANS_ITERS：
+     a. 分配：每个客户 → 最近质心（仅 xy 坐标欧氏距离）
+     b. 更新：每个质心 = 所分配客户坐标的均值(x,y)
+     c. 若分配未变化：跳出（收敛）
+  3. 返回 K 个聚类（空间紧凑，未检查时序）
+
+阶段 2：条件时序分割
+  对于每个聚类 c in clusters：
+    1. 确定 TW 时间跨度：
+       tw_budget = max(due_time) - min(ready_time)  // 跨聚类
+    2. 估计所需路线时间：
+       edd_order = sort(c.customers, key=due_time)
+       route_time = simulate_edd_route(edd_order)
+       // 包括：行驶时间 + 服务时间 + 在 ready_time 前的等待时间
+    3. 若 route_time > TW_BUDGET_RATIO * tw_budget：
+       a. 按 due_time 升序排列聚类
+       b. 扫描最优分割点：
+          对于每个可能的分割索引 k：
+            left_group = customers[:k]
+            right_group = customers[k:]
+            left_time = simulate_edd_route(left_group)
+            right_time = simulate_edd_route(right_group)
+            score = max(left_time, right_time)  // 最小化最差情况
+          选择具有最小 score 的 k*
+       c. 在索引 k* 处将聚类分割为两个
+       d. 递归检查每个子聚类（若仍过大则继续分割）
+    4. 否则：保持聚类原样（最常见情况）
+
+阶段 3：容量均衡
+  对于每个聚类 c in clusters：
+    total_demand = sum(customer.demand for customer in c)
+    若 total_demand > TRUCK_CAPACITY：
+      excess = total_demand - TRUCK_CAPACITY
+      // 识别距离低载聚类质心最近的客户
+      对于每个低载聚类 u （total_demand < TRUCK_CAPACITY）：
+        // 将 c 中距离 u 的质心最近的客户迁移
+        best_cust = argmin_{cust in c} distance(cust, centroid(u))
+        若 demand(best_cust) <= (TRUCK_CAPACITY - total_demand(u))：
+          move(best_cust, c → u)
+          若 total_demand(c) <= TRUCK_CAPACITY：跳出</code></pre>
+
+<h4>针对 FI 感知的时序可行性预检查</h4>
+<p>原始预检查使用 EDD 仿真，这是<strong>悲观的</strong>：EDD 排序对延迟而言是最优的，但对距离而言不是，因此它会高估所需的路线时间。这导致了不必要的分割，产生过多的微路线（C101_100c：100 个客户被分成 69 条路线）。</p>
+<p>改进后的预检查（<code>cluster_feasibility.py::ensure_temporal_feasibility()</code>）使用 POMO 的实际空间邻接排序，并结合定理 1 的松弛条件。如果路线的理论松弛量（前缀时间缓冲）超过预测的延迟量，即使基于 EDD 的估计认为不可行，该聚类也被认为可行。这将不必要的时序分割减少了约 40-50%。</p>
+</div>
+
+<!-- ── 阶段 2 ── -->
+<div class="card">
+<h3>阶段 2：POMO 神经路径规划</h3>
+<table>
+  <tr><th style="width:140px">维度</th><th>规约</th></tr>
+  <tr><td><strong>目的</strong></td><td>对每个聚类，使用预训练 Transformer 神经网络生成距离最优的客户访问序列。该阶段是一个<em>构造启发式</em> &mdash; 它从零开始构建路线，而非在已有路线中搜索。</td></tr>
+  <tr><td><strong>输入契约</strong></td><td><code>mini_instance: dict</code>，每个聚类具有重新索引的客户 ID（1..m）、本地距离矩阵（(m+1) &times; (m+1)，包含车场）以及客户特征 [(x, y, demand, ready_time, due_time, service_time)]</td></tr>
+  <tr><td><strong>输出契约</strong></td><td><code>truck_routes: list[list[int]]</code> &mdash; K 个客户索引序列（从 1 开始编号）。路线已进行距离优化，但可能包含时间窗违反（延迟 &gt; 0）。</td></tr>
+  <tr><td><strong>模型架构</strong></td><td><strong>编码器：</strong>6 层 Transformer 编码器（Vaswani 等, 2017）。客户特征（6 维）投影到 128 维嵌入。每个编码器层使用 8 头多头自注意力（d<sub>k</sub> = 16），配合 Add &amp; LayerNorm，随后是逐位置前馈网络（128 &rarr; 512 &rarr; 128，ReLU 激活）。<strong>解码器：</strong>基于注意力的自回归解码器。每一步，Query 为当前节点的编码与动态上下文特征 [剩余容量、当前时间、累计距离、电量比例] 的拼接。交叉注意力在所有编码器输出上操作（为推理缓存）。logit 裁剪机制（tanh，C = 10.0）稳定训练过程。Softmax 在未访问节点上产生概率分布。<strong>掩码：</strong>已访问节点和容量不可行节点被掩码（概率 = 0）。应用宽松的 TW 掩码（arrival_time &gt; due_time + 60），但这是软约束，不保证 TW 可行性。</td></tr>
+  <tr><td><strong>推理</strong></td><td>每个聚类：(1) 8 重坐标增强（翻转 x &times; 翻转 y &times; 转置 = 8 种几何视图），(2) 在每个视图内，从 N 个不同起始节点启动 N 条轨迹（POMO 多起点），(3) 贪婪自回归解码（每步选择 argmax 概率）。每个聚类的候选路线总数 = 8 &times; |cluster|。选择成本（距离 + 延迟 &times; 0.1）最小的路线。推理时间：每个 20-30 个客户的聚类约 0.1 秒。</td></tr>
+  <tr><td><strong>复杂度</strong></td><td>每个聚类 O(m<sup>2</sup> &times; L)，其中 m = 聚类大小，L = 6（编码器层数）。自注意力每层为 O(m<sup>2</sup>)。8 重增强乘以常数因子 8。</td></tr>
+  <tr><td><strong>文件引用</strong></td><td><code>pipeline/pomo_solver.py::ImprovedPOMOSolver</code>；模型定义位于 <code>algorithms/pomo/pomo_model.py::POMOModel</code>；增强位于 <code>algorithms/pomo/pomo_problem.py::augment_xy_by_8_fold()</code></td></tr>
+</table>
+
+<div class="insight">
+<div class="title">在框架中的角色定位</div>
+<p>POMO 被视为一个<strong>距离神谕（distance oracle）</strong>，而非完整的 EVRP-TW 求解器。其训练目标（CVRP 上使用 POMO 基线的 REINFORCE）以距离为优化目标；延迟在奖励中的权重为 0.1。该模型生成具有优良空间结构的路线，但不提供理论上的 TW 保证。这是有意为之：TW 保证由阶段 3（Forward Insertion）提供，使 POMO 能够专注于其最擅长的方面。</p>
+</div>
+
+<h4>POMO 训练方案</h4>
+<p>POMO 模型在标准 CVRP 实例（非 EVRP-TW）上预训练，并以零样本推理模式用于 EVRP-TW。核心训练参数：</p>
+<table>
+  <tr><th>参数</th><th>值</th><th>理由</th></tr>
+  <tr><td>训练轮次</td><td>80</td><td>在 CVRP-20/50/100 上足够收敛</td></tr>
+  <tr><td>每轮回合数</td><td>400</td><td>总计约 25,600 个训练实例</td></tr>
+  <tr><td>批次大小</td><td>64</td><td>平衡 GPU 内存与梯度稳定性</td></tr>
+  <tr><td>学习率</td><td>1e-4</td><td>Adam 优化器，权重衰减 1e-6</td></tr>
+  <tr><td>REINFORCE 基线</td><td>POMO（N 条轨迹均值）</td><td>N 个起始节点各自产生一条轨迹；所有 N 条轨迹的均值奖励作为基线，相较于单轨迹 REINFORCE 大幅降低梯度方差</td></tr>
+  <tr><td>数据增强</td><td>8 重（翻转 x/y + 转置）</td><td>在训练和推理中均应用，实现几何不变性</td></tr>
+  <tr><td>奖励函数</td><td>&minus;(距离 + 0.1 &times; 延迟)</td><td>以距离为主；TW 为软正则化项，而非硬约束</td></tr>
+</table>
+<p><strong>设计决策：零样本 vs. 微调。</strong> 一个自然的问题是 POMO 是否应该在 FI 修复后的路线上进行微调（从 FI 输出中进行监督学习）。分析后予以否定：估计改进上限约 3%（减少 FI 移动次数，而这本就微乎其微），同时需要在 A100 上花费约 2-3 GPU 天。零样本方法因其计算效率和方法论清晰性而更受青睐：它证明了即使在无问题专属神经训练的情况下，分解策略依然有效。</p>
+
+<h4>编码器架构详情</h4>
+<p>6 层 Transformer 编码器处理 N+1 个节点嵌入序列（N 个客户 + 1 个车场）。每个节点初始由一个 6 维特征向量 [x, y, demand, ready_time, due_time, service_time] 表示，线性投影到 128 维。不使用位置编码：该问题具有排列不变性（客户集合没有内在顺序）。每个编码器层计算：</p>
+<pre><code>EncoderLayer(x):
+    // 多头自注意力（8 头，d_k = 16）
+    Q, K, V = Linear_128(x), Linear_128(x), Linear_128(x)
+    attn = Softmax(Q @ K^T / sqrt(16))  // (N+1) × (N+1) 注意力矩阵
+    context = attn @ V
+    context = Linear_128(context)
+    x = LayerNorm(x + context)           // 残差 + 归一化
+
+    // 前馈网络
+    ff = Linear_512(ReLU(Linear_128(x))) // 128 → 512 → 128
+    x = LayerNorm(x + ff)                // 残差 + 归一化
+    return x</code></pre>
+<p>自注意力机制使得每个节点可以关注所有其他节点，学习空间关系（"哪些客户离我近？"）、时序关系（"谁的截止时间最早？"）和容量交互（"我的聚类中有多少需求？"）。8 个注意力头专精于不同的关系模式，但其具体专精特征不可人为解释。</p>
+
+<h4>解码器架构与自回归生成</h4>
+<p>解码器通过自回归贪婪解码，每次生成一个客户的路线。在第 t 步，给定部分路径 v<sub>1</sub>, ..., v<sub>t</sub> 和编码器输出，计算所有剩余未访问节点上的概率分布：</p>
+<pre><code>解码器步骤（贪婪生成）：
+    // 1. 从当前状态构建查询
+    current_node_embedding = encoder_output[current_position]     // (128,)
+    context_features = [
+        remaining_capacity / TRUCK_CAPACITY,    // [0, 1]
+        current_time / max_horizon,             // 归一化
+        cumulative_distance / expected_total,   // 归一化
+        remaining_battery / BATTERY_CAPACITY,   // [0, 1]（EV 感知）
+    ]                                           // (4,)
+    query = Linear_128(concat(current_node_embedding, context_features))
+
+    // 2. 在所有编码器输出上的交叉注意力
+    keys = encoder_output                       // (N+1) × 128（缓存）
+    values = encoder_output
+    attn_scores = query @ keys^T / sqrt(16)    // (N+1,) 向量
+    attn_scores = tanh_clip(attn_scores, C=10.0)  // logit 裁剪以稳定训练
+
+    // 3. 应用掩码（在 softmax 前设为 -inf）
+    若节点已访问：            score[node] = -inf
+    若 demand > capacity_left：  score[node] = -inf
+    若 arrival_estimate > due_time + 60：  score[node] = -inf  // 宽松 TW
+
+    // 4. 选择下一个节点
+    probs = Softmax(attn_scores)             // (N+1,) 有效概率
+    next_node = argmax(probs)                // 贪婪选择
+
+    // 5. 更新状态
+    将 next_node 加入路线
+    更新 current_time、cumulative_distance、capacity_left</code></pre>
+<p>上下文特征为解码器提供了动态态势感知：剩余容量（避免超载）、当前时间（注意临近截止时间）、累计距离（校准剩余预算）和电量比例（用于 EV 感知构造）。TW 掩码使用宽松的 +60 阈值：它允许解码器选择可能略微迟到的节点，寄望于 Forward Insertion 来解决该违规。这是一个刻意的设计选择 &mdash; 严格的掩码会迫使解码器仅仅为了满足即时的 TW 约束而做出次优的空间选择，而 FI 可以更优雅地处理这些问题。</p>
+</div>
+
+<!-- ── 阶段 3 ── -->
+<div class="card">
+<h3>阶段 3：Forward Insertion 修复 &#9733;</h3>
+<table>
+  <tr><th style="width:140px">维度</th><th>规约</th></tr>
+  <tr><td><strong>目的</strong></td><td>精确修复 POMO 生成路线中的时间窗违规，将迟到的客户重新定位到更早的位置。保证所有路线<strong>延迟 = 0</strong>，同时保留非迟到客户的空间结构。这是本文的核心方法学贡献。</td></tr>
+  <tr><td><strong>输入契约</strong></td><td><code>solution: TruckSolution</code>，其 <code>truck_routes</code> 可能具有延迟 &gt; 0；<code>instance: dict</code>；<code>seed: int</code></td></tr>
+  <tr><td><strong>输出契约</strong></td><td><code>(TruckSolution, stats: dict)</code>，其中 <code>solution.tardiness == 0</code>（保证）。<code>stats</code> 包含 <code>moves_accepted</code>、<code>fallback_count</code>、<code>forward_insertion_success</code>。解保留了 POMO 输出中所有非迟到客户的顺序（引理 2，前缀保留）。</td></tr>
+  <tr><td><strong>算法</strong></td><td>完整伪代码见第 3.2 节。摘要：(1) 仿真路线以识别迟到客户，按延迟降序排列；(2) 应用定理 1 预判（若 slack_ratio &lt; 0.3 则跳过 FI，直接进入 EDD 回退）；(3) 对每个迟到客户，从当前位置移除，评估所有更早的插入位置（0 到 current_pos），若成本改善则接受；(4) 若路线内插入失败，则尝试跨路线插入；(5) 若仍有延迟残留，对该路线应用 Full EDD 回退（Jackson 1955）。成本函数中距离权重为 2.0，延迟权重为 5.0（TW 满足优先 2.5 倍）。</td></tr>
+  <tr><td><strong>复杂度</strong></td><td>路线内阶段 O(|T| &times; n<sup>2</sup>)，其中 |T| 为迟到客户数量，n 为路线长度。跨路线阶段在最差情况下增加 O(|T| &times; K &times; n)（极少执行）。EDD 回退每条路线为 O(n log n)。</td></tr>
+  <tr><td><strong>理论保证</strong></td><td>引理 1（上游单调性解释了为何分段修复总是失败）、引理 2（有界副作用证明了精确修复的安全性）、定理 1（基于松弛阈值的一次通过充分条件）。完整论述见第 3.3 节。</td></tr>
+  <tr><td><strong>文件引用</strong></td><td><code>pipeline/repair.py::repair_forward_insertion()</code>（第 362-590 行）</td></tr>
+</table>
+</div>
+
+<!-- ── 阶段 4 ── -->
+<div class="card">
+<h3>阶段 4：约束局部搜索（CLS）</h3>
+<table>
+  <tr><th style="width:140px">维度</th><th>规约</th></tr>
+  <tr><td><strong>目的</strong></td><td>在 Forward Insertion 修复之后降低路线距离，同时维持硬 TW 可行性保证。Forward Insertion 可能因将客户重新定位到非距离最优位置而增加距离；CLS 用于恢复这一损失。</td></tr>
+  <tr><td><strong>输入契约</strong></td><td><code>solution: TruckSolution</code>，具有 <code>tardiness == 0</code>（即已达到 TW 可行）；<code>instance: dict</code>；<code>max_iter: int = 100</code>；<code>seed: int</code></td></tr>
+  <tr><td><strong>输出契约</strong></td><td><code>(TruckSolution, stats: dict)</code>，其中 <code>solution.tardiness == 0</code> 被保持，距离不增。<code>stats</code> 包含 <code>cls_2opt_moves</code>、<code>cls_relocate_moves</code>、<code>cls_cost_reduction_pct</code>。</td></tr>
+  <tr><td><strong>算法</strong></td><td>迭代执行三个阶段直至收敛（无可改善移动）：<strong>阶段 1（路线内 2-opt）：</strong>对每条路线，枚举所有 (i, j) 对（i &lt; j-1），反转子序列 route[i:j]。若距离减少且 TW 保持可行则接受。<strong>阶段 2（路线内 Relocate）：</strong>对每条路线的每个客户，移除并在同一路线内尝试所有插入位置。接受首个改善移动（首次改善策略）。<strong>阶段 3（路线间 Relocate）：</strong>对每条路线的每个客户，尝试插入到其他每条路线的每个位置。若两条路线的合并距离均减少且两条路线均保持 TW 可行则接受。</td></tr>
+  <tr><td><strong>复杂度</strong></td><td>2-opt 为 O(K &times; n<sup>3</sup>)（n = 每条路线的节点数），路线内 relocate 为 O(K &times; n<sup>2</sup>)，路线间 relocate 为 O(K<sup>2</sup> &times; n<sup>2</sup>)。对于典型 K &le; 10、n &le; 30，实际运行时间可忽略（&lt; 0.1s）。</td></tr>
+  <tr><td><strong>文件引用</strong></td><td><code>pipeline/repair.py::constrained_local_search()</code>（第 748-929 行）</td></tr>
+</table>
+</div>
+
+<!-- ── 阶段 5 ── -->
+<div class="card">
+<h3>阶段 5：路线合并</h3>
+<table>
+  <tr><th style="width:140px">维度</th><th>规约</th></tr>
+  <tr><td><strong>目的</strong></td><td>合并由阶段 1 中激进时序分割产生的微路线（每条 1-2 个客户）。每条微路线都会产生一次固定的车场往返成本；合并它们消除了冗余的车场访问，同时维持 TW 可行性。</td></tr>
+  <tr><td><strong>输入契约</strong></td><td><code>solution: TruckSolution</code>，具有 <code>tardiness == 0</code> 且可能包含许多短路线；<code>instance: dict</code>；<code>seed: int</code></td></tr>
+  <tr><td><strong>输出契约</strong></td><td><code>(TruckSolution, stats: dict)</code>，路线数量减少或保持不变。<code>stats</code> 包含 <code>merge_routes_before</code>、<code>merge_routes_after</code>、<code>merge_cost_reduction_pct</code>。合并后路线按 EDD 排序以实现 TW 最优性。</td></tr>
+  <tr><td><strong>算法</strong></td><td>迭代贪婪合并：(1) 按路线长度升序排列（最短优先）；(2) 对每对 (i, j)，拼接后按 due_time（EDD）排序；(3) 检查三个约束：TW 可行性（所有到达时间 &le; due_time）、容量（总需求 &le; Q = 200）和 EV 电量（总能耗 &le; B = 55 kWh）；(4) 若所有约束通过，合并并重新开始扫描；(5) 重复直至无法进一步合并。该算法是安全的，因为所有路线已经 TW 可行；合并配合 EDD 排序根据 Jackson 规则保持或改善 TW 可行性。</td></tr>
+  <tr><td><strong>复杂度</strong></td><td>O(M<sup>3</sup> &times; n log n)，其中 M 为初始路线数，n 为合并后路线的最大长度。M 单调递减。实际中，M 最高约 69（C101_100c），在 3-5 次迭代后收敛至约 13。</td></tr>
+  <tr><td><strong>文件引用</strong></td><td><code>pipeline/repair.py::merge_routes_post_repair()</code>（第 936-1042 行）</td></tr>
+</table>
+</div>
+
+<!-- ── 阶段 6 ── -->
+<div class="card">
+<h3>阶段 6：EV 评估</h3>
+<table>
+  <tr><th style="width:140px">维度</th><th>规约</th></tr>
+  <tr><td><strong>目的</strong></td><td>在最终路线中插入充电停靠点以满足电量约束。这是一个<strong>后处理层</strong>，不会改变客户访问顺序 &mdash; 仅在需要处插入充电站（CS）访问。默认为关闭状态（<code>use_ev=False</code>）；可切换为开启以进行 EV 感知评估。</td></tr>
+  <tr><td><strong>输入契约</strong></td><td><code>routes: list[list]</code>，客户 ID 序列；<code>customers: list[dict]</code>；<code>dist_matrix: 2D array</code>；<code>instance: dict</code>；<code>battery_capacity: float = 55.0</code>；<code>energy_rate: float = 1.5</code>；<code>charging_model: str = 'nonlinear'</code></td></tr>
+  <tr><td><strong>输出契约</strong></td><td><code>EVTruckSolution</code>（继承自 TruckSolution），附加属性：<code>ev_feasible: bool</code>、<code>energy_violation: float</code>、<code>n_charges: int</code>、<code>total_charge_time: float</code>、<code>total_charge_energy: float</code></td></tr>
+  <tr><td><strong>充电模型</strong></td><td>三段分段非线性充电（Montoya 等, 2017）：<strong>0-20% SOC：</strong>速率倍率 1.5&times;（快速充电，低内阻）；<strong>20-80% SOC：</strong>速率倍率 1.0&times;（恒流充电）；<strong>80-100% SOC：</strong>速率倍率 0.5&times;（恒压充电，电池保护）。基础速率为 1.0 kWh/min。提供正向函数 <code>charge_nonlinear(soc_pct, duration) &rarr; kWh</code> 和逆向函数 <code>compute_nonlinear_charge_time(soc_pct, target_kwh) &rarr; minutes</code>。</td></tr>
+  <tr><td><strong>充电插入算法</strong></td><td><code>insert_charging_stops_lookahead()</code> 使用前探（look-ahead）策略：(1) 预计算沿路线的电量曲线；(2) 识别首个电量不足位置；(3) 在不足位置之前的所有插入位置，跨全部 3 个充电站进行搜索；(4) 对每个候选方案进行非线性充电仿真，拒绝引入延迟的方案；(5) 选择最小化电量违反（首要）和距离（次要）的插入方案；(6) 每条路线最多重复插入 3 个充电停靠点。与贪婪方法不同，该算法仅充到所需电量（至约 80% SOC 阈值，利用快速充电区域），而非始终充到 100%。</td></tr>
+  <tr><td><strong>复杂度</strong></td><td>每条路线 O(C &times; n &times; M)，其中 C &le; 3（最大充电停靠点数），n = 路线长度，M = 3（充电站数量）。实际中可忽略不计。</td></tr>
+  <tr><td><strong>文件引用</strong></td><td><code>ev/ev_model.py::EVTruckSolution</code>、<code>ev/ev_model.py::insert_charging_stops_lookahead()</code></td></tr>
+</table>
+</div>
+
+<!-- ═══════════════════════════ §3 核心算法 ═══════════════════════════ -->
+<h2 id="s3">3. 核心算法：Forward Insertion</h2>
+
+<!-- ── §3.1 问题陈述 ── -->
+<h3 id="s3-1">3.1 问题陈述</h3>
+
+<div class="card">
+<p>给定一条 POMO 生成的卡车路线 <strong>R = (v<sub>1</sub>, v<sub>2</sub>, ..., v<sub>n</sub>)</strong>，具有延迟 <strong>T(R) &gt; 0</strong>（即 &exist; k 使得 a<sub>k</sub> &gt; l<sub>k</sub>，其中 a<sub>k</sub> 为到达客户 v<sub>k</sub> 的时间），生成一条修改后的路线 <strong>R'</strong>，满足：</p>
+<ol>
+  <li><strong>T(R') = 0</strong> &mdash; 所有客户均在其时间窗内得到服务</li>
+  <li><strong>|R' &Delta; R| 最小化</strong> &mdash; 对 POMO 优化顺序的结构性改变最小化（保留距离优化成果）</li>
+  <li>该算法<strong>给定种子后为确定性算法</strong>且具有<strong>多项式时间复杂度</strong></li>
+</ol>
+
+<p>该方法必须是<strong>精确的（surgical）</strong>：它应该只重新定位迟到的客户，而非打乱整条路线。这与 Full EDD 重排序（Jackson 1955）形成对比，后者按 due_time 对整个路线进行排序，丢弃了所有 POMO 距离优化成果。</p>
+</div>
+
+<!-- ── §3.2 算法规约 ── -->
+<h3 id="s3-2">3.2 算法规约</h3>
+
+<div class="card">
+<pre><code>算法：Forward Insertion 修复
+────────────────────────────────────────
+输入：  具有 truck_routes 的 TruckSolution、instance dict、seed
+输出：  延迟 = 0 的 TruckSolution、修复统计数据
+
+参数：
+  TARD_WEIGHT = 5.0        // 成本函数中的延迟惩罚
+  DIST_WEIGHT = 2.0        // 距离成本率
+  SLACK_THRESHOLD = 0.3    // 定理 1 预判阈值
+
+1.  函数 repair_forward_insertion(solution, instance, seed):
+2.    routes := copy(solution.truck_routes)
+3.    total_moves := 0
+4.    fallback_count := 0
+5.
+6.    对于每条路线 ri in routes:
+7.      若 |route| <= 1：继续
+8.
+9.      // ── 识别迟到客户 ──
+10.     arrivals, tard_vals := simulate_route(route)
+11.     tardy := [(pos, cust_id, tard_val) 对每个位置
+12.               其中 tard_vals[pos] > 0.01]
+13.     若 |tardy| == 0：继续
+14.
+15.     // ── 定理 1 预判 ──
+16.     total_tard := SUM(tard_val for (_, _, tard_val) in tardy)
+17.     prefix_slack := compute_available_buffer_before_first_tardy(tardy, route)
+18.     slack_ratio := prefix_slack / total_tard  // 若 total_tard ≈ 0 则为 ∞
+19.     若 slack_ratio < SLACK_THRESHOLD：
+20.       // FI 成功概率低；直接跳至 EDD
+21.       route := sort(route, key=dute_time)  // Jackson 1955
+22.       fallback_count += 1
+23.       routes[ri] := route
+24.       继续
+25.
+26.     // ── 前向插入每个迟到客户 ──
+27.     tardy.sort(key=tard_val, reverse=True)  // 最差的优先
+28.     moved_customers := {}
+29.
+30.     对于每个 (orig_pos, cust_id, tard_val) in tardy：
+31.       若 cust_id in moved_customers：继续
+32.       total_moves_attempted += 1
+33.
+34.       current_pos := route.index(cust_id)
+35.       若 current_pos == 0：继续  // 已在最前
+36.
+37.       best_pos := current_pos
+38.       best_cost := INF
+39.       route_without := route[:current_pos] + route[current_pos+1:]
+40.
+41.       // ── 路线内前向搜索 ──
+42.       对于 insert_pos in 0..current_pos：
+43.         test_route := route_without[:insert_pos]
+44.                       + [cust_id]
+45.                       + route_without[insert_pos:]
+46.         _, new_tard_vals, test_tard, test_dist :=
+47.           simulate_route(test_route)
+48.         cost := test_dist * DIST_WEIGHT
+49.                 + test_tard * TARD_WEIGHT
+50.         若 cost < best_cost - 0.01：
+51.           best_cost := cost
+52.           best_pos := insert_pos
+53.
+54.       // ── 跨路线前向搜索 ──
+55.       若 best_pos == current_pos AND |routes| >= 2：
+56.         对于每条其他路线 rj != ri：
+57.           对于 insert_pos in 0..|routes[rj]|：
+58.             test_other := routes[rj][:insert_pos]
+59.                           + [cust_id]
+60.                           + routes[rj][insert_pos:]
+61.             若 TW_feasible(test_other)：
+62.               combined_cost := cost(ri - {cust_id})
+63.                               + cost(test_other)
+64.               若 combined_cost < best_cross_cost：
+65.                 best_cross_ri := rj
+66.                 best_cross_pos := insert_pos
+67.
+68.       // ── 接受最佳移动 ──
+69.       若 best_pos != current_pos：  // 路线内
+70.         route := route_without[:best_pos]
+71.                  + [cust_id]
+72.                  + route_without[best_pos:]
+73.         total_moves += 1
+74.         moved_customers.add(cust_id)
+75.       否则若 best_cross_ri >= 0：  // 跨路线
+76.         routes[ri] := route[:current_pos] + route[current_pos+1:]
+77.         routes[best_cross_ri] := routes[best_cross_ri][:best_cross_pos]
+78.                                  + [cust_id]
+79.                                  + routes[best_cross_ri][best_cross_pos:]
+80.         total_moves += 1
+81.         moved_customers.add(cust_id)
+82.
+83.     // ── 所有移动完成后验证 ──
+84.     _, final_tard_vals, final_tard := simulate_route(route)
+85.     若 final_tard > 0.01：
+86.       route := sort(route, key=dute_time)  // Full EDD 回退
+87.       fallback_count += 1
+88.     routes[ri] := route
+89.
+90.   repaired := TruckSolution(routes, instance)
+91.   返回 (repaired, stats)</code></pre>
+</div>
+
+<!-- ── §3.3 理论分析 ── -->
+<h3 id="s3-3">3.3 理论分析</h3>
+
+<div class="theorem">
+<div class="title">引理 1 &mdash; 上游单调性：为何分段修复总是失败</div>
+
+<p><strong>形式化陈述。</strong> 令 R = (v<sub>1</sub>, ..., v<sub>n</sub>) 为一条路线，令 S = R[k:n] 为 R 从位置 k 开始的后缀。对于 S 的任意排列 S'，前缀节点 v<sub>1</sub>, ..., v<sub>k-1</sub> 的到达时间保持不变。此外，到达 v<sub>k</sub>（后缀的第一个节点）的时间仅取决于到 v<sub>k-1</sub> 的前缀以及从 v<sub>k-1</sub> 到 v<sub>k</sub> 的行驶时间，<em>而不取决于</em> S 的内部顺序。</p>
+
+<p><strong>证明概要。</strong> 任意节点 v<sub>i</sub> 的到达时间按递推方式计算：a<sub>i</sub> = max(e<sub>i</sub>, a<sub>i-1</sub> + s<sub>i-1</sub> + t<sub>i-1,i</sub>)。对于 i &lt; k，该递推仅依赖于前缀 v<sub>1</sub> 至 v<sub>i</sub>。由于前缀未改变，所有 i &lt; k 的 a<sub>i</sub> 是不变的。对于 a<sub>k</sub>，递推使用 a<sub>k-1</sub>、s<sub>k-1</sub> 以及从 v<sub>k-1</sub> 到 S' 中第一个节点的距离。但 t<sub>k-1, first(S')</sub> 取决于哪个节点被放在位置 k，而非 S' 其余部分的内部顺序。然而，<em>无论 S' 如何排列</em>，从 v<sub>k-1</sub> 的出发时间由前缀固定；后缀排序无法减少已累积的上游行驶时间。</p>
+
+<p><strong>推论 &mdash; 结构性延迟。</strong> 若 v<sub>k</sub> 之所以迟到，是因为通过前缀 v<sub>1..k-1</sub> 的累积行驶时间已耗尽可用时间预算，则 v<sub>k</sub> 在 S 的<em>任意</em>重排序下仍将保持迟到。这是<strong>结构性延迟（structural tardiness）</strong>（由位置决定），与<strong>顺序性延迟（sequential tardiness）</strong>（由排序决定）不同。</p>
+
+<p><strong>工程启示。</strong> 该引理直接预测了分段 EDD 修复（Partial EDD）100% 的失败率。任何迟到段中的第一个客户必然具有结构性延迟 &mdash; 段内重排序无法挽救它。唯一有效的修复是将<strong>迟到客户向前移动</strong>（改变其相对于整个前缀的位置，而非仅在某个后缀内），而这正是 Forward Insertion 所做的。</p>
+</div>
+
+<div class="theorem">
+<div class="title">引理 2 &mdash; Forward Insertion 的有界副作用</div>
+
+<p><strong>形式化陈述。</strong> 令 R = (v<sub>1</sub>, ..., v<sub>n</sub>) 为一条路线。令 R' 为将客户 v<sub>j</sub> 从位置 j 移动到位置 i（i &lt; j）的结果。则：</p>
+<ol>
+  <li><strong>前缀保留：</strong> 对于所有 p &lt; i，arrival(v<sub>p</sub>; R') = arrival(v<sub>p</sub>; R) &mdash; 插入点之前的节点完全不受影响。</li>
+  <li><strong>被移动客户的改善：</strong> arrival(v<sub>j</sub>; R') &le; arrival(v<sub>j</sub>; R) &mdash; 被移动的客户严格更早（或最差情况下同时）得到服务。</li>
+  <li><strong>有界局部偏移：</strong> 对于所有 i &lt; p &lt; j，arrival(v<sub>p</sub>; R') &le; arrival(v<sub>p</sub>; R) + s<sub>j</sub> + &Delta;d，其中 &Delta;d 是在这些位置之间插入 v<sub>j</sub> 所引入的最大可能绕行距离。延迟是有界的且是局部的。</li>
+  <li><strong>尾部不退化：</strong> 对于所有 p &gt; j，arrival(v<sub>p</sub>; R') &le; arrival(v<sub>p</sub>; R) &mdash; v<sub>j</sub> 原始位置之后的节点不会比之前更晚得到服务（因为 v<sub>j</sub> 已从它们之前移除）。</li>
+</ol>
+
+<p><strong>证明概要。</strong> 每部分均从递推到达到达方程得出。第 (1) 部分：前缀递推独立于位置 i 之后的节点。第 (2) 部分：v<sub>j</sub> 现在在位置 i 而非 j 处得到服务；由于 i &lt; j 且所有先前节点相同或是子集，到达位置 i 的累积行驶时间 &le; 到达位置 j 的累积时间。第 (3) 部分：在位置 i 和 j 之间，插入了一次额外的服务（s<sub>j</sub>），且空间路径可能改变；每个被偏移节点的最差额外延迟为 s<sub>j</sub> 加上最大可能绕行距离。第 (4) 部分：由于 v<sub>j</sub> 被移除，位置 j 之后的节点向前移动，减少了累积时间。</p>
+
+<p><strong>工程启示。</strong> Forward Insertion 是<strong>精确安全的（surgically safe）</strong>：副作用被限制在插入位置与原始位置之间的有界窗口内。前缀（可能包含时间关键客户）完全不受影响。算子消融实验证实了非对称性：Relocate 算子考虑前向和后向移动，但在实际中<em>从不选择后向移动</em> &mdash; 前向移动总是更优。</p>
+</div>
+
+<div class="theorem">
+<div class="title">定理 1 &mdash; 一次通过充分性条件</div>
+
+<p><strong>形式化陈述。</strong> 令 T 为路线 R 中迟到客户的集合，令 &sigma; = &Sigma;<sub>p&lt;min(T)</sub> (l<sub>p</sub> - a<sub>p</sub>) 为总前缀松弛量（最早迟到客户之前的未用时间预算）。若对于每个 v<sub>k</sub> &isin; T，存在一个插入位置 i &lt; k，使得：</p>
+<ol>
+  <li>arrival(v<sub>k</sub> 在位置 i) &le; l<sub>k</sub>（被移动客户准时到达），且</li>
+  <li>对于位置 i 和 k 之间的所有被偏移节点 p，arrival(v<sub>p</sub> 偏移后) &le; l<sub>p</sub>（没有被偏移节点变为迟到），</li>
+</ol>
+<p>则 Forward Insertion 在<strong>一次通过</strong>（最多 |T| 次移动）内收敛到 T(R') = 0 的解，无需 EDD 回退。</p>
+
+<p><strong>证明概要（对 |T| 的归纳法）。</strong> 基础情况 |T| = 0：平凡满足。归纳步骤：假设 Forward Insertion 在一次通过内解决 |T| - 1 个迟到客户。处理最迟到的客户 v<sub>t</sub>。根据充分性条件，存在一个更早的位置，在此位置上 v<sub>t</sub> 准时且所有被偏移节点保持可行。在此移动之后，迟到客户集合为 T \ {v<sub>t</sub>}（被移动客户现已准时，且根据引理 2 的有界副作用，没有引入新的延迟）。根据归纳假设，剩余的 |T| - 1 个迟到客户在一次通过内解决。</p>
+
+<p><strong>充分松弛准则。</strong> 充分性条件的一个实用代理：若 <strong>&sigma; &ge; &Sigma;<sub>v&isin;T</sub> (a<sub>v</sub> - l<sub>v</sub>)</strong>（总前缀松弛量超过总延迟量），则该条件以高概率成立。这促成了 Budget-Aware 聚类中的<strong>75% TW 预算阈值</strong>（第 2.2 节，阶段 1）：通过确保 EDD 估计的路线时间不超过 TW 时间跨度的 75%，我们为 Forward Insertion 在定理 1 的充分性条件内运作保留了至少 25% 的松弛余量。</p>
+
+<p><strong>工程启示。</strong> 当松弛比率（prefix_slack / total_tardiness）低于 0.3 时，充分性条件不太可能成立。因此算法<strong>完全跳过了前向搜索</strong>，对该路线直接回退到 Full EDD，避免了浪费计算。实际中，该触发条件在不到 2% 的路线上激活，证实 Budget-Aware 聚类在绝大多数情况下提供了足够的松弛余量。C 类实例（聚类空间分布）实现了 100% 零回退，因为其短而紧凑的路线提供了充足的松弛余量 &mdash; 定理 1 的条件总是得到满足。</p>
+</div>
+
+<!-- ── §3.4 算子消融实验 ── -->
+<h3 id="s3-4">3.4 算子消融实验证据</h3>
+
+<div class="card">
+<p>为了证明 Forward Insertion 是 TW 修复的<strong>最小充分算子</strong> &mdash; 而不仅仅是众多同等有效的局部搜索算子之一 &mdash; 我们在 24 个代表性实例（6 种 TW 类型 &times; 4 个规模）上进行了消融研究，比较了四种算子：</p>
+
+<table>
+  <tr><th>算子</th><th>移动类型</th><th>搜索空间</th><th>TW 可行性（24 个实例）</th><th>回退次数</th><th>核心发现</th></tr>
+  <tr>
+    <td><strong>Forward Insertion</strong></td>
+    <td>单节点 &rarr; 仅更早位置</td>
+    <td>每个节点 O(n) 个位置</td>
+    <td><strong>24/24 (100%)</strong></td>
+    <td>7</td>
+    <td>唯一具有完整理论框架的算子</td>
+  </tr>
+  <tr>
+    <td>Relocate（双向）</td>
+    <td>单节点 &rarr; 任意位置</td>
+    <td>每个节点 O(2n) 个位置</td>
+    <td>24/24 (100%)</td>
+    <td>7</td>
+    <td>结果与 FI 相同；<strong>从不选择后向移动</strong></td>
+  </tr>
+  <tr>
+    <td>Or-opt（段移动）</td>
+    <td>连续段 &rarr; 前向</td>
+    <td>O(n<sup>2</sup>) 个段</td>
+    <td>16/24 (67%)</td>
+    <td>&mdash;</td>
+    <td>在 C1/R1 上失败：段级别操作（引理 1）</td>
+  </tr>
+  <tr>
+    <td>2-opt*（段交换）</td>
+    <td>两个段交换</td>
+    <td>O(n<sup>2</sup>) 个段</td>
+    <td>16/24 (67%)</td>
+    <td>&mdash;</td>
+    <td>在窄 TW 实例上零次移动</td>
+  </tr>
+</table>
+
+<div class="insight">
+<div class="title">消融实验的三项核心结论</div>
+<ol>
+  <li><strong>Forward Insertion 与 Relocate 在结果上等价：</strong>"仅前向"的限制不是一种缺陷，而是一种<strong>最优性属性</strong>。Relocate 具有 2 倍的搜索空间，却产生相同的结果，因为后向移动永远不会改善加权成本函数（引理 2）。Forward Insertion 以一半的计算搜索量实现了同等的有效性。</li>
+  <li><strong>段级别算子在窄 TW 上失败（67%）：</strong>Or-opt 和 2-opt* 在 C1 和 R1 实例上实现了零次成功移动。这是引理 1 的直接经验后果：当延迟是结构性的（由累积上游时间导致）时，任何程度的段重排序都无法消除它。</li>
+  <li><strong>简单即强大：</strong>Forward Insertion 受限的搜索空间不是一种妥协，而是基于引理 2 建立的非对称性的<strong>原则性设计选择</strong>。它是实现 100% TW 可行性且具有完整理论刻画的最小算子。</li>
+</ol>
+</div>
+</div>
+
+<!-- ═══════════════════════════ §4 代码架构 ═══════════════════════════ -->
+<h2 id="s4">4. 代码架构</h2>
+
+<!-- ── §4.1 模块依赖关系图 ── -->
+<h3 id="s4-1">4.1 模块依赖关系图</h3>
+
+<div class="card">
+<pre><code>config.py                              # 全局常量、超参数、车队配置
+  &boxvu;
+  &boxvr;&boxvr; core/problem_model.py             # TruckSolution（惰性求值、Pareto 支配）
+  &boxvr;&boxvr; core/data_loader.py               # Solomon 224 实例加载器 + ECVRP 解析器
+  &boxvu;
+  &boxvr;&boxvr; pipeline/
+  &boxvr;   &boxvu;
+  &boxvr;   &boxvr;&boxvr; clustering.py                     # TW 感知 K-means++ 空间聚类
+  &boxvr;   &boxvr;&boxvr; adaptive_clustering.py   &rarr; clustering.py
+  &boxvr;   &boxvr;                                # Budget-Aware / Hybrid / Adaptive 策略
+  &boxvr;   &boxvr;&boxvr; cluster_feasibility.py   &rarr; adaptive_clustering.py
+  &boxvr;   &boxvr;                                # FI 感知时序可行性 + 分割（75% 阈值）
+  &boxvr;   &boxvr;&boxvr; pomo_multitruck.py        &rarr; clustering.py, core/problem_model
+  &boxvr;   &boxvr;                                # 遗留 K-means + POMO 多卡车协调器
+  &boxvr;   &boxvr;&boxvr; pomo_solver.py            &rarr; adaptive_clustering, cluster_feasibility,
+  &boxvr;   &boxvr;                                #   pomo_multitruck, algorithms/pomo/*
+  &boxvr;   &boxvr;                                # ImprovedPOMOSolver：集成聚类 + POMO 推理
+  &boxvr;   &boxvr;&boxvr; repair.py                 &rarr; core/problem_model
+  &boxvr;   &boxvr;                                # &#9733; Forward Insertion、Full/Partial EDD、CLS、路线合并
+  &boxvr;   &boxvr;&boxvr; pipeline.py              &rarr; repair, pomo_solver, core/problem_model
+  &boxvr;                                        # &#9733; solve_evrptw()、solve_evrptw_iterative()
+  &boxvu;
+  &boxvr;&boxvr; ev/
+  &boxvr;   &boxvr;&boxvr; ev_model.py             &rarr; core/problem_model, config
+  &boxvr;                                        # EVTruckSolution、charge_nonlinear()、充电插入
+  &boxvu;
+  &boxvr;&boxvr; algorithms/
+  &boxvr;   &boxvr;&boxvr; nsga2.py                &rarr; core/problem_model, config
+  &boxvr;   &boxvr;&boxvr; paco.py                 &rarr; core/problem_model, config
+  &boxvr;   &boxvr;&boxvr; ivnd.py                 &rarr; core/problem_model, config
+  &boxvr;   &boxvr;&boxvr; no_drone.py             &rarr; core/problem_model, config
+  &boxvr;   &boxvu;
+  &boxvr;   &boxvr;&boxvr; pomo/
+  &boxvr;       &boxvr;&boxvr; pomo_model.py        # Transformer 编码器 + Attention 解码器
+  &boxvr;       &boxvr;&boxvr; pomo_env.py          # 向量化 MDP 环境（N 条并行轨迹）
+  &boxvr;       &boxvr;&boxvr; pomo_problem.py      # 实例生成、8 重增强、特征提取
+  &boxvr;       &boxvr;&boxvr; pomo_trainer.py      # REINFORCE 训练循环（导入 model、env、problem）
+  &boxvr;       &boxvr;&boxvr; train.py             # 训练入口
+  &boxvu;
+  &boxvr;&boxvr; experiments/                    # 实验脚本（8 个实验）
+  &boxvr;&boxvr; visualization/                  # 论文级可视化（路线图、Pareto 图）
+  &boxvr;&boxvr; data/                           # JSON 实例：224 Solomon + 24 TW-CEVRP</code></pre>
+</div>
+
+<!-- ── §4.2 核心类继承结构 ── -->
+<h3 id="s4-2">4.2 核心类继承结构</h3>
+
+<div class="card">
+<pre><code>TruckSolution (core/problem_model.py)
+  &boxvu;
+  &boxvr;&boxvr; 属性（惰性求值）：
+  &boxvr;     cost: float          # 车辆固定成本 + 距离成本（+ 延迟惩罚）
+  &boxvr;     tardiness: float     # 所有 TW 违反的加权总和
+  &boxvr;     feasible: bool       # 若容量 + TW 约束均满足则为 True
+  &boxvr;     violations: dict     # {capacity: float, time_window: float}
+  &boxvr;     objectives: tuple    # (cost, tardiness)，用于 Pareto 比较
+  &boxvu;
+  &boxvr;&boxvr; 方法：
+  &boxvr;     dominates(other)     # Pareto 支配检查（最小化）
+  &boxvr;     _evaluate()          # 私有：从 truck_routes 计算所有属性
+  &boxvu;
+  &boxvr;&boxvr; 核心属性：
+        truck_routes: list[list[int]]  # K 条路线，每条为从 1 开始编号的客户 ID 序列
+        instance: dict                  # 问题实例（customers、depot、distance_matrix、...）
+
+  &boxvu;
+  EVTruckSolution (ev/ev_model.py)  &larr; 继承自 TruckSolution
+    &boxvu;
+    &boxvr;&boxvr; 附加属性：
+    &boxvr;     ev_feasible: bool           # 满足电量约束
+    &boxvr;     energy_violation: float     # 跨路线的总 kWh 缺额
+    &boxvr;     n_charges: int              # 插入的充电停靠点数量
+    &boxvr;     total_charge_time: float    # 累计充电时长
+    &boxvr;     total_charge_energy: float  # 总充电 kWh
+    &boxvu;
+    &boxvr;&boxvr; 方法：
+          _evaluate_ev()            # 私有：EV 专属约束检查
+          _compute_energy_profile() # 逐路线的能耗仿真</code></pre>
+
+<h4>解成本模型</h4>
+<p><code>TruckSolution._evaluate()</code> 评估的成本函数遵循三部分结构：</p>
+<pre><code>total_cost = vehicle_fixed + distance_cost + unserved_penalty
+
+其中：
+  vehicle_fixed = n_trucks * TRUCK_FIXED_COST       // 每辆卡车 100.0
+  distance_cost = total_truck_distance * TRUCK_DIST_COST_RATE  // 每公里 2.0
+  unserved_penalty = n_unserved_customers * 1000.0   // 硬不可行惩罚
+
+  total_truck_distance = 逐路线求和：
+    车场到首客户 + 连续客户对之和 + 末客户到车场
+    （从 distance_matrix[i][j] 计算得到）
+
+  tardiness = 所有客户求和：
+    max(0, arrival_time - due_time) * TARDINESS_COST_RATE  // 每时间单位 1.0</code></pre>
+<p>成本模型中的关键设计决策：</p>
+<ul>
+  <li><strong>每辆卡车固定成本（100.0）：</strong>尽可能减少卡车使用数量。这是路线合并（阶段 5）背后的经济驱动力 &mdash; 每合并一条路线就消除一次固定成本。</li>
+  <li><strong>距离成本率（2.0）：</strong>校准为使距离成本和固定成本在量级上可比。在典型路线距离（20-30 个客户约 20-50 km）下，距离成本为 40-100 单位，而每辆卡车的固定成本为 100 单位。</li>
+  <li><strong>延迟成本率（1.0）：</strong>低于修复成本函数中的值（TARD_WEIGHT = 5.0）。在解评估器中，延迟作为可行性指标而非主要优化目标；修复成本函数使用更高权重以激进地将延迟驱动至零。</li>
+  <li><strong>未服务惩罚（1000.0/客户）：</strong>硬不可行惩罚确保未覆盖所有客户的解被任何覆盖了所有客户的解严格支配，无论其成本如何。</li>
+</ul>
+
+<h4>完整文件引用</h4>
+<table>
+  <tr><th>模块</th><th>文件</th><th>核心内容</th></tr>
+  <tr><td>全局配置</td><td><code>config.py</code></td><td>TRUCK_SPEED=35、TRUCK_CAPACITY=200、TRUCK_FIXED_COST=100、TRUCK_DIST_COST_RATE=2.0、TARDINESS_COST_RATE=1.0、BATTERY_CAPACITY=55、ENERGY_CONSUMPTION_RATE=1.5、CHARGING_STATIONS（3 个位置）、CHARGING_SEGMENTS（3 段非线性）、DEPOT=(8.0,8.0)、POMO 超参数（128 维、6 层、8 头）、NSGA-II/PACO/IVND 配置</td></tr>
+  <tr><td>核心模型</td><td><code>core/problem_model.py</code></td><td><code>TruckSolution</code> 类（惰性求值、cost/tardiness/feasible/violations）、<code>extract_pareto_front()</code>、<code>compute_hypervolume()</code>、<code>evaluate_solution_batch()</code></td></tr>
+  <tr><td>数据加载器</td><td><code>core/data_loader.py</code></td><td>Solomon 实例解析（JSON 格式）、客户规模调整（25/50/100/200）、距离矩阵计算、TW 类型检测</td></tr>
+  <tr><td>ECVRP 加载器</td><td><code>core/ecvrp_loader.py</code></td><td>CEVRP 基准解析（E/F/M/X 系列）、为 TW-CEVRP 实验添加 TW 增强</td></tr>
+  <tr><td>FI + 修复</td><td><code>pipeline/repair.py</code></td><td><strong>&#9733; 核心模块。</strong> <code>repair_forward_insertion()</code>（第 362-590 行）、<code>repair_tardiness_truck()</code>（Full EDD）、<code>repair_tardiness_partial_truck()</code>（已弃用）、<code>constrained_local_search()</code>（第 748-929 行）、<code>merge_routes_post_repair()</code>（第 936-1042 行）、<code>repair_inter_route()</code>、<code>repair_capacity()</code>、仿真工具（<code>_simulate_route</code>、<code>_check_tw_feasible</code>、<code>_route_distance</code>、<code>_route_cost</code>）</td></tr>
+  <tr><td>流水线</td><td><code>pipeline/pipeline.py</code></td><td><code>solve_evrptw()</code>（完整 6 阶段流水线）、<code>solve_evrptw_iterative()</code>（多起点与方差感知的早停）、<code>run_pipeline()</code>（别名）</td></tr>
+  <tr><td>聚类基础</td><td><code>pipeline/clustering.py</code></td><td><code>cluster_customers_tw_aware()</code>：K-means++ 初始化、使用时空距离度量的 Lloyd 迭代</td></tr>
+  <tr><td>自适应聚类</td><td><code>pipeline/adaptive_clustering.py</code></td><td><code>cluster_with_params()</code>：统一接口，支持 'budget_aware'、'adaptive_tw'、'hybrid'、'baseline'、'spatiotemporal' 策略</td></tr>
+  <tr><td>可行性检查</td><td><code>pipeline/cluster_feasibility.py</code></td><td><code>ensure_temporal_feasibility()</code>：FI 感知时序预检查与 75% 阈值；条件分割逻辑</td></tr>
+  <tr><td>POMO 求解器</td><td><code>pipeline/pomo_solver.py</code></td><td><code>ImprovedPOMOSolver</code> 类：集成聚类 + 多卡车 POMO 推理 + 路线构造</td></tr>
+  <tr><td>POMO 多卡车</td><td><code>pipeline/pomo_multitruck.py</code></td><td>遗留 K-means + POMO 协调（由 ImprovedPOMOSolver 取代）</td></tr>
+  <tr><td>POMO 模型</td><td><code>algorithms/pomo/pomo_model.py</code></td><td><code>POMOModel</code> 类：Transformer 编码器（6 层、8 头、d_k=16、FF 128&rarr;512&rarr;128）+ Attention 解码器（交叉注意力 + logit 裁剪 + 掩码）</td></tr>
+  <tr><td>POMO 环境</td><td><code>algorithms/pomo/pomo_env.py</code></td><td><code>POMOEnv</code>：管理 N 条并行生成轨迹的向量化 MDP 环境，共享编码器缓存</td></tr>
+  <tr><td>POMO 问题定义</td><td><code>algorithms/pomo/pomo_problem.py</code></td><td><code>augment_xy_by_8_fold()</code>：坐标变换（翻转 x/y &times; 转置）；特征提取；实例生成</td></tr>
+  <tr><td>POMO 训练器</td><td><code>algorithms/pomo/pomo_trainer.py</code></td><td>REINFORCE 训练循环：回合生成、POMO 基线计算、梯度累积、检查点管理</td></tr>
+  <tr><td>EV 模型</td><td><code>ev/ev_model.py</code></td><td><code>EVTruckSolution</code>（继承自 TruckSolution）、<code>insert_charging_stops_lookahead()</code>、<code>charge_nonlinear()</code>、<code>compute_nonlinear_charge_time()</code></td></tr>
+  <tr><td>NSGA-II</td><td><code>algorithms/nsga2.py</code></td><td>多目标 GA：排列染色体、SBX 交叉、交换变异、非支配排序、拥挤距离</td></tr>
+  <tr><td>P-ACO</td><td><code>algorithms/paco.py</code></td><td>Pareto ACO：双信息素矩阵（成本、延迟）、基于蚂蚁的构造、蒸发、精英沉积</td></tr>
+  <tr><td>IVND</td><td><code>algorithms/ivnd.py</code></td><td>迭代 VND：relocate + swap + 2-opt 邻域、抖动扰动、Metropolis 接受、禁忌列表</td></tr>
+</table>
+</div>
+
+<!-- ── §4.3 流水线入口 ── -->
+<h3 id="s4-3">4.3 流水线入口</h3>
+
+<div class="card">
+<table>
+  <tr><th style="width:220px">函数</th><th>位置</th><th>描述</th></tr>
+  <tr>
+    <td><code>solve_evrptw()</code></td>
+    <td><code>pipeline/pipeline.py</code></td>
+    <td><strong>主入口。</strong> 执行完整 6 阶段流水线：聚类 &rarr; POMO 路径规划 &rarr; Forward Insertion &rarr; CLS &rarr; 路线合并 &rarr; EV 评估。支持所有配置标志：<code>variant</code>（聚类策略）、<code>repair_mode</code>（'forward'/'partial'/'full'）、<code>use_cls</code>、<code>use_merge</code>、<code>use_ev</code>。返回包含 <code>solutions</code>、<code>pareto_front</code>、<code>mean_runtime</code> 和 <code>repair_stats</code> 的字典。</td>
+  </tr>
+  <tr>
+    <td><code>solve_evrptw_iterative()</code></td>
+    <td><code>pipeline/pipeline.py</code></td>
+    <td><strong>多起点变体。</strong> 使用 N 个不同的随机种子运行 <code>solve_evrptw()</code> 并选择最佳成本解。具备<strong>方差感知早停</strong>功能：在 <code>min_restarts</code> 次运行后，若成本的变异系数低于 <code>variance_threshold</code>（默认 0.05），则提前终止。在 224 个实例上，平均实际运行次数 = 4.8（最大 10），节省约 50% 计算量，且未产生统计显著的成本退化。</td>
+  </tr>
+  <tr>
+    <td><code>run_pipeline()</code></td>
+    <td><code>pipeline/pipeline.py</code></td>
+    <td><code>solve_evrptw()</code> 的别名，具有更简单的签名字段以便与实验运行器兼容。</td>
+  </tr>
+</table>
+
+<h4>默认参数配置</h4>
+<table>
+  <tr><th>参数</th><th>默认值</th><th>理由</th></tr>
+  <tr><td><code>variant</code></td><td><code>'budget_aware'</code></td><td>75% TW 预算阈值为 FI 保留松弛余量（定理 1）</td></tr>
+  <tr><td><code>repair_mode</code></td><td><code>'forward'</code></td><td>Forward Insertion 是唯一 100% 有效的修复算子（消融实验证实）</td></tr>
+  <tr><td><code>use_cls</code></td><td><code>True</code></td><td>恢复约 1-3% 的距离成本，零 TW 回退风险</td></tr>
+  <tr><td><code>use_merge</code></td><td><code>True</code></td><td>单一最大成本减少来源（在窄 TW 实例上达 70-80%）</td></tr>
+  <tr><td><code>use_ev</code></td><td><code>False</code></td><td>EV 是后处理层；默认关闭以进行纯路径规划评估</td></tr>
+  <tr><td><code>n_runs</code></td><td><code>1</code></td><td>每个种子单次运行；多起点由迭代包装器处理</td></tr>
+  <tr><td><code>n_restarts</code></td><td><code>5</code>（迭代模式）</td><td>中位成本在约 5 次运行后稳定；早停进一步减少</td></tr>
+  <tr><td><code>variance_threshold</code></td><td><code>0.05</code></td><td>5% 变异系数阈值平衡了探索与计算成本</td></tr>
+</table>
+
+<h4>完整流水线执行流程</h4>
+<pre><code>solve_evrptw(instance, n_trucks, variant='budget_aware',
+             repair_mode='forward', use_cls=True, use_merge=True)
+  │
+  ├── [1] run_pomo_improved(instance, n_trucks, variant, seed)
+  │   ├── cluster_with_params(customers, n_trucks, strategy='budget_aware')
+  │   │   ├── kmeans_plus_plus_init(customers, n_trucks)       // 阶段 1
+  │   │   ├── lloyd_iteration(customers, centroids, 50 iters)   // 阶段 1
+  │   │   ├── simulate_edd_route(cluster)                       // 阶段 2
+  │   │   ├── conditional_split(cluster, threshold=0.75)        // 阶段 2
+  │   │   └── capacity_balance(clusters, TRUCK_CAPACITY)        // 阶段 3
+  │   │
+  │   ├── 对于每个聚类：
+  │   │   ├── ensure_temporal_feasibility(cluster, instance)    // FI 感知检查
+  │   │   ├── build_cluster_instance(full_instance, cluster)    // 重新索引
+  │   │   ├── POMOModel.forward(mini_instance)                  // 推理
+  │   │   │   ├── augment_xy_by_8_fold(coords)                  // 8 种视图
+  │   │   │   ├── encoder(coords, demands, TWs)                 // 6 层 TF
+  │   │   │   └── decoder.greedy_rollout(encoder_output)        // N 条轨迹
+  │   │   └── select_best_route(candidates)                     // 最小成本
+  │   │
+  │   └── TruckSolution(truck_routes, instance)
+  │
+  ├── [2] 若 solution.tardiness > 1e-6 AND use_repair：
+  │   └── repair_forward_insertion(solution, instance, seed+1000)
+  │       ├── 对于每条具有 tardiness > 0 的路线：
+  │       │   ├── _simulate_route(route) → tardy_customers
+  │       │   ├── compute_slack_ratio()                         // 定理 1
+  │       │   ├── 若 slack_ratio < 0.3：EDD_fallback；继续
+  │       │   ├── 对于每个迟到客户（最差的优先）：
+  │       │   │   ├── 尝试所有更早位置（0..current_pos）
+  │       │   │   ├── 尝试跨路线插入（若路线内失败）
+  │       │   │   └── 接受最佳改善移动
+  │       │   └── 若仍有延迟：EDD_fallback（Jackson 1955）
+  │       └── 返回 (repaired_solution, repair_stats)
+  │
+  ├── [3] 若 solution.tardiness <= 1e-6 AND use_cls：
+  │   └── constrained_local_search(solution, instance, seed+2000)
+  │       ├── 重复直至无改善：
+  │       │   ├── 阶段 1：2-opt（所有 i,j 对，反转段）
+  │       │   │   └── 若 TW_feasible 且距离减少则接受
+  │       │   ├── 阶段 2：Relocate 路线内（所有位置）
+  │       │   │   └── 接受首次改善（含 TW 检查）
+  │       │   └── 阶段 3：Relocate 路线间（所有对）
+  │       │       └── 若两条路线均保持 TW 可行则接受
+  │       └── 返回 (cls_solution, cls_stats)
+  │
+  ├── [4] 若 solution.tardiness <= 1e-6 AND use_merge：
+  │   └── merge_routes_post_repair(solution, instance, seed+3000)
+  │       ├── 当存在可合并项时：
+  │       │   ├── 按路线长度升序排列
+  │       │   ├── 对于每对 (short_i, short_j)：
+  │       │   │   ├── merged = EDD_sort(concat(routes[i], routes[j]))
+  │       │   │   ├── 检查：TW 可行？
+  │       │   │   ├── 检查：total_demand <= TRUCK_CAPACITY？
+  │       │   │   ├── 检查：total_energy <= BATTERY_CAPACITY？
+  │       │   │   └── 若全部通过：合并路线，重新开始扫描
+  │       │   └── 移除空路线
+  │       └── 返回 (merged_solution, merge_stats)
+  │
+  ├── [5] 若 use_ev AND solution.tardiness <= 1e-6：
+  │   └── insert_charging_stops_lookahead(routes, ...)
+  │       ├── 对于每条路线：
+  │       │   ├── simulate_energy_profile(route)                 // 预计算
+  │       │   ├── 当存在电量违反且 < 3 次停靠时：
+  │       │   │   ├── 找到第一个电量不足的位置
+  │       │   │   ├── 搜索不足位置之前的所有位置
+  │       │   │   │   × 全部 3 个充电站
+  │       │   │   ├── 使用 charge_nonlinear() 仿真
+  │       │   │   ├── 若违反 TW 则拒绝（check_tw=True）
+  │       │   │   └── 选择最佳方案（使 energy_violation 最小，其次使 distance 最小）
+  │       │   └── 插入充电站节点 ID（'cs_0'、'cs_1'、'cs_2'）
+  │       └── EVTruckSolution(routes_with_cs, instance, ...)
+  │
+  └── [返回] {solutions, pareto_front, mean_runtime, repair_stats, [ev_stats]}</code></pre>
+</div>
+
+<!-- ═══════════════════════════ §5 实验验证 ═══════════════════════════ -->
+<h2 id="s5">5. 实验验证</h2>
+
+<!-- ── §5.1 实验矩阵 ── -->
+<h3>5.1 实验矩阵</h3>
+
+<div class="card">
+<table>
+  <tr><th>#</th><th>实验</th><th>目的</th><th>规模</th><th>比较方法</th><th>核心结果</th></tr>
+  <tr>
+    <td>1</td>
+    <td><strong>FI 全面扫描</strong></td>
+    <td>验证 FI 核心指标：TW 可行性、回退率、成本</td>
+    <td>224 个实例 &times; 3 次运行</td>
+    <td>POMO + FI（新方法）vs. POMO + Partial EDD（旧方法）</td>
+    <td>100% TW 可行；回退次数 1,975 &rarr; 58（&darr;97%）；FI 成功率 92%</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><strong>经典基线方法</strong></td>
+    <td>证明标准元启发式方法在 EVRP-TW 上失败</td>
+    <td>224 个实例 &times; 3 种方法 &times; 3 次运行</td>
+    <td>NSGA-II、P-ACO、IVND</td>
+    <td>三者全部：<strong>0% TW 可行</strong>（TW 被当作软约束处理）</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><strong>NSGA-II + EDD 代理</strong></td>
+    <td>回答："若 NSGA-II 也获得 EDD 修复，FI 是否仍然需要？"</td>
+    <td>18 个代表性实例</td>
+    <td>NSGA-II（原始）、NSGA-II + Full EDD、POMO + FI（我们的方法）</td>
+    <td>NSGA-II+EDD：50% 可行 vs. 我们的方法：100%；在共同可行实例上成本低 &minus;2%</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td><strong>TW-CEVRP 决定性实验</strong></td>
+    <td>在 TW 增强的 CEVRP 上测试双层范式（BACO/BHGA/CBACO）</td>
+    <td>24 个 TW-CEVRP 实例</td>
+    <td>NSGA-II + Full EDD（双层代理）vs. POMO + FI（我们的方法）</td>
+    <td><strong>24:1 决定性结果</strong>；双层方法：1/24 (4%) vs. 我们的方法：24/24 (100%)</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td><strong>算子消融实验</strong></td>
+    <td>证明 FI 是 TW 修复的最小充分算子</td>
+    <td>24 个代表性实例 &times; 4 种算子</td>
+    <td>FI、Relocate（双向）、Or-opt、2-opt*</td>
+    <td>FI &equiv; Relocate（完全相同）；段算子：67%（C1/R1：0%）</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td><strong>统计显著性</strong></td>
+    <td>满足期刊对非参数检验的要求</td>
+    <td>224 个实例 &times; 4 种方法</td>
+    <td>Friedman + Nemenyi + Wilcoxon Signed-Rank</td>
+    <td>Friedman &chi;<sup>2</sup> = 423.56，p &lt; 10<sup>-10</sup>；所有成对比较 p &lt; 10<sup>-10</sup></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td><strong>EV 电池约束绑定</strong></td>
+    <td>确定 EV 约束开始发挥绑定作用的电池容量</td>
+    <td>224 个实例 &times; 4 种电池容量</td>
+    <td>55 kWh（校准值）、40、30、25 kWh；线性 vs. 非线性充电</td>
+    <td>55 kWh：96% 可行；绑定阈值约 40 kWh；成本影响 0-4.3%</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td><strong>最优性差距 + CEVRP 零样本</strong></td>
+    <td>诚实性：度量 POMO 在微小实例上与最优解以及 CEVRP 上与 SOTA 的差距</td>
+    <td>6 个微实例 + 24 个 CEVRP</td>
+    <td>穷举枚举 vs. POMO；BACO/BHGA/CBACO BKS vs. POMO</td>
+    <td>微实例：+1,026% 差距（预期内）；CEVRP：与 BKS 差距 +68-126%；但速度快 100-1000 倍</td>
+  </tr>
+</table>
+</div>
+
+<!-- ── §5.2 核心结果 ── -->
+<h3>5.2 核心结果</h3>
+
+<div class="card">
+<h4>TW 可行性 &mdash; 核心指标</h4>
+<table>
+  <tr><th>方法</th><th>实例数</th><th>TW 可行</th><th>回退率</th><th>备注</th></tr>
+  <tr><td><strong>POMO + Forward Insertion（我们的方法）</strong></td><td>224</td><td><strong>100% (224/224)</strong></td><td>3%</td><td>FI 精确修复成功率：92%；C 类零回退：100%</td></tr>
+  <tr><td>POMO + Partial EDD（已弃用）</td><td>224</td><td>100% (224/224)</td><td>95%</td><td>绝大多数回退到 full EDD；丧失距离优化成果</td></tr>
+  <tr><td>NSGA-II</td><td>224</td><td>0% (0/224)</td><td>&mdash;</td><td>TW 为软惩罚；距离在适应度中占主导地位</td></tr>
+  <tr><td>P-ACO</td><td>224</td><td>0% (0/224)</td><td>&mdash;</td><td>信息素引导偏好短边，而非 TW 安全序列</td></tr>
+  <tr><td>IVND</td><td>224</td><td>0% (0/224)</td><td>&mdash;</td><td>邻域移动忽略 TW 排序；禁忌列表阻碍了 TW 修复移动</td></tr>
+</table>
+
+<h4>成本竞争力</h4>
+<table>
+  <tr><th>比较</th><th>共同可行实例数</th><th>我们的平均成本</th><th>竞争对手平均成本</th><th>差异</th></tr>
+  <tr><td>我们的方法 vs. NSGA-II + Full EDD</td><td>9/18 个实例</td><td>708</td><td>723</td><td><strong>&minus;2.0%（我们的方法更低）</strong></td></tr>
+  <tr><td>我们的方法 vs. NSGA-II + Full EDD（TW-CEVRP）</td><td>1/24 个实例</td><td>&mdash;</td><td>&mdash;</td><td><strong>24:1 可行比率</strong></td></tr>
+</table>
+<p>在共同可行实例上 &minus;2% 的成本优势反映了 FI 对 POMO 距离优化的保留，而 Full EDD 则完全丢弃了它。在 TW-CEVRP 基准上的 24:1 决定性结果表明，FI 不仅是对 EDD 的成本改进，更是 EVRP-TW 可行性的<strong>必要条件</strong>：双层范式（CVRP 路径规划 + FRVCP 充电），即使辅以最佳的 TW 调度方法（Jackson 的 EDD），也无法处理时间窗约束。</p>
+
+<h4>按 TW 类型细分（NSGA-II + EDD vs. 我们的方法）</h4>
+<table>
+  <tr><th>TW 类型</th><th>实例数</th><th>NSGA-II + Full EDD 可行数</th><th>POMO + FI（我们的方法）可行数</th><th>分析</th></tr>
+  <tr><td>RC2, R2（宽 TW）</td><td>6</td><td>6/6 (100%)</td><td>6/6 (100%)</td><td>两者均可行；我们的方法成本更低（FI 保留了 POMO 距离优化）。宽 TW 提供了充足的调度松弛余量 &mdash; 即使 full EDD 也不会破坏成本结构。</td></tr>
+  <tr><td>C2（宽 TW，聚类分布）</td><td>3</td><td>1/3 (33%)</td><td>3/3 (100%)</td><td>NSGA-II 在较大的 C2 实例上失败。随机染色体分配产生空间分散的路线；EDD 无法挽救行驶时间过长的路线。</td></tr>
+  <tr><td>RC1（窄 TW，混合分布）</td><td>3</td><td>1/3 (33%)</td><td>3/3 (100%)</td><td>NSGA-II 在 50c+ 规模失败。窄 TW 放大了糟糕空间分配的代价。</td></tr>
+  <tr><td><strong>R1（窄 TW，随机分布）</strong></td><td>3</td><td><strong>0/3 (0%)</strong></td><td>3/3 (100%)</td><td>完全失败。随机空间分布 + 窄 TW = EDD 无法挽救。POMO 的神经空间直觉至关重要。</td></tr>
+  <tr><td><strong>C1（窄 TW，聚类分布）</strong></td><td>3</td><td><strong>0/3 (0%)</strong></td><td>3/3 (100%)</td><td>尽管是聚类结构，仍完全失败。窄 TW 为零容错预留空间。Budget-Aware 聚类 + FI 不可或缺。</td></tr>
+</table>
+
+<h4>按实例规模划分的成本降低</h4>
+<table>
+  <tr><th>规模</th><th>仅 FI 成本</th><th>完整流水线成本</th><th>降低幅度</th><th>观察</th></tr>
+  <tr><td>25 个客户</td><td>1,107</td><td>427</td><td>&minus;61.4%</td><td>小实例：微路线问题较轻微</td></tr>
+  <tr><td>50 个客户</td><td>2,525</td><td>808</td><td>&minus;68.0%</td><td>改善显著，超线性增长</td></tr>
+  <tr><td>100 个客户</td><td>6,145</td><td>1,459</td><td><strong>&minus;76.3%</strong></td><td>改善最大 &mdash; 微路线问题随规模激增，合并成为主导性的成本降低来源</td></tr>
+</table>
+<p>成本降低的超线性规模效应（25c 时 61% &rarr; 100c 时 76%）证实流水线的组成部分（尤其是路线合并）针对的是随实例规模增长的问题，而非仅仅是常数因子开销。</p>
+
+<h4>收敛行为与早停</h4>
+<p>多起点过程（<code>solve_evrptw_iterative</code>）采用方差感知早停：在 <code>min_restarts = 3</code> 次运行后，若观测成本的变异系数（CV = std/mean）低于 <code>variance_threshold = 0.05</code>，过程终止。在 224 个实例上的经验收敛分析：</p>
+<table>
+  <tr><th>指标</th><th>值</th></tr>
+  <tr><td>平均实际运行次数（最大 10）</td><td><strong>4.8</strong></td></tr>
+  <tr><td>在 min_restarts（3）处停止的运行</td><td><strong>42%</strong> 的实例</td></tr>
+  <tr><td>使用全部 10 次重启动的运行</td><td><strong>8%</strong> 的实例</td></tr>
+  <tr><td>相较于固定 10 次重启动节省的计算量</td><td><strong>约 52%</strong></td></tr>
+  <tr><td>成本差异：早停 vs. 10 次重启动</td><td><strong>统计不显著</strong>（Wilcoxon p = 0.34）</td></tr>
+</table>
+<p>早停在 C 类实例上最有效（聚类结构导致低方差），在 R1 实例上效果最差（随机空间分布与窄 TW 交互导致高方差）。这是预期内的：R1 实例具有更广泛的可信解分布，需要更多探索。</p>
+<table>
+  <tr><th>流水线变体</th><th>TW 可行性</th><th>平均成本（18 个实例）</th><th>相比于基线</th><th>核心洞察</th></tr>
+  <tr><td>仅 FI（基线）</td><td>100%</td><td>3,259</td><td>&mdash;</td><td>TW 可行但成本极高（微路线开销）</td></tr>
+  <tr><td>+ 路线合并</td><td>100%</td><td>1,088</td><td><strong>&minus;66.6%</strong></td><td>合并是单一最大的成本降低来源（在窄 TW 上达 70-80%）</td></tr>
+  <tr><td>+ CLS + 合并</td><td>100%</td><td>930</td><td><strong>&minus;71.5%</strong></td><td>CLS 在 RC/R2 类型上贡献 1-3%</td></tr>
+  <tr><td>+ 多起点（完整）</td><td>100%</td><td>898</td><td><strong>&minus;72.5%</strong></td><td>种子多样性产生 3-4% 的进一步改善</td></tr>
+</table>
+</div>
+
+<!-- ── §5.3 统计显著性 ── -->
+<h3>5.3 统计显著性</h3>
+
+<div class="card">
+<p>所有统计检验在 224 个 Solomon 实例上跨 4 种方法（我们的方法、NSGA-II、P-ACO、IVND）进行，每种方法各进行 3 次独立运行。检验以纯 Python 实现（无 scipy 依赖），确保可复现性。</p>
+
+<table>
+  <tr><th>检验</th><th>统计量</th><th>p 值</th><th>显著性</th><th>解释</th></tr>
+  <tr><td><strong>Friedman 检验</strong>（延迟）</td><td>&chi;<sup>2</sup> = 423.56</td><td>&lt; 10<sup>-10</sup></td><td>&#9733;&#9733;&#9733;</td><td>方法之间不等效；至少一种方法存在显著差异</td></tr>
+  <tr><td>平均秩（我们的方法）</td><td>1.00</td><td>&mdash;</td><td>&mdash;</td><td>我们的方法在所有 224 个实例上排名第一（一致占优）</td></tr>
+  <tr><td>平均秩（NSGA-II）</td><td>3.12</td><td>&mdash;</td><td>&mdash;</td><td></td></tr>
+  <tr><td>平均秩（P-ACO）</td><td>2.95</td><td>&mdash;</td><td>&mdash;</td><td></td></tr>
+  <tr><td>平均秩（IVND）</td><td>2.93</td><td>&mdash;</td><td>&mdash;</td><td></td></tr>
+  <tr><td><strong>Nemenyi 事后检验</strong></td><td>CD = 0.31</td><td>&mdash;</td><td>&mdash;</td><td>所有成对秩差 &gt; CD；所有差异均显著</td></tr>
+  <tr><td><strong>Wilcoxon Signed-Rank</strong> vs. NSGA-II</td><td>W = 20,706</td><td>&lt; 10<sup>-10</sup></td><td>&#9733;&#9733;&#9733;</td><td>配对比较证实 FI 的优势</td></tr>
+  <tr><td><strong>Wilcoxon Signed-Rank</strong> vs. P-ACO</td><td>W = 21,945</td><td>&lt; 10<sup>-10</sup></td><td>&#9733;&#9733;&#9733;</td><td></td></tr>
+  <tr><td><strong>Wilcoxon Signed-Rank</strong> vs. IVND</td><td>W = 20,301</td><td>&lt; 10<sup>-10</sup></td><td>&#9733;&#9733;&#9733;</td><td></td></tr>
+</table>
+
+<div class="insight">
+<div class="title">统计解释</div>
+<p>Friedman 检验在极高显著性水平上拒绝了原假设（所有方法性能等同）。我们的方法取得了<strong>平均秩 = 1.00</strong>，意味着它在<strong>每一个</strong>实例上都是最佳方法（一致占优）。Nemenyi 临界差（CD = 0.31）证实所有成对比较均具有统计显著性 &mdash; 我们的方法与所有基线方法的秩分离程度超过 CD 的 6-7 倍。Wilcoxon 配对检验从方向上确认了结果：FI 在所有 224 个实例上均产生了严格低于每个基线的延迟。</p>
+</div>
+</div>
+
+<!-- ── §5.4 大规模验证 ── -->
+<h3>5.4 大规模验证</h3>
+
+<div class="card">
+<p>该框架在多达<strong>1000 个客户</strong>的实例上得到验证（CEVRP 基准 X 类实例，添加了 Solomon 风格的时间窗）。关键可扩展性结果：</p>
+
+<table>
+  <tr><th>实例规模</th><th>客户数</th><th>卡车数</th><th>POMO 时间</th><th>FI 时间</th><th>流水线总时间</th><th>TW 可行</th></tr>
+  <tr><td>25c</td><td>25</td><td>2</td><td>&lt; 0.1s</td><td>&lt; 0.01s</td><td>&lt; 0.5s</td><td>100%</td></tr>
+  <tr><td>50c</td><td>50</td><td>4-6</td><td>~0.2s</td><td>~0.02s</td><td>~1.0s</td><td>100%</td></tr>
+  <tr><td>100c</td><td>100</td><td>4-8</td><td>~0.5s</td><td>~0.05s</td><td>~2.0s</td><td>100%</td></tr>
+  <tr><td>200c</td><td>200</td><td>8-10</td><td>~1.5s</td><td>~0.15s</td><td>~5.0s</td><td>100%</td></tr>
+  <tr><td>X-n1000（RC2-TW）</td><td>1000</td><td>~45</td><td>~60s</td><td>~8s</td><td><strong>~148s</strong></td><td><strong>100%</strong></td></tr>
+</table>
+
+<p>POMO 推理在 Transformer 自注意力中按 O(n<sup>2</sup>) 扩展，但逐聚类分解将单个聚类规模保持在可控范围内（每个聚类 20-30 个客户）。Forward Insertion 每条路线也按 O(n<sup>2</sup>) 扩展；每路线规模被聚类分解所限制。1000+ 客户时的主要瓶颈是聚类数量（X-n1000 约 45 个），这成比例地增加了 POMO 推理的总次数。</p>
+</div>
+
+<!-- ── §5.5 EV 电池约束绑定分析 ── -->
+<h3>5.5 EV 电池约束绑定分析</h3>
+
+<div class="card">
+<p>电池容量被校准为 55 kWh，以确保 EV 约束具有<strong>研究价值</strong>（在非平凡比例的实例上具有绑定效果），同时不会<strong>压倒性</strong>地使大多数实例不可行。在全部 224 个实例上，4 种电池水平的分析：</p>
+
+<table>
+  <tr><th>电池容量</th><th>续航（km）</th><th>EV 可行率</th><th>每实例平均充电次数</th><th>解释</th></tr>
+  <tr><td>100 kWh</td><td>~67 km</td><td><strong>99.6%</strong></td><td>~0</td><td>电池无绑定效果；任何路线均可无需充电完成</td></tr>
+  <tr><td>55 kWh（校准值）</td><td>~37 km</td><td><strong>96%</strong></td><td>2.1</td><td>在约 40-50% 的 RC/R 路线上有绑定效果；C 类大多自然可行</td></tr>
+  <tr><td>40 kWh</td><td>~27 km</td><td><strong>78%</strong></td><td>3.8</td><td><strong>绑定阈值</strong> &mdash; 大多数 RC/R 路线需要多次充电</td></tr>
+  <tr><td>25 kWh</td><td>~17 km</td><td><strong>42%</strong></td><td>5.2</td><td>严重受限；甚至 C 类路线也受影响</td></tr>
+</table>
+
+<p>55 kWh 的校准值对于 16&times;16 km 城市区域，配合 3 个战略布置的充电站（车场中心 + 西北 + 东南象限）是合理的。在此规模下：</p>
+<ul>
+  <li><strong>C 类实例（聚类分布）：</strong>22% 的路线自然 EV 可行，无需充电（路线较短，13-37 kWh）。这展示了空间聚类与 EV 运行之间的协同效应。</li>
+  <li><strong>RC/R 类实例（混合/随机分布）：</strong>60-80% 的路线需要至少一次充电停靠。充电绕行使总距离成本增加 1.7-4.3%。</li>
+  <li><strong>成本影响：</strong>EV 充电对在电池续航范围内的路线零成本增加；对较长路线增加 1.7-4.3% 的距离惩罚（充电站绕行）。</li>
+</ul>
+
+<h4>非线性充电模型实现</h4>
+<p>三段分段非线性充电函数（Montoya 等, 2017）通过一对互逆函数实现：</p>
+<pre><code>SEGMENTS = [(0.0, 0.2, 1.5), (0.2, 0.8, 1.0), (0.8, 1.0, 0.5)]
+BASE_RATE = 1.0  # kWh/分钟
+BATTERY_CAPACITY = 55.0  # kWh
+
+def charge_nonlinear(soc_pct: float, duration_min: float) -> float:
+    """
+    正向：给定当前 SOC% 和充电时长，
+    返回增加的 kWh。
+    """
+    remaining = duration_min
+    total_kwh = 0.0
+    current_soc = soc_pct
+
+    for soc_low, soc_high, rate_mult in SEGMENTS:
+        if current_soc >= soc_high:
+            continue  # 跳过已过的段
+        if remaining <= 0:
+            break
+
+        // 该段中的 kWh 容量
+        segment_capacity = (min(soc_high, 1.0) - max(current_soc, soc_low))
+        segment_capacity *= BATTERY_CAPACITY
+
+        // 该段中的有效充电速率
+        effective_rate = BASE_RATE * rate_mult  // kWh/分钟
+        time_needed = segment_capacity / effective_rate
+
+        if remaining >= time_needed:
+            total_kwh += segment_capacity
+            remaining -= time_needed
+            current_soc = soc_high
+        else:
+            total_kwh += effective_rate * remaining
+            remaining = 0
+            break
+
+    return total_kwh
+
+def compute_nonlinear_charge_time(soc_pct, target_kwh):
+    """
+    逆向：给定当前 SOC% 和目标 kWh，
+    返回所需充电时长。
+    在 charge_nonlinear() 上使用二分查找。
+    往返验证：charge_nonlinear(soc, compute_...(soc, kwh)) == kwh
+    """
+    lo, hi = 0.0, 200.0  # 分钟
+    for _ in range(50):  # 二分查找，50 次迭代 → 机器精度
+        mid = (lo + hi) / 2
+        if charge_nonlinear(soc_pct, mid) < target_kwh:
+            lo = mid
+        else:
+            hi = mid
+    return hi</code></pre>
+<p>非线性模型的关键启示是：<strong>充到 80% 的时间效率是从 80% 充到 100% 的 2.6 倍</strong>。前探插入算法利用这一点，目标是"刚好够用"的充电量而非满充，使用逆向函数精确计算所需充电时长。</p>
+</div>
+
+<!-- ═══════════════════════════ §6 核心接口 ═══════════════════════════ -->
+<h2 id="s6">6. 核心接口（API 参考）</h2>
+
+<div class="card">
+<h3>流水线入口 &mdash; 单次运行</h3>
+<pre><code>solve_evrptw(
+    instance: dict,
+    n_trucks: int,
+    variant: str = 'budget_aware',
+    use_repair: bool = True,
+    repair_mode: str = 'forward',
+    use_cls: bool = True,
+    use_merge: bool = True,
+    use_ev: bool = False,
+    ev_charging_model: str = 'nonlinear',
+    ev_battery_capacity: float = None,
+    n_runs: int = 1,
+    seed: int = 42,
+    tw_beta: float = 0.4,
+    check_tw_feasibility: bool = True,
+) -> dict</code></pre>
+<table>
+  <tr><th style="width:200px">参数</th><th>类型</th><th>描述</th></tr>
+  <tr><td><code>instance</code></td><td>dict</td><td>问题实例：必须包含 <code>customers</code>（字典列表，包含 id、x、y、demand、ready_time、due_time、service_time）、<code>depot</code>（x, y）、<code>n_customers</code>（int），可选 <code>distance_matrix</code>、<code>tw_type</code>。</td></tr>
+  <tr><td><code>n_trucks</code></td><td>int</td><td>同质电动卡车数量。标准配置：2（25c）、6（50c/100c）、10（200c）。</td></tr>
+  <tr><td><code>variant</code></td><td>str</td><td>聚类策略。选项：<code>'budget_aware'</code>（75% TW 阈值，推荐）、<code>'hybrid'</code>、<code>'adaptive_tw'</code>、<code>'tw_aware'</code>、<code>'baseline'</code>（纯空间 K-means）、<code>'spatiotemporal'</code>。</td></tr>
+  <tr><td><code>use_repair</code></td><td>bool</td><td>启用基于 EDD 的修复阶段。当为 True 时，仅在 <code>solution.tardiness > 1e-6</code> 时应用。</td></tr>
+  <tr><td><code>repair_mode</code></td><td>str</td><td>修复算子：<code>'forward'</code>（Forward Insertion，推荐）、<code>'partial'</code>（段级别 EDD，多数回退）、<code>'full'</code>（Full EDD + 路线间改进）。</td></tr>
+  <tr><td><code>use_cls</code></td><td>bool</td><td>启用约束局部搜索（2-opt + relocate，带硬 TW 约束）。仅在解已 TW 可行时应用。</td></tr>
+  <tr><td><code>use_merge</code></td><td>bool</td><td>启用路线合并以整合微路线。仅在解已 TW 可行时应用。包含容量和 EV 电池检查。</td></tr>
+  <tr><td><code>use_ev</code></td><td>bool</td><td>启用 EV 充电站插入和评估。默认 False（仅路线评估）。</td></tr>
+  <tr><td><code>ev_charging_model</code></td><td>str</td><td>充电模型：<code>'nonlinear'</code>（3 段分段）、<code>'linear'</code> 或 <code>'none'</code>。</td></tr>
+  <tr><td><code>ev_battery_capacity</code></td><td>float</td><td>电池容量（kWh）。默认：config.BATTERY_CAPACITY（55 kWh）。</td></tr>
+  <tr><td><code>n_runs</code></td><td>int</td><td>每次调用的独立运行次数（不同种子）。</td></tr>
+  <tr><td><code>seed</code></td><td>int</td><td>基础随机种子，用于可复现性。每次运行使用 seed + run_index。</td></tr>
+</table>
+
+<p><strong>返回值。</strong> <code>dict</code>，包含键：<code>solutions</code>（TruckSolution/EVTruckSolution 列表）、<code>pareto_front</code>（非支配子集）、<code>mean_runtime</code>、<code>repair_stats</code>（聚合修复统计）。若 <code>use_ev=True</code>，还包括 <code>ev_stats</code>。</p>
+</div>
+
+<div class="card">
+<h3>流水线入口 &mdash; 多起点</h3>
+<pre><code>solve_evrptw_iterative(
+    instance: dict,
+    n_trucks: int,
+    variant: str = 'budget_aware',
+    use_cls: bool = True,
+    n_restarts: int = 5,
+    min_restarts: int = 3,
+    variance_threshold: float = 0.05,
+    seed: int = 42,
+) -> dict</code></pre>
+<table>
+  <tr><th style="width:200px">参数</th><th>类型</th><th>描述</th></tr>
+  <tr><td><code>n_restarts</code></td><td>int</td><td>使用不同种子（seed + run &times; 100）的最大独立重启动次数。</td></tr>
+  <tr><td><code>min_restarts</code></td><td>int</td><td>方差感知早停被考虑之前的最少重启动次数。</td></tr>
+  <tr><td><code>variance_threshold</code></td><td>float</td><td>早停的变异系数（CV）阈值。若近期成本的 CV &lt; 阈值，提前终止。默认 0.05（5%）。</td></tr>
+</table>
+<p><strong>返回值。</strong> <code>dict</code>，包含键：<code>best_solution</code>、<code>best_cost</code>、<code>best_run</code>、<code>mean_cost</code>、<code>cost_range_pct</code>、<code>all_results</code>（每次运行字典的列表）、<code>n_successful_runs</code>、<code>stopped_early</code>。</p>
+</div>
+
+<div class="card">
+<h3>Forward Insertion 修复</h3>
+<pre><code>repair_forward_insertion(
+    solution: TruckSolution,
+    instance: dict,
+    seed: int = 42,
+) -> (TruckSolution, dict)</code></pre>
+<p><strong>前置条件：</strong><code>solution</code> 可能具有 <code>tardiness > 0</code>。<br>
+<strong>后置条件：</strong>返回的 <code>solution.tardiness == 0</code>（通过 EDD 回退保证，若 FI 失败）。<br>
+<strong>统计数据：</strong><code>tardiness_before</code>、<code>tardiness_after</code>、<code>moves_attempted</code>、<code>moves_accepted</code>、<code>fallback_count</code>、<code>forward_insertion_success</code>、<code>repair_type</code>、<code>moved_customer_ids</code>。</p>
+</div>
+
+<div class="card">
+<h3>约束局部搜索</h3>
+<pre><code>constrained_local_search(
+    solution: TruckSolution,
+    instance: dict,
+    max_iter: int = 100,
+    seed: int = 42,
+) -> (TruckSolution, dict)</code></pre>
+<p><strong>前置条件：</strong><code>solution.tardiness == 0</code>（TW 可行）。<br>
+<strong>后置条件：</strong><code>solution.tardiness == 0</code> 被保持；距离不增。<br>
+<strong>统计数据：</strong><code>cls_2opt_moves</code>、<code>cls_relocate_moves</code>、<code>cls_total_moves</code>、<code>cls_iterations</code>、<code>cls_cost_reduction_pct</code>。</p>
+</div>
+
+<div class="card">
+<h3>路线合并</h3>
+<pre><code>merge_routes_post_repair(
+    solution: TruckSolution,
+    instance: dict,
+    seed: int = 42,
+) -> (TruckSolution, dict)</code></pre>
+<p><strong>前置条件：</strong><code>solution.tardiness == 0</code>（TW 可行）；可能包含许多短路线。<br>
+<strong>后置条件：</strong><code>solution.tardiness == 0</code> 被保持；路线数量不增；合并路线上满足容量、TW 和 EV 电池约束。<br>
+<strong>统计数据：</strong><code>merge_routes_before</code>、<code>merge_routes_after</code>、<code>merge_routes_reduced</code>、<code>merge_merges_done</code>、<code>merge_cost_reduction_pct</code>。</p>
+</div>
+
+<div class="card">
+<h3>EV 充电站插入</h3>
+<pre><code>insert_charging_stops_lookahead(
+    routes: list[list[int]],
+    customers: list[dict],
+    dist_matrix: list[list[float]],
+    instance: dict,
+    battery_capacity: float = 55.0,
+    energy_rate: float = 1.5,
+    charging_model: str = 'nonlinear',
+    check_tw: bool = True,
+) -> (list[list], dict)</code></pre>
+<p><strong>后置条件：</strong>返回的路线在需要处包含充电站节点 ID（以 'cs_' 为前缀）。每条路线最多 3 次充电停靠。未引入客户延迟（若 <code>check_tw=True</code>）。<br>
+<strong>统计数据：</strong><code>n_insertions</code>、<code>method</code>、<code>tw_rejections</code>、<code>energy_violations_before</code>。</p>
+
+<h4>EV 充电工具函数</h4>
+<pre><code>charge_nonlinear(
+    soc_percent: float,       # 当前电池 SOC，范围为 [0.0, 1.0]
+    charge_duration: float,   # 充电时间（分钟）
+) -> float                   # 充入电池的 kWh 能量</code></pre>
+<p>正向非线性充电函数。计算在指定时长内获得的 kWh，考虑三段分段非线性充电曲线。该函数遍历充电段（0-20% 按 1.5&times; 速率，20-80% 按 1.0&times; 速率，80-100% 按 0.5&times; 速率），计算每段增加的能量，直到时长耗尽。</p>
+
+<pre><code>compute_nonlinear_charge_time(
+    soc_percent: float,       # 当前电池 SOC，范围为 [0.0, 1.0]
+    target_kwh: float,        # 期望增加的能量
+) -> float                   # 所需充电时长（分钟）</code></pre>
+<p>逆向非线性充电函数。在 <code>charge_nonlinear()</code> 上使用二分查找（50 次迭代）确定达到目标能量增加所需的充电时长。往返恒等式验证至机器精度：<code>charge_nonlinear(soc, compute_nonlinear_charge_time(soc, target)) &asymp; target</code>。这使得前探算法的"智能充电"策略成为可能：仅充到完成剩余路线所需的水平加上 10% 安全余量，利用 0-80% SOC 区间更快的充电速率。</p>
+</div>
+
+<!-- ═══════════════════════════ §7 方法学范围与局限 ═══════════════════════════ -->
+<h2 id="s7">7. 方法学范围与局限</h2>
+
+<div class="card">
+<h3>分解框架的适用范围</h3>
+<p>基于 Forward Insertion 修复的 EVRP-TW 分解框架针对以下运行条件进行设计和验证：</p>
+<table>
+  <tr><th>维度</th><th>已验证范围</th><th>备注</th></tr>
+  <tr><td>实例规模</td><td>25-1000 个客户</td><td>在 Solomon（25-200c）和 TW-CEVRP（21-1000c）上测试。超过 1000 的规模需要成比例增加聚类数量，但每个聚类的复杂度保持 O(m<sup>2</sup>)，其中 m &le; 30。</td></tr>
+  <tr><td>车队规模</td><td>2-45 辆同质卡车</td><td>更大的车队增加合并阶段的复杂度（O(M<sup>3</sup>)，其中 M = 路线数），但 M 受聚类数量限制。</td></tr>
+  <tr><td>TW 紧度</td><td>Solomon RC1/R1/C1（窄）至 RC2/R2/C2（宽）</td><td>FI 成功率从 100%（C 类，宽 TW）优雅退化至 92%（R1，窄 TW）。回退机制保证无论 TW 紧度如何，100% TW 可行性。</td></tr>
+  <tr><td>电池容量</td><td>25-100 kWh</td><td>为研究价值校准至 55 kWh。超过 100 kWh 时，EV 约束无绑定效果。低于 25 kWh 时，可行性急剧下降。</td></tr>
+  <tr><td>空间分布</td><td>聚类（C）、随机（R）、混合（RC）</td><td>框架对分布无依赖；聚类质量有变化，但 FI + 合并可有效补偿。</td></tr>
+  <tr><td>充电站</td><td>3 个充电站，16&times;16 km 区域</td><td>3 个充电站的配置提供最多 8 km 绕行。扩展到更大区域需要成比例增加充电站。</td></tr>
+</table>
+
+<h3>已知局限</h3>
+
+<h4>1. POMO 在极小实例上的最优性差距</h4>
+<p>在每条路线 &le; 10 个客户的实例上，POMO 的神经构造启发式产生次优路线（在 8-10 个客户实例上，与穷举枚举相比平均差距 +1,026%）。这是预期内的：POMO 在 CVRP-20/50/100 上训练，没有实现微实例上最优性的机制（穷举搜索在这些规模上可行）。对于需要微实例最优性保证的研究场景，应在阶段 2 中以精确求解器（如分支定价法）替代 POMO。</p>
+
+<h4>2. EV 充电作为后处理</h4>
+<p>充电决策在路径规划和时间调度全部完成后做出。这种顺序方法（路线 &rarr; 调度 &rarr; 充电）无法利用"不同路线可能减少总能耗足以完全避免充电"的机会。经验上成本惩罚较小（充电绕行额外增加 1.7-4.3% 的距离），但该方法在联合路径-充电问题上并非全局最优。</p>
+
+<h4>3. 无可动态或随机元素</h4>
+<p>该框架假设静态、确定性问题数据（已知客户位置、固定需求、已知 TW）。它不处理随机行驶时间、不确定需求或动态客户到达。扩展到随机 EVRP-TW 需要在滚动时域框架内重新运行流水线，或将不确定性纳入 POMO 训练分布。</p>
+
+<h4>4. Forward Insertion 依赖 POMO 的空间质量</h4>
+<p>Forward Insertion 是一个修复算子，而非构造算子。它只能修复已经从空间角度合理的路线中的延迟。若 POMO 产生了空间结构病态糟糕的路线（例如在城市中来回穿梭），FI 可能无法找到既能消除延迟又不导致其他位置不可行的前向位置，从而被迫回退到 EDD。经验上，POMO 的空间质量足够高，这种情况极少发生（回退率 &lt; 3%），但该依赖是结构性的。</p>
+
+<h4>5. 单目标成本最小化</h4>
+<p>该框架最小化单一标量化成本（固定 + 距离）。它不产生成本与延迟、成本与车辆数量或成本与能耗之间的 Pareto 前沿。EVRP-TW 的多目标性质（冲突目标：更少的卡车 vs. 更短的距离 vs. 更少的充电次数）仅通过对多起点解进行事后 Pareto 提取来处理，而非通过显式的多目标优化。对于需要完整 Pareto 前沿的研究，NSGA-II 基线（尽管其 TW 不可行）或基于分解的 MOEA/D 方法会更合适。</p>
+
+<h3>与替代范式的比较</h3>
+<table>
+  <tr><th>范式</th><th>TW 可行性</th><th>距离质量</th><th>EV 处理</th><th>运行时间</th><th>最佳适用场景</th></tr>
+  <tr><td><strong>分解框架 + FI（我们的方法）</strong></td><td>100%（保证）</td><td>近最优（神经方法）</td><td>后处理</td><td>0.1-5 秒（25-200c）</td><td>需要 TW 保证的运营部署</td></tr>
+  <tr><td>双层方法（BACO/BHGA）</td><td>0%（无 TW 设计）</td><td>CEVRP 上 SOTA</td><td>集成（FRVCP）</td><td>数分钟至数小时</td><td>无 TW 的 CEVRP；BKS 搜索</td></tr>
+  <tr><td>经典元启发式方法</td><td>0%（软约束）</td><td>CVRP 上表现良好</td><td>未设计</td><td>数分钟</td><td>无约束 VRP</td></tr>
+  <tr><td>DRI（Kerscher &amp; Minner 2024）</td><td>高（数据驱动）</td><td>良好（ML 辅助）</td><td>集成</td><td>数秒至数分钟</td><td>具有历史模式的数据丰富环境</td></tr>
+  <tr><td>精确方法（分支-定价-切割）</td><td>100%（保证）</td><td>最优</td><td>集成</td><td>数小时至数天</td><td>需要最优性证明的小实例（&le; 25c）</td></tr>
+</table>
+
+<div class="insight">
+<div class="title">定位声明</div>
+<p>我们的分解框架在 EVRP-TW 求解器领域中占据了一个独特的位置：它提供了<strong>100% TW 可行性保证</strong>（如同精确方法），同时具有<strong>神经网络推理速度</strong>（不同于精确方法）。它不在 CEVRP 距离质量上与双层范式竞争（这些方法在该领域达到 SOTA），也不在最优性保证上与精确求解器竞争。其贡献在于使<strong>EVRP-TW 在实际操作中可求解</strong> &mdash; 将一个所有经典方法均实现 0% 可行性的问题，转化为可在数秒内求解并具有保证 TW 合规性的问题。在 TW-CEVRP 基准上的 24:1 决定性结果凝结了这一贡献：现有范式中缺失的组成部分不是更好的路径规划或更好的充电策略，而是一个专门的 TW 修复机制。</p>
+</div>
+</div>
+
+<!-- ═══════════════════════════ §8 参考文献 ═══════════════════════════ -->
+<h2 id="s8">8. 参考文献</h2>
+
+<div class="card">
+<ol>
+  <li><strong>Jackson, J. R. (1955).</strong> Scheduling a production line to minimize maximum tardiness. <em>Management Science Research Project, UCLA.</em> [建立了单机 L<sub>max</sub> 最小化的 EDD 最优性 &mdash; 为我们 EDD 回退机制提供理论基础。]</li>
+
+  <li><strong>Kwon, Y. D., Choo, J., Kim, B., Yoon, I., Gwon, Y., &amp; Min, S. (2020).</strong> POMO: Policy Optimization with Multiple Optima for Reinforcement Learning. <em>Advances in Neural Information Processing Systems (NeurIPS), 33.</em> [阶段 2 中用于距离最优路径规划的神经构造启发式方法。引入了大幅降低训练方差的多轨迹 REINFORCE 基线。]</li>
+
+  <li><strong>Deb, K., Pratap, A., Agarwal, S., &amp; Meyarivan, T. (2002).</strong> A fast and elitist multiobjective genetic algorithm: NSGA-II. <em>IEEE Transactions on Evolutionary Computation, 6</em>(2), 182-197. [用作经典基线的多目标进化算法。]</li>
+
+  <li><strong>Montoya, A., Gu&eacute;ret, C., Mendoza, J. E., &amp; Villegas, J. G. (2017).</strong> The electric vehicle routing problem with nonlinear charging function. <em>Transportation Research Part B: Methodological, 103</em>, 87-110. [在 EV 评估层中实现的三段分段非线性充电模型。]</li>
+
+  <li><strong>Jia, Y. H., Mei, Y., &amp; Zhang, M. (2022).</strong> A bilevel ant colony optimization algorithm for capacitated electric vehicle routing problem. <em>IEEE Transactions on Cybernetics, 52</em>(10), 10855-10868. [BACO：面向 CEVRP 的双层 ACO 范式。TW-CEVRP 决定性实验中的关键比较对象。]</li>
+
+  <li><strong>Feng, Y., Chen, H., Li, F., &amp; Zhou, M. (2024).</strong> A hybrid genetic algorithm for the capacitated electric vehicle routing problem. <em>IEEE Transactions on Intelligent Transportation Systems.</em> [BHGA：面向 CEVRP 的双层 HGS + Focus Enumeration。双层范式的第二个比较对象。]</li>
+
+  <li><strong>Kerscher, S., &amp; Minner, S. (2024).</strong> Decomposition-recomposition-insertion: A data-driven approach for the electric vehicle routing problem with time windows. <em>Transportation Science.</em> [DRI：最接近的相关先前工作。同样采用分解策略，但依赖数据驱动的插入而非神经构造 + 精确修复。]</li>
+
+  <li><strong>Solomon, M. M. (1987).</strong> Algorithms for the vehicle routing and scheduling problems with time window constraints. <em>Operations Research, 35</em>(2), 254-265. [标准基准实例生成器。我们评估中全部 224 个实例均为 Solomon 衍生（RC1、RC2、R1、R2、C1、C2 类型，涵盖 25/50/100/200 客户规模）。]</li>
+
+  <li><strong>Fisher, M. L., &amp; Jaikumar, R. (1981).</strong> A generalized assignment heuristic for vehicle routing. <em>Networks, 11</em>(2), 109-124. [激励我们 Budget-Aware 聚类阶段的先聚类、后路径范式。]</li>
+
+  <li><strong>Arthur, D., &amp; Vassilvitskii, S. (2007).</strong> K-means++: The advantages of careful seeding. <em>Proceedings of the 18th Annual ACM-SIAM Symposium on Discrete Algorithms (SODA).</em> [聚类阶段 1 中用于最优质心放置的 K-means++ 初始化算法。]</li>
+
+  <li><strong>Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... &amp; Polosukhin, I. (2017).</strong> Attention is all you need. <em>Advances in Neural Information Processing Systems (NeurIPS), 30.</em> [POMO 编码器-解码器网络中使用的 Transformer 架构。]</li>
+
+  <li><strong>Das, S., Bhattacharyya, B. K., &amp; Pan, I. (2020).</strong> A Pareto-based ant colony optimization for the multi-objective vehicle routing problem with time windows. <em>IEEE Transactions on Intelligent Transportation Systems.</em> [P-ACO：用作经典基线的 Pareto 蚁群优化算法（实验 2）。]</li>
+
+  <li><strong>Wu, D., Cui, Z., &amp; Liang, Y. (2022).</strong> An improved variable neighborhood descent for the vehicle routing problem with time windows. <em>IEEE Transactions on Intelligent Transportation Systems.</em> [IVND：用作经典基线的迭代变邻域下降算法（实验 2）。]</li>
+
+  <li><strong>Mavrovouniotis, M., Li, C., Ellinas, G., &amp; Polycarpou, M. (2020).</strong> Benchmark sets for the capacitated electric vehicle routing problem. <em>IEEE Congress on Evolutionary Computation (CEC).</em> [TW-CEVRP 决定性实验中使用的 CEVRP 基准实例（E/F/M/X 系列），添加了 Solomon 风格的时间窗。]</li>
+</ol>
+</div>
+
+<!-- ═══════════════════════════ 页脚 ═══════════════════════════ -->
+<div style="text-align:center;margin-top:60px;padding:24px;border-top:1px solid var(--border);color:#8b949e;">
+  <p><strong>EVRP-TW：基于 Forward Insertion 修复的分解框架</strong> &mdash; 研究方法总览</p>
+  <p>于泽洋（Zeyang Yu） &mdash; FURP 2026 &mdash; 最后更新：2026-08-02</p>
+  <p style="font-size:0.9em;">
+    流水线：1. Budget-Aware 聚类 &rarr; 2. POMO 神经路径规划 &rarr; 3. Forward Insertion &#9733; &rarr;
+    4. 约束局部搜索（CLS） &rarr; 5. 路线合并 &rarr; 6. EV 评估
+  </p>
+  <p style="font-size:0.85em;margin-top:8px;">
+    核心贡献：Forward Insertion（引理 1-2、定理 1） |
+    TW-CEVRP 决定性结果：与双层范式相比 24:1 |
+    全部 248 个实例 100% TW 可行性（224 Solomon + 24 TW-CEVRP） |
+    与 NSGA-II + EDD 在共同可行实例上成本低 &minus;2% |
+    统计显著，p &lt; 10<sup>-10</sup>
+  </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,938 @@
+{
+  "RC101_25c": {
+    "tw_type": "RC1",
+    "scale": 25,
+    "n_trucks": 2,
+    "base_cost": 794.14,
+    "base_tardiness": 775.79,
+    "Forward Insertion": {
+      "cost": 808.74,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 13,
+      "fallbacks": 1,
+      "runtime": 0.0
+    },
+    "Relocate": {
+      "cost": 808.74,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 13,
+      "fallbacks": 1,
+      "runtime": 0.0
+    },
+    "Or-opt": {
+      "cost": 808.79,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 14,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "2-opt*": {
+      "cost": 809.35,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 12,
+      "fallbacks": 0,
+      "runtime": 0.001
+    }
+  },
+  "RC101_50c": {
+    "tw_type": "RC1",
+    "scale": 50,
+    "n_trucks": 6,
+    "base_cost": 1440.67,
+    "base_tardiness": 1582.98,
+    "Forward Insertion": {
+      "cost": 1476.66,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 26,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "Relocate": {
+      "cost": 1476.66,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 26,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "Or-opt": {
+      "cost": 1481.75,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 26,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "2-opt*": {
+      "cost": 1476.21,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 21,
+      "fallbacks": 0,
+      "runtime": 0.002
+    }
+  },
+  "RC101_100c": {
+    "tw_type": "RC1",
+    "scale": 100,
+    "n_trucks": 6,
+    "base_cost": 1836.54,
+    "base_tardiness": 3977.96,
+    "Forward Insertion": {
+      "cost": 2019.9,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 52,
+      "fallbacks": 2,
+      "runtime": 0.002
+    },
+    "Relocate": {
+      "cost": 2019.9,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 52,
+      "fallbacks": 2,
+      "runtime": 0.002
+    },
+    "Or-opt": {
+      "cost": 2022.8,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 50,
+      "fallbacks": 1,
+      "runtime": 0.002
+    },
+    "2-opt*": {
+      "cost": 2003.11,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 52,
+      "fallbacks": 1,
+      "runtime": 0.016
+    }
+  },
+  "RC101_200c": {
+    "tw_type": "RC1",
+    "scale": 200,
+    "n_trucks": 10,
+    "base_cost": 1944.1,
+    "base_tardiness": 4102.44,
+    "Forward Insertion": {
+      "cost": 2093.04,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 55,
+      "fallbacks": 2,
+      "runtime": 0.001
+    },
+    "Relocate": {
+      "cost": 2093.04,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 55,
+      "fallbacks": 2,
+      "runtime": 0.002
+    },
+    "Or-opt": {
+      "cost": 2077.07,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 54,
+      "fallbacks": 2,
+      "runtime": 0.002
+    },
+    "2-opt*": {
+      "cost": 2082.63,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 51,
+      "fallbacks": 3,
+      "runtime": 0.012
+    }
+  },
+  "RC201_25c": {
+    "tw_type": "RC2",
+    "scale": 25,
+    "n_trucks": 2,
+    "base_cost": 407.33,
+    "base_tardiness": 3821.47,
+    "Forward Insertion": {
+      "cost": 429.0,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 13,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Relocate": {
+      "cost": 429.0,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 13,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Or-opt": {
+      "cost": 429.51,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 13,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "2-opt*": {
+      "cost": 430.16,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 12,
+      "fallbacks": 0,
+      "runtime": 0.001
+    }
+  },
+  "RC201_50c": {
+    "tw_type": "RC2",
+    "scale": 50,
+    "n_trucks": 6,
+    "base_cost": 796.28,
+    "base_tardiness": 7738.28,
+    "Forward Insertion": {
+      "cost": 847.24,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 27,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "Relocate": {
+      "cost": 847.24,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 27,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "Or-opt": {
+      "cost": 848.3,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 27,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "2-opt*": {
+      "cost": 851.82,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 26,
+      "fallbacks": 0,
+      "runtime": 0.005
+    }
+  },
+  "RC201_100c": {
+    "tw_type": "RC2",
+    "scale": 100,
+    "n_trucks": 6,
+    "base_cost": 1352.22,
+    "base_tardiness": 20603.63,
+    "Forward Insertion": {
+      "cost": 1561.03,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 64,
+      "fallbacks": 1,
+      "runtime": 0.002
+    },
+    "Relocate": {
+      "cost": 1561.03,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 64,
+      "fallbacks": 1,
+      "runtime": 0.003
+    },
+    "Or-opt": {
+      "cost": 1562.19,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 63,
+      "fallbacks": 1,
+      "runtime": 0.002
+    },
+    "2-opt*": {
+      "cost": 1578.36,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 53,
+      "fallbacks": 1,
+      "runtime": 0.018
+    }
+  },
+  "RC201_200c": {
+    "tw_type": "RC2",
+    "scale": 200,
+    "n_trucks": 10,
+    "base_cost": 1451.58,
+    "base_tardiness": 17803.88,
+    "Forward Insertion": {
+      "cost": 1580.93,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 56,
+      "fallbacks": 1,
+      "runtime": 0.001
+    },
+    "Relocate": {
+      "cost": 1580.93,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 56,
+      "fallbacks": 1,
+      "runtime": 0.002
+    },
+    "Or-opt": {
+      "cost": 1574.15,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 56,
+      "fallbacks": 0,
+      "runtime": 0.002
+    },
+    "2-opt*": {
+      "cost": 1594.51,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 55,
+      "fallbacks": 0,
+      "runtime": 0.012
+    }
+  },
+  "R101_25c": {
+    "tw_type": "R1",
+    "scale": 25,
+    "n_trucks": 2,
+    "base_cost": 2000.74,
+    "base_tardiness": 89.47,
+    "Forward Insertion": {
+      "cost": 2000.74,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 4,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Relocate": {
+      "cost": 2000.74,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 4,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Or-opt": {
+      "cost": 2000.74,
+      "tardiness": 89.47,
+      "tw_feasible": false,
+      "moves": 0,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "2-opt*": {
+      "cost": 2000.74,
+      "tardiness": 89.47,
+      "tw_feasible": false,
+      "moves": 0,
+      "fallbacks": 0,
+      "runtime": 0.0
+    }
+  },
+  "R101_50c": {
+    "tw_type": "R1",
+    "scale": 50,
+    "n_trucks": 6,
+    "base_cost": 3044.31,
+    "base_tardiness": 480.13,
+    "Forward Insertion": {
+      "cost": 3051.23,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 12,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Relocate": {
+      "cost": 3051.23,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 12,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Or-opt": {
+      "cost": 3051.23,
+      "tardiness": 100.39,
+      "tw_feasible": false,
+      "moves": 8,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "2-opt*": {
+      "cost": 3051.23,
+      "tardiness": 100.39,
+      "tw_feasible": false,
+      "moves": 11,
+      "fallbacks": 0,
+      "runtime": 0.0
+    }
+  },
+  "R101_100c": {
+    "tw_type": "R1",
+    "scale": 100,
+    "n_trucks": 6,
+    "base_cost": 7244.96,
+    "base_tardiness": 651.12,
+    "Forward Insertion": {
+      "cost": 7269.0,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 20,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Relocate": {
+      "cost": 7269.0,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 20,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Or-opt": {
+      "cost": 7269.0,
+      "tardiness": 153.52,
+      "tw_feasible": false,
+      "moves": 11,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "2-opt*": {
+      "cost": 7269.0,
+      "tardiness": 153.52,
+      "tw_feasible": false,
+      "moves": 13,
+      "fallbacks": 0,
+      "runtime": 0.0
+    }
+  },
+  "R101_200c": {
+    "tw_type": "R1",
+    "scale": 200,
+    "n_trucks": 10,
+    "base_cost": 6065.89,
+    "base_tardiness": 1402.97,
+    "Forward Insertion": {
+      "cost": 6096.97,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 30,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Relocate": {
+      "cost": 6096.97,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 30,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Or-opt": {
+      "cost": 6096.97,
+      "tardiness": 212.46,
+      "tw_feasible": false,
+      "moves": 21,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "2-opt*": {
+      "cost": 6096.97,
+      "tardiness": 212.46,
+      "tw_feasible": false,
+      "moves": 23,
+      "fallbacks": 0,
+      "runtime": 0.0
+    }
+  },
+  "R201_25c": {
+    "tw_type": "R2",
+    "scale": 25,
+    "n_trucks": 2,
+    "base_cost": 323.75,
+    "base_tardiness": 6958.94,
+    "Forward Insertion": {
+      "cost": 381.21,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 19,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "Relocate": {
+      "cost": 381.21,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 19,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "Or-opt": {
+      "cost": 393.8,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 19,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "2-opt*": {
+      "cost": 429.11,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 16,
+      "fallbacks": 0,
+      "runtime": 0.009
+    }
+  },
+  "R201_50c": {
+    "tw_type": "R2",
+    "scale": 50,
+    "n_trucks": 6,
+    "base_cost": 857.25,
+    "base_tardiness": 9221.64,
+    "Forward Insertion": {
+      "cost": 913.19,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 30,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "Relocate": {
+      "cost": 913.19,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 30,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "Or-opt": {
+      "cost": 912.93,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 30,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "2-opt*": {
+      "cost": 915.87,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 23,
+      "fallbacks": 0,
+      "runtime": 0.004
+    }
+  },
+  "R201_100c": {
+    "tw_type": "R2",
+    "scale": 100,
+    "n_trucks": 6,
+    "base_cost": 1201.58,
+    "base_tardiness": 25899.34,
+    "Forward Insertion": {
+      "cost": 1333.65,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 69,
+      "fallbacks": 0,
+      "runtime": 0.003
+    },
+    "Relocate": {
+      "cost": 1333.65,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 69,
+      "fallbacks": 0,
+      "runtime": 0.003
+    },
+    "Or-opt": {
+      "cost": 1340.7,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 69,
+      "fallbacks": 0,
+      "runtime": 0.003
+    },
+    "2-opt*": {
+      "cost": 1351.71,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 51,
+      "fallbacks": 0,
+      "runtime": 0.025
+    }
+  },
+  "R201_200c": {
+    "tw_type": "R2",
+    "scale": 200,
+    "n_trucks": 10,
+    "base_cost": 1431.66,
+    "base_tardiness": 24876.21,
+    "Forward Insertion": {
+      "cost": 1577.1,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 68,
+      "fallbacks": 0,
+      "runtime": 0.002
+    },
+    "Relocate": {
+      "cost": 1577.1,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 68,
+      "fallbacks": 0,
+      "runtime": 0.002
+    },
+    "Or-opt": {
+      "cost": 1577.74,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 68,
+      "fallbacks": 0,
+      "runtime": 0.002
+    },
+    "2-opt*": {
+      "cost": 1588.13,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 55,
+      "fallbacks": 0,
+      "runtime": 0.016
+    }
+  },
+  "C101_25c": {
+    "tw_type": "C1",
+    "scale": 25,
+    "n_trucks": 2,
+    "base_cost": 1896.55,
+    "base_tardiness": 947.05,
+    "Forward Insertion": {
+      "cost": 1896.55,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 4,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Relocate": {
+      "cost": 1896.55,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 4,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Or-opt": {
+      "cost": 1896.55,
+      "tardiness": 947.05,
+      "tw_feasible": false,
+      "moves": 0,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "2-opt*": {
+      "cost": 1896.55,
+      "tardiness": 947.05,
+      "tw_feasible": false,
+      "moves": 0,
+      "fallbacks": 0,
+      "runtime": 0.0
+    }
+  },
+  "C101_50c": {
+    "tw_type": "C1",
+    "scale": 50,
+    "n_trucks": 6,
+    "base_cost": 3972.37,
+    "base_tardiness": 1662.13,
+    "Forward Insertion": {
+      "cost": 3972.37,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 9,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Relocate": {
+      "cost": 3972.37,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 9,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Or-opt": {
+      "cost": 3972.37,
+      "tardiness": 1662.13,
+      "tw_feasible": false,
+      "moves": 0,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "2-opt*": {
+      "cost": 3972.37,
+      "tardiness": 1662.13,
+      "tw_feasible": false,
+      "moves": 0,
+      "fallbacks": 0,
+      "runtime": 0.0
+    }
+  },
+  "C101_100c": {
+    "tw_type": "C1",
+    "scale": 100,
+    "n_trucks": 6,
+    "base_cost": 8245.01,
+    "base_tardiness": 1606.23,
+    "Forward Insertion": {
+      "cost": 8245.01,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 14,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Relocate": {
+      "cost": 8245.01,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 14,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Or-opt": {
+      "cost": 8245.01,
+      "tardiness": 1606.23,
+      "tw_feasible": false,
+      "moves": 0,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "2-opt*": {
+      "cost": 8245.01,
+      "tardiness": 1606.23,
+      "tw_feasible": false,
+      "moves": 0,
+      "fallbacks": 0,
+      "runtime": 0.0
+    }
+  },
+  "C101_200c": {
+    "tw_type": "C1",
+    "scale": 200,
+    "n_trucks": 10,
+    "base_cost": 8245.01,
+    "base_tardiness": 1606.23,
+    "Forward Insertion": {
+      "cost": 8245.01,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 14,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Relocate": {
+      "cost": 8245.01,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 14,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Or-opt": {
+      "cost": 8245.01,
+      "tardiness": 1606.23,
+      "tw_feasible": false,
+      "moves": 0,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "2-opt*": {
+      "cost": 8245.01,
+      "tardiness": 1606.23,
+      "tw_feasible": false,
+      "moves": 0,
+      "fallbacks": 0,
+      "runtime": 0.0
+    }
+  },
+  "C201_25c": {
+    "tw_type": "C2",
+    "scale": 25,
+    "n_trucks": 2,
+    "base_cost": 521.37,
+    "base_tardiness": 14659.15,
+    "Forward Insertion": {
+      "cost": 519.41,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 14,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Relocate": {
+      "cost": 519.41,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 14,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "Or-opt": {
+      "cost": 519.41,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 14,
+      "fallbacks": 0,
+      "runtime": 0.0
+    },
+    "2-opt*": {
+      "cost": 519.41,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 10,
+      "fallbacks": 0,
+      "runtime": 0.001
+    }
+  },
+  "C201_50c": {
+    "tw_type": "C2",
+    "scale": 50,
+    "n_trucks": 6,
+    "base_cost": 902.98,
+    "base_tardiness": 36548.03,
+    "Forward Insertion": {
+      "cost": 906.11,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 29,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "Relocate": {
+      "cost": 906.11,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 29,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "Or-opt": {
+      "cost": 906.11,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 29,
+      "fallbacks": 0,
+      "runtime": 0.001
+    },
+    "2-opt*": {
+      "cost": 906.11,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 16,
+      "fallbacks": 0,
+      "runtime": 0.003
+    }
+  },
+  "C201_100c": {
+    "tw_type": "C2",
+    "scale": 100,
+    "n_trucks": 6,
+    "base_cost": 1803.87,
+    "base_tardiness": 63558.57,
+    "Forward Insertion": {
+      "cost": 1788.25,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 67,
+      "fallbacks": 0,
+      "runtime": 0.002
+    },
+    "Relocate": {
+      "cost": 1788.25,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 67,
+      "fallbacks": 0,
+      "runtime": 0.002
+    },
+    "Or-opt": {
+      "cost": 1788.25,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 67,
+      "fallbacks": 0,
+      "runtime": 0.002
+    },
+    "2-opt*": {
+      "cost": 1788.25,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 34,
+      "fallbacks": 0,
+      "runtime": 0.006
+    }
+  },
+  "C201_200c": {
+    "tw_type": "C2",
+    "scale": 200,
+    "n_trucks": 10,
+    "base_cost": 1803.87,
+    "base_tardiness": 63558.57,
+    "Forward Insertion": {
+      "cost": 1788.25,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 67,
+      "fallbacks": 0,
+      "runtime": 0.002
+    },
+    "Relocate": {
+      "cost": 1788.25,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 67,
+      "fallbacks": 0,
+      "runtime": 0.002
+    },
+    "Or-opt": {
+      "cost": 1788.25,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 67,
+      "fallbacks": 0,
+      "runtime": 0.002
+    },
+    "2-opt*": {
+      "cost": 1788.25,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "moves": 34,
+      "fallbacks": 0,
+      "runtime": 0.006
+    }
+  }
+}

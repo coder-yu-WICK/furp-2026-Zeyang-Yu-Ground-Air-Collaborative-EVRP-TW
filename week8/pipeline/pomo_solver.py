@@ -239,6 +239,10 @@ class ImprovedPOMOSolver:
             return 'angle', None
         elif variant in ('hybrid',):
             return 'hybrid', 0.4
+        elif variant in ('spatiotemporal',):
+            return 'spatiotemporal', 0.3
+        elif variant in ('budget_aware',):
+            return 'budget_aware', 0.75
         else:
             return 'spatial', None
 

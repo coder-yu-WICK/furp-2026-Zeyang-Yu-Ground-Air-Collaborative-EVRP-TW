@@ -30,7 +30,7 @@ from week8.core.problem_model import TruckSolution, extract_pareto_front
 class PACOSolver:
     """P-ACO solver for truck-only routing (optimized)."""
 
-    def __init__(self, instance, seed=42):
+    def __init__(self, instance, seed=42, n_ants=None, n_iterations=None):
         self.instance = instance
         self.customers = instance['customers']
         self.dist = instance['distance_matrix']
@@ -38,9 +38,10 @@ class PACOSolver:
         random.seed(seed)
 
         cfg = PACO
-        self.n_ants = cfg['ants_25c'] if self.n <= 25 else (
-            cfg['ants_50c'] if self.n <= 50 else cfg['ants_100c'])
-        self.max_iter = cfg['iterations']
+        self.n_ants = n_ants if n_ants is not None else (
+            cfg['ants_25c'] if self.n <= 25 else
+            (cfg['ants_50c'] if self.n <= 50 else cfg['ants_100c']))
+        self.max_iter = n_iterations if n_iterations is not None else cfg['iterations']
         self.alpha = cfg['alpha']
         self.beta = cfg['beta']
         self.rho = cfg['rho']
@@ -187,7 +188,7 @@ class PACOSolver:
         return all_solutions, pareto
 
 
-def run_paco(instance, n_runs=10, seed=42):
+def run_paco(instance, n_runs=10, seed=42, n_ants=None, n_iterations=None):
     """Run P-ACO multiple times."""
     all_solutions = []
     times = []
@@ -195,7 +196,7 @@ def run_paco(instance, n_runs=10, seed=42):
     for run in range(n_runs):
         s = seed + run
         t0 = time.time()
-        solver = PACOSolver(instance, seed=s)
+        solver = PACOSolver(instance, seed=s, n_ants=n_ants, n_iterations=n_iterations)
         sols, pareto = solver.solve()
         elapsed = time.time() - t0
         times.append(elapsed)

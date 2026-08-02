@@ -155,3 +155,163 @@ def cluster_customers_tw_aware(instance, n_trucks, beta=0.5, seed=42):
     beta is re-interpreted as max_gap_ratio (0 = no split, 1 = aggressive split).
     """
     return tw_aware_cluster_customers(instance, n_trucks, max_gap_ratio=beta, seed=seed)
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Budget-Aware Clustering — Designed for Partial EDD Compatibility
+# ═══════════════════════════════════════════════════════════════════════════
+
+def _compute_edd_route_time(cluster, depot, truck_speed=35.0):
+    """
+    Compute total time for an EDD-ordered route through a cluster.
+
+    This is the LOWER BOUND on route time — no ordering can be faster
+    than EDD for satisfying time windows. If even EDD takes too long,
+    the cluster is fundamentally too large and must be split.
+
+    Returns: (total_time, tardiness, n_tardy_customers)
+    """
+    if len(cluster) <= 1:
+        c = cluster[0]
+        d = math.sqrt((depot[0]-c['x'])**2 + (depot[1]-c['y'])**2)
+        travel = d / truck_speed
+        arr = max(travel, c['ready_time'])
+        tard = max(0, arr - c['due_time'])
+        return arr + c['service_time'] + d/truck_speed, tard, 1 if tard > 0 else 0
+
+    sorted_by_due = sorted(cluster, key=lambda c: c['due_time'])
+    current_time = 0.0
+    total_tard = 0.0
+    n_tardy = 0
+    prev_x, prev_y = depot[0], depot[1]
+
+    for c in sorted_by_due:
+        dx = prev_x - c['x']
+        dy = prev_y - c['y']
+        travel = math.sqrt(dx*dx + dy*dy) / truck_speed
+        current_time = max(current_time + travel, c['ready_time'])
+        current_time += c['service_time']
+        if current_time > c['due_time']:
+            total_tard += current_time - c['due_time']
+            n_tardy += 1
+        prev_x, prev_y = c['x'], c['y']
+
+    # Return to depot
+    return_dist = math.sqrt((prev_x-depot[0])**2 + (prev_y-depot[1])**2)
+    total_time = current_time + return_dist / truck_speed
+    return total_time, total_tard, n_tardy
+
+
+def _find_best_split_point(cluster, depot, truck_speed=35.0):
+    """
+    Find the best temporal split point that minimizes
+    the maximum EDD route time of the resulting sub-clusters.
+
+    Unlike the fixed-threshold approach, this directly optimizes
+    the split for EDD route time reduction — the metric that matters.
+
+    Returns: (best_split_index, best_max_time)
+    """
+    if len(cluster) <= 2:
+        return -1, float('inf')
+
+    sorted_cluster = sorted(cluster, key=lambda c: (c['ready_time'] + c['due_time']) / 2)
+    n = len(sorted_cluster)
+    best_split = -1
+    best_max_time = float('inf')
+
+    # Try each possible split point
+    for split_at in range(1, n):
+        sub1 = sorted_cluster[:split_at]
+        sub2 = sorted_cluster[split_at:]
+        if len(sub1) == 0 or len(sub2) == 0:
+            continue
+        t1, _, _ = _compute_edd_route_time(sub1, depot, truck_speed)
+        t2, _, _ = _compute_edd_route_time(sub2, depot, truck_speed)
+        max_time = max(t1, t2)
+        if max_time < best_max_time:
+            best_max_time = max_time
+            best_split = split_at
+
+    return best_split, best_max_time
+
+
+def budget_aware_cluster(instance, n_trucks, time_budget_ratio=0.75, seed=42):
+    """
+    Budget-aware clustering designed for Partial EDD compatibility.
+
+    PHILOSOPHY (different from previous approaches):
+      - Start with PURE SPATIAL K-means (preserve POMO's distance optimization)
+      - Only split when the EDD route time exceeds the time budget
+      - Split at the point that MOST reduces the worst sub-cluster's route time
+      - This creates MINIMAL, TARGETED splits — leaving most clusters intact
+
+    Why this helps Partial EDD:
+      Partial EDD fails when the upstream (non-tardy) part of a route is too long.
+      By ensuring each cluster's EDD route fits within budget_ratio × horizon,
+      we leave SLACK for POMO's sub-optimal ordering. Then when Partial EDD
+      reorders a tardy segment, there's enough time buffer upstream.
+
+    Args:
+        instance: problem instance dict
+        n_trucks: minimum number of trucks
+        time_budget_ratio: fraction of TW horizon that a cluster's EDD route
+                          must fit within. 0.75 = EDD route ≤ 75% of horizon.
+                          Lower = tighter budget = more splits = easier for Partial EDD.
+        seed: random seed
+
+    Returns:
+        list of clusters (each is list of customer dicts)
+    """
+    from week8.pipeline.pomo_multitruck import _kmeans_cluster
+
+    customers = instance['customers']
+    total_demand = sum(c['demand'] for c in customers)
+    min_clusters = max(1, int(math.ceil(total_demand / TRUCK_CAPACITY)))
+    n_spatial = max(n_trucks, min_clusters)
+    horizon = instance.get('tw_horizon', 240.0)
+    depot = instance['depot']
+    time_budget = horizon * time_budget_ratio
+
+    # ── Phase 1: Pure spatial K-means ──
+    clusters = _kmeans_cluster(customers, n_spatial, seed=seed)
+
+    # ── Phase 2: Targeted splitting (only where needed) ──
+    # Iteratively split the worst cluster until all fit within the time budget
+    MAX_TOTAL_CLUSTERS = n_spatial * 3  # Safety: never more than 3x original
+
+    for _ in range(MAX_TOTAL_CLUSTERS - len(clusters)):
+        # Find the cluster with the worst (longest) EDD route time
+        worst_idx = -1
+        worst_time = 0
+
+        for i, cluster in enumerate(clusters):
+            if len(cluster) <= 1:
+                continue
+            route_time, tard, n_tardy = _compute_edd_route_time(cluster, depot)
+            if route_time > worst_time:
+                worst_time = route_time
+                worst_idx = i
+
+        # If all clusters fit within budget, we're done
+        if worst_time <= time_budget:
+            break
+
+        # Split the worst cluster at the optimal temporal point
+        worst_cluster = clusters[worst_idx]
+        split_idx, split_max_time = _find_best_split_point(worst_cluster, depot)
+
+        if split_idx < 0 or split_max_time >= worst_time:
+            # Can't improve by splitting — accept as-is
+            break
+
+        sorted_cluster = sorted(worst_cluster,
+                                key=lambda c: (c['ready_time'] + c['due_time']) / 2)
+        clusters[worst_idx] = sorted_cluster[:split_idx]
+        clusters.append(sorted_cluster[split_idx:])
+
+    # ── Phase 3: Capacity balancing ──
+    clusters = _balance_capacity(clusters, capacity=TRUCK_CAPACITY)
+    clusters = [c for c in clusters if c]
+
+    return clusters

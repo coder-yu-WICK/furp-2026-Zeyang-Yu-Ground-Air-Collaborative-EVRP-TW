@@ -33,7 +33,8 @@ from week8.core.problem_model import TruckSolution, extract_pareto_front
 class NSGA2Solver:
     """NSGA-II solver for truck-only routing."""
 
-    def __init__(self, instance, n_trucks=2, seed=42):
+    def __init__(self, instance, n_trucks=2, seed=42,
+                 pop_size=None, n_generations=None):
         self.instance = instance
         self.customers = instance['customers']
         self.dist = instance['distance_matrix']
@@ -43,9 +44,10 @@ class NSGA2Solver:
         random.seed(seed)
 
         cfg = NSGA2
-        self.pop_size = (cfg['pop_25c'] if self.n <= 25 else
-                         (cfg['pop_50c'] if self.n <= 50 else cfg['pop_100c']))
-        self.max_gen = cfg['generations']
+        self.pop_size = pop_size if pop_size is not None else (
+            cfg['pop_25c'] if self.n <= 25 else
+            (cfg['pop_50c'] if self.n <= 50 else cfg['pop_100c']))
+        self.max_gen = n_generations if n_generations is not None else cfg['generations']
         self.cx_pb = cfg['crossover_pb']
         self.mut_pb = cfg['mutation_pb']
         self.cx_eta = cfg['crossover_eta']
@@ -261,7 +263,8 @@ class NSGA2Solver:
         return all_solutions, pareto
 
 
-def run_nsga2(instance, n_trucks=2, n_runs=10, seed=42):
+def run_nsga2(instance, n_trucks=2, n_runs=10, seed=42,
+              pop_size=None, n_generations=None):
     """Run NSGA-II multiple times."""
     all_solutions = []
     times = []
@@ -269,7 +272,8 @@ def run_nsga2(instance, n_trucks=2, n_runs=10, seed=42):
     for run in range(n_runs):
         s = seed + run
         t0 = time.time()
-        solver = NSGA2Solver(instance, n_trucks=n_trucks, seed=s)
+        solver = NSGA2Solver(instance, n_trucks=n_trucks, seed=s,
+                             pop_size=pop_size, n_generations=n_generations)
         sols, pareto = solver.solve()
         elapsed = time.time() - t0
         times.append(elapsed)

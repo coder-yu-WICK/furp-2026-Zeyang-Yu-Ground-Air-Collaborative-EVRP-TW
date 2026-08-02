@@ -1,0 +1,554 @@
+{
+  "E-n29-k4-s7_tw": {
+    "orig_name": "E-n29-k4-s7",
+    "n_customers": 21,
+    "n_trucks": 4,
+    "tw_horizon": 218.68,
+    "nsga2_edd": {
+      "nsga2_cost": 1915.84,
+      "nsga2_tardiness": 925.28,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 1970.07,
+      "edd_tardiness": 21.35,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 4242.08,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 0,
+      "fi_success": false,
+      "fi_moves": 0
+    },
+    "runtime": 1.1
+  },
+  "E-n30-k3-s7_tw": {
+    "orig_name": "E-n30-k3-s7",
+    "n_customers": 22,
+    "n_trucks": 3,
+    "tw_horizon": 271.94,
+    "nsga2_edd": {
+      "nsga2_cost": 2687.27,
+      "nsga2_tardiness": 522.2,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 2356.27,
+      "edd_tardiness": 0.0,
+      "edd_tw_feasible": true
+    },
+    "pomo_fi": {
+      "pomo_cost": 6181.68,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 0,
+      "fi_success": false,
+      "fi_moves": 0
+    },
+    "runtime": 0.3
+  },
+  "E-n35-k3-s5_tw": {
+    "orig_name": "E-n35-k3-s5",
+    "n_customers": 29,
+    "n_trucks": 3,
+    "tw_horizon": 252.07,
+    "nsga2_edd": {
+      "nsga2_cost": 3350.91,
+      "nsga2_tardiness": 1823.26,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 2241.14,
+      "edd_tardiness": 5.98,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 7973.63,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 0,
+      "fi_success": false,
+      "fi_moves": 0
+    },
+    "runtime": 0.3
+  },
+  "E-n37-k4-s4_tw": {
+    "orig_name": "E-n37-k4-s4",
+    "n_customers": 32,
+    "n_trucks": 4,
+    "tw_horizon": 326.29,
+    "nsga2_edd": {
+      "nsga2_cost": 3456.23,
+      "nsga2_tardiness": 2079.52,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 2566.67,
+      "edd_tardiness": 522.84,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 12994.7,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 0,
+      "fi_success": false,
+      "fi_moves": 0
+    },
+    "runtime": 0.6
+  },
+  "E-n60-k5-s9_tw": {
+    "orig_name": "E-n60-k5-s9",
+    "n_customers": 50,
+    "n_trucks": 5,
+    "tw_horizon": 200.46,
+    "nsga2_edd": {
+      "nsga2_cost": 2620.46,
+      "nsga2_tardiness": 576.38,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 2947.98,
+      "edd_tardiness": 16.46,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 3999.76,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 0.0,
+      "fi_success": true,
+      "fi_moves": 1.0
+    },
+    "runtime": 0.9
+  },
+  "E-n89-k7-s13_tw": {
+    "orig_name": "E-n89-k7-s13",
+    "n_customers": 75,
+    "n_trucks": 7,
+    "tw_horizon": 203.65,
+    "nsga2_edd": {
+      "nsga2_cost": 4563.81,
+      "nsga2_tardiness": 1141.07,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 4340.86,
+      "edd_tardiness": 117.04,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 5882.41,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 1.0,
+      "fi_success": true,
+      "fi_moves": 2.0
+    },
+    "runtime": 1.5
+  },
+  "E-n112-k8-s11_tw": {
+    "orig_name": "E-n112-k8-s11",
+    "n_customers": 100,
+    "n_trucks": 8,
+    "tw_horizon": 203.64,
+    "nsga2_edd": {
+      "nsga2_cost": 4282.46,
+      "nsga2_tardiness": 1917.63,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 5292.2,
+      "edd_tardiness": 590.1,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 7589.2,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 2.0,
+      "fi_success": true,
+      "fi_moves": 3.0
+    },
+    "runtime": 1.8
+  },
+  "F-n49-k4-s4_tw": {
+    "orig_name": "F-n49-k4-s4",
+    "n_customers": 44,
+    "n_trucks": 4,
+    "tw_horizon": 348.43,
+    "nsga2_edd": {
+      "nsga2_cost": 4875.78,
+      "nsga2_tardiness": 1932.0,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 4123.3,
+      "edd_tardiness": 22.37,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 9840.79,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 0,
+      "fi_success": false,
+      "fi_moves": 0
+    },
+    "runtime": 0.7
+  },
+  "F-n80-k4-s8_tw": {
+    "orig_name": "F-n80-k4-s8",
+    "n_customers": 71,
+    "n_trucks": 4,
+    "tw_horizon": 176.17,
+    "nsga2_edd": {
+      "nsga2_cost": 2665.82,
+      "nsga2_tardiness": 12418.54,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 2172.63,
+      "edd_tardiness": 2158.74,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 11338.4,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 0,
+      "fi_success": false,
+      "fi_moves": 0
+    },
+    "runtime": 0.7
+  },
+  "F-n140-k7-s5_tw": {
+    "orig_name": "F-n140-k7-s5",
+    "n_customers": 134,
+    "n_trucks": 5,
+    "tw_horizon": 372.53,
+    "nsga2_edd": {
+      "nsga2_cost": 13801.12,
+      "nsga2_tardiness": 51957.22,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 9290.6,
+      "edd_tardiness": 14844.52,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 19845.37,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 0.0,
+      "fi_success": true,
+      "fi_moves": 3.0
+    },
+    "runtime": 2.0
+  },
+  "M-n110-k10-s9_tw": {
+    "orig_name": "M-n110-k10-s9",
+    "n_customers": 100,
+    "n_trucks": 10,
+    "tw_horizon": 236.19,
+    "nsga2_edd": {
+      "nsga2_cost": 6139.27,
+      "nsga2_tardiness": 1501.85,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 5325.11,
+      "edd_tardiness": 29.52,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 7320.96,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 2.0,
+      "fi_success": true,
+      "fi_moves": 6.0
+    },
+    "runtime": 2.0
+  },
+  "M-n126-k7-s5_tw": {
+    "orig_name": "M-n126-k7-s5",
+    "n_customers": 120,
+    "n_trucks": 7,
+    "tw_horizon": 303.96,
+    "nsga2_edd": {
+      "nsga2_cost": 6549.34,
+      "nsga2_tardiness": 3008.34,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 8222.87,
+      "edd_tardiness": 980.67,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 13632.03,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 3.0,
+      "fi_success": true,
+      "fi_moves": 4.0
+    },
+    "runtime": 2.2
+  },
+  "M-n163-k12-s12_tw": {
+    "orig_name": "M-n163-k12-s12",
+    "n_customers": 150,
+    "n_trucks": 12,
+    "tw_horizon": 206.68,
+    "nsga2_edd": {
+      "nsga2_cost": 6441.93,
+      "nsga2_tardiness": 3366.35,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 8534.17,
+      "edd_tardiness": 805.78,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 12058.7,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 1.0,
+      "fi_success": true,
+      "fi_moves": 5.0
+    },
+    "runtime": 2.9
+  },
+  "M-n212-k16-s12_tw": {
+    "orig_name": "M-n212-k16-s12",
+    "n_customers": 199,
+    "n_trucks": 16,
+    "tw_horizon": 206.68,
+    "nsga2_edd": {
+      "nsga2_cost": 9615.64,
+      "nsga2_tardiness": 4421.97,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 11029.56,
+      "edd_tardiness": 1039.26,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 15026.59,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 3.0,
+      "fi_success": true,
+      "fi_moves": 11.0
+    },
+    "runtime": 4.3
+  },
+  "X-n147-k7-s4_tw": {
+    "orig_name": "X-n147-k7-s4",
+    "n_customers": 142,
+    "n_trucks": 7,
+    "tw_horizon": 2791.5,
+    "nsga2_edd": {
+      "nsga2_cost": 146440.06,
+      "nsga2_tardiness": 135293.37,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 63276.41,
+      "edd_tardiness": 141.53,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 165041.41,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 3.0,
+      "fi_success": true,
+      "fi_moves": 2.0
+    },
+    "runtime": 2.5
+  },
+  "X-n221-k11-s9_tw": {
+    "orig_name": "X-n221-k11-s9",
+    "n_customers": 213,
+    "n_trucks": 11,
+    "tw_horizon": 1256.34,
+    "nsga2_edd": {
+      "nsga2_cost": 104058.15,
+      "nsga2_tardiness": 192183.52,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 63933.05,
+      "edd_tardiness": 38891.89,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 107502.81,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 1.0,
+      "fi_success": true,
+      "fi_moves": 7.0
+    },
+    "runtime": 3.8
+  },
+  "X-n360-k40-s9_tw": {
+    "orig_name": "X-n360-k40-s9",
+    "n_customers": 350,
+    "n_trucks": 40,
+    "tw_horizon": 1278.61,
+    "nsga2_edd": {
+      "nsga2_cost": 220951.49,
+      "nsga2_tardiness": 242796.02,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 153189.88,
+      "edd_tardiness": 153282.31,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 176385.72,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 6.0,
+      "fi_success": true,
+      "fi_moves": 5.0
+    },
+    "runtime": 11.0
+  },
+  "X-n469-k26-s10_tw": {
+    "orig_name": "X-n469-k26-s10",
+    "n_customers": 458,
+    "n_trucks": 26,
+    "tw_horizon": 1320.31,
+    "nsga2_edd": {
+      "nsga2_cost": 311583.9,
+      "nsga2_tardiness": 1148118.41,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 214140.98,
+      "edd_tardiness": 711161.86,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 323004.8,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 5.0,
+      "fi_success": true,
+      "fi_moves": 5.0
+    },
+    "runtime": 10.8
+  },
+  "X-n577-k30-s4_tw": {
+    "orig_name": "X-n577-k30-s4",
+    "n_customers": 572,
+    "n_trucks": 30,
+    "tw_horizon": 2263.24,
+    "nsga2_edd": {
+      "nsga2_cost": 278742.81,
+      "nsga2_tardiness": 93687.89,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 197547.63,
+      "edd_tardiness": 4261.34,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 536143.75,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 12.0,
+      "fi_success": true,
+      "fi_moves": 16.0
+    },
+    "runtime": 19.4
+  },
+  "X-n698-k75-s13_tw": {
+    "orig_name": "X-n698-k75-s13",
+    "n_customers": 684,
+    "n_trucks": 75,
+    "tw_horizon": 1442.86,
+    "nsga2_edd": {
+      "nsga2_cost": 594991.94,
+      "nsga2_tardiness": 1037377.76,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 513059.45,
+      "edd_tardiness": 768951.23,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 453673.65,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 11.0,
+      "fi_success": true,
+      "fi_moves": 11.0
+    },
+    "runtime": 31.6
+  },
+  "X-n759-k98-s10_tw": {
+    "orig_name": "X-n759-k98-s10",
+    "n_customers": 748,
+    "n_trucks": 98,
+    "tw_horizon": 1423.61,
+    "nsga2_edd": {
+      "nsga2_cost": 534968.92,
+      "nsga2_tardiness": 1033338.24,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 408793.75,
+      "edd_tardiness": 745023.82,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 471603.1,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 11.0,
+      "fi_success": true,
+      "fi_moves": 9.0
+    },
+    "runtime": 42.4
+  },
+  "X-n830-k171-s11_tw": {
+    "orig_name": "X-n830-k171-s11",
+    "n_customers": 818,
+    "n_trucks": 171,
+    "tw_horizon": 1498.73,
+    "nsga2_edd": {
+      "nsga2_cost": 877410.47,
+      "nsga2_tardiness": 1867073.84,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 719446.46,
+      "edd_tardiness": 1567255.95,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 737949.34,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 3.0,
+      "fi_success": true,
+      "fi_moves": 4.0
+    },
+    "runtime": 69.0
+  },
+  "X-n920-k207-s4_tw": {
+    "orig_name": "X-n920-k207-s4",
+    "n_customers": 915,
+    "n_trucks": 207,
+    "tw_horizon": 2855.3,
+    "nsga2_edd": {
+      "nsga2_cost": 474143.82,
+      "nsga2_tardiness": 137560.52,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 437397.27,
+      "edd_tardiness": 5327.2,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 891634.47,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 20.0,
+      "fi_success": true,
+      "fi_moves": 32.0
+    },
+    "runtime": 207.0
+  },
+  "X-n1006-k43-s5_tw": {
+    "orig_name": "X-n1006-k43-s5",
+    "n_customers": 1000,
+    "n_trucks": 43,
+    "tw_horizon": 2612.73,
+    "nsga2_edd": {
+      "nsga2_cost": 444554.93,
+      "nsga2_tardiness": 304167.53,
+      "nsga2_tw_feasible": false,
+      "edd_cost": 536821.14,
+      "edd_tardiness": 20771.09,
+      "edd_tw_feasible": false
+    },
+    "pomo_fi": {
+      "pomo_cost": 893393.45,
+      "pomo_tardiness": 0.0,
+      "pomo_tw_feasible": true,
+      "fi_fallback": 33.0,
+      "fi_success": true,
+      "fi_moves": 48.0
+    },
+    "runtime": 51.9
+  }
+}

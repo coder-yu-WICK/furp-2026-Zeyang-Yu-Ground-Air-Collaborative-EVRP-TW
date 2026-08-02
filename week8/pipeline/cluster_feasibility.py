@@ -23,6 +23,131 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from week8.config import TRUCK_CAPACITY
 
 
+def _spatial_nn_route(cluster, depot):
+    """
+    Build a nearest-neighbor route from depot through all customers.
+    Approximates POMO's distance-first behavior for feasibility estimation.
+    Returns ordered list of customer dicts.
+    """
+    if len(cluster) <= 1:
+        return list(cluster)
+
+    remaining = list(cluster)
+    route = []
+    cx, cy = depot[0], depot[1]
+
+    while remaining:
+        # Find nearest remaining customer
+        best_i = min(range(len(remaining)),
+                     key=lambda i: (remaining[i]['x'] - cx)**2 + (remaining[i]['y'] - cy)**2)
+        nxt = remaining.pop(best_i)
+        route.append(nxt)
+        cx, cy = nxt['x'], nxt['y']
+
+    return route
+
+
+def _compute_forward_slack(route, depot, truck_speed=35.0):
+    """
+    Compute Theorem 1 forward slack for a route.
+
+    For each position i, computes: "how much earlier could a customer inserted
+    at position i arrive without causing downstream tardiness?"
+
+    Returns:
+        slack_at_pos: list of available slack (minutes) after each position
+        tardy_positions: list of (position, tardiness) for customers that are late
+    """
+    n = len(route)
+    if n == 0:
+        return [], []
+
+    # Forward simulate
+    arrivals = []
+    current_time = 0.0
+    px, py = depot[0], depot[1]
+
+    for c in route:
+        travel = math.sqrt((px - c['x'])**2 + (py - c['y'])**2) / truck_speed
+        current_time = max(current_time + travel, c['ready_time'])
+        arrivals.append(current_time)
+        current_time += c['service_time']
+        px, py = c['x'], c['y']
+
+    # Find tardy customers
+    tardy_positions = []
+    for i, c in enumerate(route):
+        tard = max(0.0, arrivals[i] - c['due_time'])
+        if tard > 0.01:
+            tardy_positions.append((i, tard))
+
+    # Compute forward slack at each position
+    # Slack at position i = min over p in [i, n] of (due[p] - arrival[p])
+    # (how much we can delay position i without causing any downstream tardiness)
+    slack_at_pos = [0.0] * n
+    running_min = float('inf')
+    for i in range(n - 1, -1, -1):
+        c = route[i]
+        # Available buffer at this position before it becomes tardy
+        buffer = c['due_time'] - arrivals[i]
+        running_min = min(running_min, buffer)
+        slack_at_pos[i] = max(0.0, running_min)
+
+    return slack_at_pos, tardy_positions
+
+
+def check_cluster_fi_feasibility(cluster, instance):
+    """
+    FI-aware feasibility check: estimates whether Forward Insertion
+    could fix this cluster, even if pure EDD says it's infeasible.
+
+    Uses Theorem 1 condition:
+    1. Build spatial nearest-neighbor route (approximates POMO output)
+    2. Simulate → identify tardy customers and forward slack
+    3. If total forward slack >= total tardiness → FI can fix it
+
+    This is more optimistic than the EDD check because it accounts for
+    FI's ability to move tardy customers forward into slack regions.
+
+    Returns:
+        (is_fi_feasible, estimated_tardiness, fi_slack_ratio)
+        fi_slack_ratio: 0-1 score of how fixable the cluster is (1 = easy)
+    """
+    if len(cluster) <= 1:
+        return True, 0.0, 1.0
+
+    depot = instance['depot']
+    truck_speed = 35.0
+
+    # Build spatial route (approximating POMO)
+    nn_route = _spatial_nn_route(cluster, depot)
+
+    # Compute Theorem 1 slack
+    slack_at_pos, tardy_positions = _compute_forward_slack(nn_route, depot, truck_speed)
+
+    if not tardy_positions:
+        return True, 0.0, 1.0
+
+    total_tard = sum(t for _, t in tardy_positions)
+
+    # Total available forward slack = sum of slack at positions BEFORE each tardy customer
+    total_slack = 0.0
+    for tard_pos, _ in tardy_positions:
+        # Can use slack from positions 0 to tard_pos-1
+        prefix_slack = sum(slack_at_pos[:tard_pos]) if tard_pos > 0 else 0.0
+        total_slack += prefix_slack
+
+    # FI can fix if: total forward slack >= total tardiness (Theorem 1)
+    if total_tard <= 0.01:
+        slack_ratio = 1.0
+    else:
+        slack_ratio = min(1.0, total_slack / total_tard)
+
+    is_feasible = slack_ratio >= 0.5  # 50% threshold: reasonable chance of FI success
+
+    return is_feasible, total_tard, slack_ratio
+
+
 def check_cluster_tw_feasibility(cluster, instance):
     """
     Quick check: can a single truck serve all customers in this cluster
@@ -224,6 +349,16 @@ def ensure_temporal_feasibility(clusters, instance, max_iter=3):
             if is_feasible or len(cluster) <= 2:
                 new_result.append(cluster)
                 continue
+
+            # ── FI-aware check: don't split if FI can fix it ──
+            fi_feasible, fi_tard, fi_ratio = check_cluster_fi_feasibility(
+                cluster, instance)
+            if fi_feasible:
+                # FI can handle this cluster — keep it intact
+                new_result.append(cluster)
+                continue
+
+            # Both EDD and FI say infeasible → must split
 
             # Split the infeasible cluster
             sub_clusters = split_temporally_infeasible_cluster(

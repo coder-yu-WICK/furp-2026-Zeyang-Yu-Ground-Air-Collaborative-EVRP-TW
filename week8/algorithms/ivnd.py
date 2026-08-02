@@ -34,7 +34,7 @@ from week8.core.problem_model import TruckSolution, extract_pareto_front
 class IVNDSolver:
     """IVND solver for truck-only routing."""
 
-    def __init__(self, instance, n_trucks=2, seed=42):
+    def __init__(self, instance, n_trucks=2, seed=42, max_iter=None):
         self.instance = instance
         self.customers = instance['customers']
         self.dist = instance['distance_matrix']
@@ -44,7 +44,7 @@ class IVNDSolver:
         random.seed(seed)
 
         cfg = IVND
-        self.max_iter = cfg['max_iterations']
+        self.max_iter = max_iter if max_iter is not None else cfg['max_iterations']
         self.tabu_tenure = cfg['tabu_tenure']
         self.shaking_k_max = cfg['shaking_k_max']
         self.temp_init = cfg['temperature_initial']
@@ -254,7 +254,7 @@ class IVNDSolver:
         return all_solutions, pareto
 
 
-def run_ivnd(instance, n_trucks=2, n_runs=10, seed=42):
+def run_ivnd(instance, n_trucks=2, n_runs=10, seed=42, max_iter=None):
     """Run IVND multiple times."""
     all_solutions = []
     times = []
@@ -262,7 +262,7 @@ def run_ivnd(instance, n_trucks=2, n_runs=10, seed=42):
     for run in range(n_runs):
         s = seed + run
         t0 = time.time()
-        solver = IVNDSolver(instance, n_trucks=n_trucks, seed=s)
+        solver = IVNDSolver(instance, n_trucks=n_trucks, seed=s, max_iter=max_iter)
         sols, pareto = solver.solve()
         elapsed = time.time() - t0
         times.append(elapsed)

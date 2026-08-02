@@ -1,0 +1,5826 @@
+{
+  "RC101_25c": {
+    "NSGA-II": {
+      "cost": 466.54,
+      "tardiness": 565.84,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.23
+    },
+    "P-ACO": {
+      "cost": 361.31,
+      "tardiness": 928.67,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.71
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 1661.78,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC101_50c": {
+    "NSGA-II": {
+      "cost": 914.98,
+      "tardiness": 1099.7,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.76
+    },
+    "P-ACO": {
+      "cost": 639.52,
+      "tardiness": 1790.76,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.14
+    },
+    "IVND": {
+      "cost": 1269.15,
+      "tardiness": 432.43,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC101_100c": {
+    "NSGA-II": {
+      "cost": 1515.51,
+      "tardiness": 7582.26,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.91
+    },
+    "P-ACO": {
+      "cost": 940.86,
+      "tardiness": 11793.02,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 11.02
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 10411.42,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "RC101_200c": {
+    "NSGA-II": {
+      "cost": 1665.89,
+      "tardiness": 3580.36,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.65
+    },
+    "P-ACO": {
+      "cost": 979.72,
+      "tardiness": 11769.29,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.76
+    },
+    "IVND": {
+      "cost": 1877.71,
+      "tardiness": 3347.55,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC102_25c": {
+    "NSGA-II": {
+      "cost": 467.7,
+      "tardiness": 447.76,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.22
+    },
+    "P-ACO": {
+      "cost": 326.93,
+      "tardiness": 484.85,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.46
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 1152.86,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC102_50c": {
+    "NSGA-II": {
+      "cost": 921.68,
+      "tardiness": 347.75,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.82
+    },
+    "P-ACO": {
+      "cost": 668.44,
+      "tardiness": 1022.96,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 7.23
+    },
+    "IVND": {
+      "cost": 1248.86,
+      "tardiness": 112.57,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC102_100c": {
+    "NSGA-II": {
+      "cost": 1626.06,
+      "tardiness": 5361.53,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.89
+    },
+    "P-ACO": {
+      "cost": 1038.87,
+      "tardiness": 8745.8,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 11.32
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 8138.31,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "RC102_200c": {
+    "NSGA-II": {
+      "cost": 1684.17,
+      "tardiness": 2145.57,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.64
+    },
+    "P-ACO": {
+      "cost": 871.7,
+      "tardiness": 8964.42,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.99
+    },
+    "IVND": {
+      "cost": 1815.96,
+      "tardiness": 1844.05,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC103_25c": {
+    "NSGA-II": {
+      "cost": 416.94,
+      "tardiness": 88.41,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.2
+    },
+    "P-ACO": {
+      "cost": 356.0,
+      "tardiness": 159.18,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.61
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 464.03,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC103_50c": {
+    "NSGA-II": {
+      "cost": 913.82,
+      "tardiness": 157.44,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.72
+    },
+    "P-ACO": {
+      "cost": 679.15,
+      "tardiness": 425.72,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.87
+    },
+    "IVND": {
+      "cost": 1230.31,
+      "tardiness": 126.35,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC103_100c": {
+    "NSGA-II": {
+      "cost": 1513.17,
+      "tardiness": 3614.31,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.03
+    },
+    "P-ACO": {
+      "cost": 883.82,
+      "tardiness": 6444.66,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 12.9
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 5834.53,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "RC103_200c": {
+    "NSGA-II": {
+      "cost": 1673.73,
+      "tardiness": 834.7,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.65
+    },
+    "P-ACO": {
+      "cost": 967.01,
+      "tardiness": 6729.76,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.29
+    },
+    "IVND": {
+      "cost": 1951.71,
+      "tardiness": 1513.23,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC104_25c": {
+    "NSGA-II": {
+      "cost": 438.89,
+      "tardiness": 33.32,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.37
+    },
+    "P-ACO": {
+      "cost": 339.29,
+      "tardiness": 39.68,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.57
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 428.83,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC104_50c": {
+    "NSGA-II": {
+      "cost": 875.58,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.76
+    },
+    "P-ACO": {
+      "cost": 680.87,
+      "tardiness": 17.84,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.75
+    },
+    "IVND": {
+      "cost": 1194.16,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "RC104_100c": {
+    "NSGA-II": {
+      "cost": 1537.92,
+      "tardiness": 1713.92,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.0
+    },
+    "P-ACO": {
+      "cost": 921.17,
+      "tardiness": 1970.22,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 11.42
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 1617.04,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "RC104_200c": {
+    "NSGA-II": {
+      "cost": 1652.91,
+      "tardiness": 131.75,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.66
+    },
+    "P-ACO": {
+      "cost": 905.07,
+      "tardiness": 1703.87,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.02
+    },
+    "IVND": {
+      "cost": 1838.78,
+      "tardiness": 295.84,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC105_25c": {
+    "NSGA-II": {
+      "cost": 467.7,
+      "tardiness": 464.76,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.22
+    },
+    "P-ACO": {
+      "cost": 329.13,
+      "tardiness": 543.09,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.63
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 1280.3,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC105_50c": {
+    "NSGA-II": {
+      "cost": 979.81,
+      "tardiness": 553.89,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.89
+    },
+    "P-ACO": {
+      "cost": 781.34,
+      "tardiness": 1115.76,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 8.54
+    },
+    "IVND": {
+      "cost": 1257.85,
+      "tardiness": 75.55,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC105_100c": {
+    "NSGA-II": {
+      "cost": 1513.15,
+      "tardiness": 6201.39,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.97
+    },
+    "P-ACO": {
+      "cost": 863.8,
+      "tardiness": 9399.15,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 13.2
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 7970.1,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "RC105_200c": {
+    "NSGA-II": {
+      "cost": 1586.29,
+      "tardiness": 2434.82,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.69
+    },
+    "P-ACO": {
+      "cost": 927.42,
+      "tardiness": 9565.81,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.21
+    },
+    "IVND": {
+      "cost": 1980.7,
+      "tardiness": 1970.09,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC106_25c": {
+    "NSGA-II": {
+      "cost": 467.7,
+      "tardiness": 307.28,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.2
+    },
+    "P-ACO": {
+      "cost": 334.67,
+      "tardiness": 358.5,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.51
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 1008.53,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC106_50c": {
+    "NSGA-II": {
+      "cost": 891.79,
+      "tardiness": 363.14,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 1.01
+    },
+    "P-ACO": {
+      "cost": 663.35,
+      "tardiness": 897.18,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.23
+    },
+    "IVND": {
+      "cost": 1186.47,
+      "tardiness": 49.37,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC106_100c": {
+    "NSGA-II": {
+      "cost": 1617.15,
+      "tardiness": 5409.48,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.01
+    },
+    "P-ACO": {
+      "cost": 992.8,
+      "tardiness": 8186.74,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 12.96
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 7312.54,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "RC106_200c": {
+    "NSGA-II": {
+      "cost": 1680.36,
+      "tardiness": 1442.14,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.73
+    },
+    "P-ACO": {
+      "cost": 992.8,
+      "tardiness": 8186.74,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.46
+    },
+    "IVND": {
+      "cost": 2033.84,
+      "tardiness": 1323.77,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.02
+    }
+  },
+  "RC107_25c": {
+    "NSGA-II": {
+      "cost": 467.7,
+      "tardiness": 123.51,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.14
+    },
+    "P-ACO": {
+      "cost": 322.78,
+      "tardiness": 118.57,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.53
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 804.25,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC107_50c": {
+    "NSGA-II": {
+      "cost": 899.07,
+      "tardiness": 89.73,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.83
+    },
+    "P-ACO": {
+      "cost": 748.25,
+      "tardiness": 196.65,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.8
+    },
+    "IVND": {
+      "cost": 1379.61,
+      "tardiness": 25.6,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "RC107_100c": {
+    "NSGA-II": {
+      "cost": 1568.78,
+      "tardiness": 3765.84,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.07
+    },
+    "P-ACO": {
+      "cost": 930.24,
+      "tardiness": 6001.97,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 13.29
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 4737.88,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "RC107_200c": {
+    "NSGA-II": {
+      "cost": 1648.05,
+      "tardiness": 520.68,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.68
+    },
+    "P-ACO": {
+      "cost": 987.81,
+      "tardiness": 6101.83,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.12
+    },
+    "IVND": {
+      "cost": 1880.6,
+      "tardiness": 617.08,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC108_25c": {
+    "NSGA-II": {
+      "cost": 460.31,
+      "tardiness": 5.26,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.22
+    },
+    "P-ACO": {
+      "cost": 316.81,
+      "tardiness": 12.45,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.48
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 165.79,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC108_50c": {
+    "NSGA-II": {
+      "cost": 836.02,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.69
+    },
+    "P-ACO": {
+      "cost": 687.65,
+      "tardiness": 32.57,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.64
+    },
+    "IVND": {
+      "cost": 1180.06,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC108_100c": {
+    "NSGA-II": {
+      "cost": 1483.38,
+      "tardiness": 2419.25,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.99
+    },
+    "P-ACO": {
+      "cost": 1019.8,
+      "tardiness": 3794.14,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 12.56
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 2410.09,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "RC108_200c": {
+    "NSGA-II": {
+      "cost": 1593.09,
+      "tardiness": 75.15,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.59
+    },
+    "P-ACO": {
+      "cost": 1015.93,
+      "tardiness": 4421.49,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.57
+    },
+    "IVND": {
+      "cost": 1798.97,
+      "tardiness": 67.35,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC201_25c": {
+    "NSGA-II": {
+      "cost": 467.7,
+      "tardiness": 2273.66,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.34
+    },
+    "P-ACO": {
+      "cost": 389.93,
+      "tardiness": 946.42,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.23
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 5320.31,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC201_50c": {
+    "NSGA-II": {
+      "cost": 978.2,
+      "tardiness": 4469.31,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.79
+    },
+    "P-ACO": {
+      "cost": 824.74,
+      "tardiness": 2549.62,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.8
+    },
+    "IVND": {
+      "cost": 1344.27,
+      "tardiness": 1242.73,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC201_100c": {
+    "NSGA-II": {
+      "cost": 1537.69,
+      "tardiness": 16651.58,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.93
+    },
+    "P-ACO": {
+      "cost": 1257.24,
+      "tardiness": 7378.54,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.8
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 26919.12,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "RC201_200c": {
+    "NSGA-II": {
+      "cost": 1651.47,
+      "tardiness": 12061.35,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.68
+    },
+    "P-ACO": {
+      "cost": 1209.57,
+      "tardiness": 7770.4,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.64
+    },
+    "IVND": {
+      "cost": 2130.18,
+      "tardiness": 9440.89,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC202_25c": {
+    "NSGA-II": {
+      "cost": 419.51,
+      "tardiness": 1291.08,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.23
+    },
+    "P-ACO": {
+      "cost": 355.74,
+      "tardiness": 838.83,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.25
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 3580.11,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC202_50c": {
+    "NSGA-II": {
+      "cost": 992.46,
+      "tardiness": 2472.98,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.66
+    },
+    "P-ACO": {
+      "cost": 822.45,
+      "tardiness": 1903.83,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.49
+    },
+    "IVND": {
+      "cost": 1284.52,
+      "tardiness": 212.45,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC202_100c": {
+    "NSGA-II": {
+      "cost": 1581.28,
+      "tardiness": 9796.24,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.94
+    },
+    "P-ACO": {
+      "cost": 1022.73,
+      "tardiness": 5142.82,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 8.17
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 17257.42,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "RC202_200c": {
+    "NSGA-II": {
+      "cost": 1624.19,
+      "tardiness": 7175.97,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.62
+    },
+    "P-ACO": {
+      "cost": 1230.7,
+      "tardiness": 5881.19,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.0
+    },
+    "IVND": {
+      "cost": 1946.89,
+      "tardiness": 5576.15,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC203_25c": {
+    "NSGA-II": {
+      "cost": 465.69,
+      "tardiness": 296.23,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.24
+    },
+    "P-ACO": {
+      "cost": 341.94,
+      "tardiness": 771.21,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.68
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 1660.49,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC203_50c": {
+    "NSGA-II": {
+      "cost": 924.85,
+      "tardiness": 883.53,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.63
+    },
+    "P-ACO": {
+      "cost": 822.72,
+      "tardiness": 1261.67,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.76
+    },
+    "IVND": {
+      "cost": 1246.55,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC203_100c": {
+    "NSGA-II": {
+      "cost": 1558.79,
+      "tardiness": 5207.43,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.88
+    },
+    "P-ACO": {
+      "cost": 1128.74,
+      "tardiness": 3196.67,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 8.67
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 10187.01,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "RC203_200c": {
+    "NSGA-II": {
+      "cost": 1651.87,
+      "tardiness": 2868.78,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.66
+    },
+    "P-ACO": {
+      "cost": 1072.34,
+      "tardiness": 3287.78,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.52
+    },
+    "IVND": {
+      "cost": 2134.36,
+      "tardiness": 2477.95,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.02
+    }
+  },
+  "RC204_25c": {
+    "NSGA-II": {
+      "cost": 437.84,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.2
+    },
+    "P-ACO": {
+      "cost": 336.34,
+      "tardiness": 340.25,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.72
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 1474.02,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC204_50c": {
+    "NSGA-II": {
+      "cost": 829.52,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 1.02
+    },
+    "P-ACO": {
+      "cost": 651.5,
+      "tardiness": 340.25,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.04
+    },
+    "IVND": {
+      "cost": 949.6,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC204_100c": {
+    "NSGA-II": {
+      "cost": 1548.46,
+      "tardiness": 596.22,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.09
+    },
+    "P-ACO": {
+      "cost": 1060.75,
+      "tardiness": 1207.58,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 11.29
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 1490.64,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "RC204_200c": {
+    "NSGA-II": {
+      "cost": 1587.52,
+      "tardiness": 137.26,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.65
+    },
+    "P-ACO": {
+      "cost": 1045.67,
+      "tardiness": 984.19,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.23
+    },
+    "IVND": {
+      "cost": 1838.81,
+      "tardiness": 526.58,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC205_25c": {
+    "NSGA-II": {
+      "cost": 446.07,
+      "tardiness": 1144.63,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.28
+    },
+    "P-ACO": {
+      "cost": 348.0,
+      "tardiness": 800.22,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.44
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 4053.78,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC205_50c": {
+    "NSGA-II": {
+      "cost": 950.2,
+      "tardiness": 2285.44,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.85
+    },
+    "P-ACO": {
+      "cost": 865.07,
+      "tardiness": 2194.3,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.99
+    },
+    "IVND": {
+      "cost": 1411.97,
+      "tardiness": 138.39,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC205_100c": {
+    "NSGA-II": {
+      "cost": 1522.85,
+      "tardiness": 11960.05,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.94
+    },
+    "P-ACO": {
+      "cost": 1304.87,
+      "tardiness": 6243.0,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 8.01
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 19127.12,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "RC205_200c": {
+    "NSGA-II": {
+      "cost": 1611.63,
+      "tardiness": 8758.54,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.62
+    },
+    "P-ACO": {
+      "cost": 1261.59,
+      "tardiness": 5818.16,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.15
+    },
+    "IVND": {
+      "cost": 2094.24,
+      "tardiness": 7139.76,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC206_25c": {
+    "NSGA-II": {
+      "cost": 438.84,
+      "tardiness": 991.43,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.27
+    },
+    "P-ACO": {
+      "cost": 363.14,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.58
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 2743.04,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC206_50c": {
+    "NSGA-II": {
+      "cost": 872.46,
+      "tardiness": 1784.71,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.77
+    },
+    "P-ACO": {
+      "cost": 807.31,
+      "tardiness": 54.03,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.41
+    },
+    "IVND": {
+      "cost": 1328.79,
+      "tardiness": 138.36,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC206_100c": {
+    "NSGA-II": {
+      "cost": 1607.85,
+      "tardiness": 8976.14,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.97
+    },
+    "P-ACO": {
+      "cost": 1189.08,
+      "tardiness": 718.36,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 8.97
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 16359.58,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "RC206_200c": {
+    "NSGA-II": {
+      "cost": 1632.68,
+      "tardiness": 7344.84,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.64
+    },
+    "P-ACO": {
+      "cost": 1162.69,
+      "tardiness": 1062.37,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.48
+    },
+    "IVND": {
+      "cost": 1895.29,
+      "tardiness": 5572.14,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC207_25c": {
+    "NSGA-II": {
+      "cost": 468.6,
+      "tardiness": 173.26,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.21
+    },
+    "P-ACO": {
+      "cost": 340.3,
+      "tardiness": 13.01,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.43
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 1971.13,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "RC207_50c": {
+    "NSGA-II": {
+      "cost": 836.61,
+      "tardiness": 412.31,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.71
+    },
+    "P-ACO": {
+      "cost": 732.21,
+      "tardiness": 86.88,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.62
+    },
+    "IVND": {
+      "cost": 1259.65,
+      "tardiness": 3.01,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "RC207_100c": {
+    "NSGA-II": {
+      "cost": 1601.17,
+      "tardiness": 3368.9,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.95
+    },
+    "P-ACO": {
+      "cost": 1170.68,
+      "tardiness": 295.95,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 9.08
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 8252.4,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "RC207_200c": {
+    "NSGA-II": {
+      "cost": 1638.35,
+      "tardiness": 1812.39,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.66
+    },
+    "P-ACO": {
+      "cost": 1131.52,
+      "tardiness": 283.8,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.68
+    },
+    "IVND": {
+      "cost": 1959.98,
+      "tardiness": 1584.73,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "RC208_25c": {
+    "NSGA-II": {
+      "cost": 382.74,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.11
+    },
+    "P-ACO": {
+      "cost": 348.35,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.33
+    },
+    "IVND": {
+      "cost": 317.07,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.01
+    }
+  },
+  "RC208_50c": {
+    "NSGA-II": {
+      "cost": 816.11,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.57
+    },
+    "P-ACO": {
+      "cost": 718.99,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.02
+    },
+    "IVND": {
+      "cost": 846.94,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "RC208_100c": {
+    "NSGA-II": {
+      "cost": 1581.7,
+      "tardiness": 101.44,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.97
+    },
+    "P-ACO": {
+      "cost": 1009.57,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 10.73
+    },
+    "IVND": {
+      "cost": 911.01,
+      "tardiness": 265.42,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "RC208_200c": {
+    "NSGA-II": {
+      "cost": 1515.42,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.69
+    },
+    "P-ACO": {
+      "cost": 1049.88,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.66
+    },
+    "IVND": {
+      "cost": 1674.43,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R101_25c": {
+    "NSGA-II": {
+      "cost": 408.72,
+      "tardiness": 837.18,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.17
+    },
+    "P-ACO": {
+      "cost": 357.44,
+      "tardiness": 1252.03,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.66
+    },
+    "IVND": {
+      "cost": 438.42,
+      "tardiness": 514.62,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R101_50c": {
+    "NSGA-II": {
+      "cost": 918.21,
+      "tardiness": 1557.71,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.67
+    },
+    "P-ACO": {
+      "cost": 702.65,
+      "tardiness": 3145.1,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.05
+    },
+    "IVND": {
+      "cost": 1206.63,
+      "tardiness": 884.45,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "R101_100c": {
+    "NSGA-II": {
+      "cost": 1366.66,
+      "tardiness": 7209.92,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.02
+    },
+    "P-ACO": {
+      "cost": 865.13,
+      "tardiness": 11742.55,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 13.44
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 11893.36,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "R101_200c": {
+    "NSGA-II": {
+      "cost": 1625.66,
+      "tardiness": 5401.47,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.67
+    },
+    "P-ACO": {
+      "cost": 864.06,
+      "tardiness": 11639.06,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.47
+    },
+    "IVND": {
+      "cost": 1745.84,
+      "tardiness": 5427.24,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R102_25c": {
+    "NSGA-II": {
+      "cost": 417.14,
+      "tardiness": 703.83,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.16
+    },
+    "P-ACO": {
+      "cost": 360.25,
+      "tardiness": 500.33,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 1.38
+    },
+    "IVND": {
+      "cost": 487.29,
+      "tardiness": 300.12,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R102_50c": {
+    "NSGA-II": {
+      "cost": 924.79,
+      "tardiness": 869.02,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.7
+    },
+    "P-ACO": {
+      "cost": 690.41,
+      "tardiness": 1206.61,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 4,
+      "runtime": 6.32
+    },
+    "IVND": {
+      "cost": 1206.09,
+      "tardiness": 346.8,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "R102_100c": {
+    "NSGA-II": {
+      "cost": 1323.29,
+      "tardiness": 5418.81,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.96
+    },
+    "P-ACO": {
+      "cost": 926.15,
+      "tardiness": 8524.76,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 12.41
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 8396.53,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "R102_200c": {
+    "NSGA-II": {
+      "cost": 1562.22,
+      "tardiness": 3096.94,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.67
+    },
+    "P-ACO": {
+      "cost": 909.47,
+      "tardiness": 7870.6,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.21
+    },
+    "IVND": {
+      "cost": 1803.84,
+      "tardiness": 3264.32,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R103_25c": {
+    "NSGA-II": {
+      "cost": 417.66,
+      "tardiness": 218.14,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.15
+    },
+    "P-ACO": {
+      "cost": 356.4,
+      "tardiness": 251.46,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.49
+    },
+    "IVND": {
+      "cost": 481.06,
+      "tardiness": 48.01,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R103_50c": {
+    "NSGA-II": {
+      "cost": 924.06,
+      "tardiness": 316.18,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.8
+    },
+    "P-ACO": {
+      "cost": 761.52,
+      "tardiness": 618.73,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 4,
+      "runtime": 5.98
+    },
+    "IVND": {
+      "cost": 1158.53,
+      "tardiness": 55.77,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R103_100c": {
+    "NSGA-II": {
+      "cost": 1253.17,
+      "tardiness": 3285.16,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.93
+    },
+    "P-ACO": {
+      "cost": 845.07,
+      "tardiness": 6392.25,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 12.94
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 6534.02,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R103_200c": {
+    "NSGA-II": {
+      "cost": 1550.18,
+      "tardiness": 1572.37,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.65
+    },
+    "P-ACO": {
+      "cost": 880.66,
+      "tardiness": 6055.86,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.36
+    },
+    "IVND": {
+      "cost": 1836.8,
+      "tardiness": 1401.98,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R104_25c": {
+    "NSGA-II": {
+      "cost": 417.71,
+      "tardiness": 2.22,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.22
+    },
+    "P-ACO": {
+      "cost": 350.56,
+      "tardiness": 108.77,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 1.32
+    },
+    "IVND": {
+      "cost": 465.4,
+      "tardiness": 67.6,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R104_50c": {
+    "NSGA-II": {
+      "cost": 933.35,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.69
+    },
+    "P-ACO": {
+      "cost": 722.92,
+      "tardiness": 79.2,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 4,
+      "runtime": 6.69
+    },
+    "IVND": {
+      "cost": 1136.46,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R104_100c": {
+    "NSGA-II": {
+      "cost": 1304.58,
+      "tardiness": 1276.15,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.99
+    },
+    "P-ACO": {
+      "cost": 876.93,
+      "tardiness": 2977.03,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 13.4
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 3156.25,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R104_200c": {
+    "NSGA-II": {
+      "cost": 1546.33,
+      "tardiness": 426.25,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.64
+    },
+    "P-ACO": {
+      "cost": 914.09,
+      "tardiness": 2855.21,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.95
+    },
+    "IVND": {
+      "cost": 1723.77,
+      "tardiness": 507.25,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R105_25c": {
+    "NSGA-II": {
+      "cost": 439.54,
+      "tardiness": 689.8,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.23
+    },
+    "P-ACO": {
+      "cost": 397.29,
+      "tardiness": 791.83,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.7
+    },
+    "IVND": {
+      "cost": 481.84,
+      "tardiness": 350.67,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R105_50c": {
+    "NSGA-II": {
+      "cost": 918.5,
+      "tardiness": 984.52,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.75
+    },
+    "P-ACO": {
+      "cost": 723.06,
+      "tardiness": 2061.76,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 4,
+      "runtime": 7.46
+    },
+    "IVND": {
+      "cost": 1132.31,
+      "tardiness": 787.95,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R105_100c": {
+    "NSGA-II": {
+      "cost": 1349.58,
+      "tardiness": 5498.32,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.0
+    },
+    "P-ACO": {
+      "cost": 961.1,
+      "tardiness": 10067.23,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 13.22
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 9936.05,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R105_200c": {
+    "NSGA-II": {
+      "cost": 1596.27,
+      "tardiness": 4128.78,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.68
+    },
+    "P-ACO": {
+      "cost": 965.17,
+      "tardiness": 9855.31,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.4
+    },
+    "IVND": {
+      "cost": 1786.38,
+      "tardiness": 4018.84,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R106_25c": {
+    "NSGA-II": {
+      "cost": 474.28,
+      "tardiness": 303.7,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.3
+    },
+    "P-ACO": {
+      "cost": 344.0,
+      "tardiness": 390.62,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.99
+    },
+    "IVND": {
+      "cost": 505.47,
+      "tardiness": 143.1,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R106_50c": {
+    "NSGA-II": {
+      "cost": 916.17,
+      "tardiness": 578.64,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.68
+    },
+    "P-ACO": {
+      "cost": 672.63,
+      "tardiness": 774.35,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.03
+    },
+    "IVND": {
+      "cost": 1126.68,
+      "tardiness": 121.12,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "R106_100c": {
+    "NSGA-II": {
+      "cost": 1246.05,
+      "tardiness": 4757.66,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.97
+    },
+    "P-ACO": {
+      "cost": 891.17,
+      "tardiness": 7478.1,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 13.15
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 6912.16,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R106_200c": {
+    "NSGA-II": {
+      "cost": 1565.9,
+      "tardiness": 2204.7,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.67
+    },
+    "P-ACO": {
+      "cost": 903.32,
+      "tardiness": 7193.81,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.55
+    },
+    "IVND": {
+      "cost": 1791.41,
+      "tardiness": 2989.16,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R107_25c": {
+    "NSGA-II": {
+      "cost": 435.89,
+      "tardiness": 117.15,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.17
+    },
+    "P-ACO": {
+      "cost": 345.61,
+      "tardiness": 136.26,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.88
+    },
+    "IVND": {
+      "cost": 494.7,
+      "tardiness": 3.63,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R107_50c": {
+    "NSGA-II": {
+      "cost": 921.51,
+      "tardiness": 220.22,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.69
+    },
+    "P-ACO": {
+      "cost": 761.52,
+      "tardiness": 387.89,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 4,
+      "runtime": 7.65
+    },
+    "IVND": {
+      "cost": 1143.13,
+      "tardiness": 13.83,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "R107_100c": {
+    "NSGA-II": {
+      "cost": 1300.27,
+      "tardiness": 2234.79,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.0
+    },
+    "P-ACO": {
+      "cost": 963.11,
+      "tardiness": 5406.72,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 13.47
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 5334.1,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R107_200c": {
+    "NSGA-II": {
+      "cost": 1580.28,
+      "tardiness": 1266.68,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.65
+    },
+    "P-ACO": {
+      "cost": 907.44,
+      "tardiness": 4883.27,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.38
+    },
+    "IVND": {
+      "cost": 1989.62,
+      "tardiness": 1419.18,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R108_25c": {
+    "NSGA-II": {
+      "cost": 422.77,
+      "tardiness": 30.41,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.15
+    },
+    "P-ACO": {
+      "cost": 398.24,
+      "tardiness": 11.9,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 1.42
+    },
+    "IVND": {
+      "cost": 518.94,
+      "tardiness": 8.11,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R108_50c": {
+    "NSGA-II": {
+      "cost": 905.67,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.65
+    },
+    "P-ACO": {
+      "cost": 722.92,
+      "tardiness": 15.6,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 4,
+      "runtime": 7.01
+    },
+    "IVND": {
+      "cost": 1080.32,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R108_100c": {
+    "NSGA-II": {
+      "cost": 1350.56,
+      "tardiness": 939.66,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.88
+    },
+    "P-ACO": {
+      "cost": 940.48,
+      "tardiness": 2372.33,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 10.78
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 2521.69,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R108_200c": {
+    "NSGA-II": {
+      "cost": 1509.91,
+      "tardiness": 118.5,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.57
+    },
+    "P-ACO": {
+      "cost": 895.3,
+      "tardiness": 2317.82,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.3
+    },
+    "IVND": {
+      "cost": 1838.9,
+      "tardiness": 372.95,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R109_25c": {
+    "NSGA-II": {
+      "cost": 439.54,
+      "tardiness": 335.43,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.21
+    },
+    "P-ACO": {
+      "cost": 393.51,
+      "tardiness": 497.71,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 1.45
+    },
+    "IVND": {
+      "cost": 460.62,
+      "tardiness": 196.38,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R109_50c": {
+    "NSGA-II": {
+      "cost": 888.94,
+      "tardiness": 473.85,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.63
+    },
+    "P-ACO": {
+      "cost": 705.65,
+      "tardiness": 1228.43,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 4,
+      "runtime": 5.84
+    },
+    "IVND": {
+      "cost": 1161.38,
+      "tardiness": 117.54,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R109_100c": {
+    "NSGA-II": {
+      "cost": 1293.59,
+      "tardiness": 4403.19,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.91
+    },
+    "P-ACO": {
+      "cost": 855.38,
+      "tardiness": 7271.71,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 11.58
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 6445.7,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R109_200c": {
+    "NSGA-II": {
+      "cost": 1582.28,
+      "tardiness": 2081.95,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.6
+    },
+    "P-ACO": {
+      "cost": 941.52,
+      "tardiness": 7556.2,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.44
+    },
+    "IVND": {
+      "cost": 1771.38,
+      "tardiness": 1877.31,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R110_25c": {
+    "NSGA-II": {
+      "cost": 403.68,
+      "tardiness": 65.93,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.14
+    },
+    "P-ACO": {
+      "cost": 333.94,
+      "tardiness": 282.15,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 1.23
+    },
+    "IVND": {
+      "cost": 511.15,
+      "tardiness": 86.35,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R110_50c": {
+    "NSGA-II": {
+      "cost": 924.35,
+      "tardiness": 75.6,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.62
+    },
+    "P-ACO": {
+      "cost": 700.68,
+      "tardiness": 695.43,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 4,
+      "runtime": 5.4
+    },
+    "IVND": {
+      "cost": 1099.9,
+      "tardiness": 3.14,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R110_100c": {
+    "NSGA-II": {
+      "cost": 1264.75,
+      "tardiness": 2782.0,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.81
+    },
+    "P-ACO": {
+      "cost": 930.66,
+      "tardiness": 5349.48,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 11.19
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 4215.99,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R110_200c": {
+    "NSGA-II": {
+      "cost": 1585.77,
+      "tardiness": 739.07,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.59
+    },
+    "P-ACO": {
+      "cost": 892.23,
+      "tardiness": 5953.6,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.3
+    },
+    "IVND": {
+      "cost": 1818.75,
+      "tardiness": 738.63,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R111_25c": {
+    "NSGA-II": {
+      "cost": 435.89,
+      "tardiness": 158.38,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.26
+    },
+    "P-ACO": {
+      "cost": 365.67,
+      "tardiness": 150.16,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 1.36
+    },
+    "IVND": {
+      "cost": 459.44,
+      "tardiness": 10.28,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R111_50c": {
+    "NSGA-II": {
+      "cost": 930.15,
+      "tardiness": 187.47,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.58
+    },
+    "P-ACO": {
+      "cost": 722.92,
+      "tardiness": 296.69,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 4,
+      "runtime": 5.89
+    },
+    "IVND": {
+      "cost": 1127.25,
+      "tardiness": 40.17,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R111_100c": {
+    "NSGA-II": {
+      "cost": 1299.39,
+      "tardiness": 2455.21,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.85
+    },
+    "P-ACO": {
+      "cost": 938.71,
+      "tardiness": 4793.07,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 11.47
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 4481.62,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R111_200c": {
+    "NSGA-II": {
+      "cost": 1575.47,
+      "tardiness": 954.28,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.6
+    },
+    "P-ACO": {
+      "cost": 829.98,
+      "tardiness": 5151.34,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.68
+    },
+    "IVND": {
+      "cost": 1781.19,
+      "tardiness": 832.92,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R112_25c": {
+    "NSGA-II": {
+      "cost": 405.56,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.2
+    },
+    "P-ACO": {
+      "cost": 348.73,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 1.31
+    },
+    "IVND": {
+      "cost": 451.63,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R112_50c": {
+    "NSGA-II": {
+      "cost": 880.52,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.72
+    },
+    "P-ACO": {
+      "cost": 708.67,
+      "tardiness": 47.18,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.74
+    },
+    "IVND": {
+      "cost": 856.27,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R112_100c": {
+    "NSGA-II": {
+      "cost": 1279.09,
+      "tardiness": 885.76,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.9
+    },
+    "P-ACO": {
+      "cost": 888.17,
+      "tardiness": 3393.94,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 12.74
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 1419.27,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "R112_200c": {
+    "NSGA-II": {
+      "cost": 1581.96,
+      "tardiness": 36.52,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.69
+    },
+    "P-ACO": {
+      "cost": 827.91,
+      "tardiness": 3292.0,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.45
+    },
+    "IVND": {
+      "cost": 1704.02,
+      "tardiness": 63.74,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R201_25c": {
+    "NSGA-II": {
+      "cost": 439.54,
+      "tardiness": 2267.12,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.2
+    },
+    "P-ACO": {
+      "cost": 438.61,
+      "tardiness": 1850.1,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.46
+    },
+    "IVND": {
+      "cost": 474.82,
+      "tardiness": 1205.94,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.01
+    }
+  },
+  "R201_50c": {
+    "NSGA-II": {
+      "cost": 908.33,
+      "tardiness": 4853.9,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.84
+    },
+    "P-ACO": {
+      "cost": 837.33,
+      "tardiness": 3255.46,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.29
+    },
+    "IVND": {
+      "cost": 1193.0,
+      "tardiness": 520.49,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.03
+    }
+  },
+  "R201_100c": {
+    "NSGA-II": {
+      "cost": 1293.22,
+      "tardiness": 18160.23,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.1
+    },
+    "P-ACO": {
+      "cost": 1190.72,
+      "tardiness": 8346.71,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 8.7
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 29863.52,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "R201_200c": {
+    "NSGA-II": {
+      "cost": 1501.35,
+      "tardiness": 13345.87,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.78
+    },
+    "P-ACO": {
+      "cost": 1190.72,
+      "tardiness": 8346.71,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.04
+    },
+    "IVND": {
+      "cost": 1803.75,
+      "tardiness": 13756.54,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R202_25c": {
+    "NSGA-II": {
+      "cost": 439.54,
+      "tardiness": 1505.47,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.17
+    },
+    "P-ACO": {
+      "cost": 401.93,
+      "tardiness": 1372.76,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.65
+    },
+    "IVND": {
+      "cost": 495.35,
+      "tardiness": 275.19,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.01
+    }
+  },
+  "R202_50c": {
+    "NSGA-II": {
+      "cost": 920.81,
+      "tardiness": 1204.05,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.91
+    },
+    "P-ACO": {
+      "cost": 790.82,
+      "tardiness": 2617.48,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.66
+    },
+    "IVND": {
+      "cost": 1106.94,
+      "tardiness": 396.4,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "R202_100c": {
+    "NSGA-II": {
+      "cost": 1332.57,
+      "tardiness": 11396.23,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.06
+    },
+    "P-ACO": {
+      "cost": 1175.54,
+      "tardiness": 5481.64,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 9.74
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 19908.93,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "R202_200c": {
+    "NSGA-II": {
+      "cost": 1515.29,
+      "tardiness": 8082.33,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.79
+    },
+    "P-ACO": {
+      "cost": 1154.04,
+      "tardiness": 5590.33,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.94
+    },
+    "IVND": {
+      "cost": 1850.02,
+      "tardiness": 7645.58,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R203_25c": {
+    "NSGA-II": {
+      "cost": 435.89,
+      "tardiness": 317.38,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.18
+    },
+    "P-ACO": {
+      "cost": 386.06,
+      "tardiness": 944.46,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.35
+    },
+    "IVND": {
+      "cost": 484.0,
+      "tardiness": 95.28,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.01
+    }
+  },
+  "R203_50c": {
+    "NSGA-II": {
+      "cost": 912.1,
+      "tardiness": 843.45,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.72
+    },
+    "P-ACO": {
+      "cost": 736.5,
+      "tardiness": 2013.4,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.14
+    },
+    "IVND": {
+      "cost": 1084.86,
+      "tardiness": 61.17,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "R203_100c": {
+    "NSGA-II": {
+      "cost": 1346.18,
+      "tardiness": 4626.85,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.13
+    },
+    "P-ACO": {
+      "cost": 988.75,
+      "tardiness": 4913.88,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 12.25
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 12908.35,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "R203_200c": {
+    "NSGA-II": {
+      "cost": 1520.87,
+      "tardiness": 3372.11,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.8
+    },
+    "P-ACO": {
+      "cost": 1028.09,
+      "tardiness": 4837.41,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.27
+    },
+    "IVND": {
+      "cost": 1943.69,
+      "tardiness": 3465.42,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R204_25c": {
+    "NSGA-II": {
+      "cost": 409.45,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.18
+    },
+    "P-ACO": {
+      "cost": 373.2,
+      "tardiness": 408.68,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.53
+    },
+    "IVND": {
+      "cost": 474.63,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R204_50c": {
+    "NSGA-II": {
+      "cost": 881.65,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.78
+    },
+    "P-ACO": {
+      "cost": 659.48,
+      "tardiness": 408.68,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 10.64
+    },
+    "IVND": {
+      "cost": 1063.75,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R204_100c": {
+    "NSGA-II": {
+      "cost": 1316.98,
+      "tardiness": 609.09,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.23
+    },
+    "P-ACO": {
+      "cost": 906.54,
+      "tardiness": 2147.44,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 13.46
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 3259.41,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "R204_200c": {
+    "NSGA-II": {
+      "cost": 1552.09,
+      "tardiness": 137.9,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.76
+    },
+    "P-ACO": {
+      "cost": 1070.49,
+      "tardiness": 1683.97,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.45
+    },
+    "IVND": {
+      "cost": 1742.88,
+      "tardiness": 260.47,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R205_25c": {
+    "NSGA-II": {
+      "cost": 439.54,
+      "tardiness": 1161.81,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.22
+    },
+    "P-ACO": {
+      "cost": 391.94,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.47
+    },
+    "IVND": {
+      "cost": 477.65,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.01
+    }
+  },
+  "R205_50c": {
+    "NSGA-II": {
+      "cost": 927.01,
+      "tardiness": 1862.17,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 1.16
+    },
+    "P-ACO": {
+      "cost": 822.78,
+      "tardiness": 433.6,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.15
+    },
+    "IVND": {
+      "cost": 1119.79,
+      "tardiness": 207.13,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "R205_100c": {
+    "NSGA-II": {
+      "cost": 1323.73,
+      "tardiness": 9907.8,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.04
+    },
+    "P-ACO": {
+      "cost": 1148.79,
+      "tardiness": 2057.33,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 8.69
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 19829.17,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R205_200c": {
+    "NSGA-II": {
+      "cost": 1578.28,
+      "tardiness": 8190.51,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.57
+    },
+    "P-ACO": {
+      "cost": 1102.18,
+      "tardiness": 2028.01,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.88
+    },
+    "IVND": {
+      "cost": 1797.0,
+      "tardiness": 10175.87,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R206_25c": {
+    "NSGA-II": {
+      "cost": 421.0,
+      "tardiness": 525.57,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.23
+    },
+    "P-ACO": {
+      "cost": 386.28,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 1.28
+    },
+    "IVND": {
+      "cost": 455.69,
+      "tardiness": 58.06,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R206_50c": {
+    "NSGA-II": {
+      "cost": 931.89,
+      "tardiness": 965.93,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.6
+    },
+    "P-ACO": {
+      "cost": 754.37,
+      "tardiness": 191.01,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.03
+    },
+    "IVND": {
+      "cost": 1068.65,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "R206_100c": {
+    "NSGA-II": {
+      "cost": 1258.82,
+      "tardiness": 5181.44,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.81
+    },
+    "P-ACO": {
+      "cost": 1165.79,
+      "tardiness": 1203.35,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 9.34
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 12858.47,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R206_200c": {
+    "NSGA-II": {
+      "cost": 1531.01,
+      "tardiness": 4394.36,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.58
+    },
+    "P-ACO": {
+      "cost": 1078.5,
+      "tardiness": 1090.81,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.34
+    },
+    "IVND": {
+      "cost": 1743.04,
+      "tardiness": 4675.93,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R207_25c": {
+    "NSGA-II": {
+      "cost": 435.89,
+      "tardiness": 10.79,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.14
+    },
+    "P-ACO": {
+      "cost": 385.46,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.07
+    },
+    "IVND": {
+      "cost": 406.28,
+      "tardiness": 1.24,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R207_50c": {
+    "NSGA-II": {
+      "cost": 964.21,
+      "tardiness": 129.04,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.67
+    },
+    "P-ACO": {
+      "cost": 712.37,
+      "tardiness": 95.47,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.93
+    },
+    "IVND": {
+      "cost": 1179.4,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R207_100c": {
+    "NSGA-II": {
+      "cost": 1325.12,
+      "tardiness": 2420.61,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.83
+    },
+    "P-ACO": {
+      "cost": 1017.65,
+      "tardiness": 608.81,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 10.25
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 8459.87,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R207_200c": {
+    "NSGA-II": {
+      "cost": 1572.5,
+      "tardiness": 1985.6,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.58
+    },
+    "P-ACO": {
+      "cost": 896.86,
+      "tardiness": 526.54,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.98
+    },
+    "IVND": {
+      "cost": 1827.39,
+      "tardiness": 1473.68,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R208_25c": {
+    "NSGA-II": {
+      "cost": 395.36,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.17
+    },
+    "P-ACO": {
+      "cost": 336.58,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.2
+    },
+    "IVND": {
+      "cost": 417.76,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R208_50c": {
+    "NSGA-II": {
+      "cost": 882.06,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.5
+    },
+    "P-ACO": {
+      "cost": 628.92,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 4,
+      "runtime": 4.82
+    },
+    "IVND": {
+      "cost": 1078.81,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R208_100c": {
+    "NSGA-II": {
+      "cost": 1291.59,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.86
+    },
+    "P-ACO": {
+      "cost": 843.29,
+      "tardiness": 176.42,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 11.63
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 1918.33,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R208_200c": {
+    "NSGA-II": {
+      "cost": 1540.55,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.61
+    },
+    "P-ACO": {
+      "cost": 930.1,
+      "tardiness": 176.42,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.52
+    },
+    "IVND": {
+      "cost": 1770.74,
+      "tardiness": 322.23,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R209_25c": {
+    "NSGA-II": {
+      "cost": 434.08,
+      "tardiness": 239.43,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.19
+    },
+    "P-ACO": {
+      "cost": 386.44,
+      "tardiness": 33.07,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.35
+    },
+    "IVND": {
+      "cost": 464.92,
+      "tardiness": 280.44,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R209_50c": {
+    "NSGA-II": {
+      "cost": 927.92,
+      "tardiness": 798.7,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.66
+    },
+    "P-ACO": {
+      "cost": 748.28,
+      "tardiness": 526.55,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.78
+    },
+    "IVND": {
+      "cost": 1174.16,
+      "tardiness": 21.25,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R209_100c": {
+    "NSGA-II": {
+      "cost": 1304.47,
+      "tardiness": 3706.38,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.92
+    },
+    "P-ACO": {
+      "cost": 1151.94,
+      "tardiness": 803.95,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 9.99
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 8500.9,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R209_200c": {
+    "NSGA-II": {
+      "cost": 1590.56,
+      "tardiness": 2688.94,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.65
+    },
+    "P-ACO": {
+      "cost": 1054.91,
+      "tardiness": 804.34,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.5
+    },
+    "IVND": {
+      "cost": 1865.34,
+      "tardiness": 3173.41,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R210_25c": {
+    "NSGA-II": {
+      "cost": 407.93,
+      "tardiness": 614.35,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.18
+    },
+    "P-ACO": {
+      "cost": 398.52,
+      "tardiness": 556.4,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.22
+    },
+    "IVND": {
+      "cost": 485.11,
+      "tardiness": 40.82,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R210_50c": {
+    "NSGA-II": {
+      "cost": 939.1,
+      "tardiness": 554.19,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.68
+    },
+    "P-ACO": {
+      "cost": 785.39,
+      "tardiness": 823.44,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.95
+    },
+    "IVND": {
+      "cost": 1149.15,
+      "tardiness": 21.21,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R210_100c": {
+    "NSGA-II": {
+      "cost": 1311.02,
+      "tardiness": 5036.76,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.87
+    },
+    "P-ACO": {
+      "cost": 1090.67,
+      "tardiness": 3291.77,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 9.4
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 13213.97,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R210_200c": {
+    "NSGA-II": {
+      "cost": 1570.93,
+      "tardiness": 3986.2,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.58
+    },
+    "P-ACO": {
+      "cost": 1065.67,
+      "tardiness": 3588.29,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.13
+    },
+    "IVND": {
+      "cost": 1829.49,
+      "tardiness": 3575.13,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "R211_25c": {
+    "NSGA-II": {
+      "cost": 398.33,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.15
+    },
+    "P-ACO": {
+      "cost": 386.85,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.62
+    },
+    "IVND": {
+      "cost": 456.91,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 2,
+      "runtime": 0.0
+    }
+  },
+  "R211_50c": {
+    "NSGA-II": {
+      "cost": 877.62,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.53
+    },
+    "P-ACO": {
+      "cost": 738.62,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.28
+    },
+    "IVND": {
+      "cost": 843.61,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "R211_100c": {
+    "NSGA-II": {
+      "cost": 1294.26,
+      "tardiness": 65.32,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.82
+    },
+    "P-ACO": {
+      "cost": 965.27,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 8.41
+    },
+    "IVND": {
+      "cost": 944.13,
+      "tardiness": 509.6,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "R211_200c": {
+    "NSGA-II": {
+      "cost": 1504.48,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.6
+    },
+    "P-ACO": {
+      "cost": 971.85,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.13
+    },
+    "IVND": {
+      "cost": 1737.17,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.01
+    }
+  },
+  "C101_25c": {
+    "NSGA-II": {
+      "cost": 353.46,
+      "tardiness": 9729.62,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.12
+    },
+    "P-ACO": {
+      "cost": 309.98,
+      "tardiness": 13240.11,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.19
+    },
+    "IVND": {
+      "cost": 281.07,
+      "tardiness": 15504.54,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.01
+    }
+  },
+  "C101_50c": {
+    "NSGA-II": {
+      "cost": 863.82,
+      "tardiness": 14442.83,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.65
+    },
+    "P-ACO": {
+      "cost": 605.31,
+      "tardiness": 20357.49,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.22
+    },
+    "IVND": {
+      "cost": 1060.49,
+      "tardiness": 3508.71,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "C101_100c": {
+    "NSGA-II": {
+      "cost": 1433.63,
+      "tardiness": 85427.27,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.9
+    },
+    "P-ACO": {
+      "cost": 959.74,
+      "tardiness": 79350.63,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.67
+    },
+    "IVND": {
+      "cost": 901.25,
+      "tardiness": 98730.62,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "C101_200c": {
+    "NSGA-II": {
+      "cost": 1532.31,
+      "tardiness": 40238.17,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.58
+    },
+    "P-ACO": {
+      "cost": 891.01,
+      "tardiness": 80351.67,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.98
+    },
+    "IVND": {
+      "cost": 1317.87,
+      "tardiness": 56661.14,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.03
+    }
+  },
+  "C102_25c": {
+    "NSGA-II": {
+      "cost": 315.38,
+      "tardiness": 4063.58,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.13
+    },
+    "P-ACO": {
+      "cost": 313.89,
+      "tardiness": 7078.38,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.28
+    },
+    "IVND": {
+      "cost": 281.07,
+      "tardiness": 12662.44,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.01
+    }
+  },
+  "C102_50c": {
+    "NSGA-II": {
+      "cost": 869.91,
+      "tardiness": 8715.36,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.71
+    },
+    "P-ACO": {
+      "cost": 596.84,
+      "tardiness": 12707.13,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.6
+    },
+    "IVND": {
+      "cost": 1051.57,
+      "tardiness": 1650.01,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "C102_100c": {
+    "NSGA-II": {
+      "cost": 1472.85,
+      "tardiness": 72074.72,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.89
+    },
+    "P-ACO": {
+      "cost": 888.37,
+      "tardiness": 65736.04,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.79
+    },
+    "IVND": {
+      "cost": 901.25,
+      "tardiness": 75750.7,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "C102_200c": {
+    "NSGA-II": {
+      "cost": 1500.91,
+      "tardiness": 25298.87,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.58
+    },
+    "P-ACO": {
+      "cost": 895.46,
+      "tardiness": 61916.34,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.97
+    },
+    "IVND": {
+      "cost": 1317.87,
+      "tardiness": 30890.05,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C103_25c": {
+    "NSGA-II": {
+      "cost": 329.93,
+      "tardiness": 2417.16,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.16
+    },
+    "P-ACO": {
+      "cost": 282.92,
+      "tardiness": 4851.75,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.98
+    },
+    "IVND": {
+      "cost": 281.07,
+      "tardiness": 9044.4,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "C103_50c": {
+    "NSGA-II": {
+      "cost": 870.84,
+      "tardiness": 3795.74,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.67
+    },
+    "P-ACO": {
+      "cost": 589.0,
+      "tardiness": 7910.82,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.47
+    },
+    "IVND": {
+      "cost": 1041.75,
+      "tardiness": 606.77,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "C103_100c": {
+    "NSGA-II": {
+      "cost": 1481.25,
+      "tardiness": 49281.36,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.87
+    },
+    "P-ACO": {
+      "cost": 918.85,
+      "tardiness": 53053.35,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.01
+    },
+    "IVND": {
+      "cost": 901.25,
+      "tardiness": 58668.18,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "C103_200c": {
+    "NSGA-II": {
+      "cost": 1600.22,
+      "tardiness": 11149.56,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.62
+    },
+    "P-ACO": {
+      "cost": 883.62,
+      "tardiness": 52254.3,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.27
+    },
+    "IVND": {
+      "cost": 1317.87,
+      "tardiness": 20191.28,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C104_25c": {
+    "NSGA-II": {
+      "cost": 340.67,
+      "tardiness": 1179.59,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.26
+    },
+    "P-ACO": {
+      "cost": 284.06,
+      "tardiness": 3778.04,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.44
+    },
+    "IVND": {
+      "cost": 281.07,
+      "tardiness": 5888.15,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.01
+    }
+  },
+  "C104_50c": {
+    "NSGA-II": {
+      "cost": 827.68,
+      "tardiness": 102.22,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.66
+    },
+    "P-ACO": {
+      "cost": 590.13,
+      "tardiness": 3609.55,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.24
+    },
+    "IVND": {
+      "cost": 944.7,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "C104_100c": {
+    "NSGA-II": {
+      "cost": 1457.88,
+      "tardiness": 32921.05,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.89
+    },
+    "P-ACO": {
+      "cost": 838.94,
+      "tardiness": 42845.96,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.92
+    },
+    "IVND": {
+      "cost": 901.25,
+      "tardiness": 29894.58,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "C104_200c": {
+    "NSGA-II": {
+      "cost": 1565.82,
+      "tardiness": 3180.32,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.63
+    },
+    "P-ACO": {
+      "cost": 853.17,
+      "tardiness": 43939.29,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.81
+    },
+    "IVND": {
+      "cost": 1317.87,
+      "tardiness": 8864.84,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C105_25c": {
+    "NSGA-II": {
+      "cost": 321.99,
+      "tardiness": 8044.87,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.62
+    },
+    "P-ACO": {
+      "cost": 317.28,
+      "tardiness": 9713.08,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.63
+    },
+    "IVND": {
+      "cost": 281.07,
+      "tardiness": 14385.54,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "C105_50c": {
+    "NSGA-II": {
+      "cost": 908.77,
+      "tardiness": 11685.21,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.91
+    },
+    "P-ACO": {
+      "cost": 586.65,
+      "tardiness": 17066.08,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.75
+    },
+    "IVND": {
+      "cost": 1051.21,
+      "tardiness": 2472.17,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "C105_100c": {
+    "NSGA-II": {
+      "cost": 1543.35,
+      "tardiness": 81601.71,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.02
+    },
+    "P-ACO": {
+      "cost": 951.93,
+      "tardiness": 74097.74,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.16
+    },
+    "IVND": {
+      "cost": 901.25,
+      "tardiness": 92713.6,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "C105_200c": {
+    "NSGA-II": {
+      "cost": 1502.27,
+      "tardiness": 27168.96,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.61
+    },
+    "P-ACO": {
+      "cost": 975.08,
+      "tardiness": 75501.04,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.78
+    },
+    "IVND": {
+      "cost": 1317.87,
+      "tardiness": 51669.25,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C106_25c": {
+    "NSGA-II": {
+      "cost": 353.46,
+      "tardiness": 9556.62,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.15
+    },
+    "P-ACO": {
+      "cost": 310.17,
+      "tardiness": 12952.73,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.9
+    },
+    "IVND": {
+      "cost": 281.07,
+      "tardiness": 15215.54,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "C106_50c": {
+    "NSGA-II": {
+      "cost": 888.98,
+      "tardiness": 14413.63,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.88
+    },
+    "P-ACO": {
+      "cost": 613.68,
+      "tardiness": 17980.75,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.8
+    },
+    "IVND": {
+      "cost": 1005.82,
+      "tardiness": 5479.31,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "C106_100c": {
+    "NSGA-II": {
+      "cost": 1465.46,
+      "tardiness": 79439.92,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.03
+    },
+    "P-ACO": {
+      "cost": 958.88,
+      "tardiness": 71139.38,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.85
+    },
+    "IVND": {
+      "cost": 901.25,
+      "tardiness": 88795.59,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.08
+    }
+  },
+  "C106_200c": {
+    "NSGA-II": {
+      "cost": 1447.38,
+      "tardiness": 30405.46,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.78
+    },
+    "P-ACO": {
+      "cost": 947.44,
+      "tardiness": 70684.42,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.29
+    },
+    "IVND": {
+      "cost": 1317.87,
+      "tardiness": 49149.24,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C107_25c": {
+    "NSGA-II": {
+      "cost": 330.01,
+      "tardiness": 5737.95,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.33
+    },
+    "P-ACO": {
+      "cost": 312.4,
+      "tardiness": 8801.01,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.99
+    },
+    "IVND": {
+      "cost": 281.07,
+      "tardiness": 13103.54,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "C107_50c": {
+    "NSGA-II": {
+      "cost": 913.32,
+      "tardiness": 12476.3,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.75
+    },
+    "P-ACO": {
+      "cost": 586.51,
+      "tardiness": 14517.58,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.71
+    },
+    "IVND": {
+      "cost": 1034.12,
+      "tardiness": 2812.5,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "C107_100c": {
+    "NSGA-II": {
+      "cost": 1360.43,
+      "tardiness": 78268.73,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.97
+    },
+    "P-ACO": {
+      "cost": 1056.97,
+      "tardiness": 65296.79,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.07
+    },
+    "IVND": {
+      "cost": 901.25,
+      "tardiness": 87230.6,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "C107_200c": {
+    "NSGA-II": {
+      "cost": 1430.64,
+      "tardiness": 27853.28,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.57
+    },
+    "P-ACO": {
+      "cost": 1006.8,
+      "tardiness": 65425.59,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.83
+    },
+    "IVND": {
+      "cost": 1317.87,
+      "tardiness": 46558.13,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C108_25c": {
+    "NSGA-II": {
+      "cost": 346.04,
+      "tardiness": 4098.17,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.15
+    },
+    "P-ACO": {
+      "cost": 324.26,
+      "tardiness": 8026.85,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.7
+    },
+    "IVND": {
+      "cost": 281.07,
+      "tardiness": 12229.52,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "C108_50c": {
+    "NSGA-II": {
+      "cost": 865.86,
+      "tardiness": 10470.74,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.8
+    },
+    "P-ACO": {
+      "cost": 586.51,
+      "tardiness": 12702.8,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 6.16
+    },
+    "IVND": {
+      "cost": 1017.49,
+      "tardiness": 2641.73,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "C108_100c": {
+    "NSGA-II": {
+      "cost": 1474.38,
+      "tardiness": 69803.3,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.02
+    },
+    "P-ACO": {
+      "cost": 1056.34,
+      "tardiness": 61747.4,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.43
+    },
+    "IVND": {
+      "cost": 901.25,
+      "tardiness": 80206.54,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "C108_200c": {
+    "NSGA-II": {
+      "cost": 1511.58,
+      "tardiness": 25533.18,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.65
+    },
+    "P-ACO": {
+      "cost": 1056.64,
+      "tardiness": 61693.23,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.21
+    },
+    "IVND": {
+      "cost": 1317.87,
+      "tardiness": 41396.06,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C109_25c": {
+    "NSGA-II": {
+      "cost": 363.6,
+      "tardiness": 3608.01,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.18
+    },
+    "P-ACO": {
+      "cost": 302.51,
+      "tardiness": 5491.78,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.09
+    },
+    "IVND": {
+      "cost": 281.07,
+      "tardiness": 9864.43,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "C109_50c": {
+    "NSGA-II": {
+      "cost": 870.98,
+      "tardiness": 6505.86,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.81
+    },
+    "P-ACO": {
+      "cost": 585.79,
+      "tardiness": 8856.66,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.21
+    },
+    "IVND": {
+      "cost": 1069.68,
+      "tardiness": 1062.69,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "C109_100c": {
+    "NSGA-II": {
+      "cost": 1469.54,
+      "tardiness": 63419.59,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.92
+    },
+    "P-ACO": {
+      "cost": 1077.72,
+      "tardiness": 52098.95,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.44
+    },
+    "IVND": {
+      "cost": 901.25,
+      "tardiness": 69020.47,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "C109_200c": {
+    "NSGA-II": {
+      "cost": 1599.63,
+      "tardiness": 19217.18,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.69
+    },
+    "P-ACO": {
+      "cost": 1029.87,
+      "tardiness": 52217.94,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.55
+    },
+    "IVND": {
+      "cost": 1317.87,
+      "tardiness": 31340.65,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C201_25c": {
+    "NSGA-II": {
+      "cost": 372.76,
+      "tardiness": 11497.15,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.33
+    },
+    "P-ACO": {
+      "cost": 344.69,
+      "tardiness": 8526.38,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.94
+    },
+    "IVND": {
+      "cost": 301.35,
+      "tardiness": 24819.6,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "C201_50c": {
+    "NSGA-II": {
+      "cost": 859.94,
+      "tardiness": 21217.68,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.67
+    },
+    "P-ACO": {
+      "cost": 687.0,
+      "tardiness": 28101.78,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.51
+    },
+    "IVND": {
+      "cost": 1085.69,
+      "tardiness": 4684.19,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.03
+    }
+  },
+  "C201_100c": {
+    "NSGA-II": {
+      "cost": 1458.96,
+      "tardiness": 97246.45,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.94
+    },
+    "P-ACO": {
+      "cost": 992.97,
+      "tardiness": 118555.9,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.57
+    },
+    "IVND": {
+      "cost": 915.42,
+      "tardiness": 127272.64,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "C201_200c": {
+    "NSGA-II": {
+      "cost": 1554.94,
+      "tardiness": 49022.67,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.66
+    },
+    "P-ACO": {
+      "cost": 967.87,
+      "tardiness": 117570.79,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.35
+    },
+    "IVND": {
+      "cost": 1372.01,
+      "tardiness": 48098.01,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C202_25c": {
+    "NSGA-II": {
+      "cost": 392.18,
+      "tardiness": 4961.07,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.17
+    },
+    "P-ACO": {
+      "cost": 366.11,
+      "tardiness": 5669.59,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.28
+    },
+    "IVND": {
+      "cost": 301.35,
+      "tardiness": 24061.79,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "C202_50c": {
+    "NSGA-II": {
+      "cost": 880.74,
+      "tardiness": 13150.41,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.66
+    },
+    "P-ACO": {
+      "cost": 725.56,
+      "tardiness": 11132.83,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.4
+    },
+    "IVND": {
+      "cost": 1060.02,
+      "tardiness": 1679.49,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "C202_100c": {
+    "NSGA-II": {
+      "cost": 1452.09,
+      "tardiness": 74534.89,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.95
+    },
+    "P-ACO": {
+      "cost": 962.61,
+      "tardiness": 80707.65,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.24
+    },
+    "IVND": {
+      "cost": 915.42,
+      "tardiness": 91754.97,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "C202_200c": {
+    "NSGA-II": {
+      "cost": 1582.07,
+      "tardiness": 27816.16,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.67
+    },
+    "P-ACO": {
+      "cost": 1007.62,
+      "tardiness": 81142.6,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.95
+    },
+    "IVND": {
+      "cost": 1372.01,
+      "tardiness": 27423.65,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C203_25c": {
+    "NSGA-II": {
+      "cost": 371.19,
+      "tardiness": 1553.44,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.21
+    },
+    "P-ACO": {
+      "cost": 344.27,
+      "tardiness": 2836.36,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.5
+    },
+    "IVND": {
+      "cost": 301.35,
+      "tardiness": 13546.41,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "C203_50c": {
+    "NSGA-II": {
+      "cost": 877.98,
+      "tardiness": 2695.58,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.71
+    },
+    "P-ACO": {
+      "cost": 687.48,
+      "tardiness": 5411.84,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.12
+    },
+    "IVND": {
+      "cost": 1024.27,
+      "tardiness": 415.54,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "C203_100c": {
+    "NSGA-II": {
+      "cost": 1537.0,
+      "tardiness": 41254.59,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.98
+    },
+    "P-ACO": {
+      "cost": 1057.56,
+      "tardiness": 37852.83,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.43
+    },
+    "IVND": {
+      "cost": 915.42,
+      "tardiness": 37659.64,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "C203_200c": {
+    "NSGA-II": {
+      "cost": 1577.35,
+      "tardiness": 11059.01,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.67
+    },
+    "P-ACO": {
+      "cost": 1169.92,
+      "tardiness": 38090.35,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.91
+    },
+    "IVND": {
+      "cost": 1372.01,
+      "tardiness": 11279.71,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C204_25c": {
+    "NSGA-II": {
+      "cost": 388.07,
+      "tardiness": 4.5,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.16
+    },
+    "P-ACO": {
+      "cost": 370.84,
+      "tardiness": 1750.35,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.37
+    },
+    "IVND": {
+      "cost": 301.35,
+      "tardiness": 7259.03,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "C204_50c": {
+    "NSGA-II": {
+      "cost": 895.89,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.68
+    },
+    "P-ACO": {
+      "cost": 679.39,
+      "tardiness": 1851.94,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 3.83
+    },
+    "IVND": {
+      "cost": 891.17,
+      "tardiness": 0.0,
+      "tw_feasible": true,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.01
+    }
+  },
+  "C204_100c": {
+    "NSGA-II": {
+      "cost": 1463.33,
+      "tardiness": 12889.67,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.98
+    },
+    "P-ACO": {
+      "cost": 1059.75,
+      "tardiness": 19873.08,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.53
+    },
+    "IVND": {
+      "cost": 915.42,
+      "tardiness": 22986.62,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "C204_200c": {
+    "NSGA-II": {
+      "cost": 1576.89,
+      "tardiness": 707.11,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.64
+    },
+    "P-ACO": {
+      "cost": 1104.52,
+      "tardiness": 19872.85,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.48
+    },
+    "IVND": {
+      "cost": 1372.01,
+      "tardiness": 4300.58,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C205_25c": {
+    "NSGA-II": {
+      "cost": 346.53,
+      "tardiness": 10750.64,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.14
+    },
+    "P-ACO": {
+      "cost": 345.4,
+      "tardiness": 7451.56,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.8
+    },
+    "IVND": {
+      "cost": 301.35,
+      "tardiness": 22246.59,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "C205_50c": {
+    "NSGA-II": {
+      "cost": 880.21,
+      "tardiness": 13993.62,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.79
+    },
+    "P-ACO": {
+      "cost": 680.54,
+      "tardiness": 17574.99,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.58
+    },
+    "IVND": {
+      "cost": 977.6,
+      "tardiness": 1919.7,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.03
+    }
+  },
+  "C205_100c": {
+    "NSGA-II": {
+      "cost": 1599.13,
+      "tardiness": 104285.13,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.98
+    },
+    "P-ACO": {
+      "cost": 934.31,
+      "tardiness": 93784.91,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.99
+    },
+    "IVND": {
+      "cost": 915.42,
+      "tardiness": 112898.99,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "C205_200c": {
+    "NSGA-II": {
+      "cost": 1554.37,
+      "tardiness": 43301.86,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.61
+    },
+    "P-ACO": {
+      "cost": 933.7,
+      "tardiness": 93784.91,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.32
+    },
+    "IVND": {
+      "cost": 1372.01,
+      "tardiness": 38314.77,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C206_25c": {
+    "NSGA-II": {
+      "cost": 353.65,
+      "tardiness": 8449.09,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.14
+    },
+    "P-ACO": {
+      "cost": 345.4,
+      "tardiness": 5251.92,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.67
+    },
+    "IVND": {
+      "cost": 301.35,
+      "tardiness": 18779.87,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.01
+    }
+  },
+  "C206_50c": {
+    "NSGA-II": {
+      "cost": 894.02,
+      "tardiness": 13060.33,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.72
+    },
+    "P-ACO": {
+      "cost": 669.36,
+      "tardiness": 13122.48,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.92
+    },
+    "IVND": {
+      "cost": 1057.71,
+      "tardiness": 1940.49,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.02
+    }
+  },
+  "C206_100c": {
+    "NSGA-II": {
+      "cost": 1445.98,
+      "tardiness": 77140.01,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.83
+    },
+    "P-ACO": {
+      "cost": 914.28,
+      "tardiness": 78128.03,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 2.53
+    },
+    "IVND": {
+      "cost": 915.42,
+      "tardiness": 96223.19,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "C206_200c": {
+    "NSGA-II": {
+      "cost": 1601.34,
+      "tardiness": 34595.88,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.6
+    },
+    "P-ACO": {
+      "cost": 918.08,
+      "tardiness": 78128.03,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.31
+    },
+    "IVND": {
+      "cost": 1372.01,
+      "tardiness": 28458.09,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.03
+    }
+  },
+  "C207_25c": {
+    "NSGA-II": {
+      "cost": 392.18,
+      "tardiness": 5488.81,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.12
+    },
+    "P-ACO": {
+      "cost": 326.65,
+      "tardiness": 345.66,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.6
+    },
+    "IVND": {
+      "cost": 301.35,
+      "tardiness": 9038.82,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.01
+    }
+  },
+  "C207_50c": {
+    "NSGA-II": {
+      "cost": 883.54,
+      "tardiness": 7192.19,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.61
+    },
+    "P-ACO": {
+      "cost": 655.2,
+      "tardiness": 3545.99,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.18
+    },
+    "IVND": {
+      "cost": 1056.06,
+      "tardiness": 228.31,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.03
+    }
+  },
+  "C207_100c": {
+    "NSGA-II": {
+      "cost": 1417.79,
+      "tardiness": 70645.33,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 1.08
+    },
+    "P-ACO": {
+      "cost": 916.17,
+      "tardiness": 58466.04,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 5.13
+    },
+    "IVND": {
+      "cost": 915.42,
+      "tardiness": 80484.53,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.05
+    }
+  },
+  "C207_200c": {
+    "NSGA-II": {
+      "cost": 1567.35,
+      "tardiness": 28832.28,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.61
+    },
+    "P-ACO": {
+      "cost": 916.93,
+      "tardiness": 58466.04,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.86
+    },
+    "IVND": {
+      "cost": 1372.01,
+      "tardiness": 21631.07,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.04
+    }
+  },
+  "C208_25c": {
+    "NSGA-II": {
+      "cost": 377.02,
+      "tardiness": 7230.75,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.15
+    },
+    "P-ACO": {
+      "cost": 331.49,
+      "tardiness": 2931.16,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 1.48
+    },
+    "IVND": {
+      "cost": 301.35,
+      "tardiness": 16921.87,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 2,
+      "runtime": 0.02
+    }
+  },
+  "C208_50c": {
+    "NSGA-II": {
+      "cost": 898.51,
+      "tardiness": 8872.26,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.63
+    },
+    "P-ACO": {
+      "cost": 641.62,
+      "tardiness": 11112.62,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.18
+    },
+    "IVND": {
+      "cost": 1011.31,
+      "tardiness": 397.95,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 6,
+      "runtime": 0.03
+    }
+  },
+  "C208_100c": {
+    "NSGA-II": {
+      "cost": 1461.36,
+      "tardiness": 62682.53,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.84
+    },
+    "P-ACO": {
+      "cost": 942.8,
+      "tardiness": 63312.56,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 4.56
+    },
+    "IVND": {
+      "cost": 915.42,
+      "tardiness": 85076.86,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 6,
+      "runtime": 0.04
+    }
+  },
+  "C208_200c": {
+    "NSGA-II": {
+      "cost": 1483.52,
+      "tardiness": 23691.4,
+      "tw_feasible": false,
+      "feasible": true,
+      "n_routes": 10,
+      "runtime": 0.58
+    },
+    "P-ACO": {
+      "cost": 910.81,
+      "tardiness": 67842.05,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 4,
+      "runtime": 1.57
+    },
+    "IVND": {
+      "cost": 1372.01,
+      "tardiness": 21513.76,
+      "tw_feasible": false,
+      "feasible": false,
+      "n_routes": 10,
+      "runtime": 0.03
+    }
+  }
+}

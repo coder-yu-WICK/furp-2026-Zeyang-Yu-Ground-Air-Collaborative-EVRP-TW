@@ -73,7 +73,11 @@ CHARGING_STATIONS = [
     (12.0, 4.0),   # SE quadrant
 ]
 CHARGING_RATE = 1.0              # kWh per time unit (linear)
-BATTERY_CAPACITY = 100.0         # kWh
+BATTERY_CAPACITY = 55.0          # kWh (scaled for 16×16 km urban zone)
+# Rationale: 55 kWh / 1.5 kWh/km = 36.7 km range. City max one-way ~11 km.
+# C-type clustered routes (13-37 kWh): always feasible.
+# RC/R-type routes (26-90 kWh): binding on ~40-50% of routes.
+# This creates a research-valuable constraint that differentiates instance types.
 ENERGY_CONSUMPTION_RATE = 1.5    # kWh/km
 
 # Nonlinear charging segments: (soc_low, soc_high, rate_multiplier)
@@ -158,7 +162,8 @@ CLUSTERING_VARIANTS = [
     'tw_aware',          # TW-aware two-phase
     'adaptive_tw',       # Adaptive TW clustering
     'angle',             # Angle-based petal
-    'hybrid',            # RC1→angle, RC2→adaptive TW
+    'hybrid',            # RC1→spatiotemporal, RC2→tw_aware
+    'spatiotemporal',    # Joint spatio-temporal K-means (NEW)
 ]
 
 # ── IVND Repair Parameters ─────────────────────────────────────────

@@ -37,13 +37,11 @@ def _kmeans_cluster(customers, k, max_iter=50, seed=42):
     """
     n = len(customers)
     if k >= n:
-        # Each customer gets its own cluster; remaining clusters are empty
         clusters = [[c] for c in customers] + [[] for _ in range(k - n)]
         return clusters
 
     coords = np.array([[c['x'], c['y']] for c in customers], dtype=np.float32)
 
-    # Initialize centroids with k-means++
     rng = np.random.RandomState(seed)
     centroids = [coords[rng.randint(n)]]
     for _ in range(1, k):
@@ -53,11 +51,9 @@ def _kmeans_cluster(customers, k, max_iter=50, seed=42):
     centroids = np.array(centroids)
 
     for _ in range(max_iter):
-        # Assign
         dists = np.sum((coords[:, None, :] - centroids[None, :, :])**2, axis=2)
         labels = np.argmin(dists, axis=1)
 
-        # Update
         new_centroids = np.array([
             coords[labels == ki].mean(axis=0) if (labels == ki).sum() > 0
             else coords[rng.randint(n)]
@@ -68,7 +64,108 @@ def _kmeans_cluster(customers, k, max_iter=50, seed=42):
             break
         centroids = new_centroids
 
-    # Build clusters
+    clusters = [[] for _ in range(k)]
+    for i, c in enumerate(customers):
+        clusters[labels[i]].append(c)
+    return clusters
+
+
+def _kmeans_cluster_spatiotemporal(customers, k, tw_weight=0.3,
+                                   max_iter=50, seed=42):
+    """
+    Cluster customers by JOINT spatio-temporal distance.
+
+    Instead of clustering only on (x, y), this augments each customer with a
+    third dimension: the TW midpoint (ready_time + due_time) / 2, scaled so
+    that spatial and temporal distances contribute in proportion to tw_weight.
+
+    Key insight: two customers are "close" only if they are close in BOTH
+    space and time. A customer due at 9am and another due at 4pm will be
+    far apart in the 3D feature space even if they live next door.
+
+    Args:
+        customers: list of customer dicts
+        k: number of clusters
+        tw_weight: temporal weight [0, 1].
+                   0.0 = pure spatial (same as _kmeans_cluster)
+                   0.3 = 30% temporal, 70% spatial (recommended)
+                   0.5 = equal weight
+                   1.0 = pure temporal
+        max_iter: max Lloyd iterations
+        seed: random seed
+
+    Returns:
+        list of K lists of customer dicts
+
+    Theory:
+        The feature space is (x, y, tw_midpoint * scale).
+        scale = sqrt(tw_weight / spatial_weight) * (spatial_range / time_range)
+              = sqrt(tw_weight / (1-tw_weight)) * (16.0 / 240.0)
+
+        In this space, standard Euclidean distance gives:
+          dist² = dx² + dy² + dt² × scale²
+                = dx² + dy² + dt² × (tw_weight/(1-tw_weight)) × (16/240)²
+
+        Normalizing: spatial_part ≈ (dx²+dy²)/(2×16²), temporal_part ≈ dt²/240²
+        The ratio temporal/spatial ≈ tw_weight / (1-tw_weight)
+    """
+    n = len(customers)
+    if k >= n:
+        clusters = [[c] for c in customers] + [[] for _ in range(k - n)]
+        return clusters
+
+    # ── Build 3D feature space ──
+    # Spatial: (x, y) in [0, 16]
+    # Temporal: TW midpoint in [0, 240], scaled to comparable range
+    SPATIAL_RANGE = 16.0   # max coordinate span
+    TIME_RANGE = 240.0      # max TW horizon
+
+    if tw_weight <= 0.0:
+        # Pure spatial — fall back to standard K-means
+        return _kmeans_cluster(customers, k, max_iter, seed)
+
+    if tw_weight >= 1.0:
+        # Pure temporal — only cluster on TW midpoint
+        time_scale = 1.0
+    else:
+        # Joint: scale so temporal contribution = tw_weight fraction
+        # In 3D Euclidean: temporal_dist² contributes scale² × dt²
+        # We want: scale² × (TIME_RANGE)² / (SPATIAL_RANGE)² ≈ tw_weight / (1-tw_weight)
+        ratio = tw_weight / (1.0 - tw_weight)
+        time_scale = math.sqrt(ratio) * (SPATIAL_RANGE / TIME_RANGE)
+
+    features = np.array([
+        [c['x'],
+         c['y'],
+         ((c['ready_time'] + c['due_time']) / 2.0) * time_scale]
+        for c in customers
+    ], dtype=np.float32)
+
+    # ── K-means++ initialization ──
+    rng = np.random.RandomState(seed)
+    centroids = [features[rng.randint(n)]]
+    for _ in range(1, k):
+        dists = np.min([np.sum((features - c)**2, axis=1) for c in centroids], axis=0)
+        probs = dists / (dists.sum() + 1e-12)
+        centroids.append(features[rng.choice(n, p=probs)])
+    centroids = np.array(centroids, dtype=np.float32)
+
+    # ── Lloyd iteration ──
+    for _ in range(max_iter):
+        dists = np.sum((features[:, None, :] - centroids[None, :, :])**2, axis=2)
+        labels = np.argmin(dists, axis=1)
+
+        new_centroids = np.array([
+            features[labels == ki].mean(axis=0) if (labels == ki).sum() > 0
+            else features[rng.randint(n)]
+            for ki in range(k)
+        ], dtype=np.float32)
+
+        if np.allclose(centroids, new_centroids, rtol=1e-4):
+            break
+        centroids = new_centroids
+
+    # ── Build clusters ──
     clusters = [[] for _ in range(k)]
     for i, c in enumerate(customers):
         clusters[labels[i]].append(c)
@@ -124,7 +221,41 @@ def cluster_customers(instance, n_trucks):
     n_clusters = max(n_trucks, min_clusters)
     clusters = _kmeans_cluster(customers, n_clusters)
     clusters = _balance_capacity(clusters, capacity=TRUCK_CAPACITY)
-    # Filter empty clusters
+    clusters = [c for c in clusters if c]
+    return clusters
+
+
+def cluster_customers_spatiotemporal(instance, n_trucks, tw_weight=0.3, seed=42):
+    """
+    Partition customers using JOINT spatio-temporal K-means.
+
+    Unlike the standard approach (spatial K-means then temporal split),
+    this clusters in a *unified* 3D space (x, y, tw_midpoint_scaled).
+
+    This means customers are grouped together ONLY if they are close in
+    BOTH space and time — preventing the fundamental problem where two
+    customers at the same location with different time windows end up
+    in the same cluster.
+
+    No temporal split step is needed — the clustering inherently
+    separates temporally distant customers.
+
+    Args:
+        instance: problem instance dict
+        n_trucks: minimum number of trucks
+        tw_weight: temporal weight [0, 1]
+                   0.3 = 30% time, 70% space (recommended default)
+
+    Returns:
+        list of clusters (each is list of customer dicts)
+    """
+    customers = instance['customers']
+    total_demand = sum(c['demand'] for c in customers)
+    min_clusters = max(1, int(math.ceil(total_demand / TRUCK_CAPACITY)))
+    n_clusters = max(n_trucks, min_clusters)
+    clusters = _kmeans_cluster_spatiotemporal(
+        customers, n_clusters, tw_weight=tw_weight, seed=seed)
+    clusters = _balance_capacity(clusters, capacity=TRUCK_CAPACITY)
     clusters = [c for c in clusters if c]
     return clusters
 

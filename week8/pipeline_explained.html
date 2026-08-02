@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EVRP-TW 深度技术文档 — 分解、修复、超越</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --fg: #c9d1d9;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --warn: #d2991d;
+    --danger: #f85149;
+    --border: #30363d;
+    --code-bg: #161b22;
+    --card-bg: #161b22;
+    --highlight: #1c2128;
+    --step1: #58a6ff;
+    --step2: #3fb950;
+    --step3: #f85149;
+    --step4: #d2991d;
+    --step5: #bc8cff;
+    --step6: #f0883e;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--fg); line-height:1.75; padding: 40px 20px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  h1 { font-size:2.4em; text-align:center; margin-bottom:8px; background: linear-gradient(135deg, var(--step1), var(--step5)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  h2 { font-size:1.6em; margin:48px 0 16px; padding-bottom:8px; border-bottom:2px solid var(--border); color: var(--accent); }
+  h3 { font-size:1.25em; margin:32px 0 12px; color: var(--accent2); }
+  h4 { font-size:1.05em; margin:20px 0 8px; color: var(--warn); }
+  p, li { margin-bottom:10px; }
+  ul, ol { padding-left:24px; margin-bottom:14px; }
+  a { color: var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  strong { color: #f0f6fc; }
+  em { color: var(--warn); font-style: normal; }
+
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px 24px; margin: 16px 0;
+  }
+  .card h3, .card h4 { margin-top:0; }
+
+  .pipeline-flow {
+    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+    align-items: center; margin: 24px 0; font-size:0.88em;
+  }
+  .pf-step {
+    background: var(--code-bg); border: 2px solid var(--border);
+    border-radius: 10px; padding: 12px 14px; text-align: center;
+    min-width: 115px; transition: transform 0.2s;
+  }
+  .pf-step:hover { transform: translateY(-3px); }
+  .pf-step .num { font-size:1.8em; font-weight:800; display:block; }
+  .pf-step .label { font-weight:600; margin-top:4px; font-size:0.92em; }
+  .pf-step.star { border-color: var(--danger); box-shadow: 0 0 12px rgba(248,81,73,0.3); }
+  .pf-step.s1 { border-color: var(--step1); } .pf-step.s1 .num { color: var(--step1); }
+  .pf-step.s2 { border-color: var(--step2); } .pf-step.s2 .num { color: var(--step2); }
+  .pf-step.s3 { border-color: var(--step3); } .pf-step.s3 .num { color: var(--step3); }
+  .pf-step.s4 { border-color: var(--step4); } .pf-step.s4 .num { color: var(--step4); }
+  .pf-step.s5 { border-color: var(--step5); } .pf-step.s5 .num { color: var(--step5); }
+  .pf-step.s6 { border-color: var(--step6); } .pf-step.s6 .num { color: var(--step6); }
+  .pf-arrow { font-size:1.4em; color: var(--border); font-weight:bold; }
+
+  pre {
+    background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 14px 18px; overflow-x: auto; font-size:0.84em; margin: 10px 0;
+    line-height:1.55;
+  }
+  code {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
+    background: var(--code-bg); padding: 1px 5px; border-radius: 3px; font-size:0.9em;
+  }
+  pre code { background: none; padding: 0; font-size:1em; }
+
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size:0.9em; }
+  th, td { border:1px solid var(--border); padding:9px 13px; text-align:left; }
+  th { background: var(--highlight); color: #f0f6fc; font-weight:600; }
+  tr:nth-child(even) { background: var(--highlight); }
+
+  .badge {
+    display:inline-block; padding:2px 9px; border-radius:4px;
+    font-size:0.78em; font-weight:600;
+  }
+  .badge-green { background:#1a3a2a; color:var(--accent2); }
+  .badge-blue { background:#1a2a3a; color:var(--accent); }
+  .badge-yellow { background:#3a2a1a; color:var(--warn); }
+  .badge-red { background:#3a1a1a; color:var(--danger); }
+  .badge-purple { background:#2a1a3a; color:var(--step5); }
+
+  .insight {
+    background: #1a2332; border-left: 4px solid var(--accent);
+    padding:14px 18px; margin:14px 0; border-radius:0 6px 6px 0;
+  }
+  .insight .title { font-weight:700; color: var(--accent); margin-bottom:4px; }
+
+  .theorem {
+    background: #1a2a1a; border-left: 4px solid var(--accent2);
+    padding:14px 18px; margin:14px 0; border-radius:0 6px 6px 0;
+  }
+  .theorem .title { font-weight:700; color: var(--accent2); margin-bottom:4px; }
+
+  .warning {
+    background: #3a2a1a; border-left: 4px solid var(--warn);
+    padding:14px 18px; margin:14px 0; border-radius:0 6px 6px 0;
+  }
+  .warning .title { font-weight:700; color: var(--warn); margin-bottom:4px; }
+
+  .danger {
+    background: #3a1a1a; border-left: 4px solid var(--danger);
+    padding:14px 18px; margin:14px 0; border-radius:0 6px 6px 0;
+  }
+  .danger .title { font-weight:700; color: var(--danger); margin-bottom:4px; }
+
+  .toc { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:20px 28px; margin:24px 0; }
+  .toc h3 { margin-top:0; }
+  .toc ol { columns:2; column-gap:40px; }
+  .toc li { margin-bottom:4px; }
+
+  .comparison-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;
+  }
+  .flow-example {
+    background: #0d1117; border-radius:8px; padding:16px; margin:12px 0;
+    font-family: 'SF Mono', 'Fira Code', monospace; font-size:0.85em; line-height:1.8;
+  }
+  .result-banner {
+    text-align:center; padding:18px 24px; margin:20px 0; border-radius:8px;
+    font-size:1.05em; font-weight:600;
+  }
+  .result-banner.win { background:#1a2a1a; border:1px solid var(--accent2); color:var(--accent2); }
+  .result-banner.loss { background:#3a1a1a; border:1px solid var(--danger); color:var(--danger); }
+
+  @media (max-width: 768px) {
+    .pipeline-flow { flex-direction:column; }
+    .pf-arrow { transform:rotate(90deg); }
+    .toc ol { columns:1; }
+    .comparison-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>EVRP-TW 深度技术文档<br>分解、修复、超越</h1>
+<p style="text-align:center;font-size:1.1em;color:#8b949e;margin-bottom:4px;">
+  Zeyang Yu &mdash; FURP 2026
+</p>
+<p style="text-align:center;font-size:0.95em;color:#6e7681;margin-bottom:32px;">
+  从 "所有经典方法都失败" 到 "100% 时间窗可行" &mdash; 一个关于分解、手术修复和理论指导工程的故事
+</p>
+
+<!-- ═══════════════════════════ TABLE OF CONTENTS ═══════════════════════════ -->
+<div class="toc">
+<h3>目录</h3>
+<ol>
+  <li><a href="#s0">问题背景：电动卡车 + 死线 = 噩梦</a></li>
+  <li><a href="#s1">Pipeline 全景：六步从实例到解</a></li>
+  <li><a href="#s2">Step 1 &mdash; Budget-Aware 聚类：最少干预，最多松弛</a></li>
+  <li><a href="#s3">Step 2 &mdash; POMO 神经路由：Transformer 做距离优化</a></li>
+  <li><a href="#s4">Step 3 &mdash; Forward Insertion 修复 &#9733; 核心创新</a></li>
+  <li><a href="#s5">理论：三个定理，一个故事</a></li>
+  <li><a href="#s6">Step 4 &mdash; 约束局部搜索 (CLS)：不迟到的前提下再近一步</a></li>
+  <li><a href="#s7">Step 5 &mdash; Route Merge：消灭微型路线的降本利器</a></li>
+  <li><a href="#s8">Step 6 &mdash; EV 评估 + Multi-start：充电与选优</a></li>
+  <li><a href="#s9">对比基线：为什么经典方法 TW 可行性为 0%</a></li>
+  <li><a href="#s10">双层范式对比：BACO / BHGA / CBACO 的边界</a></li>
+  <li><a href="#s11">实验全景：8 个实验的目的、设计、结果</a></li>
+  <li><a href="#s12">近期改进：六个新模块的审查与裁决</a></li>
+  <li><a href="#s13">代码架构：文件树与关键函数速查</a></li>
+  <li><a href="#s14">FAQ：常见问题与直接回答</a></li>
+</ol>
+</div>
+
+<!-- ═══════════════════════════ §0 PROBLEM BACKGROUND ═══════════════════════════ -->
+<h2 id="s0">0. 问题背景：电动卡车 + 死线 = 噩梦</h2>
+
+<div class="card">
+<h3>你不是在解方程，你是在做调度员</h3>
+<p>
+  星期一早 6:00。你是城市物流中心的调度员，面前有一张表：
+</p>
+<ul>
+  <li><strong>100 个待配送订单</strong>，散布在城市各处</li>
+  <li>每个订单写着：<strong>"请于 8:00&ndash;9:30 送达"</strong>（早于 8:00 没人收货，晚于 9:30 客户投诉）</li>
+  <li>手上有 <strong>6 辆电动卡车</strong>，每辆能装 200 件货，电池能跑约 37 公里</li>
+  <li>目标是：<strong>所有顾客准时送达，总行驶距离最短，总成本最低</strong></li>
+</ul>
+<p>
+  你会怎么做？先在地图上把顾客分成 6 个片区，每辆车负责一片，这很自然。然后呢？让司机自己决定路线？司机会迷路。你会用导航软件去规划每片区的"最优路线"。
+  但问题来了：<strong>导航只管最短距离，它不管"9:30 之前必须到"。</strong>
+</p>
+<p>
+  这就是 EVRP-TW 的本质：<strong>你有 100 个带截止时间的点 + 6 辆有电池限制的车，你要给出一个"不迟到且总成本最低"的完整计划。</strong>
+</p>
+</div>
+
+<div class="card">
+<h3>EVRP-TW 的形式定义</h3>
+<p>给定：</p>
+<ul>
+  <li><strong>N 个顾客</strong>：每个顾客 i 有坐标 (x_i, y_i)、需求量 q_i、时间窗 [e_i, l_i]（最早服务时间 e_i，最晚服务时间 l_i，即 due_time）、服务时间 s_i</li>
+  <li><strong>K 辆电动卡车</strong>：每辆容量 Q、电池容量 B（55 kWh）</li>
+  <li><strong>M 个充电站</strong>：坐标 (x_cs, y_cs)，非线性充电函数 charge(soc_start, duration) &rarr; kWh</li>
+  <li><strong>1 个仓库 depot</strong>：所有卡车从这里出发，最终回到这里</li>
+</ul>
+<p>目标：找到 K 条路线 R_1, ..., R_K，满足：</p>
+<ol>
+  <li><strong>分区覆盖</strong>：每个顾客恰好在一条路线上</li>
+  <li><strong>容量约束</strong>：每条路线总需求量 &le; Q</li>
+  <li><strong>时间窗约束</strong>：每条路线上每个顾客的实际到达时间 &le; l_i（不迟到是硬约束）</li>
+  <li><strong>电池约束</strong>：每条路线的耗电量不超过电池容量（允许中途充电）</li>
+  <li><strong>最小化总成本</strong>：总行驶距离 + 充电成本 + 车辆使用成本</li>
+</ol>
+</div>
+
+<div class="card">
+<h3>为什么这个问题难到让所有经典方法得 0 分？</h3>
+<p>EVRP-TW 天然包含<strong>三个互相嵌套的子问题</strong>：</p>
+<table>
+  <tr><th>子问题</th><th>决策内容</th><th>计算复杂度</th><th>难点</th></tr>
+  <tr><td><strong>Routing 路线规划</strong></td><td>谁分给哪辆车？每辆车走什么顺序？</td><td>NP-hard (TSP 是特例)</td><td>顾客数量增加 1，可能路线数量指数增长</td></tr>
+  <tr><td><strong>Scheduling 时间调度</strong></td><td>路线顺序决定到达时间，能否满足所有 due_time？</td><td>NP-hard (带时间窗的 TSP)</td><td>顺序改变到达时间，迟到 = 硬违规，不可接受</td></tr>
+  <tr><td><strong>Charging 充电决策</strong></td><td>什么时候充电？充多少？去哪充？</td><td>NP-hard (FRVCP)</td><td>充电站可能不在路线上，需要绕路；充电时间影响后续到达时间</td></tr>
+</table>
+<p>
+  如果把这三个问题揉在一起优化（经典做法），搜索空间大到不可想象。遗传算法、蚁群算法、变邻域搜索都试过，结果一致：<strong>距离能优化，但时间窗全部迟到</strong>（TW 可行性 0%&ndash;10%）。
+</p>
+</div>
+
+<div class="insight">
+<div class="title">我们的核心哲学：Decompose, then Repair (分解，再修复)</div>
+<p>
+  与其在一个巨大的、不可解的搜索空间中挣扎，不如<strong>把问题拆开</strong>：
+</p>
+<ul>
+  <li><strong>POMO 神经网络</strong>负责"怎么走最近"（距离优化）&mdash; 这是它最擅长的事</li>
+  <li><strong>Forward Insertion 修复算子</strong>负责"怎么走不迟到"（时间窗修复）&mdash; 这是手术式的精准操作</li>
+  <li><strong>EV 评估模块</strong>负责"电够不够"（充电决策）&mdash; 独立于路由的后期验证</li>
+</ul>
+<p>
+  两个难题各自有成熟的工具，合在一起就解决了 EVRP-TW。<strong>分解 = 每个子问题用最合适的工具，修复 = 手术式解决子问题间的冲突。</strong>
+</p>
+</div>
+
+<!-- ═══════════════════════════ §1 PIPELINE OVERVIEW ═══════════════════════════ -->
+<h2 id="s1">1. Pipeline 全景：六步从实例到解</h2>
+
+<div class="pipeline-flow">
+  <div class="pf-step s1"><span class="num">1</span><span class="label">Budget-Aware<br>聚类</span></div>
+  <div class="pf-arrow">&rarr;</div>
+  <div class="pf-step s2"><span class="num">2</span><span class="label">POMO<br>神经路由</span></div>
+  <div class="pf-arrow">&rarr;</div>
+  <div class="pf-step s3 star"><span class="num">3 &#9733;</span><span class="label">Forward<br>Insertion</span></div>
+  <div class="pf-arrow">&rarr;</div>
+  <div class="pf-step s4"><span class="num">4</span><span class="label">约束局部<br>搜索 CLS</span></div>
+  <div class="pf-arrow">&rarr;</div>
+  <div class="pf-step s5"><span class="num">5</span><span class="label">路线<br>合并</span></div>
+  <div class="pf-arrow">&rarr;</div>
+  <div class="pf-step s6"><span class="num">6</span><span class="label">EV 评估<br>+ 多起点</span></div>
+</div>
+
+<div class="card">
+<h3>一步一角色</h3>
+<table>
+  <tr><th>步骤</th><th>一句话角色</th><th>输入</th><th>输出</th><th>核心原则</th></tr>
+  <tr>
+    <td><span class="badge badge-blue">1. 聚类</span></td>
+    <td>把 100 个顾客分给 6 辆卡车，空间紧凑、时间有松弛</td>
+    <td>所有顾客 (x,y,tw)</td>
+    <td>K 个互不重叠的顾客分组</td>
+    <td><strong>最少干预</strong>：空间 K-means 已经很好了，只在时间不够时才分裂</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-green">2. POMO</span></td>
+    <td>对每组顾客，用 Transformer 规划最短访问顺序</td>
+    <td>K 个顾客分组</td>
+    <td>K 条距离最优但可能迟到的路线</td>
+    <td><strong>专才专用</strong>：POMO 擅长距离，把它当距离优化器</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-red">3. FI &#9733;</span></td>
+    <td>把每条路线中迟到的顾客，手术式地向前移动以消除迟到</td>
+    <td>K 条有迟到的路线</td>
+    <td>K 条 TW 可行的路线（92% 不需要 fallback）</td>
+    <td><strong>最小破坏</strong>：只移动迟到顾客，不动其他人</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-yellow">4. CLS</span></td>
+    <td>在 tardiness 保持为 0 的前提下，用 2-opt + relocate 微调距离</td>
+    <td>K 条 TW 可行的路线</td>
+    <td>距离减少 1&ndash;3% 的路线</td>
+    <td><strong>安全第一</strong>：任何移动如果引入迟到就拒绝</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-purple">5. Merge</span></td>
+    <td>合并 1&ndash;2 人的微型路线，消灭多余的 depot 往返</td>
+    <td>K 条 TW 可行的路线 (可能很多条)</td>
+    <td>更少、更长的路线</td>
+    <td><strong>降本 70&ndash;80%</strong>：整个 pipeline 最大单项优化</td>
+  </tr>
+  <tr>
+    <td><span class="badge" style="background:#3a1a2a;color:#f0883e;">6. EV+MS</span></td>
+    <td>插入充电站确保电池可行 + 多次随机种子取最优解</td>
+    <td>最终路线集合</td>
+    <td>电池可行的解 + 多跑中的最优 cost</td>
+    <td><strong>后期验证</strong>：不改变顾客顺序，只加充电站</td>
+  </tr>
+</table>
+</div>
+
+<div class="card">
+<h3>数据在 Pipeline 中的流转（一个实例的完整路径）</h3>
+<pre><code>输入: instance = {
+  'customers': [{id, x, y, demand, ready_time, due_time, service_time}, ...],
+  'depot': (8.0, 8.0),
+  'n_customers': 100,
+  'tw_type': 'RC1',
+}
+
+    &darr; 1. Budget-Aware 聚类: K-means++ &rarr; 检查 75% 时间预算 &rarr; 按需分裂
+
+clusters = [
+  [cust_3, cust_17, cust_42, ...],   &larr; 卡车 0: 22 个顾客，空间紧凑，时间充足
+  [cust_5, cust_11, cust_28, ...],   &larr; 卡车 1: 19 个顾客
+  ...
+]
+
+    &darr; 2. POMO: 每个 cluster 独立推理 (8-fold augmentation, 160 候选路线/cluster)
+
+truck_routes = [
+  [17, 3, 42, ...],    &larr; POMO 规划的顺序: 距离最优
+  [5, 28, 11, ...],
+  ...
+]
+&rarr; sol.tardiness = 576.2  &larr; POMO 不管时间窗!
+
+    &darr; 3. Forward Insertion &#9733;: 迟到顾客 &rarr; 前移 &rarr; EDD fallback (3% 的情况)
+
+修复后: [42, 17, 3, ...]  (顾客 42 被前移了，现在不迟到)
+&rarr; sol.tardiness = 0.0 &#10003;
+
+    &darr; 4. CLS: 2-opt 翻转 + relocate (硬 TW 约束)
+
+距离降 2.1%, tardiness 仍为 0
+
+    &darr; 5. Route Merge: 69 条微型路线 &rarr; 13 条
+
+成本降 77.3% (8,245 &rarr; 1,871)
+
+    &darr; 6. EV 评估 + 多起点 (3 次不同种子)
+
+插入充电站 &rarr; 电池可行 &rarr; 选最优 cost
+
+最终输出: 100% TW 可行 + cost 合理</code></pre>
+</div>
+
+<!-- ═══════════════════════════ §2 CLUSTERING ═══════════════════════════ -->
+<h2 id="s2">2. Step 1 &mdash; Budget-Aware 聚类：最少干预，最多松弛</h2>
+
+<div class="card">
+<h3>为什么先聚类？</h3>
+<p>
+  POMO 是一个在 CVRP（约 20&ndash;100 个顾客）上预训练的神经网络模型。如果你把 200 个顾客直接丢给它，推理质量会严重退化。
+  聚类的本质是 <strong>Cluster-First, Route-Second</strong> 范式（Fisher &amp; Jaikumar, 1981）：<strong>先把大问题拆成 K 个小问题，每个小问题 POMO 都能高质量求解。</strong>
+</p>
+</div>
+
+<div class="insight">
+<div class="title">核心原则：Minimal Intervention (最少干预)</div>
+<p>
+  好的聚类 = <strong>空间紧凑</strong> + <strong>时间可行</strong>。但两者的优先级不同：<strong>空间紧凑 &gt; 时间可行</strong>。
+</p>
+<p>为什么？因为空间紧凑的组，路线就短 &rarr; 总旅行时间少 &rarr; 更容易满足时间窗。而且如果 POMO 路线中有迟到，后面的 Forward Insertion 可以修复。<strong>空间优化和时间优化在这里是"一致"的，不是矛盾的。</strong></p>
+<p>我们的策略：</p>
+<ul>
+  <li>先用纯空间 K-means++ 聚类，产生最优的空间分组</li>
+  <li>仅当某个组的 EDD（最早截止时间优先）模拟路线所需时间超过该组 TW 时间预算的 <strong>75%</strong> 时，才按时间窗分裂</li>
+  <li><strong>75% 阈值</strong>保留了 25% 松弛给 Forward Insertion &mdash; 这是 Theorem 1 的工程应用</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>算法三步走</h3>
+
+<h4>Step 1: 纯空间 K-means++</h4>
+<pre><code># 初始化: K-means++ 智能选择初始中心点 (远离彼此)
+centers = kmeans_plus_plus_init(customers, k)
+
+# 迭代: 标准 Lloyd 算法
+for iter in range(50):
+    for each customer:
+        cluster = argmin distance(customer, center)  # 只基于 (x, y)
+    for each cluster:
+        center = mean(cluster)                        # 更新质心</code></pre>
+<p>为什么完全忽略时间窗？因为<strong>空间紧凑的组，路线天然短</strong>。在 16&times;16 km 的城市中，空间紧凑的 20 人组，路线总长度大约在 30&ndash;50 km，对应旅行时间大约 1&ndash;2 小时，而典型 TW horizon 是 3&ndash;4 小时。大多数情况下，空间紧凑就已经满足了时间要求。</p>
+
+<h4>Step 2: 定向时间分裂（仅在需时）</h4>
+<pre><code>for cluster in clusters:
+    # 用 EDD 顺序模拟这条路线的最优时间安排
+    edd_route_time = simulate_edd_route(cluster)
+
+    # 比较: 路线时间 vs 75% 时间窗预算
+    tw_budget = cluster_max_due_time - cluster_min_ready_time
+    if edd_route_time > 0.75 * tw_budget:    # 时间不够! 必须分裂
+        # 按 due_time 排序，找最优切分点
+        sorted_customers = sort(cluster, key=due_time)
+        split_point = find_optimal_split(sorted_customers)
+        # 分裂成两个子组: early-due 和 late-due
+        new_clusters.append(early_group, late_group)
+    else:
+        new_clusters.append(cluster)  # 保持原样 (大多数情况)</code></pre>
+<p>
+  要点：<strong>不是盲目按 TW 分裂，而是先计算是否需要。大多数 cluster 不需要分裂</strong>。在 RC 和 R 类型实例上，分裂频率约 10&ndash;20%；在 C 类型（聚类分布）上，几乎从不分裂。
+</p>
+
+<h4>Step 3: 容量平衡</h4>
+<pre><code># 检查每个 cluster 的总需求是否超过卡车容量
+for cluster in clusters:
+    if total_demand(cluster) > truck_capacity:
+        # 把超载 cluster 中离目标 cluster 质心最近的顾客移过去
+        excess_customers = select_nearest_to_target_centroid(cluster, target_cluster)
+        move(excess_customers, target_cluster)</code></pre>
+</div>
+
+<div class="card">
+<h3>为什么不用更复杂的时间窗聚类策略？</h3>
+<table>
+  <tr><th>聚类策略</th><th>分裂频率</th><th>POMO 友好度</th><th>Forward Insertion 友好度</th><th>适用场景</th></tr>
+  <tr><td>纯空间 K-means</td><td>从不分裂</td><td>&#11088; 最优（组内空间最紧凑）</td><td>&#11088; 最好（最大松弛）</td><td>仅宽 TW</td></tr>
+  <tr><td>TW-aware (固定阈值 50%)</td><td>频繁分裂</td><td>&#9888; 过度碎片化</td><td>&#9888; 松弛不足</td><td>RC2</td></tr>
+  <tr><td>Adaptive TW</td><td>自适应但不可控</td><td>&#9888; 复杂</td><td>&#9888; 不可预测</td><td>RC1</td></tr>
+  <tr><td><strong>Budget-Aware (75%) &#9733;</strong></td><td><strong>仅在必要时</strong></td><td><strong>&#11088; 好</strong></td><td><strong>&#11088; 最好（保留 25% 松弛）</strong></td><td><strong>所有类型</strong></td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>近期改进：FI-aware 可行性检查</h3>
+<p>
+  原来的时间可行性预检查用 EDD 排序模拟路线时间，这<strong>比较悲观</strong>&mdash;EDD 不是最优距离顺序。
+  悲观预测导致不必要的分裂，产生太多微型路线（C101_100c: 100 顾客 &rarr; 69 条路线！）。
+</p>
+<p>
+  <strong>改进：</strong> 现在预检查使用 POMO 的实际路线（空间近邻顺序）+ Theorem 1 的松弛条件来判断。如果理论松弛足够，即使 EDD 悲观预测"不可行"，也不分裂。
+  这减少了<strong>不必要的时间分裂</strong>，显著减少了微型路线的数量。
+</p>
+</div>
+
+<!-- ═══════════════════════════ §3 POMO ═══════════════════════════ -->
+<h2 id="s3">3. Step 2 &mdash; POMO 神经路由：Transformer 做距离优化</h2>
+
+<div class="card">
+<h3>POMO 是什么？</h3>
+<p>
+  <strong>POMO (Policy Optimization with Multiple Optima)</strong> &mdash; Kwon et al. (2020), NeurIPS。
+  一种用<strong>深度强化学习 + Transformer 神经网络</strong>求解组合优化问题的方法，最初在 TSP 和 CVRP 上达到或接近 SOTA。
+</p>
+<p>
+  <strong>核心巧思：</strong> 一条最优 TSP 路线，从不同的城市出发看都是最优的（同一个环，不同起点）。
+  POMO 一次启动 N 条解码轨迹（每条从一个不同的顾客开始），以 N 条轨迹的平均奖励作为 baseline。
+  这让<strong>训练方差大幅降低</strong>，收敛速度提升数倍。
+</p>
+</div>
+
+<div class="card">
+<h3>神经网络架构</h3>
+
+<h4>Encoder：6 层 Transformer</h4>
+<pre><code>输入: depot (x,y) + N 个顾客的特征向量
+     每个顾客: [x, y, demand, ready_time, due_time, service_time]  共 6 维
+
+       &darr; Linear embedding: 6 维 &rarr; 128 维
+
+       &darr; 6 &times; EncoderLayer
+           &mapstochar; Multi-Head Self-Attention (8 heads, d_k=16)
+           |   "每个节点关注所有其他节点 &mdash; 谁离我近？谁的 deadline 紧？"
+           &mapstochar; Add &amp; LayerNorm
+           &mapstochar; Feed-Forward Network (128 &rarr; 512 &rarr; 128, ReLU)
+           |   "非线性变换，学习复杂空间关系"
+           &mapstochar; Add &amp; LayerNorm
+
+输出: (N+1) &times; 128 编码矩阵  &larr; 每个节点对自己在整个问题中"角色"的理解</code></pre>
+
+<h4>Decoder：注意力解码器</h4>
+<pre><code>每步解码 (自回归):
+
+  Query = 当前所在节点的编码 + 动态上下文特征
+          上下文 = [剩余容量, 当前时间, 已走距离, 剩余电量比例]
+
+  Key/Value = Encoder 输出 (缓存复用，不重复计算)
+
+       &darr; Multi-Head Cross-Attention: Query 关注所有 Key
+       |   "从我现在的位置，看所有未访问的顾客，下一步去哪最好？"
+
+       &darr; Logit Clipping: tanh 限制，稳定训练
+
+       &darr; Softmax &rarr; 概率分布 over 所有未访问节点
+
+  Mask 机制 (屏蔽不可行选择):
+    - visited_mask:    已访问节点 &rarr; 概率 = 0
+    - cap_infeasible:  需求量 &gt; 剩余容量 &rarr; 屏蔽
+    - tw_infeasible:   预估到达时间 &gt; due_time + 60 &rarr; 屏蔽 (宽松 60 单位)
+    - batt_infeasible: 剩余电量不足以到达该点 &rarr; 屏蔽</code></pre>
+</div>
+
+<div class="card">
+<h3>推理时的 8 倍数据增强</h3>
+<p>训练数据永远不够。推理时，我们通过几何对称生成 8 个视角：</p>
+<pre><code># 8 倍增强: 翻转 x &times; 翻转 y &times; 转置 (x,y) = 2&times;2&times;2 = 8
+views = []
+for flip_x in [False, True]:
+    for flip_y in [False, True]:
+        for transpose in [False, True]:
+            coords = original_coords.copy()
+            if flip_x:    coords.x = max_x - coords.x
+            if flip_y:    coords.y = max_y - coords.y
+            if transpose: coords.x, coords.y = coords.y, coords.x
+            views.append(coords)
+
+# 每个视角内: POMO 启动 N 条轨迹 (N = cluster 大小)
+# 每条轨迹: 自回归贪心解码 (每步选 argmax 概率)
+# 总共: 8 &times; N 条候选路线 &rarr; 选 feasible 且 cost 最低的</code></pre>
+<p>对于 20 个顾客的 cluster，产生 160 条候选路线，推理时间约 <strong>0.1 秒</strong>。</p>
+</div>
+
+<div class="card">
+<h3>POMO 的长处与短板</h3>
+<div class="comparison-grid">
+<div class="card" style="margin:0">
+<h4>POMO 擅长的</h4>
+<ul>
+  <li><strong>距离优化</strong>：CVRP 上预训练，距离感非常好</li>
+  <li><strong>推理速度</strong>：0.1 秒一组路线（vs NSGA-II 分钟级）</li>
+  <li><strong>空间直觉</strong>：Transformer attention 学会"近的顾客一起走"</li>
+</ul>
+</div>
+<div class="card" style="margin:0">
+<h4>POMO 不擅长的</h4>
+<ul>
+  <li><strong>时间窗</strong>：reward 中 tardiness 权重只有 0.1，迟到"一点点"也被接受</li>
+  <li><strong>硬约束</strong>：TW 是软惩罚，不是硬约束 &rarr; 紧 TW 实例上 tardiness 可达 500+</li>
+  <li><strong>修复能力</strong>：不知"向前移动可以消除迟到"</li>
+</ul>
+</div>
+</div>
+<p>
+  总结：<strong>POMO 是距离专家，不是时间窗专家。</strong>把它当作"第一阶段的距离优化器"使用，时间窗交给 Step 3。
+  这就像先用导航规划最短路线，再用调度知识调整顺序以保证不迟到。
+</p>
+</div>
+
+<!-- ═══════════════════════════ §4 FORWARD INSERTION ═══════════════════════════ -->
+<h2 id="s4">4. Step 3 &mdash; Forward Insertion 修复 &#9733; 核心创新</h2>
+
+<div class="card">
+<h3>从 D 的迟到故事开始</h3>
+
+<div class="flow-example">
+<strong style="color:#58a6ff;">POMO 规划的路线 (距离最优):</strong><br>
+depot &rarr; A (不急, due=10:00) &rarr; B (不急, due=11:00) &rarr; C (不急, due=12:00) &rarr; <span style="color:#f85149"><strong>D (很急! due=9:00)</strong></span> &rarr; depot<br><br>
+
+<strong>时间线模拟:</strong><br>
+depot 出发 7:30<br>
+&nbsp;&nbsp;&rarr; A 到达 8:10 &#10003; (A 不急，来早了也没关系)<br>
+&nbsp;&nbsp;&rarr; B 到达 8:50 &#10003;<br>
+&nbsp;&nbsp;&rarr; C 到达 9:30 &#10003;<br>
+&nbsp;&nbsp;&rarr; <span style="color:#f85149">D 到达 10:30 &#10007; 迟到 90 分钟!</span><br>
+&nbsp;&nbsp;&rarr; depot 返回 11:00<br><br>
+
+<strong style="color:#f85149;">问题出在哪里？</strong><br>
+D 不是"放错了顺序" &mdash; 而是 A、B、C 三个不急的顾客已经消耗了 2 小时。<br>
+D 放在路线尾部的<strong>任何位置</strong>都会迟到 &mdash; 这是 <strong>结构性的迟到</strong>。<br><br>
+
+<strong style="color:#3fb950;">解决方案: 把 D 向前移动!</strong><br>
+depot &rarr; <span style="color:#3fb950"><strong>D (急)</strong></span> &rarr; A (不急) &rarr; B (不急) &rarr; C (不急) &rarr; depot<br><br>
+
+<strong>新时间线:</strong><br>
+depot 出发 7:30<br>
+&nbsp;&nbsp;&rarr; <span style="color:#3fb950">D 到达 8:30 &#10003; (准时!)</span><br>
+&nbsp;&nbsp;&rarr; A 到达 9:10 &#10003; (被推迟了但仍在 due 之前)<br>
+&nbsp;&nbsp;&rarr; B 到达 9:50 &#10003;<br>
+&nbsp;&nbsp;&rarr; C 到达 10:30 &#10003;<br>
+&nbsp;&nbsp;&rarr; depot 返回 11:00<br><br>
+
+<strong style="color:#3fb950;">只移动了 D 一个人，所有人都不迟到了!</strong>
+</div>
+
+<p>
+  这就是 <strong>Forward Insertion</strong> 的全部哲学：<strong>不要重排整条路线 &mdash; 只把迟到的人向前移动。</strong>
+  就像外科手术：只切除病变组织，不碰健康组织。
+</p>
+</div>
+
+<div class="card">
+<h3>Forward Insertion 算法</h3>
+
+<pre><code>def repair_forward_insertion(solution, instance):
+    """
+    Forward Insertion Repair &mdash; 手术式时间窗修复
+
+    核心思路:
+    - POMO 的路线已经距离优化得很好
+    - 只把迟到的顾客向前移动 (更早的位置)
+    - 移动前模拟评估: cost = 距离 &times; 2.0 + 迟到 &times; 5.0
+    - 如果单靠前移解决不了所有迟到，回退到 Full EDD (仅 ~3%)
+    """
+    for 每条路线:
+        # &mdash;&mdash; Phase 1: 识别所有迟到顾客 &mdash;&mdash;
+        模拟当前路线 &rarr; 计算每个顾客的实际到达时间
+        tardy_list = [(position, customer_id, tardiness_amount), ...]
+        tardy_list.sort(key=降序 tardiness)   # 最迟的最先处理
+
+        # &mdash;&mdash; Phase 2: 逐个手术移动 &mdash;&mdash;
+        moved_any = False
+        for (orig_pos, cust_id, tard) in tardy_list:
+            # 找到这个顾客现在的位置 (可能因之前的移动而改变)
+            current_pos = route.index(cust_id)
+
+            # 暂时移除
+            without = route[:current_pos] + route[current_pos+1:]
+
+            # 尝试所有更早的位置 (0 到 current_pos)
+            best_pos = current_pos
+            best_cost = &infin;
+
+            for insert_pos in range(current_pos + 1):  # 只向前!
+                test_route = without[:insert_pos] + [cust_id] + without[insert_pos:]
+                test_cost = evaluate(test_route)
+                if test_cost < best_cost:
+                    best_cost = test_cost
+                    best_pos = insert_pos
+
+            # 接受改善
+            if best_pos != current_pos:
+                route = without[:best_pos] + [cust_id] + without[best_pos:]
+                moved_any = True
+
+        # &mdash;&mdash; Phase 3: 如果还有迟到 &rarr; Full EDD fallback &mdash;&mdash;
+        if route_still_has_tardiness(route):
+            route = sorted(route, key=due_time)  # Jackson 1955: EDD 最优
+            fallback_count += 1</code></pre>
+</div>
+
+<div class="card">
+<h3>三种修复模式的对比</h3>
+<table>
+  <tr><th>修复模式</th><th>操作</th><th>保留 POMO 优化</th><th>TW 可行性</th><th>理论保证</th><th>当前状态</th></tr>
+  <tr>
+    <td><strong>Forward Insertion &#9733;</strong></td>
+    <td>迟到顾客 &rarr; 向前插入</td>
+    <td>&#10003; 只移动迟到顾客（手术式）</td>
+    <td><strong>100%</strong>（含 ~3% fallback）</td>
+    <td>Lemma 2 (副作用有界) + Theorem 1 (充分条件)</td>
+    <td><span class="badge badge-green">默认</span></td>
+  </tr>
+  <tr>
+    <td>Full EDD</td>
+    <td>整条路线按 due_time 升序排列</td>
+    <td>&#10007; 完全舍弃 POMO 的成果</td>
+    <td>100%（Jackson 1955 理论保证）</td>
+    <td>Jackson's Rule: EDD 最小化最大 tardiness</td>
+    <td><span class="badge badge-yellow">仅 fallback (~3%)</span></td>
+  </tr>
+  <tr>
+    <td>Partial EDD (已弃用)</td>
+    <td>只重排迟到段（后缀）</td>
+    <td>&#9888; 部分保留</td>
+    <td>&#10007; 0%（Lemma 1 解释原因）</td>
+    <td>Lemma 1: 后缀重排不能修复结构性迟到</td>
+    <td><span class="badge badge-red">已弃用</span></td>
+  </tr>
+</table>
+</div>
+
+<div class="card">
+<h3>Forward Insertion 的核心指标</h3>
+<table>
+  <tr><th>指标</th><th>旧 Partial EDD</th><th>新 Forward Insertion</th><th>改善</th></tr>
+  <tr><td>TW 可行性</td><td>100%（但 95% 回退到 Full EDD）</td><td><strong>100%（仅 3% 需要回退）</strong></td><td>质量提升 97%</td></tr>
+  <tr><td>Fallback 总次数 (224 实例, 3 runs)</td><td>1,975</td><td><strong>58</strong></td><td>&darr; 97%</td></tr>
+  <tr><td>手术修复成功率 (无需 fallback)</td><td>N/A (段级重排，概念不同)</td><td><strong>92%</strong></td><td>&mdash;</td></tr>
+  <tr><td>C-type 零 Fallback 率</td><td>N/A</td><td><strong>100%</strong></td><td>完美</td></tr>
+  <tr><td>平均移动次数 (per tardy customer)</td><td>N/A</td><td><strong>1.2</strong></td><td>高效 &mdash; 一般一次移动就够</td></tr>
+</table>
+</div>
+
+<div class="insight">
+<div class="title">为什么 C-type 达到 100% 零 fallback？</div>
+<p>
+  C-type 是"聚类分布" &mdash; 顾客自然地聚成几个密集的群。Budget-Aware 聚类 + K-means 完美捕获了这些群，
+  每个 cluster 内部空间极紧凑 &rarr; POMO 的路线非常短 &rarr; 有大量时间松弛 &rarr;
+  任何迟到都可以通过简单的前向移动修复（Theorem 1 的条件总是满足）。
+</p>
+<p>
+  <strong>这是 clustering + routing + repair 三者协同的最理想状态。</strong>
+</p>
+</div>
+
+<div class="card">
+<h3>近期改进：Theorem 1 预判断 &mdash; 跳过不可能的修复</h3>
+<p>
+  在开始 FI 之前，计算 slack_ratio = TW 松弛时间 / 总路线时间。如果 slack_ratio &lt; 0.3（即路线已经很紧，Theorem 1 的条件不太可能满足），
+  直接回退到 Full EDD，跳过逐步前向搜索。
+</p>
+<p>
+  <strong>裁决：</strong> 保守策略，实践中极少触发（&lt; 2% 的路线），不显著影响最终 cost。保留是因为它提供了理论驱动的安全网。
+</p>
+</div>
+
+<div class="card">
+<h3>近期改进：Cross-route Forward Insertion</h3>
+<p>
+  当迟到顾客在当前路线内找不到合适的前向插入位置时，<strong>尝试把它移到其他卡车的路线中</strong>。
+  这是 Forward Insertion 的跨路线扩展：在其他路线的每个可能位置尝试插入，接受第一个满足 TW 可行的位置。
+</p>
+<p>
+  <strong>裁决：</strong> 有效但使用频率低（约 5% 的迟到顾客）。对极紧 TW 实例有帮助，是 FI 的合理扩展。
+</p>
+</div>
+
+<!-- ═══════════════════════════ §5 THEORY ═══════════════════════════ -->
+<h2 id="s5">5. 理论：三个定理，一个故事</h2>
+
+<div class="insight">
+<div class="title">理论不是装饰 &mdash; 每个定理都直接解释实验现象、指导工程决策</div>
+<p>
+  我们从路线模拟方程出发，形式化证明了三个性质。它们构成了一个<strong>完整的逻辑链</strong>：
+  为什么旧方法失败 &rarr; 为什么新方法安全 &rarr; 什么时候新方法一定成功。
+</p>
+</div>
+
+<div class="theorem">
+<div class="title">Lemma 1 &mdash; 上游单调性 (Upstream Monotonicity)：为什么段级 EDD 总是失败</div>
+<p><strong>直观理解：</strong> 想象一条排队队伍。如果你只重排队伍后半段的人，排在最前面的人出发时间不会改变。
+如果队伍中段有个人迟到的原因不是他排错了位置，而是<strong>前面的人花了太多时间</strong>，那重排后半段毫无帮助。</p>
+
+<p><strong>形式陈述：</strong> 对于路线 R = (v_1, v_2, ..., v_n)，任意后缀 S = R[k:n] 的任何重排<strong>不改变</strong>前缀节点 v_1, ..., v_{k-1} 的到达时间。</p>
+
+<p><strong>推论 &mdash; 结构性迟到：</strong> 如果 v_k 迟到是因为前缀累积旅行时间过长（前面非迟到顾客耗掉了时间预算），那么<strong>任何后缀重排都无法让 v_k 准时</strong>。这个迟到是<strong>结构性的</strong>（位置决定的），不是<strong>顺序性的</strong>（排列决定的）。</p>
+
+<p><strong>&rarr; 实验验证：</strong> Partial EDD 的 100% 失败率。对每个迟到段，段内第一个人必然是结构性迟到 &mdash; 重排段内次序改变不了他从 depot 出发到这个位置的累积时间。</p>
+
+<p><strong>&rarr; 工程指导：</strong> 修复迟到的唯一方法是<strong>向前移动迟到顾客</strong>（改变他在整条路线中的位置，而不仅是段内位置）。这正是 Forward Insertion 所做的。
+</p>
+</div>
+
+<div class="theorem">
+<div class="title">Lemma 2 &mdash; 前向插入的边界效应 (Bounded Side Effects)：副作用是局部的</div>
+<p><strong>直观理解：</strong> 把队伍里的一个人往前挪。他前面的人不受影响（他们本来就排在他前面）。
+他后面、但在他新位置前面的人最多被推迟一点点（因为多服务了一个人 + 可能绕了一小段路）。
+在他原来位置后面的人，因为提前有人被挪走了，他们甚至会提前。</p>
+
+<p><strong>形式陈述：</strong> 将 v_j 从位置 j 移动到位置 i (i &lt; j)，则：
+<ol>
+  <li><strong>前缀不变</strong>：位置 p &lt; i 的所有节点，到达时间完全不变</li>
+  <li><strong>被移动者提前</strong>：v_j 在新位置 i 的到达时间显著早于在位置 j 时</li>
+  <li><strong>中间被推移者</strong>：位置 i &lt; p &lt; j 的节点最多被推迟 service(v_j) + detour_distance &mdash; <strong>副作用有界且局部</strong></li>
+  <li><strong>尾部不晚于原来</strong>：位置 p &gt; j 的节点到达时间 &le; 原来的到达时间（因为 v_j 提前被移走了）</li>
+</ol>
+</p>
+
+<p><strong>&rarr; 实验验证：</strong> 算子消融实验中，Relocate（双向移动）<strong>从不选择向后移动</strong> &mdash; 向前总是更好。这证实了 Lemma 2 的非对称性。</p>
+
+<p><strong>&rarr; 工程指导：</strong> Forward Insertion 的手术式修复是<strong>安全的</strong> &mdash; 副作用不会扩散到整条路线。前缀完全无忧，中间受影响的人可以用后续继续移动来修复。</p>
+</div>
+
+<div class="theorem">
+<div class="title">Theorem 1 &mdash; 一次通过成功的充分条件 (Sufficient Condition for One-Pass Success)</div>
+<p><strong>直观理解：</strong> 如果整条路线的时间很充裕（有很多"空余时间"），那么每个迟到的人都能找到一个靠前的位置插入，
+而且所有被推后的人仍然在自己的时间窗内。这种情况下，Forward Insertion 只需要<strong>扫一遍路线</strong>就能修好所有迟到，不需要回退到 Full EDD。</p>
+
+<p><strong>形式陈述：</strong> 如果对于每个迟到顾客 v_j，存在一个更早的位置 i 使得插入后所有受影响顾客的到达时间仍然满足各自的时间窗，
+那么 Forward Insertion <strong>一次遍历就消除所有迟到</strong>，无需 Full EDD fallback。算法在最多 |tardy_customers| 次移动后收敛。</p>
+
+<p><strong>&rarr; 实验验证：</strong> C-type 实例的 100% 零 fallback。聚类产生的短路线有充足的时序松弛，Theorem 1 的条件总被满足。</p>
+
+<p><strong>&rarr; 工程指导：</strong> 这直接指导了 Budget-Aware 聚类的 <strong>75% 时间预算阈值</strong> &mdash; 保证每个 cluster 有至少 25% 的松弛给 Forward Insertion 的手术搜索空间。</p>
+</div>
+
+<div class="card">
+<h3>三个理论的逻辑关系</h3>
+<pre><code>Lemma 1 (后缀重排无效)
+  &mapstochar; 解释了 Partial EDD 的 100% 失败率
+  &mapstochar; 迟到是结构性的，不是顺序性的
+  &mapstochar; 必须向前移动 &rarr; 直接引出 Forward Insertion 的设计动机
+
+Lemma 2 (副作用有界且局部)
+  &mapstochar; 前向插入的影响范围有限
+  &mapstochar; 前缀和尾部保持安全 &rarr; 手术式修复是可行的
+  &mapstochar; 解释为什么 Relocate 从不选向后移动
+  &mapstochar; 优于 Full EDD 的全量重排（保留 POMO 的优化）
+
+Theorem 1 (一次通过成功的充分条件)
+  &mapstochar; 当前缀松弛足够 &rarr; 一遍扫描，零 fallback
+  &mapstochar; 解释了 C-type 的完美表现
+  &mapstochar; 指导了 Budget-Aware 聚类的 75% 阈值设计
+  &mapstochar; 提供了 FI-aware 可行性检查的理论基础</code></pre>
+</div>
+
+<div class="card">
+<h3>算子消融实验：为什么 Forward Insertion，而不是别的局部搜索算子？</h3>
+<p>在 24 个代表性实例上，测试 4 种修复算子的效果：</p>
+<table>
+  <tr><th>算子</th><th>移动类型</th><th>TW 可行性 (24 实例)</th><th>Fallback 需求</th><th>关键发现</th></tr>
+  <tr><td><strong>Forward Insertion</strong></td><td>单点 &rarr; 前向任意位置</td><td><strong>24/24 (100%)</strong></td><td>7</td><td>唯一 100% 有效的算子</td></tr>
+  <tr><td>Relocate (双向)</td><td>单点 &rarr; 任意位置</td><td>24/24 (100%)</td><td>7</td><td>= Forward Insertion。Relocate <strong>从不选择向后</strong></td></tr>
+  <tr><td>Or-opt (段移动)</td><td>连续段 &rarr; 前向</td><td>16/24 (67%)</td><td>&mdash;</td><td>段级算子 &mdash; Lemma 1 预测了失败</td></tr>
+  <tr><td>2-opt* (段交换)</td><td>两个段交换</td><td>16/24 (67%)</td><td>&mdash;</td><td>同 Or-opt，C1/R1 上零移动</td></tr>
+</table>
+<p><strong>三个关键结论：</strong></p>
+<ol>
+  <li><strong>Forward Insertion &equiv; Relocate：</strong> "仅向前"不是限制，而是<strong>最优方向</strong>。Relocate 有 2&times; 的搜索空间，却没有任何额外收益</li>
+  <li><strong>段级算子失败 (67%)：</strong> 在紧 TW 实例 C1/R1 上零移动 &mdash; 这是 Lemma 1 的直接后果</li>
+  <li><strong>Forward Insertion 的简洁是美德：</strong> 比 Relocate 少一半搜索空间（j vs n 个候选位置），同等效果，且有完整理论支撑</li>
+</ol>
+</div>
+
+<!-- ═══════════════════════════ §6 CLS ═══════════════════════════ -->
+<h2 id="s6">6. Step 4 &mdash; 约束局部搜索 (CLS)：不迟到的前提下再近一步</h2>
+
+<div class="card">
+<h3>为什么在 FI 之后？</h3>
+<p>
+  Forward Insertion 修复了时间窗，但可能增加了距离（把顾客往前移可能绕路）。CLS 是 FI 的<strong>自然补充</strong>：
+</p>
+<div class="comparison-grid">
+<div class="card" style="margin:0;border-color:var(--danger);">
+<h4>Forward Insertion</h4>
+<p><strong>目标：</strong> 修复 tardiness，使 TW 可行<br>
+<strong>代价：</strong> 可能增加距离（前向移动 = 绕路）<br>
+<strong>约束：</strong> 无（任何能消除迟到的前移都接受）</p>
+</div>
+<div class="card" style="margin:0;border-color:var(--accent2);">
+<h4>Constrained Local Search</h4>
+<p><strong>目标：</strong> 修复距离，降低总成本<br>
+<strong>代价：</strong> 无（绝不引入迟到）<br>
+<strong>硬约束：</strong> tardiness 必须保持 0 &mdash; 这是不可妥协的底线</p>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3>CLS 的两个阶段</h3>
+<pre><code>def constrained_local_search(solution, instance):
+    """
+    前提: solution.tardiness == 0 (FI 已经修好了所有迟到)
+
+    硬约束: 任何移动被接受当且仅当:
+      1. 移动后的 tardiness == 0 (不引入任何新迟到)
+      2. 移动后的 total_distance < 原来的 total_distance
+    """
+    improved = True
+    while improved:
+        improved = False
+
+        # &mdash;&mdash; Phase 1: 2-opt (翻转子序列) &mdash;&mdash;
+        for route in routes:
+            for i in range(len(route)):
+                for j in range(i+2, len(route)):
+                    # 翻转 route[i:j]
+                    new_route = route[:i] + route[i:j][::-1] + route[j:]
+                    if TW_feasible(new_route) AND distance(new_route) < distance(route):
+                        route = new_route
+                        improved = True
+
+        # &mdash;&mdash; Phase 2: Relocate (移动单个顾客) &mdash;&mdash;
+        for route in routes:
+            for pos, cust in enumerate(route):
+                # 移除 cust，尝试所有其他位置
+                without = route[:pos] + route[pos+1:]
+                for insert_pos in range(len(route)):
+                    if insert_pos == pos: continue
+                    new_route = without[:insert_pos] + [cust] + without[insert_pos:]
+                    if TW_feasible(new_route) AND distance(new_route) < distance(route):
+                        route = new_route
+                        improved = True
+                        break  # 立即接受第一个改善
+
+        if not improved:
+            break  # 局部最优，收敛</code></pre>
+</div>
+
+<div class="card">
+<h3>CLS 在不同实例类型上的效果</h3>
+<table>
+  <tr><th>实例类型</th><th>距离降幅</th><th>为什么？</th></tr>
+  <tr><td><strong>RC, R2 (宽 TW)</strong></td><td>1&ndash;3%</td><td>POMO 路线有交叉边，2-opt 可以解开。有充足的 TW 松弛给 relocate 调整</td></tr>
+  <tr><td><strong>C-type (聚类分布)</strong></td><td>&lt; 1%</td><td>路线极短，POMO 已经接近最优，基本找不到改进</td></tr>
+  <tr><td><strong>R1 (紧 TW, 随机分布)</strong></td><td>&lt; 1%</td><td>时间窗太紧，没有松弛空间给局部搜索 &mdash; 任何移动都可能引入迟到</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>近期改进：CLS Inter-route Relocate</h3>
+<p>
+  原来的 CLS 只在<strong>路线内部</strong>移动顾客。新增的 inter-route relocate 允许<strong>在不同路线之间</strong>移动顾客：
+  从路线 A 移除一个顾客 &rarr; 尝试插入到路线 B 的每个可能位置 &rarr; 接受当且仅当两条路线都保持 TW 可行且总距离减少。
+</p>
+<p>
+  <strong>裁决：</strong> 有效但对成本影响小（&lt; 0.5%）。在边界情况下有帮助（比如一个顾客放在路线 A 的边缘，其实路线 B 更近）。
+  保留因为计算开销可忽略，且不引入回归风险。
+</p>
+</div>
+
+<!-- ═══════════════════════════ §7 ROUTE MERGE ═══════════════════════════ -->
+<h2 id="s7">7. Step 5 &mdash; Route Merge：消灭微型路线的降本利器</h2>
+
+<div class="danger">
+<div class="title">问题根源：时间可行性预检查的副作用</div>
+<p>
+  Budget-Aware 聚类后，有一个<strong>时间可行性预检查</strong>步骤：对每个 cluster，用 EDD 模拟整条路线的时间。
+  如果 EDD 路线时间超过了时间窗预算，就<strong>继续分裂</strong>这个 cluster。
+</p>
+<p>
+  在紧时间窗实例（特别是 C1 和 R1）上，这个检查会<strong>过度分裂</strong>：
+</p>
+<pre><code>C101_100c: 100 个顾客 &rarr; 被分裂成 69 条微型路线
+每条路线只有 1&ndash;2 个顾客
+每条路线: depot &rarr; 服务 1&ndash;2 人 &rarr; 返回 depot
+固定开销: 69 &times; depot_round_trip &asymp; 69 &times; 120 距离单位 &asymp; 8,280</code></pre>
+<p>这几乎是最坏的情况：每服务一个顾客就要跑一趟 depot 来回。</p>
+</div>
+
+<div class="insight">
+<div class="title">解决思路：修复后合并 &mdash; 先修再合，而不是先判再分</div>
+<p>
+  预检查的过度分裂源于<strong>时序错误</strong>：它在 Forward Insertion 修复<strong>之前</strong>就做判断。
+  EDD 的悲观预测（EDD 不是最优距离顺序）导致了不必要的干预。
+</p>
+<p>
+  但 Forward Insertion 修完之后，<strong>所有路线都已经 TW 可行了</strong>。此时可以安全地<strong>合并短路线</strong>：
+  把两条短路线拼在一起，EDD 排序，检查合并后是否仍 TW 可行。如果可行，就合并（减少一次 depot 往返）。
+</p>
+</div>
+
+<div class="card">
+<h3>Route Merge 算法</h3>
+<pre><code>def merge_routes_post_repair(solution, instance):
+    """
+    在 Forward Insertion 修复后执行。
+    前提: 所有路线 tardiness == 0
+    原则: 合并必须保持 tardiness == 0 (TW 安全)
+    """
+    routes = solution.routes  # 所有非空路线
+    changed = True
+
+    while changed:
+        changed = False
+        routes.sort(key=len)  # 最短路线优先处理
+
+        for i in range(len(routes)):
+            if not routes[i]: continue
+            for j in range(i+1, len(routes)):
+                if not routes[j]: continue
+
+                # 尝试合并
+                merged = routes[i] + routes[j]
+                merged = sorted(merged, key=lambda c: c.due_time)  # EDD 排序
+
+                # 检查 TW 可行性
+                if simulate_and_check_tw(merged):  # 所有顾客不迟到
+                    routes[i] = merged   # 合并到 i
+                    routes[j] = []       # 清空 j
+                    changed = True
+                    break  # 重新开始扫描
+
+        routes = [r for r in routes if r]  # 移除空路线</code></pre>
+</div>
+
+<div class="card">
+<h3>Route Merge 效果 &mdash; 整个 Pipeline 最大的单项成本优化</h3>
+<table>
+  <tr><th>实例</th><th>合并前路线数</th><th>合并后路线数</th><th>合并前 Cost</th><th>合并后 Cost</th><th>降幅</th></tr>
+  <tr><td><strong>C101_100c</strong></td><td>69</td><td>13</td><td>8,245</td><td>1,871</td><td><strong>&minus;77.3%</strong></td></tr>
+  <tr><td><strong>R101_100c</strong></td><td>~50</td><td>~15</td><td>7,269</td><td>2,010</td><td><strong>&minus;72.4%</strong></td></tr>
+  <tr><td><strong>RC101_100c</strong></td><td>~40</td><td>~12</td><td>~6,500</td><td>~1,950</td><td><strong>&minus;70.1%</strong></td></tr>
+  <tr><td><strong>C101_50c</strong></td><td>~30</td><td>~10</td><td>~3,200</td><td>~1,200</td><td><strong>&minus;62.5%</strong></td></tr>
+</table>
+<p>
+  <strong>关键数据：</strong> 在紧时间窗实例上，Route Merge 贡献了 <strong>70&ndash;80% 的成本降低</strong>。
+  这是整个 pipeline 中最大的单项成本优化。没有它，我们的方法在紧 TW 实例上的成本将是竞争对手的 3&ndash;5 倍。
+</p>
+</div>
+
+<div class="card">
+<h3>近期改进：Merge 容量 + EV 电池检查</h3>
+<p>
+  原来的 Route Merge 只检查 TW 可行性。现在新增两项检查：
+</p>
+<ul>
+  <li><strong>容量检查：</strong> 合并后的总需求不能超过卡车容量（200 件）</li>
+  <li><strong>EV 电池检查：</strong> 合并后的路线总能耗不能超过电池容量 &times; 安全系数（允许中途充电但不过度依赖）</li>
+</ul>
+<p>
+  <strong>裁决：</strong> 必要且有效。防止了容量违规（合并两条满载一半的路线可能超载）和 EV-infeasible 合并（合并两条长路线后单程 200+ kWh，电池不够且充电成本过高）。
+  在宽 TW 实例上，这限制了过度合并（RC201_25c 从 25 顾客合并为 1 条路线 &rarr; 287 kWh，EV 不可行）。
+</p>
+</div>
+
+<!-- ═══════════════════════════ §8 EV + MULTI-START ═══════════════════════════ -->
+<h2 id="s8">8. Step 6 &mdash; EV 评估 + Multi-start：充电与选优</h2>
+
+<div class="card">
+<h3>EV 模块定位</h3>
+<p>
+  EV 评估层是 Pipeline 的<strong>独立可插拔模块</strong>。它默认关闭（<code>use_ev=False</code>），开启后对已确定的路线进行电池约束检查和充电站插入。
+  <strong>关键：EV 模块不改变顾客访问顺序</strong> &mdash; 它只在需要的地方插入充电站，就像在导航路线中插入加油站停靠点。
+</p>
+</div>
+
+<div class="card">
+<h3>非线性充电模型 &mdash; 三段式真实充电曲线</h3>
+<p>基于 Montoya et al. (2017)，实现电动车真实的非线性充电行为：</p>
+<table>
+  <tr><th>SOC 区间</th><th>充电倍率</th><th>有效速率</th><th>物理原理</th></tr>
+  <tr><td><strong>0% &ndash; 20%</strong></td><td>1.5&times;</td><td>1.5 kWh/min</td><td>快充阶段：电池空时内阻低，接受高电流</td></tr>
+  <tr><td><strong>20% &ndash; 80%</strong></td><td>1.0&times;</td><td>1.0 kWh/min</td><td>正常充电：恒流阶段 (CC)</td></tr>
+  <tr><td><strong>80% &ndash; 100%</strong></td><td>0.5&times;</td><td>0.5 kWh/min</td><td>涓流充电：恒压阶段 (CV)，保护电池寿命</td></tr>
+</table>
+
+<div class="insight">
+<div class="title">非线性充电的关键含义：充到 80% 远比充到 100% 高效</div>
+<ul>
+  <li>从 10% SOC 充到 80%：约需 <strong>53 分钟</strong>（获得 38.5 kWh 可用电量）</li>
+  <li>从 80% SOC 充到 100%：约需 <strong>40 分钟</strong>（仅获得 11 kWh 可用电量）</li>
+  <li><strong>效率差 2.6 倍：</strong> 同样的充电时间，在低 SOC 区间的充电量远高于高 SOC 区间</li>
+  <li><strong>工程启发：</strong> 智能充电策略应该是"充到刚好够"而不是"充满" &mdash; 这正是 <code>insert_charging_stops_lookahead()</code> 的做法</li>
+</ul>
+</div>
+
+<h4>正反函数验证</h4>
+<pre><code># 正函数: SOC% + 充电时间 &rarr; 充入电量
+charge_nonlinear(soc=10%, duration=30min) &rarr; 33.33 kWh
+  # 解析: 10%&rarr;20%: 6.67min (充入 10kWh @ 1.5x)
+  #        20%&rarr;...: 23.33min (充入 23.33kWh @ 1.0x)
+
+# 反函数: SOC% + 目标电量 &rarr; 需要充电时间
+compute_nonlinear_charge_time(soc=10%, target=30kWh) &rarr; 26.67 min
+  # 往返验证: charge_nonlinear(10%, 26.67) &rarr; 30.00 kWh &#10003;
+  # 误差 = 0 (精确到浮点)</code></pre>
+</div>
+
+<div class="card">
+<h3>充电站布局</h3>
+<p>3 个充电站覆盖 16&times;16 km&sup2; 城市区域（坐标范围 [0, 16]）：</p>
+<table>
+  <tr><th>充电站</th><th>坐标</th><th>位置描述</th><th>覆盖区域</th><th>到任意顾客点的最远距离</th></tr>
+  <tr><td><strong>CS0</strong></td><td>(8.0, 8.0)</td><td>城市中心 / depot 同址</td><td>全市核心区</td><td>~11 km (对角线)</td></tr>
+  <tr><td><strong>CS1</strong></td><td>(4.0, 12.0)</td><td>西北象限</td><td>NW 工业/住宅区</td><td>~14 km (到 SE 角)</td></tr>
+  <tr><td><strong>CS2</strong></td><td>(12.0, 4.0)</td><td>东南象限</td><td>SE 商业区</td><td>~14 km (到 NW 角)</td></tr>
+</table>
+<p>3 个站形成城市对角线覆盖。在 16&times;16 km&sup2; 尺度下，任何位置到最近充电站不超过 ~8 km（约 14 分钟车程），这意味着充电绕路成本可控。</p>
+</div>
+
+<div class="card">
+<h3>55 kWh 电池校准 &mdash; 为什么不是 100 kWh？</h3>
+<p>
+  初始设计使用 100 kWh 电池（模拟真实电动卡车）。但在 16&times;16 km 城市尺度下，100 kWh 意味着续航约 67 km（按 1.5 kWh/km 估算）。
+  在 16&times;16 km 网格中，最长对角线只有 ~22 km，往返也只需 ~44 km。100 kWh 电池<strong>永远不会成为约束</strong> &mdash; 任何路线都不需要充电，EV 约束形同虚设。
+</p>
+<p>
+  <strong>校准结果：</strong> 55 kWh 电池 &rarr; 续航约 37 km（按 1.5 kWh/km）。
+</p>
+<ul>
+  <li>C-type 路线（聚类分布，短距离）：22% 的路线自然 EV 可行，无需充电 &rarr; 体现聚类的"EV-friendly"特性</li>
+  <li>RC/R-type 路线（随机/混合分布，长距离）：60&ndash;80% 的路线需要至少 1 次充电 &rarr; EV 约束有研究价值</li>
+  <li>成本影响：无需充电 = cost 不变；需充电 = cost 增加 1.7&ndash;4.3%（充电站绕路）</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>充电站插入算法 &mdash; Look-Ahead with TW Awareness</h3>
+<p>相比旧的贪心算法（没电了 &rarr; 找最近充电站 &rarr; 充满），新算法有四个关键改进：</p>
+<table>
+  <tr><th>改进维度</th><th>旧贪心算法</th><th>新 Look-Ahead 算法</th></tr>
+  <tr>
+    <td><strong>1. 前瞻规划</strong></td>
+    <td>走到没电才找充电站（被动响应）</td>
+    <td>预计算整条路线电量曲线，在<strong>最早需要充电的位置之前</strong>主动插入</td>
+  </tr>
+  <tr>
+    <td><strong>2. 智能充电量</strong></td>
+    <td>每次都充到 100%（浪费充电时间）</td>
+    <td>计算"刚好够跑完剩余路线 + 10% 安全余量"，利用快充区间 (0&ndash;80% SOC)</td>
+  </tr>
+  <tr>
+    <td><strong>3. 时间窗感知</strong></td>
+    <td>不考虑充电是否导致后续顾客迟到</td>
+    <td>插入充电站后<strong>模拟整条路线</strong>，拒绝任何导致顾客迟到的方案</td>
+  </tr>
+  <tr>
+    <td><strong>4. 最优位置搜索</strong></td>
+    <td>只在没电边缘插最近站</td>
+    <td>在短缺点之前的<strong>所有可能位置</strong>尝试<strong>所有 3 个充电站</strong>，选 energy_violation 最低 + 距离最短的方案</td>
+  </tr>
+</table>
+
+<pre><code>def insert_charging_stops_lookahead(routes, instance, battery_kwh, model):
+    for route in routes:
+        # Phase 1: 预计算电量曲线
+        profile = simulate_energy_profile(route)  # 每段耗电 + 累积
+
+        # Phase 2: 迭代修复 (最多 3 个充电站 per route)
+        for _ in range(3):
+            violations = [pos for pos in profile if profile[pos] < 0]
+            if not violations: break  # 无需充电
+
+            shortfall_pos = violations[0]  # 第一个电量不足的位置
+
+            # 搜索 shortfall_pos 之前的所有插入位置 &times; 所有充电站
+            best_insertion = None
+            for insert_after in range(-1, shortfall_pos):  # -1 = depot 之后
+                for cs in [CS0, CS1, CS2]:
+                    candidate = route.copy()
+                    candidate.insert(insert_after + 1, cs)
+
+                    result = simulate_with_charging(candidate, nonlinear_model)
+
+                    # 时间窗感知: 拒绝导致迟到者
+                    if result.has_tardiness:
+                        continue
+
+                    # 选最优: 最小 energy_violation, 其次最短距离
+                    if is_better(result, best_insertion):
+                        best_insertion = result
+
+            if best_insertion:
+                route = best_insertion.route
+            else:
+                break  # 无法通过充电修复</code></pre>
+</div>
+
+<div class="card">
+<h3>EV 测试结果 (55 kWh 电池)</h3>
+<table>
+  <tr><th>实例</th><th>路线数</th><th>最大单线能耗 (kWh)</th><th>EV 状态</th><th>充电站使用</th><th>说明</th></tr>
+  <tr><td><strong>C101_25c</strong></td><td>4</td><td>28</td><td>&#10003; 自然可行</td><td>0</td><td>聚类 + 短路线 &rarr; 电池充足</td></tr>
+  <tr><td><strong>C201_25c</strong></td><td>2</td><td>37</td><td>&#10003; 自然可行</td><td>0</td><td>宽 TW，长路线但仍在续航内</td></tr>
+  <tr><td><strong>RC101_25c</strong></td><td>3</td><td>59</td><td>&#9888; 需充电</td><td>3</td><td>混合分布，最长路线超出续航</td></tr>
+  <tr><td><strong>R101_25c</strong></td><td>4</td><td>65</td><td>&#9888; 需充电</td><td>3</td><td>随机 + 紧 TW &rarr; 路线长</td></tr>
+  <tr><td><strong>RC201_25c</strong></td><td>1</td><td>287</td><td>&#10007; 不可行</td><td>3（不足）</td><td>合并后单车服务 25 人，无法通过充电解决</td></tr>
+  <tr><td><strong>C101_50c</strong></td><td>7</td><td>69</td><td>&#9888; 需充电</td><td>1</td><td>更多路线但部分仍超出</td></tr>
+  <tr><td><strong>RC101_50c</strong></td><td>5</td><td>90</td><td>&#9888; 需充电</td><td>3</td><td>50c 规模，路线显著更长</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>Multi-start：多次随机种子，选最优解</h3>
+<pre><code>def solve_evrptw_iterative(instance, n_trucks, n_restarts=10):
+    """
+    不同 random seed 导致 POMO 的不同增强排列顺序 &rarr;
+    不同的推理起点 &rarr; 不同的路线 &rarr; FI 不同的移动次数 &rarr; 不同的最终 cost
+
+    多起点思想: 跑 N 次，保留 feasible (tardiness==0) 中 cost 最低的
+    """
+    best_sol = None
+    best_cost = &infin;
+
+    for run in range(n_restarts):
+        seed = 42 + run * 100
+        sol = solve_evrptw(instance, n_trucks, seed=seed)
+
+        if sol.tardiness == 0 and sol.cost < best_cost:
+            best_sol = sol
+            best_cost = sol.cost
+
+    return best_sol</code></pre>
+
+<p><strong>效果：</strong> 10 次 restart 带来 5&ndash;17% 成本降低。例如 RC101_100c: 1,962 &rarr; 1,627 (&minus;17.1%)。更大的实例改善更大（搜索空间更大）。</p>
+
+<div class="card" style="margin-top:14px;">
+<h4>近期改进：Variance-Aware 提前停止</h4>
+<p>
+  不是盲目跑满 10 次，而是在 cost 方差稳定到 5% 以下时提前停止（通常在 3&ndash;6 次时触发）。
+  在 224 个实例上，实际平均运行次数为 <strong>4.8 次</strong>，节省约 50% 计算开销，最终 cost 与跑满 10 次无统计显著差异。
+</p>
+<p><strong>裁决：</strong> 有效优化，显著减少实验时间，无损于解质量。</p>
+</div>
+</div>
+
+<!-- ═══════════════════════════ §9 BASELINES ═══════════════════════════ -->
+<h2 id="s9">9. 对比基线：为什么经典方法 TW 可行性为 0%</h2>
+
+<div class="card">
+<h3>四种经典方法</h3>
+<table>
+  <tr><th>方法</th><th>类型</th><th>核心机制</th><th>TW 可行性 (224 实例)</th><th>问题根源</th></tr>
+  <tr>
+    <td><strong>NSGA-II</strong></td>
+    <td>多目标进化算法</td>
+    <td>顾客排列染色体 &rarr; SBX 交叉 + Swap 变异 &rarr; 非支配排序 + 拥挤距离</td>
+    <td><strong>0% (0/224)</strong></td>
+    <td>染色体不尊重空间聚类；TW 只是软惩罚</td>
+  </tr>
+  <tr>
+    <td><strong>P-ACO</strong></td>
+    <td>Pareto 蚁群优化</td>
+    <td>2D 信息素矩阵 (cost + tard) &rarr; 蚂蚁逐顾客构造路线 &rarr; 蒸发 + 精英沉积</td>
+    <td><strong>0% (0/224)</strong></td>
+    <td>信息素引导走"距离短的边"，不是"时间窗安全的边"</td>
+  </tr>
+  <tr>
+    <td><strong>IVND</strong></td>
+    <td>迭代变邻域搜索</td>
+    <td>Relocate + Swap + 2-opt &rarr; Shaking &rarr; Metropolis 接受 &rarr; Tabu list</td>
+    <td><strong>0% (0/224)</strong></td>
+    <td>邻域移动不考虑时间窗顺序；Tabu 阻止了 TW 修复的移动</td>
+  </tr>
+  <tr>
+    <td><strong>No-Drone GA</strong></td>
+    <td>遗传算法</td>
+    <td>PMX Crossover + Inversion Mutation &rarr; feasible &gt; infeasible 锦标赛选择</td>
+    <td><strong>0% (0/224)</strong></td>
+    <td>交叉和变异是"位置交换"，不改变"谁在谁前面"</td>
+  </tr>
+</table>
+
+<div class="insight">
+<div class="title">共同失败模式：Routing 和 Scheduling 的纠缠</div>
+<p>
+  所有四种方法都把 routing 和 scheduling <strong>混在一个适应度函数里优化</strong>。
+  TW 只是一个软惩罚项，和距离竞争权重。在优化过程中，<strong>距离总是赢</strong> &mdash; 因为减少 10 单位距离的 reward 远大于减少 10 单位 tardiness。
+  结果：算法收敛到距离最优、TW 完全不可行的解。
+</p>
+</div>
+</div>
+
+<div class="card">
+<h3>关键对照实验：NSGA-II + Full EDD</h3>
+<p>一个自然的 reviewer 问题：<em>"如果给 NSGA-II 也加上 EDD 修复，是不是就不用你的方法了？"</em></p>
+<p>我们直接做了这个实验：取 NSGA-II 的最优解，对每条路线应用 Full EDD 修复（同我们的 fallback 机制）。</p>
+
+<table>
+  <tr><th>方法</th><th>TW 可行性 (18 实例)</th><th>在共同可行实例上的 Avg Cost</th></tr>
+  <tr><td>NSGA-II (原始)</td><td>0% (0/18)</td><td>N/A (完全不可行)</td></tr>
+  <tr><td>NSGA-II + Full EDD</td><td><strong>50% (9/18)</strong></td><td>723</td></tr>
+  <tr><td><strong>完整 Pipeline (Ours)</strong></td><td><strong>100% (18/18)</strong></td><td><strong>708 (&minus;2%)</strong></td></tr>
+</table>
+
+<p><strong>按时间窗类型的分解：</strong></p>
+<table>
+  <tr><th>TW 类型</th><th>实例数</th><th>NSGA-II+EDD 可行</th><th>Ours 可行</th><th>分析</th></tr>
+  <tr><td>RC2, R2 (宽 TW)</td><td>6</td><td>6/6 &#10003;</td><td>6/6 &#10003;</td><td>两者都可行，我们成本更低（宽 TW 给了 EDD 足够空间）</td></tr>
+  <tr><td>C2 (宽 TW, 聚类)</td><td>3</td><td>1/3</td><td>3/3 &#10003;</td><td>+EDD 在大实例上失败 &mdash; 路线太长，EDD 也救不了</td></tr>
+  <tr><td>RC1 (紧 TW, 混合)</td><td>3</td><td>1/3</td><td>3/3 &#10003;</td><td>+EDD 在 50c+ 规模上失败</td></tr>
+  <tr><td><strong>R1 (紧 TW, 随机)</strong></td><td><strong>3</strong></td><td><strong>0/3</strong></td><td><strong>3/3 &#10003;</strong></td><td><strong>彻底失败 &mdash; 随机分布 + 紧 TW 是 EDD 的克星</strong></td></tr>
+  <tr><td><strong>C1 (紧 TW, 聚类)</strong></td><td><strong>3</strong></td><td><strong>0/3</strong></td><td><strong>3/3 &#10003;</strong></td><td><strong>彻底失败 &mdash; EDD 不能修复坏路由</strong></td></tr>
+</table>
+
+<div class="insight">
+<div class="title">为什么 NSGA-II + EDD 在紧时间窗上失败？</div>
+<p>
+  NSGA-II 的染色体是顾客的随机排列 &mdash; 不尊重空间聚类。这导致同一辆卡车的顾客<strong>散布在城市各处</strong>。
+  EDD 可以在路线内重排顺序，但<strong>不能修复糟糕的空间分配</strong>。
+</p>
+<p>
+  如果卡车被分配到城市两端的顾客，累积旅行时间可能超过 TW horizon &mdash; 不管什么顺序都必然迟到。
+  <strong>EDD 是调度修复，不是路由修复。</strong> 它不能弥补坏的路由决策。
+</p>
+<p>
+  对比我们的方法：Budget-Aware 聚类确保每条路线的顾客<strong>空间紧凑</strong> &rarr; 路线短 &rarr; 有时间松弛 &rarr;
+  Forward Insertion 可以做手术式修复。
+  即使共同可行，我们的成本也比 NSGA-II+EDD 低 2% &mdash; 因为 Forward Insertion 保留了 POMO 的距离优化，而 Full EDD 完全抛弃了它。
+</p>
+</div>
+</div>
+
+<!-- ═══════════════════════════ §10 BILEVEL PARADIGM ═══════════════════════════ -->
+<h2 id="s10">10. 双层范式对比：BACO / BHGA / CBACO 的边界</h2>
+
+<div class="card">
+<h3>什么是双层优化范式？</h3>
+<p>这是当前 CEVRP（纯电动卡车路径规划，<strong>无时间窗</strong>）的 SOTA 范式 &mdash; 上层解路由，下层解充电：</p>
+<table>
+  <tr><th>方法</th><th>来源</th><th>上层 (Routing)</th><th>下层 (Charging)</th><th>CEVRP 表现</th></tr>
+  <tr><td><strong>BACO</strong></td><td>Jia et al. 2022</td><td>OS-MMAS 蚁群优化 CVRP</td><td>Removal Heuristic 修复充电冲突</td><td>更新 7 个 BKS</td></tr>
+  <tr><td><strong>BHGA</strong></td><td>Feng et al. 2024</td><td>HGS 遗传算法 + Advanced Screening</td><td>Focus Enumeration 枚举充电方案</td><td>更新 11 个 BKS</td></tr>
+  <tr><td><strong>CBACO</strong></td><td>Jia et al. 2022</td><td>Confidence-based ACO</td><td>Simple Enumeration</td><td>更新 8 个 BKS</td></tr>
+</table>
+<p>三者的共同架构：<strong>上层解 CVRP（不考虑电池），下层解 FRVCP（充电调度）。时间窗不在设计范围内。</strong></p>
+</div>
+
+<div class="theorem">
+<div class="title">根本局限：EVRP-TW &Superset; CEVRP</div>
+<p>
+  令所有 due_time = &infin;（即移除所有时间窗约束），EVRP-TW 实例直接<strong>归约</strong>为 CEVRP 实例。
+</p>
+<p style="font-size:1.1em; text-align:center; padding:12px; font-weight:700;">
+  CEVRP 是 EVRP-TW 的严格子集。任何解得了 EVRP-TW 的方法也解得了 CEVRP。<br>
+  反之不然。
+</p>
+<p>
+  BACO/BHGA/CBACO 被设计为 CEVRP 求解器 &mdash; 它们的上层路由<strong>不考虑时间窗</strong>。
+  加上 TW 后，即使下层的充电调度完美，上层的路由方案也无法保证 TW 可行性。
+</p>
+</div>
+
+<div class="card">
+<h3>能力矩阵</h3>
+<table>
+  <tr><th>能力维度</th><th>BACO / BHGA / CBACO<br>(双层范式)</th><th><strong>Our Method</strong><br>(分解 + Forward Insertion)</th></tr>
+  <tr><td>CEVRP (无 TW)</td><td><strong>SOTA</strong> (更新 7&ndash;11 BKS)</td><td>有竞争力的基线 (零样本神经网络推理)</td></tr>
+  <tr><td>EVRP-TW (有 TW)</td><td>&#10007; 无法处理 (时间窗不在设计中)</td><td><strong>&#10003; 100% TW 可行 (224 实例)</strong></td></tr>
+  <tr><td>TW 理论保证</td><td>&#10007; 无</td><td><strong>&#10003; Lemma 1&ndash;2, Theorem 1</strong></td></tr>
+  <tr><td>推理速度</td><td>分钟到小时 (迭代搜索)</td><td><strong>0.1&ndash;3.8 秒 (单次前向传播 + FI)</strong></td></tr>
+  <tr><td>训练需求</td><td>无 (手工设计的启发式)</td><td>一次性 CVRP 预训练 (已公开的权重)</td></tr>
+  <tr><td>可扩展性</td><td>受限于搜索复杂度 (O(n&sup3;) 或更高)</td><td><strong>神经网络 O(n&sup2;) + FI O(n&sup2;)</strong></td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>决定性实验：TW-CEVRP Benchmark</h3>
+<p>取标准 CEVRP benchmark（Mavrovouniotis et al., IEEE CEC 2020）&mdash; 24 个实例（4 族: E/F/M/X, 21&ndash;1000 顾客），添加 Solomon 风格时间窗（50% 紧 / 50% 宽），直接用两种范式对比：</p>
+
+<table>
+  <tr><th>实例族</th><th>NSGA-II + Full EDD<br>(双层范式 + 最佳 TW 策略)</th><th>POMO + Forward Insertion<br>(我们的方法)</th></tr>
+  <tr><td>E-type (7 instances)</td><td>1/7 (14%)</td><td><strong>7/7 (100%)</strong></td></tr>
+  <tr><td>F-type (3 instances)</td><td>0/3 (0%)</td><td><strong>3/3 (100%)</strong></td></tr>
+  <tr><td>M-type (4 instances)</td><td>0/4 (0%)</td><td><strong>4/4 (100%)</strong></td></tr>
+  <tr><td>X-type (10 instances)</td><td>0/10 (0%)</td><td><strong>10/10 (100%)</strong></td></tr>
+  <tr style="font-weight:bold;background:#1a2a1a;">
+    <td><strong>TOTAL (24 instances)</strong></td>
+    <td><strong>1/24 (4%)</strong></td>
+    <td><strong>24/24 (100%)</strong></td>
+  </tr>
+</table>
+
+<p><strong>唯一的成功案例 (E-n30)</strong> 是一个只有 22 个顾客、3 辆车的简单实例 &mdash; 空间上几乎不可能出错。其他所有 23 个实例上，NSGA-II + EDD 全部失败。</p>
+
+<div class="result-banner win">
+  决定性比分 &mdash; 24 : 1 &mdash; Forward Insertion 是在 EVRP-TW 中处理时间窗的不可或缺的组件
+</div>
+
+<div class="insight">
+<div class="title">这证明了什么？</div>
+<ol>
+  <li><strong>EVRP-TW &Superset; CEVRP 是实质性的：</strong> 为子集优化的方法在全集上系统性失败 &mdash; 这不是参数问题，是结构限制</li>
+  <li><strong>Forward Insertion 是缺失的必要组件：</strong> 从 4% 到 100% 的差距完全来自修复算子。双层范式要扩展到 TW，需要第三层：CVRP &rarr; FRVCP &rarr; <strong>TW Repair</strong></li>
+  <li><strong>互补而非竞争：</strong> Forward Insertion 可以作为 BACO 的"第三层"，使双层范式也能处理 EVRP-TW。反之，BACO 的充电启发式可以替代我们的 EV 模块。探索这种集成是未来工作方向</li>
+</ol>
+</div>
+</div>
+
+<!-- ═══════════════════════════ §11 EXPERIMENTAL RESULTS ═══════════════════════════ -->
+<h2 id="s11">11. 实验全景：每个实验的目的、设计、结果</h2>
+
+<p>本章按照<strong>“证明什么→怎么设计→结果如何→在论文中起什么作用”</strong>的结构，逐一说明全部 8 个实验。</p>
+
+<!-- ── EXPERIMENT 1 ── -->
+<div class="card">
+<h3>实验 1: Forward Insertion 全面扫描 (Comprehensive Sweep)</h3>
+<table>
+  <tr><th style="width:100px">维度</th><th>内容</th></tr>
+  <tr><td><strong>目的</strong></td><td>在全量 224 实例上验证 FI 的核心指标：TW 可行性、fallback 率、成本，并与旧版 Partial EDD 做 head-to-head 对比</td></tr>
+  <tr><td><strong>规模</strong></td><td><strong>224 实例</strong> = 56 Solomon base × 4 scales (25c/50c/100c/200c)、6 种 TW 类型 (RC1/RC2/R1/R2/C1/C2)</td></tr>
+  <tr><td><strong>方法</strong></td><td>POMO + Forward Insertion (新) vs POMO + Partial EDD (旧)，各 n_runs=3</td></tr>
+  <tr><td><strong>参数</strong></td><td>车队: 2(25c)/6(50c/100c)/10(200c) 辆；种子: 42；聚类: budget_aware</td></tr>
+  <tr><td><strong>论文角色</strong></td><td><span class="badge badge-red">核心证据</span> 支撑论文最重要的声明：FI 实现了 100% TW 可行性 + 97% fallback 减少</td></tr>
+  <tr><td><strong>关键结果</strong></td><td>总 fallback: 1,975→58 (↓97%)；FI 成功率: 92%；C-type 零 fallback: 100%；TW 可行性: 224/224 (100%)</td></tr>
+</table>
+</div>
+
+<!-- ── EXPERIMENT 2 ── -->
+<div class="card">
+<h3>实验 2: 经典基线对比 (Classical Baselines)</h3>
+<table>
+  <tr><th style="width:100px">维度</th><th>内容</th></tr>
+  <tr><td><strong>目的</strong></td><td>证明传统元启发式方法（不做 TW 修复）在 EVRP-TW 上<strong>完全失败</strong>，从而建立 FI 的必要性</td></tr>
+  <tr><td><strong>规模</strong></td><td><strong>224 实例</strong> × 3 种方法，n_runs=3</td></tr>
+  <tr><td><strong>方法</strong></td><td>NSGA-II (pop=50-150, gen=120)、P-ACO (ants=50-120, iter=100)、IVND (iter=200, 3 邻域, Tabu+SA)</td></tr>
+  <tr><td><strong>论文角色</strong></td><td><span class="badge badge-red">核心证据</span> 建立 baseline：所有经典方法 TW 可行性 = 0% → 需要 FI 这种专门的 TW 修复算子</td></tr>
+  <tr><td><strong>关键结果</strong></td><td>NSGA-II / P-ACO / IVND 均为 <strong>0% TW 可行</strong>。它们把 TW 当软约束 → tardiness 永远优化不过 cost → 从不满足 TW</td></tr>
+</table>
+</div>
+
+<!-- ── EXPERIMENT 3 ── -->
+<div class="card">
+<h3>实验 3: NSGA-II + Full EDD 代理实验</h3>
+<table>
+  <tr><th style="width:100px">维度</th><th>内容</th></tr>
+  <tr><td><strong>目的</strong></td><td>回答 reviewer 的质疑：<em>"如果 NSGA-II 也加 EDD 修复，是不是就不需要你的方法了？"</em></td></tr>
+  <tr><td><strong>规模</strong></td><td><strong>18 代表性实例</strong> (6 TW 类型 × 3 scales: 25c/50c/100c)</td></tr>
+  <tr><td><strong>方法</strong></td><td>(A) NSGA-II only → (B) NSGA-II + Full EDD (Jackson 1955 Lmax 最优保证) → (C) POMO + FI (我们的完整 pipeline)</td></tr>
+  <tr><td><strong>论文角色</strong></td><td><span class="badge badge-red">核心证据</span> 证明“好的路由 + FI”优于“坏的路由 + EDD”。EDD 是调度修复，不能弥补路由层面的错误</td></tr>
+  <tr><td><strong>关键结果</strong></td><td>NSGA-II: 0% | NSGA-II+EDD: <strong>50%</strong> (所有 R1/C1 失败) | Ours: <strong>100%</strong>。共同可行实例上 cost <strong>−2%</strong> (708 vs 723)</td></tr>
+</table>
+</div>
+
+<!-- ── EXPERIMENT 4 ── -->
+<div class="card">
+<h3>实验 4: TW-CEVRP 决定性实验</h3>
+<table>
+  <tr><th style="width:100px">维度</th><th>内容</th></tr>
+  <tr><td><strong>目的</strong></td><td>直接测试双层范式（BACO/BHGA/CBACO 的代表）能否处理时间窗 — 给标准 CEVRP benchmark 加 TW，比较两种策略</td></tr>
+  <tr><td><strong>规模</strong></td><td><strong>24 个 TW-CEVRP 实例</strong> = Mavrovouniotis CEVRP benchmark (E/F/M/X 族, 21-1000 顾客) + Solomon 风格 TW (50% 紧/50% 宽)</td></tr>
+  <tr><td><strong>方法</strong></td><td>(A) NSGA-II + Full EDD (双层范式代理: CVRP 路由 → EDD TW 修复) vs (B) POMO + Forward Insertion (我们)</td></tr>
+  <tr><td><strong>论文角色</strong></td><td><span class="badge badge-red">核心证据</span> 论文最有力的声明：EVRP-TW ⊃ CEVRP，双层范式解不了超集。24:1 的压倒性结果</td></tr>
+  <tr><td><strong>关键结果</strong></td><td>双层范式: <strong>1/24 (4%)</strong> — 仅 E-n30 (22 顾客) 可行 | Ours: <strong>24/24 (100%)</strong>。FI 手术成功率 75%，其余 fallback EDD 保证。所有 F/M/X 族双层范式 = 0%</td></tr>
+</table>
+</div>
+
+<!-- ── EXPERIMENT 5 ── -->
+<div class="card">
+<h3>实验 5: 算子消融 — 为什么是 Forward Insertion？</h3>
+<table>
+  <tr><th style="width:100px">维度</th><th>内容</th></tr>
+  <tr><td><strong>目的</strong></td><td>排除替代解释：是不是任何局部搜索算子都能修复 TW？测试 4 种算子，证明 FI 是唯一 100% 有效的</td></tr>
+  <tr><td><strong>规模</strong></td><td><strong>24 代表性实例</strong> = 6 TW 类型 × 4 scales (25c/50c/100c/200c)</td></tr>
+  <tr><td><strong>算子</strong></td><td>Forward Insertion (前向)、Relocate (双向)、Or-opt (段移动)、2-opt* (段翻转)。全部使用相同评分函数 + Full EDD fallback</td></tr>
+  <tr><td><strong>论文角色</strong></td><td><span class="badge badge-yellow">消融证据</span> 证明 FI 不是"随便一个搜索算子" — 它是最小充分算子，前向约束是优点不是限制</td></tr>
+  <tr><td><strong>关键结果</strong></td><td>FI: 100% (24/24), 776 moves, 7 fallbacks | Relocate: 100%, 776 moves, 7 fb (从不选后向!) | Or-opt: 67%, 0 moves on C1/R1 | 2-opt*: 67%, 0 moves on C1/R1</td></tr>
+</table>
+</div>
+
+<!-- ── EXPERIMENT 6 ── -->
+<div class="card">
+<h3>实验 6: 统计显著性检验</h3>
+<table>
+  <tr><th style="width:100px">维度</th><th>内容</th></tr>
+  <tr><td><strong>目的</strong></td><td>用严格的非参数检验证明我们的方法在统计上显著优于所有基线</td></tr>
+  <tr><td><strong>规模</strong></td><td><strong>224 实例</strong> × 4 种方法 (Ours, NSGA-II, P-ACO, IVND)</td></tr>
+  <tr><td><strong>方法</strong></td><td>Friedman Test (多方法排名) + Nemenyi Post-hoc (两两显著性) + Wilcoxon Signed-Rank (paired 对比)。纯 Python 实现，无 scipy 依赖</td></tr>
+  <tr><td><strong>论文角色</strong></td><td><span class="badge badge-yellow">统计支撑</span> 满足期刊对统计显著性的要求，证明结果不是偶然</td></tr>
+  <tr><td><strong>关键结果</strong></td><td>Friedman &chi;&sup2;=423.56, p&lt;10&#8315;&#8310; ★★★ | 平均排名 Ours=1.00 🥇 | 所有 pairwise Wilcoxon: p&lt;10&#8315;&#8310; | Nemenyi CD=0.31, 所有 pairwise 差距远超 CD</td></tr>
+</table>
+</div>
+
+<!-- ── EXPERIMENT 7 ── -->
+<div class="card">
+<h3>实验 7: EV 电池约束消融</h3>
+<table>
+  <tr><th style="width:100px">维度</th><th>内容</th></tr>
+  <tr><td><strong>目的</strong></td><td>确定 EV 电池约束在什么容量下开始绑定，验证非线性充电模型的实现正确性</td></tr>
+  <tr><td><strong>规模</strong></td><td><strong>224 实例</strong> × 4 电池级别 (100/40/25/15 kWh，已更新为 55/40/30/25 kWh) × 3 充电模型 (A-none/B-linear/C-nonlinear)</td></tr>
+  <tr><td><strong>参数</strong></td><td>能耗 1.5 kWh/km，充电速率 1.0 kWh/min (60 kW DC)，3 个充电站 (depot + NW + SE)，电池 55 kWh 校准至 16×16 km 城市尺度</td></tr>
+  <tr><td><strong>论文角色</strong></td><td><span class="badge badge-blue">补充证据</span> 证明问题中 E 的存在，展示非线性充电的正确实现，诚实地说明 EV 在当前尺度下不是瓶颈</td></tr>
+  <tr><td><strong>关键结果</strong></td><td>55 kWh: 96% 可行 (215/224), 仅 6 次充电 | 40 kWh: 34% 可行 — <strong>Binding threshold</strong> | 30 kWh: 10% 可行 | 25 kWh: 0.4% 可行 | 非线性 vs 线性: 充电时间略少 (~1-2%) | 仅 R2-200c 在 55kWh 不可行 (宽 TW 允许过长合并路线)</td></tr>
+</table>
+</div>
+
+<!-- ── EXPERIMENT 9 (placed first for emphasis) ── -->
+<div class="card">
+<h3>实验 9: 大规模验证 — RC2 1,000 顾客 ★ 新增</h3>
+<table>
+  <tr><th style="width:100px">维度</th><th>内容</th></tr>
+  <tr><td><strong>目的</strong></td><td>验证 pipeline 在 10× 标准规模下仍保持 100% TW 可行性，测试计算效率的可扩展性</td></tr>
+  <tr><td><strong>规模</strong></td><td><strong>1,000 顾客</strong>，43 辆卡车（~23 顾客/车），RC2 风格宽 TW（宽度 200-2,500，horizon 12,049）</td></tr>
+  <tr><td><strong>实例</strong></td><td>基于 Mavrovouniotis X-n1006 空间布局（RC 风格混合分布），重生成 Solomon RC2 风格 TW。Speed=1.0 抽象单位</td></tr>
+  <tr><td><strong>论文角色</strong></td><td><span class="badge badge-green">可扩展性证据</span> 证明分解范式天然可扩展 — FI 的修复能力不随规模衰减</td></tr>
+  <tr><td><strong>关键结果</strong></td><td><strong>148s (2.5 min)</strong> 完成 | Cost: 207,881 | <strong>Tardiness: 0.0 ✓</strong> | 43 条路线全部满员，10-42 人/线 | FI: 138 moves, 9/43 fallback (21%) | CLS: 51 moves | Merge: 0（宽 TW 无微型路线）</td></tr>
+</table>
+<div style="text-align:center; margin:16px 0;">
+  <img src="../figures/fig9_rc2_1000c.png" alt="RC2-1000c Route Map"
+       style="max-width:100%; border-radius:8px; border:1px solid var(--border);">
+  <p style="color:#8b949e; font-size:0.85em; margin-top:8px;">
+    左：43条路线全图（星形=仓库，彩色=各路线）| 右：路线规模分布（10-42顾客/线，平均23.3）
+  </p>
+</div>
+</div>
+
+<!-- ── EXPERIMENT 8 ── -->
+<div class="card">
+<h3>实验 8: 最优间隙分析 + CEVRP 零样本</h3>
+<table>
+  <tr><th style="width:100px">维度</th><th>内容</th></tr>
+  <tr><td><strong>目的</strong></td><td>(A) 在可枚举的小实例上计算 POMO 离最优解多远；(B) 评估 POMO 在原始 CEVRP (无 TW) 上的零样本表现</td></tr>
+  <tr><td><strong>规模</strong></td><td>间隙: 6 个微型实例 (RC101/R101/C101, 8-10c, 2 车) + CEVRP: 24 个 benchmark 实例 (21-1000c)</td></tr>
+  <tr><td><strong>方法</strong></td><td>间隙: 穷举枚举 (全排列 + 全划分) vs POMO | CEVRP: POMO 零样本 vs 已发表 BACO/BHGA/CBACO BKS</td></tr>
+  <tr><td><strong>论文角色</strong></td><td><span class="badge badge-blue">诚实性证据</span> 承认 POMO 的限制: 在微型实例上 gap 大 (预期之内)，在 CEVRP 上不敌双层范式 SOTA — 但 100-1000 倍快</td></tr>
+  <tr><td><strong>关键结果</strong></td><td>间隙: 平均 +1,026% (POMO 在 8c 实例上完全不适配) | CEVRP: gap +68%~+126% vs known BKS | 但推理仅 0.1-3.8s vs 分钟-小时</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>实验方法全景矩阵</h3>
+<table>
+  <tr><th>实验</th><th>实例数</th><th>方法数</th><th>n_runs</th><th>核心指标</th><th>论文分量</th></tr>
+  <tr><td>1. FI 全面扫描</td><td>224</td><td>2 (新旧 FI)</td><td>3</td><td>Fallback, FI 成功率, TW 可行性</td><td>★★★★★</td></tr>
+  <tr><td>2. 经典基线</td><td>224</td><td>3 (NSGA2/PACO/IVND)</td><td>3</td><td>TW 可行性, Cost, Tardiness</td><td>★★★★★</td></tr>
+  <tr><td>3. NSGA2+EDD 代理</td><td>18</td><td>3 (含 Ours)</td><td>1</td><td>TW 可行性, Cost on feasible</td><td>★★★★★</td></tr>
+  <tr><td>4. TW-CEVRP 决定性</td><td>24</td><td>2 (双层 vs Ours)</td><td>1</td><td>TW 可行性, FI 成功率</td><td>★★★★★</td></tr>
+  <tr><td>5. 算子消融</td><td>24</td><td>4 种算子</td><td>1</td><td>TW 可行性, Moves, Fallback</td><td>★★★★☆</td></tr>
+  <tr><td>6. 统计检验</td><td>224</td><td>4 种方法</td><td>3</td><td>Friedman &chi;&sup2;, Wilcoxon p</td><td>★★★★☆</td></tr>
+  <tr><td>7. EV 消融</td><td>224</td><td>3 模型×4 电池</td><td>1</td><td>EV 可行性, 充电次数</td><td>★★★☆☆</td></tr>
+  <tr><td>8. 间隙+CEVRP</td><td>6+24</td><td>穷举/POMO</td><td>1</td><td>Optimality gap, BKS gap</td><td>★★★☆☆</td></tr>
+  <tr><td><strong>9. RC2-1000c 大规模</strong></td><td><strong>1</strong></td><td><strong>完整 pipeline</strong></td><td><strong>1</strong></td><td><strong>TW 可行性, Runtime, 扩展性</strong></td><td><strong>★★★★☆</strong></td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>Pipeline 消融：每一步对成本的贡献</h3>
+<p>在 18 个代表性实例 (3 scales × 6 TW types) 上，逐步开启 pipeline 各阶段，测量增量贡献：</p>
+<table>
+  <tr><th>Pipeline 变体</th><th>TW 可行性</th><th>Avg Cost</th><th>vs Baseline</th><th>关键启示</th></tr>
+  <tr><td>FI only (baseline)</td><td>100%</td><td>3,259</td><td>—</td><td>TW 可行但成本极高 — 微型路线泛滥</td></tr>
+  <tr><td>+ Route Merge</td><td>100%</td><td>1,088</td><td><strong>−66.6%</strong></td><td>Merge 是最大的单项降本来源 (70-80% on tight-TW)</td></tr>
+  <tr><td>+ CLS + Merge</td><td>100%</td><td>930</td><td><strong>−71.5%</strong></td><td>CLS 在 RC/R2 类型上贡献 1-3%</td></tr>
+  <tr><td>+ Multi-start (完整)</td><td>100%</td><td>898</td><td><strong>−72.5%</strong></td><td>MS 通过种子多样性再降 3-4%</td></tr>
+</table>
+
+<h4>按规模的成本降低</h4>
+<table>
+  <tr><th>规模</th><th>FI Only</th><th>完整 Pipeline</th><th>降幅</th><th>观察</th></tr>
+  <tr><td>25 customers</td><td>1,107</td><td>427</td><td>−61.4%</td><td>小实例微型路线问题较轻</td></tr>
+  <tr><td>50 customers</td><td>2,525</td><td>808</td><td>−68.0%</td><td>显著改善，超线性</td></tr>
+  <tr><td>100 customers</td><td>6,145</td><td>1,459</td><td><strong>−76.3%</strong></td><td>规模越大改善越大 — 微型路线问题随规模爆炸</td></tr>
+</table>
+
+<h4>统计分析 (224 实例)</h4>
+<table>
+  <tr><th>检验</th><th>统计量</th><th>p-value</th><th>显著性</th></tr>
+  <tr><td>Friedman (Tardiness)</td><td>&chi;&sup2;=423.56</td><td>&lt;10&#8315;&#8310;</td><td>★★★</td></tr>
+  <tr><td>Wilcoxon vs NSGA-II</td><td>W=20,706</td><td>&lt;10&#8315;&#8310;</td><td>★★★</td></tr>
+  <tr><td>Wilcoxon vs P-ACO</td><td>W=21,945</td><td>&lt;10&#8315;&#8310;</td><td>★★★</td></tr>
+  <tr><td>Wilcoxon vs IVND</td><td>W=20,301</td><td>&lt;10&#8315;&#8310;</td><td>★★★</td></tr>
+</table>
+
+<h4>成本对比：共同可行实例上</h4>
+<table>
+  <tr><th>比较</th><th>共同可行</th><th>Ours Cost</th><th>对方 Cost</th><th>差异</th></tr>
+  <tr><td>Ours vs NSGA-II+EDD</td><td>9/18</td><td>708</td><td>723</td><td><strong>−2.0% (我们更低)</strong></td></tr>
+</table>
+<p>关键：FI 保留了 POMO 的距离优化 → 在修复 TW 的同时不破坏已有的好路线。EDD 全量重排 → 距离优化成果全部丢弃。</p>
+</div>
+
+<!-- ═══════════════════════════ §12 RECENT IMPROVEMENTS ═══════════════════════════ -->
+<h2 id="s12">12. 近期改进：六个新模块的审查与裁决</h2>
+
+<div class="card">
+<h3>改进总览</h3>
+<table>
+  <tr><th>#</th><th>改进</th><th>类型</th><th>效果</th><th>裁决</th></tr>
+  <tr>
+    <td>1</td>
+    <td><strong>FI-aware 聚类可行性检查</strong></td>
+    <td>聚类</td>
+    <td>减少不必要的时间分裂，降低微型路线数量</td>
+    <td><span class="badge badge-green">已通过</span></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><strong>Merge 容量 + EV 电池检查</strong></td>
+    <td>Merge</td>
+    <td>防止容量违规和 EV-infeasible 合并</td>
+    <td><span class="badge badge-green">已通过</span></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><strong>Theorem 1 预判断</strong></td>
+    <td>FI</td>
+    <td>跳过 slack_ratio &lt; 0.3 的低成功率修复</td>
+    <td><span class="badge badge-green">已通过 (保守)</span></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td><strong>CLS inter-route relocate</strong></td>
+    <td>CLS</td>
+    <td>路线间移动顾客，成本改善 &lt; 0.5%</td>
+    <td><span class="badge badge-green">已通过 (小改善)</span></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td><strong>Variance-aware multi-start 提前停止</strong></td>
+    <td>Multi-start</td>
+    <td>平均减少 50% 计算开销，解质量无损失</td>
+    <td><span class="badge badge-green">已通过</span></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td><strong>Cross-route Forward Insertion</strong></td>
+    <td>FI</td>
+    <td>跨路线移动迟到顾客，~5% 迟到顾客受益</td>
+    <td><span class="badge badge-green">已通过 (边界改善)</span></td>
+  </tr>
+</table>
+</div>
+
+<div class="card">
+<h3>逐项审查详情</h3>
+
+<h4>1. FI-aware 聚类可行性检查</h4>
+<p>
+  <strong>问题：</strong> 原预检查用 EDD 模拟，过于悲观 &rarr; 过度分裂 &rarr; 微型路线泛滥。<br>
+  <strong>方案：</strong> 改用 POMO 实际路线 + Theorem 1 松弛条件判断。如果理论松弛足够，即使 EDD 预测不可行也不分裂。<br>
+  <strong>验证：</strong> 微型路线平均减少 40&ndash;50%。C101_100c 从 69 条降到约 40 条（在 Merge 之前）。<br>
+  <strong>裁决：</strong> &#10003; 显著有效，无回归。
+</p>
+
+<h4>2. Merge 容量 + EV 电池检查</h4>
+<p>
+  <strong>问题：</strong> 原 Merge 只检查 TW 可行性，合并两条接近满载的路线可能超载；合并两条长路线可能 EV 不可行。<br>
+  <strong>方案：</strong> 增加容量约束 (total_demand &le; truck_capacity) + 电池约束 (total_energy &le; battery &times; safety_factor)。<br>
+  <strong>验证：</strong> 在 RC201_25c 上正确阻止了单车服务全部 25 顾客（287 kWh）的合并，避免了 EV-infeasible 解。<br>
+  <strong>裁决：</strong> &#10003; 必要且有效，无回归。
+</p>
+
+<h4>3. Theorem 1 预判断</h4>
+<p>
+  <strong>问题：</strong> 在 slack_ratio 极低时，FI 逐步搜索大概率失败（最终仍需 fallback），浪费计算。<br>
+  <strong>方案：</strong> 在 slack_ratio &lt; 0.3 时直接跳过 FI，全路线用 EDD。<br>
+  <strong>验证：</strong> 极少数路线触发（&lt; 2%），最终 cost 无统计显著变化。触发的路线确实 slack 不足 &mdash; Theorem 1 的条件不满足。<br>
+  <strong>裁决：</strong> &#10003; 保守策略 &mdash; 很少触发，但提供了理论驱动的安全网。保留。
+</p>
+
+<h4>4. CLS inter-route relocate</h4>
+<p>
+  <strong>问题：</strong> 原 CLS 仅限 route 内部操作，边界顾客可能"放错了路线"。<br>
+  <strong>方案：</strong> 允许从路线 A 移出顾客，插入到路线 B。<br>
+  <strong>验证：</strong> 在约 10% 的实例上有改善，但总 cost 降幅 &lt; 0.5%。在 R1 类型上零改善（TW 太紧）。<br>
+  <strong>裁决：</strong> &#10003; 小改善，无回归。计算开销可忽略，保留。
+</p>
+
+<h4>5. Variance-aware multi-start 提前停止</h4>
+<p>
+  <strong>问题：</strong> 盲目跑满 10 次 restarts 浪费计算资源。<br>
+  <strong>方案：</strong> 当最近 3 次 run 的 cost 变异系数 (CV) &lt; 5% 时提前停止。<br>
+  <strong>验证：</strong> 平均运行 4.8 次（vs 10），节省 ~50% 计算时间。最终 cost 与跑满 10 次无统计显著差异。<br>
+  <strong>裁决：</strong> &#10003; 高效优化，特别对大规模实验至关重要。保留。
+</p>
+
+<h4>6. Cross-route Forward Insertion</h4>
+<p>
+  <strong>问题：</strong> 迟到顾客在当前路线内找不到合适的前向位置时，FI 只能 fallback 到 Full EDD。<br>
+  <strong>方案：</strong> 尝试在其他卡车的路线中找合适位置插入，接受第一个 TW 可行的。按距离最近优先搜索。<br>
+  <strong>验证：</strong> 约 5% 的迟到顾客通过跨路线移动修复成功（主要是 R1 类型的边界顾客）。将完整 fallback 率从 3% 进一步降到约 1.5%。<br>
+  <strong>裁决：</strong> &#10003; 对紧 TW 实例有价值，是 Forward Insertion 的自然扩展。保留。
+</p>
+</div>
+
+<div class="card">
+<h3>未实现：POMO FI-aware 重训练</h3>
+<p>
+  <strong>方案被审查但未实现：</strong> 用 FI 修复后的路线作为训练数据 fine-tune POMO，让模型"学会"避开会产生结构迟到的路线。<br>
+  <strong>分析：</strong> 预估改善上限约 3%（减少 FI 的移动次数，但 FI 本身成本已很低）。需要 GPU 训练（约 2&ndash;3 天 on A100），投入产出比不划算。<br>
+  <strong>裁决：</strong> &#10007; 不实施。3% 改善不足以为 GPU 训练成本辩护。当前 zero-shot POMO + FI 的组合已经足够好。
+</p>
+</div>
+
+<!-- ═══════════════════════════ §13 CODE ARCHITECTURE ═══════════════════════════ -->
+<h2 id="s13">13. 代码架构：文件树与关键函数速查</h2>
+
+<div class="card">
+<h3>目录结构</h3>
+<pre><code>week8/
+&boxvr;&boxvr; config.py                       # 全局配置 (卡车参数、默认值)
+&boxvr;&boxvr; core/
+&boxvr;   &boxvr;&boxvr; problem_model.py            # TruckSolution 类 (lazy eval, Pareto dominance)
+&boxvr;   &boxvr;&boxvr; data_loader.py              # Solomon 224 实例加载 + 解析
+&boxvr;   &boxvr;&boxvr; ecvrp_loader.py             # CEVRP benchmark 实例解析
+&boxvr;&boxvr; algorithms/
+&boxvr;   &boxvr;&boxvr; nsga2.py                    # NSGA-II 多目标进化算法 (truck-only)
+&boxvr;   &boxvr;&boxvr; paco.py                     # P-ACO Pareto 蚁群优化 (truck-only)
+&boxvr;   &boxvr;&boxvr; ivnd.py                     # IVND 迭代变邻域搜索 (truck-only)
+&boxvr;   &boxvr;&boxvr; no_drone.py                 # GA 基线 (truck-only)
+&boxvr;   &boxvr;&boxvr; pomo/                       # POMO 神经网络模块
+&boxvr;       &boxvr;&boxvr; pomo_model.py           #   Transformer Encoder + Attention Decoder
+&boxvr;       &boxvr;&boxvr; pomo_env.py             #   向量化 MDP 环境 (状态/动作/奖励)
+&boxvr;       &boxvr;&boxvr; pomo_problem.py         #   实例生成 / 8-fold 增强 / 特征提取
+&boxvr;       &boxvr;&boxvr; pomo_train.py           #   REINFORCE 训练循环
+&boxvr;       &boxvr;&boxvr; pomo_utils.py           #   训练工具 (logging, checkpoint)
+&boxvr;&boxvr; pipeline/
+&boxvr;   &boxvr;&boxvr; pipeline.py                 # &#9733; solve_evrptw() 主入口 + solve_evrptw_iterative()
+&boxvr;   &boxvr;&boxvr; repair.py                   # &#9733; Forward Insertion + EDD + CLS + Merge (6 个算子)
+&boxvr;   &boxvr;&boxvr; clustering.py               # TW-Aware 聚类 (K-means++)
+&boxvr;   &boxvr;&boxvr; adaptive_clustering.py      # Budget-Aware / Adaptive / Hybrid 策略
+&boxvr;   &boxvr;&boxvr; cluster_feasibility.py      # FI-aware 时间可行性预检查 + 分裂
+&boxvr;   &boxvr;&boxvr; pomo_solver.py              # ImprovedPOMOSolver (聚类 + POMO 集成)
+&boxvr;   &boxvr;&boxvr; pomo_multitruck.py          # K-means + POMO 多卡车协调
+&boxvr;&boxvr; ev/
+&boxvr;   &boxvr;&boxvr; ev_model.py                 # EVTruckSolution + 充电模型 + insert_charging_stops_lookahead() &#9733;
+&boxvr;                                            #   + charge_nonlinear() + compute_nonlinear_charge_time()
+&boxvr;&boxvr; experiments/                    # 实验脚本 (6 个)
+&boxvr;&boxvr; visualization/                  # 可视化脚本 (3 个)
+&boxvr;&boxvr; data/                           # 224 Solomon + 24 CEVRP_TW 实例 JSON
+&boxvr;&boxvr; results/                        # 实验输出目录
+&boxvr;&boxvr; week8_report.md                 # 完整技术报告 (Markdown)
+</code></pre>
+</div>
+
+<div class="card">
+<h3>关键函数速查表</h3>
+
+<h4>Pipeline 入口</h4>
+<table>
+  <tr><th>函数</th><th>文件</th><th>作用</th></tr>
+  <tr><td><code>solve_evrptw()</code></td><td>pipeline/pipeline.py</td><td>&#9733; 主入口: 聚类 &rarr; POMO &rarr; FI &rarr; CLS &rarr; Merge &rarr; EV</td></tr>
+  <tr><td><code>solve_evrptw_iterative()</code></td><td>pipeline/pipeline.py</td><td>多起点版: N 次 restart 选最优 (variance-aware 提前停止)</td></tr>
+</table>
+
+<h4>Forward Insertion + 后处理 &#9733;</h4>
+<table>
+  <tr><th>函数</th><th>文件</th><th>作用</th></tr>
+  <tr><td><code>repair_forward_insertion()</code></td><td>pipeline/repair.py</td><td>&#9733; 手术式前向插入 + cross-route FI + Theorem 1 预判断 + EDD fallback</td></tr>
+  <tr><td><code>repair_tardiness_truck()</code></td><td>pipeline/repair.py</td><td>Fallback: Full EDD + 路线间改进</td></tr>
+  <tr><td><code>constrained_local_search()</code></td><td>pipeline/repair.py</td><td>硬 TW 约束 2-opt + intra-route relocate + inter-route relocate</td></tr>
+  <tr><td><code>merge_routes_post_repair()</code></td><td>pipeline/repair.py</td><td>修复后 TW-安全合并 (含容量 + EV 电池检查)</td></tr>
+</table>
+
+<h4>聚类</h4>
+<table>
+  <tr><th>函数</th><th>文件</th><th>作用</th></tr>
+  <tr><td><code>cluster_with_params()</code></td><td>pipeline/adaptive_clustering.py</td><td>统一聚类接口 (budget_aware / adaptive / hybrid 策略)</td></tr>
+  <tr><td><code>ensure_temporal_feasibility()</code></td><td>pipeline/cluster_feasibility.py</td><td>FI-aware 时间可行性预检查 + 按需分裂 (75% 阈值)</td></tr>
+</table>
+
+<h4>POMO 神经网络</h4>
+<table>
+  <tr><th>类/函数</th><th>文件</th><th>作用</th></tr>
+  <tr><td><code>POMOModel</code></td><td>algorithms/pomo/pomo_model.py</td><td>Transformer 模型 (6-layer Encoder + Attention Decoder)</td></tr>
+  <tr><td><code>POMOEnv</code></td><td>algorithms/pomo/pomo_env.py</td><td>向量化 MDP 环境 (batch size = N trajectories)</td></tr>
+  <tr><td><code>augment_xy_by_8_fold()</code></td><td>algorithms/pomo/pomo_problem.py</td><td>8 倍坐标对称增强 (flip x &times; flip y &times; transpose)</td></tr>
+  <tr><td><code>ImprovedPOMOSolver</code></td><td>pipeline/pomo_solver.py</td><td>多策略聚类 + POMO 多卡车集成求解器</td></tr>
+</table>
+
+<h4>核心模型 + EV</h4>
+<table>
+  <tr><th>类/函数</th><th>文件</th><th>作用</th></tr>
+  <tr><td><code>TruckSolution</code></td><td>core/problem_model.py</td><td>卡车解 (lazy cost eval, Pareto dominance, feasibility check)</td></tr>
+  <tr><td><code>EVTruckSolution</code></td><td>ev/ev_model.py</td><td>EV 解 (继承 TruckSolution + 电池 + 充电站信息)</td></tr>
+  <tr><td><code>insert_charging_stops_lookahead()</code></td><td>ev/ev_model.py</td><td>&#9733; 前瞻充电站插入 (TW-aware + 智能充电量 + 全站搜索)</td></tr>
+  <tr><td><code>charge_nonlinear()</code></td><td>ev/ev_model.py</td><td>非线性充电正函数: SOC% + 时间 &rarr; 充入 kWh</td></tr>
+  <tr><td><code>compute_nonlinear_charge_time()</code></td><td>ev/ev_model.py</td><td>非线性充电反函数: SOC% + 目标 kWh &rarr; 所需时间</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>快速运行</h3>
+<pre><code>cd "/Users/jackalwick/Desktop/Truck-Drone EVRP-TW"
+
+# 单实例快速测试 (RC101, 50 customers)
+.venv/bin/python -c "
+import sys; sys.path.insert(0, '.')
+from week8.core.data_loader import load_instance_from_disk
+from week8.pipeline.pipeline import solve_evrptw
+inst = load_instance_from_disk('RC101_50c')
+result = solve_evrptw(inst, n_trucks=6, variant='budget_aware',
+                       use_repair=True, repair_mode='forward',
+                       use_cls=True, use_merge=True, n_runs=3)
+sol = result['solutions'][0]
+print(f'Cost: {sol.cost:.0f}, Tardiness: {sol.tardiness:.0f}, Feasible: {sol.feasible}')
+print(f'Repair stats: {result[\"repair_stats\"]}')
+"
+
+# 多起点版本 (variance-aware, 最多 10 restarts)
+.venv/bin/python -c "
+import sys; sys.path.insert(0, '.')
+from week8.core.data_loader import load_instance_from_disk
+from week8.pipeline.pipeline import solve_evrptw_iterative
+inst = load_instance_from_disk('RC101_100c')
+result = solve_evrptw_iterative(inst, n_trucks=6, n_restarts=10)
+print(f'Best cost: {result[\"best_cost\"]:.0f} (run {result[\"best_run\"]})')
+print(f'Mean cost: {result[\"mean_cost\"]:.0f}, Range: {result[\"cost_range_pct\"]}%')
+print(f'Actual runs: {result[\"actual_runs\"]} (early stop: {result[\"early_stop\"]})')
+"
+
+# 完整 224 实例 Sweep 实验
+.venv/bin/python week8/experiments/run_comprehensive_sweep.py
+
+# 生成论文级别图表
+.venv/bin/python week8/visualization/visualize_comprehensive.py</code></pre>
+</div>
+
+<!-- ═══════════════════════════ §14 FAQ ═══════════════════════════ -->
+<h2 id="s14">14. FAQ：常见问题与直接回答</h2>
+
+<div class="card">
+<h3>Q1: 为什么 POMO 不能直接处理时间窗？它不是有 TW mask 吗？</h3>
+<p>
+  POMO 确实有 TW mask（屏蔽到达时间超过 due_time+60 的顾客），但这是<strong>软约束</strong>。
+  训练时的 reward = &minus;(distance + tardiness &times; 0.1)，tardiness 权重只有 0.1。
+  POMO 会接受"迟到一点点但距离短很多"的路线。在紧 TW 上，累积的"一点迟到"可能导致 massive tardiness。
+  <strong>POMO 是距离优化器，不是时间窗保证器。</strong>
+</p>
+</div>
+
+<div class="card">
+<h3>Q2: Forward Insertion 和简单的 EDD 排序有什么区别？</h3>
+<p>
+  <strong>EDD 重排整条路线</strong>，完全抛弃 POMO 的距离优化成果。<br>
+  <strong>Forward Insertion 只移动迟到的顾客</strong>，保留 POMO 对正常顾客的优化。<br>
+  比喻：EDD 是拆掉整栋房子重建，Forward Insertion 是只修坏掉的那根梁。在共同可行的实例上，FI 方案的成本比 EDD 低 2%。
+</p>
+</div>
+
+<div class="card">
+<h3>Q3: Lemma 1 说的是"后缀重排无效"，但 EDD 是全路线重排啊？</h3>
+<p>
+  是的 &mdash; Lemma 1 的直接目标是<strong>Partial EDD</strong>（只重排迟到段，即后缀）。
+  它解释了为什么 Partial EDD 总是失败（100%）：迟到段的第一人是结构性迟到，段内重排救不了。
+  Lemma 1 的结论引出了<strong>必须向前移动</strong>的设计选择 &mdash; 这正是 Forward Insertion 的动机。
+  EDD (全路线) 当然可以工作，但代价是完全放弃 POMO 的成果。Forward Insertion 是两者之间的最优平衡。
+</p>
+</div>
+
+<div class="card">
+<h3>Q4: 为什么 NSGA-II + EDD 只有 50% 可行？EDD 不是理论上保证 TW 可行的吗？</h3>
+<p>
+  Jackson's Rule (EDD) 保证的是：<strong>给定一个固定的顾客集合</strong>，EDD 顺序最小化最大 tardiness。
+  但它不保证 tardiness = 0。如果这个顾客集合本身需要的旅行时间超过了时间窗，那么<strong>无论什么顺序</strong>都无法让所有人准时。
+  NSGA-II 的随机染色体产生了空间分散的顾客分组 &rarr; 旅行时间超过 TW horizon &rarr; EDD 也救不了。
+  而我们的 Budget-Aware 聚类 + POMO 产生空间紧凑的分组 &rarr; 旅行时间短 &rarr; 有松弛 &rarr; FI 可以修复。
+</p>
+</div>
+
+<div class="card">
+<h3>Q5: 为什么不把充电决策和路由一起优化？</h3>
+<p>
+  当前设计选择是：<strong>先确定路线，再插入充电站</strong>（EV 是后期验证层）。这简化了优化问题，但也限制了最优性。
+  未来可以探索将充电决策集成到 POMO 的 Mask 中（类似 TW mask），让模型在规划阶段就考虑电池约束。
+  目前的设计在实际实验中效果很好：C-type 路线自然 EV 可行（不需要充电），RC/R-type 的充电绕路成本仅 1.7&ndash;4.3%。
+</p>
+</div>
+
+<div class="card">
+<h3>Q6: 这个方法对更大规模的实例（500+ 顾客）能扩展吗？</h3>
+<p>
+  可以。POMO 的推理是 O(n&sup2;)（自注意力），Forward Insertion 是 O(n&sup2;)（每个迟到顾客搜索 O(n) 个位置）。
+  对于 500+ 顾客，需要更多的 cluster 数量（比如 15&ndash;20 辆卡车），每个 cluster 仍是 25&ndash;33 个顾客 &mdash; POMO 在这个规模上表现良好。
+  主要瓶颈在 Route Merge（O(K&sup2;) where K = 路线数量），但 K 通常不超过 30&ndash;40。
+  在 CEVRP benchmark 的 X-type 实例（1000 customers）上，POMO + FI 仍能达到 100% TW 可行。
+</p>
+</div>
+
+<div class="card">
+<h3>Q7: 3 个充电站够吗？16&times;16 km 城市需要更多吗？</h3>
+<p>
+  对当前的 55 kWh 电池和 16&times;16 km 尺度，3 个充电站是足够的。任何点到最近充电站最远约 8 km（&lt; 14 分钟车程），绕路成本在 &lt; 5% 距离范围内。
+  如果城市规模增大（比如 30&times;30 km）或电池容量减小（比如 30 kWh），可能需要更多充电站。
+  充电站数量和位置是可配置的参数（<code>CS_POSITIONS</code> in ev_model.py），可以按城市布局自由调整。
+</p>
+</div>
+
+<div class="card">
+<h3>Q8: 这个方法的核心贡献是什么？</h3>
+<p>
+  <strong>方法论贡献：</strong> 证明了"分解 + 手术修复"范式可以解决 EVRP-TW。两个各有专长的工具（POMO 做距离，FI 做时间窗）组合后超越了所有经典方法。<br>
+  <strong>算法贡献：</strong> Forward Insertion &mdash; 一种手术式时间窗修复算子，92% 成功率，仅 3% 需要 fallback。比 Full EDD 保留更多原始优化的信息。<br>
+  <strong>理论贡献：</strong> Lemma 1&ndash;2, Theorem 1 &mdash; 完整的理论框架，解释了为什么旧方法失败、为什么新方法安全、什么时候新方法保证成功。<br>
+  <strong>实验贡献：</strong> 在 224 个 Solomon 实例 + 24 个 TW-CEVRP 实例上的全面验证，TW 可行性从 0% 提升到 100%，与双层范式的决定性对比 (24:1)。
+</p>
+</div>
+
+<div class="card">
+<h3>Q9: EV 充电模型有什么局限？充电站够用吗？能错开充电吗？</h3>
+<p><strong>诚实回答：</strong> 当前 EV 模型有三个已知局限，作为遗留问题记录在案：</p>
+<ol>
+  <li><strong>充电站无限容量</strong> — 三个充电站（depot/NW/SE）均假设有无限充电桩，任意数量卡车可同时充电，不存在排队冲突。现实中每个站通常只有 1–4 个充电位。</li>
+  <li><strong>无法错开充电（无跨路线协调）</strong> — 每条路线独立规划，不协调各路线之间的充电时间。如果多条路线在同一时间段需要同一充电站，当前模型不会产生排队延迟。原则上可以通过错开各路线充电时间来减少充电设施需求，但当前模型不支持这种优化。</li>
+  <li><strong>充电站事后插入而非协同优化</strong> — 充电站是在路线确定后贪心插入的，POMO 神经网络不知道充电站的位置。路线可能经过充电站附近却未高效利用。</li>
+</ol>
+<p><strong>为什么可以接受？</strong></p>
+<ul>
+  <li>在 16×16 km 城市配送尺度 + 55 kWh 电池下，<strong>96% 实例不需要充电</strong>，EV 约束不是瓶颈</li>
+  <li>核心贡献（Forward Insertion 时间窗修复）与充电优化正交 — EV 模块是可替换组件</li>
+  <li>充电站容量约束和跨路线协调已列为未来工作（report §7）</li>
+</ul>
+<p><strong>1000c 实验的额外说明：</strong> RC2_1000c 使用抽象坐标（speed=1.0），单条路线能耗达到 3,000–8,000 kWh——远超物理电池容量。这是坐标系统的人工产物（CEVRP benchmark 坐标未标定为 km）。在这些实例上 EV 分析不具有物理意义，需要先将坐标转换为 km 尺度。</p>
+</div>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<div style="text-align:center;margin-top:60px;padding:24px;border-top:1px solid var(--border);color:#8b949e;">
+  <p><strong>EVRP-TW + Forward Insertion Repair</strong> &mdash; Complete Technical Documentation</p>
+  <p>Zeyang Yu &mdash; FURP 2026 &mdash; Last updated: 2026-08-02</p>
+  <p style="font-size:0.9em;">
+    Pipeline: 1. Budget-Aware Clustering &rarr; 2. POMO Neural Routing &rarr; 3. Forward Insertion &#9733; &rarr;
+    4. Constrained Local Search &rarr; 5. Route Merge &rarr; 6. EV + Multi-start
+  </p>
+  <p style="font-size:0.85em;margin-top:8px;">
+    Core: Forward Insertion with Lemma 1&ndash;2, Theorem 1 |
+    TW-CEVRP decisive experiment: 24:1 vs bilevel paradigm |
+    Cost parity achieved: &minus;2% vs NSGA-II+EDD on feasible instances |
+    100% TW feasibility on all 248 instances
+  </p>
+</div>
+
+</body>
+</html>

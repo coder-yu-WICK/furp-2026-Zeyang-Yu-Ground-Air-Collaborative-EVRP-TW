@@ -138,10 +138,11 @@ class TruckSolution:
                     total_tardiness += tardy * TARDINESS_COST_RATE
                     violations['time_window'] += tardy
 
-                # Capacity check
+                # Capacity check (use instance-specific capacity if available)
+                truck_cap = inst.get('truck_capacity', TRUCK_CAPACITY)
                 load += c_data['demand']
-                if load > TRUCK_CAPACITY:
-                    violations['capacity'] += (load - TRUCK_CAPACITY)
+                if load > truck_cap:
+                    violations['capacity'] += (load - truck_cap)
                     feasible = False
 
                 current_time += c_data['service_time']
